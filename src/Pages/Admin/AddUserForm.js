@@ -1,12 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
-import { FirebaseContext } from '../../Firebase';
-import { AuthUserContext } from '../../Components/Session';
-
+import { AdminContext } from './AdminController';
 export default function AddUserForm() {
 	const [error, setError] = useState(null);
-	const currentUser = useContext(AuthUserContext);
-	const firebase = useContext(FirebaseContext);
+	const Admin = useContext(AdminContext);
+
 	const formik = useFormik({
 		initialValues: {
 			email: '',
@@ -16,19 +14,12 @@ export default function AddUserForm() {
 			role: 'user',
 		},
 		onSubmit: (values) => {
-			firebase
-				.doCreateUserWithEmailAndPassword(values.email, values.password)
-				.then((authUser) => {
-					// Create a user in your Firebase realtime database
-					if (authUser) {
-						return this.props.firebase.addUser(authUser.user.uid, {
-							...values,
-							master: currentUser.master,
-						});
-					}
+			Admin.createUser(values)
+				.then((results) => {
+					console.log(results);
 				})
 				.catch((e) => {
-					setError("Sorry, couldn't create this user. Code: " + e.message);
+					setError(e.message);
 				});
 		},
 	});

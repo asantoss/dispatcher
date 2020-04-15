@@ -1,0 +1,1653 @@
+[debug] [2020-04-15T22:15:03.556Z] ----------------------------------------------------------------------
+[debug] [2020-04-15T22:15:03.558Z] Command:       /Users/alexandersantos/.nvm/versions/node/v13.8.0/bin/node /Users/alexandersantos/.nvm/versions/node/v13.8.0/bin/firebase emulators:start --import=seeds
+[debug] [2020-04-15T22:15:03.559Z] CLI Version:   8.0.3
+[debug] [2020-04-15T22:15:03.559Z] Platform:      darwin
+[debug] [2020-04-15T22:15:03.559Z] Node Version:  v13.8.0
+[debug] [2020-04-15T22:15:03.561Z] Time:          Wed Apr 15 2020 18:15:03 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-04-15T22:15:03.561Z] ----------------------------------------------------------------------
+[debug] [2020-04-15T22:15:03.561Z] 
+[debug] [2020-04-15T22:15:03.570Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-15T22:15:03.571Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: functions, firestore, hosting
+[debug] [2020-04-15T22:15:03.667Z] [hub] writing locator at /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/hub-dispatch-7fe76.json
+[info] ✔  hub: emulator hub started at http://localhost:4400
+[info] ✔  functions: Using node@13 from host.
+[info] ✔  functions: functions emulator started at http://localhost:5001
+[info] i  firestore: Importing data from /Users/alexandersantos/Projects/dispatcher/functions/seeds/2020-04-15T21_39_28_17257_2020-04-15T21_39_28_17257.overall_export_metadata
+[warn] ⚠  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration.
+[debug] [2020-04-15T22:15:03.740Z] Ignoring unsupported arg: projectId
+[debug] [2020-04-15T22:15:03.741Z] Ignoring unsupported arg: auto_download
+[debug] [2020-04-15T22:15:03.741Z] Starting firestore emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/alexandersantos/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.2.jar","--host","localhost","--port",8080,"--seed_from_export","/Users/alexandersantos/Projects/dispatcher/functions/seeds/2020-04-15T21_39_28_17257_2020-04-15T21_39_28_17257.overall_export_metadata","--rules","/Users/alexandersantos/Projects/dispatcher/firestore.rules","--functions_emulator","localhost:5001"],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false}
+[info] i  firestore: firestore emulator logging to firestore-debug.log
+[debug] [2020-04-15T22:15:05.992Z] API endpoint: http://
+[debug] [2020-04-15T22:15:05.992Z] localhost:8080
+
+[debug] [2020-04-15T22:15:05.993Z] If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:8080
+
+Dev App Server is now running.
+
+
+[info] ✔  firestore: firestore emulator started at http://localhost:8080
+[info] i  firestore: For testing set FIRESTORE_EMULATOR_HOST=localhost:8080
+[debug] [2020-04-15T22:15:06.135Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-04-15T22:15:06.136Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-04-15T22:15:06.327Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 15 Apr 2020 22:15:06 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-15T22:15:06.359Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/dispatch-7fe76/webApps/-/config  
+ 
+[debug] [2020-04-15T22:15:06.852Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 15 Apr 2020 22:15:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting: Serving hosting files from: build
+[info] ✔  hosting: Local server: http://localhost:5000
+[info] ✔  hosting: hosting emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/alexandersantos/Projects/dispatcher/functions" for Cloud Functions...
+[debug] [2020-04-15T22:15:07.227Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T22:15:07.227Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 
+[debug] [2020-04-15T22:15:07.227Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T22:15:07.228Z] [worker-~diagnostic~-32e20db5-55e6-4bc3-8f90-62490679b281]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_6839.sock 
+[debug] [2020-04-15T22:15:07.228Z] [worker-~diagnostic~-32e20db5-55e6-4bc3-8f90-62490679b281]: BUSY 
+[debug] [2020-04-15T22:15:07.818Z] [runtime-status] [6839] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T22:15:07.826Z] [runtime-status] [6839] Disabled runtime features: undefined 
+[debug] [2020-04-15T22:15:07.830Z] [runtime-status] [6839] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:15:07.836Z] [runtime-status] [6839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T22:15:07.839Z] [runtime-status] [6839] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T22:15:07.921Z] [runtime-status] [6839] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T22:15:07.922Z] [runtime-status] [6839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:15:07.924Z] [runtime-status] [6839] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:15:07.926Z] [runtime-status] [6839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:15:07.926Z] [runtime-status] [6839] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T22:15:08.358Z] [runtime-status] [6839] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T22:15:08.984Z] [worker-~diagnostic~-32e20db5-55e6-4bc3-8f90-62490679b281]: IDLE 
+[debug] [2020-04-15T22:15:08.985Z] addFirestoreTrigger "{\"eventTrigger\":{\"resource\":\"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.create\",\"service\":\"firestore.googleapis.com\"}}"
+[debug] [2020-04-15T22:15:08.985Z] >>> HTTP REQUEST PUT http://localhost:8080/emulator/v1/projects/dispatch-7fe76/triggers/createUser  
+ {"eventTrigger":{"resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[debug] [2020-04-15T22:15:09.055Z] Apr 15, 2020 6:15:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:15:09.342Z] Apr 15, 2020 6:15:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+
+[debug] [2020-04-15T22:15:10.357Z] <<< HTTP RESPONSE 200 {"content-type":"application/json","content-length":"4"}
+[info] ✔  functions[createUser]: firestore function initialized.
+[info] ✔  functions[server]: http function initialized (http://localhost:5001/dispatch-7fe76/us-central1/server).
+[info] ✔  emulators: All emulators started, it is now safe to connect.
+[debug] [2020-04-15T22:15:48.797Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T22:15:49.803Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T22:15:49.803Z] [worker-~diagnostic~-32e20db5-55e6-4bc3-8f90-62490679b281]: FINISHING 
+[debug] [2020-04-15T22:15:49.814Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T22:15:49.814Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T22:15:49.814Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T22:15:49.815Z] [worker-~diagnostic~-7ed7f369-62be-48f7-8cf2-e115167ea048]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_6842.sock 
+[debug] [2020-04-15T22:15:49.815Z] [worker-~diagnostic~-7ed7f369-62be-48f7-8cf2-e115167ea048]: BUSY 
+[debug] [2020-04-15T22:15:49.817Z] [worker-~diagnostic~-32e20db5-55e6-4bc3-8f90-62490679b281]: exited 
+[debug] [2020-04-15T22:15:49.817Z] [worker-~diagnostic~-32e20db5-55e6-4bc3-8f90-62490679b281]: FINISHED 
+[debug] [2020-04-15T22:15:50.641Z] [runtime-status] [6842] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T22:15:50.645Z] [runtime-status] [6842] Disabled runtime features: undefined 
+[debug] [2020-04-15T22:15:50.649Z] [runtime-status] [6842] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:15:50.653Z] [runtime-status] [6842] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T22:15:50.654Z] [runtime-status] [6842] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T22:15:50.729Z] [runtime-status] [6842] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T22:15:50.730Z] [runtime-status] [6842] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:15:50.731Z] [runtime-status] [6842] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:15:50.731Z] [runtime-status] [6842] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:15:50.732Z] [runtime-status] [6842] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T22:15:51.073Z] [runtime-status] [6842] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T22:15:51.849Z] [worker-~diagnostic~-7ed7f369-62be-48f7-8cf2-e115167ea048]: IDLE 
+[debug] [2020-04-15T22:16:22.479Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T22:16:23.485Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T22:16:23.485Z] [worker-~diagnostic~-7ed7f369-62be-48f7-8cf2-e115167ea048]: FINISHING 
+[debug] [2020-04-15T22:16:23.486Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T22:16:23.495Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T22:16:23.496Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T22:16:23.497Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T22:16:23.497Z] [worker-~diagnostic~-073c8caa-859d-4397-8526-c3bbac07dbf2]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_6852.sock 
+[debug] [2020-04-15T22:16:23.497Z] [worker-~diagnostic~-073c8caa-859d-4397-8526-c3bbac07dbf2]: BUSY 
+[debug] [2020-04-15T22:16:23.499Z] [worker-~diagnostic~-7ed7f369-62be-48f7-8cf2-e115167ea048]: exited 
+[debug] [2020-04-15T22:16:23.499Z] [worker-~diagnostic~-7ed7f369-62be-48f7-8cf2-e115167ea048]: FINISHED 
+[debug] [2020-04-15T22:16:24.378Z] [runtime-status] [6852] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T22:16:24.381Z] [runtime-status] [6852] Disabled runtime features: undefined 
+[debug] [2020-04-15T22:16:24.385Z] [runtime-status] [6852] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:16:24.388Z] [runtime-status] [6852] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T22:16:24.393Z] [runtime-status] [6852] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T22:16:24.494Z] [runtime-status] [6852] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T22:16:24.495Z] [runtime-status] [6852] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:16:24.497Z] [runtime-status] [6852] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:16:24.497Z] [runtime-status] [6852] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:16:24.498Z] [runtime-status] [6852] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T22:16:24.871Z] [runtime-status] [6852] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T22:16:25.733Z] [worker-~diagnostic~-073c8caa-859d-4397-8526-c3bbac07dbf2]: IDLE 
+[debug] [2020-04-15T22:19:50.582Z] Apr 15, 2020 6:19:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:19:56.208Z] Apr 15, 2020 6:19:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /admin
+
+[debug] [2020-04-15T22:22:54.233Z] Apr 15, 2020 6:22:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:22:54.449Z] Apr 15, 2020 6:22:54 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:22:56.587Z] Apr 15, 2020 6:22:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:22:57.209Z] Apr 15, 2020 6:22:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:22:57.240Z] Apr 15, 2020 6:22:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:22:58.224Z] Apr 15, 2020 6:22:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:27:41.682Z] Apr 15, 2020 6:27:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:27:41.695Z] Apr 15, 2020 6:27:41 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:27:41.758Z] Apr 15, 2020 6:27:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:27:42.420Z] Apr 15, 2020 6:27:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:27:42.455Z] Apr 15, 2020 6:27:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:27:43.425Z] Apr 15, 2020 6:27:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:02.969Z] Apr 15, 2020 6:28:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:02.980Z] Apr 15, 2020 6:28:02 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:28:03.559Z] Apr 15, 2020 6:28:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:04.038Z] Apr 15, 2020 6:28:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:04.119Z] Apr 15, 2020 6:28:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:05.004Z] Apr 15, 2020 6:28:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:39.326Z] Apr 15, 2020 6:28:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:39.357Z] Apr 15, 2020 6:28:39 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:28:43.338Z] Apr 15, 2020 6:28:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:28:43.346Z] Apr 15, 2020 6:28:43 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:28:43.371Z] Apr 15, 2020 6:28:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:29:25.304Z] Apr 15, 2020 6:29:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:29:27.069Z] Apr 15, 2020 6:29:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:29:27.082Z] Apr 15, 2020 6:29:27 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:29:27.250Z] Apr 15, 2020 6:29:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:29:28.375Z] Apr 15, 2020 6:29:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:29:39.067Z] Apr 15, 2020 6:29:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:29:39.077Z] Apr 15, 2020 6:29:39 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:29:39.206Z] Apr 15, 2020 6:29:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:29:40.072Z] Apr 15, 2020 6:29:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:30:40.119Z] Apr 15, 2020 6:30:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:30:40.401Z] Apr 15, 2020 6:30:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:30:40.435Z] Apr 15, 2020 6:30:40 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:30:49.960Z] Apr 15, 2020 6:30:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:30:49.970Z] Apr 15, 2020 6:30:49 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:30:50.005Z] Apr 15, 2020 6:30:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:30:50.963Z] Apr 15, 2020 6:30:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:21.184Z] Apr 15, 2020 6:31:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:23.665Z] Apr 15, 2020 6:31:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:23.686Z] Apr 15, 2020 6:31:23 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:31:23.943Z] Apr 15, 2020 6:31:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:24.048Z] Apr 15, 2020 6:31:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:26.610Z] Apr 15, 2020 6:31:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:26.815Z] Apr 15, 2020 6:31:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:37.864Z] Apr 15, 2020 6:31:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:39.074Z] Apr 15, 2020 6:31:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:39.081Z] Apr 15, 2020 6:31:39 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:31:39.118Z] Apr 15, 2020 6:31:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:39.204Z] Apr 15, 2020 6:31:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:31:39.272Z] Apr 15, 2020 6:31:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:32:48.335Z] Apr 15, 2020 6:32:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:32:50.085Z] Apr 15, 2020 6:32:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:32:50.103Z] Apr 15, 2020 6:32:50 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:32:50.137Z] Apr 15, 2020 6:32:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:32:51.231Z] Apr 15, 2020 6:32:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:07.850Z] Apr 15, 2020 6:33:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:07.853Z] Apr 15, 2020 6:33:07 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:33:07.887Z] Apr 15, 2020 6:33:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:08.899Z] Apr 15, 2020 6:33:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:08.934Z] Apr 15, 2020 6:33:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:19.736Z] Apr 15, 2020 6:33:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:27.288Z] Apr 15, 2020 6:33:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:28.439Z] Apr 15, 2020 6:33:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:28.446Z] Apr 15, 2020 6:33:28 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:33:28.633Z] Apr 15, 2020 6:33:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:28.950Z] Apr 15, 2020 6:33:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:29.025Z] Apr 15, 2020 6:33:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:45.361Z] Apr 15, 2020 6:33:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:45.690Z] Apr 15, 2020 6:33:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Apr 15, 2020 6:33:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:46.712Z] Apr 15, 2020 6:33:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:46.720Z] Apr 15, 2020 6:33:46 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:33:46.779Z] Apr 15, 2020 6:33:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:46.866Z] Apr 15, 2020 6:33:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:33:46.903Z] Apr 15, 2020 6:33:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:34:52.896Z] Apr 15, 2020 6:34:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:34:55.884Z] Apr 15, 2020 6:34:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:34:55.898Z] Apr 15, 2020 6:34:55 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:34:58.313Z] Apr 15, 2020 6:34:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:34:58.323Z] Apr 15, 2020 6:34:58 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:34:58.362Z] Apr 15, 2020 6:34:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:34:59.383Z] Apr 15, 2020 6:34:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:04.378Z] Apr 15, 2020 6:35:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:04.384Z] Apr 15, 2020 6:35:04 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:35:04.439Z] Apr 15, 2020 6:35:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:05.314Z] Apr 15, 2020 6:35:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:09.749Z] Apr 15, 2020 6:35:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:09.757Z] Apr 15, 2020 6:35:09 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:35:14.862Z] Apr 15, 2020 6:35:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:14.871Z] Apr 15, 2020 6:35:14 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:35:14.931Z] Apr 15, 2020 6:35:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:15.024Z] Apr 15, 2020 6:35:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:17.143Z] Apr 15, 2020 6:35:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:45.568Z] Apr 15, 2020 6:35:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:45.941Z] Apr 15, 2020 6:35:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Apr 15, 2020 6:35:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:47.518Z] Apr 15, 2020 6:35:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:47.523Z] Apr 15, 2020 6:35:47 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:35:47.576Z] Apr 15, 2020 6:35:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:48.405Z] Apr 15, 2020 6:35:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:48.413Z] Apr 15, 2020 6:35:48 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:35:56.029Z] Apr 15, 2020 6:35:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:56.035Z] Apr 15, 2020 6:35:56 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:35:56.059Z] Apr 15, 2020 6:35:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:35:56.154Z] Apr 15, 2020 6:35:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:02.851Z] Apr 15, 2020 6:36:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:24.660Z] Apr 15, 2020 6:36:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:41.404Z] Apr 15, 2020 6:36:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:41.413Z] Apr 15, 2020 6:36:41 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:36:41.466Z] Apr 15, 2020 6:36:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:41.688Z] Apr 15, 2020 6:36:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:46.173Z] Apr 15, 2020 6:36:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:46.178Z] Apr 15, 2020 6:36:46 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:36:50.354Z] Apr 15, 2020 6:36:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:50.358Z] Apr 15, 2020 6:36:50 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:36:50.385Z] Apr 15, 2020 6:36:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:50.477Z] Apr 15, 2020 6:36:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:36:51.540Z] Apr 15, 2020 6:36:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:31.615Z] Apr 15, 2020 6:38:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:33.538Z] Apr 15, 2020 6:38:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:33.544Z] Apr 15, 2020 6:38:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:38:33.698Z] Apr 15, 2020 6:38:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:34.487Z] Apr 15, 2020 6:38:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:55.212Z] Apr 15, 2020 6:38:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:55.223Z] Apr 15, 2020 6:38:55 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:38:55.327Z] Apr 15, 2020 6:38:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:56.251Z] Apr 15, 2020 6:38:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:38:58.681Z] Apr 15, 2020 6:38:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:39:00.649Z] Apr 15, 2020 6:39:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:39:00.656Z] Apr 15, 2020 6:39:00 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:39:00.760Z] Apr 15, 2020 6:39:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:39:00.848Z] Apr 15, 2020 6:39:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:39:07.418Z] Apr 15, 2020 6:39:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:39:07.424Z] Apr 15, 2020 6:39:07 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:40:28.574Z] Apr 15, 2020 6:40:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:40:28.579Z] Apr 15, 2020 6:40:28 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:40:28.607Z] Apr 15, 2020 6:40:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:40:28.707Z] Apr 15, 2020 6:40:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:40:30.247Z] Apr 15, 2020 6:40:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:40:32.013Z] Apr 15, 2020 6:40:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:17.224Z] Apr 15, 2020 6:41:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:17.233Z] Apr 15, 2020 6:41:17 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:41:17.298Z] Apr 15, 2020 6:41:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:18.070Z] Apr 15, 2020 6:41:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:18.104Z] Apr 15, 2020 6:41:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:32.166Z] Apr 15, 2020 6:41:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:32.213Z] Apr 15, 2020 6:41:32 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.newClosedChannelException(AbstractChannel.java:957)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:865)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1367)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:717)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:709)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteTask.run(AbstractChannelHandlerContext.java:1102)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:497)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+[debug] [2020-04-15T22:41:32.219Z] Apr 15, 2020 6:41:32 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.newClosedChannelException(AbstractChannel.java:957)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:865)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1367)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:717)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:709)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteTask.run(AbstractChannelHandlerContext.java:1102)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:497)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Apr 15, 2020 6:41:32 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.newClosedChannelException(AbstractChannel.java:957)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:865)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1367)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:717)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:709)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteTask.run(AbstractChannelHandlerContext.java:1102)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:497)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+[debug] [2020-04-15T22:41:32.445Z] Apr 15, 2020 6:41:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:32.446Z] Apr 15, 2020 6:41:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:33.876Z] Apr 15, 2020 6:41:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:33.880Z] Apr 15, 2020 6:41:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:41:33.908Z] Apr 15, 2020 6:41:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:34.011Z] Apr 15, 2020 6:41:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:34.058Z] Apr 15, 2020 6:41:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:35.362Z] Apr 15, 2020 6:41:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:41:51.362Z] Apr 15, 2020 6:41:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:42:50.958Z] Apr 15, 2020 6:42:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:42:52.697Z] Apr 15, 2020 6:42:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:42:52.703Z] Apr 15, 2020 6:42:52 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:42:52.870Z] Apr 15, 2020 6:42:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:42:53.542Z] Apr 15, 2020 6:42:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:42:53.575Z] Apr 15, 2020 6:42:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:43:17.394Z] Apr 15, 2020 6:43:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:43:47.442Z] Apr 15, 2020 6:43:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:44:18.112Z] Apr 15, 2020 6:44:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:44:18.117Z] Apr 15, 2020 6:44:18 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:44:28.430Z] Apr 15, 2020 6:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:44:28.452Z] Apr 15, 2020 6:44:28 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:44:28.510Z] Apr 15, 2020 6:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:44:29.524Z] Apr 15, 2020 6:44:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:44:29.733Z] Apr 15, 2020 6:44:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:44:32.931Z] Apr 15, 2020 6:44:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:45:32.896Z] Apr 15, 2020 6:45:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:45:32.935Z] Apr 15, 2020 6:45:32 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:47:29.276Z] Apr 15, 2020 6:47:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:47:29.284Z] Apr 15, 2020 6:47:29 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:47:29.322Z] Apr 15, 2020 6:47:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:47:30.335Z] Apr 15, 2020 6:47:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:47:59.732Z] Apr 15, 2020 6:47:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:01.782Z] Apr 15, 2020 6:48:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:01.786Z] Apr 15, 2020 6:48:01 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:48:01.834Z] Apr 15, 2020 6:48:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:02.817Z] Apr 15, 2020 6:48:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:02.859Z] Apr 15, 2020 6:48:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:42.242Z] Apr 15, 2020 6:48:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:42.249Z] Apr 15, 2020 6:48:42 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:48:42.280Z] Apr 15, 2020 6:48:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:43.299Z] Apr 15, 2020 6:48:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:43.336Z] Apr 15, 2020 6:48:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:48.554Z] Apr 15, 2020 6:48:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:48.559Z] Apr 15, 2020 6:48:48 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:48:48.593Z] Apr 15, 2020 6:48:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:48.917Z] Apr 15, 2020 6:48:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:48:49.012Z] Apr 15, 2020 6:48:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:29.063Z] Apr 15, 2020 6:49:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:29.116Z] Apr 15, 2020 6:49:29 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:49:29.302Z] Apr 15, 2020 6:49:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:29.804Z] Apr 15, 2020 6:49:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:29.876Z] Apr 15, 2020 6:49:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:58.895Z] Apr 15, 2020 6:49:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:58.900Z] Apr 15, 2020 6:49:58 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:49:58.961Z] Apr 15, 2020 6:49:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:59.946Z] Apr 15, 2020 6:49:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:49:59.970Z] Apr 15, 2020 6:49:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:23.681Z] Apr 15, 2020 6:50:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:23.685Z] Apr 15, 2020 6:50:23 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:50:23.740Z] Apr 15, 2020 6:50:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:24.768Z] Apr 15, 2020 6:50:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:24.796Z] Apr 15, 2020 6:50:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:45.141Z] Apr 15, 2020 6:50:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:45.148Z] Apr 15, 2020 6:50:45 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:50:45.186Z] Apr 15, 2020 6:50:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:45.200Z] Apr 15, 2020 6:50:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:45.713Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-04-15T22:50:45.713Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-04-15T22:50:45.715Z] Accepted request POST /functions/projects/dispatch-7fe76/triggers/createUser --> createUser 
+[debug] [2020-04-15T22:50:45.727Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T22:50:45.740Z] [worker-pool] addWorker(createUser) 
+[debug] [2020-04-15T22:50:45.740Z] [worker-pool] Adding worker with key createUser, total=1 
+[debug] [2020-04-15T22:50:45.740Z] [worker-pool] submitWork(triggerId=createUser) 
+[debug] [2020-04-15T22:50:45.742Z] [worker-createUser-5194136c-5fa5-4379-9310-bcd609a78134]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_7881.sock 
+[debug] [2020-04-15T22:50:45.742Z] [worker-createUser-5194136c-5fa5-4379-9310-bcd609a78134]: BUSY 
+[debug] [2020-04-15T22:50:46.732Z] [runtime-status] [7881] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T22:50:46.735Z] [runtime-status] [7881] Disabled runtime features: undefined 
+[debug] [2020-04-15T22:50:46.740Z] [runtime-status] [7881] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:50:46.743Z] [runtime-status] [7881] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T22:50:46.746Z] [runtime-status] [7881] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T22:50:46.855Z] [runtime-status] [7881] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T22:50:46.857Z] [runtime-status] [7881] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:50:46.858Z] [runtime-status] [7881] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T22:50:46.858Z] [runtime-status] [7881] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T22:50:46.859Z] [runtime-status] [7881] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T22:50:47.275Z] [runtime-status] [7881] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T22:50:48.159Z] [runtime-status] [7881] Trigger "createUser" has been found, beginning invocation! 
+[info] i  functions: Beginning execution of "createUser"
+[debug] [2020-04-15T22:50:48.159Z] [runtime-status] [7881] triggerDefinition {"eventTrigger":{"resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"},"name":"createUser","entryPoint":"createUser"} 
+[debug] [2020-04-15T22:50:48.159Z] [runtime-status] [7881] Running createUser in mode BACKGROUND 
+[debug] [2020-04-15T22:50:48.160Z] [runtime-status] [7881] ProcessBackground {"data":{"value":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","fields":{"lastName":{"stringValue":"Santos"},"role":{"stringValue":"admin"},"firstName":{"stringValue":"Alexander"},"masterId":{"stringValue":"rQy2rRBgW9qAO6PCsT5c"},"password":{"stringValue":"alex1234"},"email":{"stringValue":"alexsantosantana123@live.com"}},"createTime":"2020-04-15T22:50:45.266952Z","updateTime":"2020-04-15T22:50:45.266952Z"},"updateMask":{}},"context":{"eventId":"a7e24529-e83c-4715-87be-691a1984a962","timestamp":"2020-04-15T22:50:45.266Z","eventType":"providers/cloud.firestore/eventTypes/document.create","resource":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","service":"firestore.googleapis.com"}}} 
+[debug] [2020-04-15T22:50:48.160Z] [runtime-status] [7881] ProcessBackground: lifting resource.name from resource {"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","service":"firestore.googleapis.com"} 
+[debug] [2020-04-15T22:50:48.160Z] [runtime-status] [7881] RunBackground {"data":{"value":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","fields":{"lastName":{"stringValue":"Santos"},"role":{"stringValue":"admin"},"firstName":{"stringValue":"Alexander"},"masterId":{"stringValue":"rQy2rRBgW9qAO6PCsT5c"},"password":{"stringValue":"alex1234"},"email":{"stringValue":"alexsantosantana123@live.com"}},"createTime":"2020-04-15T22:50:45.266952Z","updateTime":"2020-04-15T22:50:45.266952Z"},"updateMask":{}},"context":{"eventId":"a7e24529-e83c-4715-87be-691a1984a962","timestamp":"2020-04-15T22:50:45.266Z","eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG"}} 
+[debug] [2020-04-15T22:50:49.995Z] Apr 15, 2020 6:50:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+
+[debug] [2020-04-15T22:50:50.304Z] [runtime-status] [7881] Ephemeral server survived. 
+[info] i  functions: Finished "createUser" in ~2s
+[debug] [2020-04-15T22:50:50.305Z] [worker-createUser-5194136c-5fa5-4379-9310-bcd609a78134]: IDLE 
+[debug] [2020-04-15T22:50:50.312Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-04-15T22:51:15.224Z] Apr 15, 2020 6:51:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:51:15.225Z] Apr 15, 2020 6:51:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:51:15.283Z] Apr 15, 2020 6:51:15 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.newClosedChannelException(AbstractChannel.java:957)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:865)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1367)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:717)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:709)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteTask.run(AbstractChannelHandlerContext.java:1102)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+[debug] [2020-04-15T22:51:16.263Z] Apr 15, 2020 6:51:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:51:16.279Z] Apr 15, 2020 6:51:16 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:51:16.330Z] Apr 15, 2020 6:51:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:51:16.656Z] Apr 15, 2020 6:51:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:51:21.554Z] Apr 15, 2020 6:51:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:51:34.123Z] Apr 15, 2020 6:51:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Apr 15, 2020 6:51:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:51:34.128Z] Apr 15, 2020 6:51:34 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:51:34.158Z] Apr 15, 2020 6:51:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:33.370Z] Apr 15, 2020 6:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:33.382Z] Apr 15, 2020 6:52:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:52:33.414Z] Apr 15, 2020 6:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:33.476Z] Apr 15, 2020 6:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:44.411Z] Apr 15, 2020 6:52:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:44.419Z] Apr 15, 2020 6:52:44 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T22:52:53.751Z] Apr 15, 2020 6:52:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:53.755Z] Apr 15, 2020 6:52:53 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:52:53.782Z] Apr 15, 2020 6:52:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:53.854Z] Apr 15, 2020 6:52:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:52:55.901Z] Apr 15, 2020 6:52:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:53:07.087Z] Apr 15, 2020 6:53:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:53:08.085Z] Apr 15, 2020 6:53:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:54:08.124Z] Apr 15, 2020 6:54:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:55:08.198Z] Apr 15, 2020 6:55:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:55:26.853Z] Apr 15, 2020 6:55:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:55:28.349Z] Apr 15, 2020 6:55:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:55:28.354Z] Apr 15, 2020 6:55:28 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:55:28.381Z] Apr 15, 2020 6:55:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:55:28.582Z] Apr 15, 2020 6:55:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:55:28.822Z] Apr 15, 2020 6:55:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:09.774Z] Apr 15, 2020 6:56:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:09.779Z] Apr 15, 2020 6:56:09 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:56:09.806Z] Apr 15, 2020 6:56:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:09.895Z] Apr 15, 2020 6:56:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:09.946Z] Apr 15, 2020 6:56:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:41.996Z] Apr 15, 2020 6:56:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:42.002Z] Apr 15, 2020 6:56:42 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:56:42.112Z] Apr 15, 2020 6:56:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:42.381Z] Apr 15, 2020 6:56:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:56:42.414Z] Apr 15, 2020 6:56:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:57:42.253Z] Apr 15, 2020 6:57:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:57:42.267Z] Apr 15, 2020 6:57:42 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:57:42.333Z] Apr 15, 2020 6:57:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:57:42.421Z] Apr 15, 2020 6:57:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:57:42.465Z] Apr 15, 2020 6:57:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:58:42.495Z] Apr 15, 2020 6:58:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:36.728Z] Apr 15, 2020 6:59:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:38.185Z] Apr 15, 2020 6:59:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:38.191Z] Apr 15, 2020 6:59:38 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:59:38.273Z] Apr 15, 2020 6:59:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:38.345Z] Apr 15, 2020 6:59:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:38.524Z] Apr 15, 2020 6:59:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:43.926Z] Apr 15, 2020 6:59:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:45.167Z] Apr 15, 2020 6:59:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:45.170Z] Apr 15, 2020 6:59:45 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:59:45.286Z] Apr 15, 2020 6:59:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:45.452Z] Apr 15, 2020 6:59:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:45.573Z] Apr 15, 2020 6:59:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:56.737Z] Apr 15, 2020 6:59:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:58.557Z] Apr 15, 2020 6:59:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:58.582Z] Apr 15, 2020 6:59:58 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T22:59:58.761Z] Apr 15, 2020 6:59:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:58.847Z] Apr 15, 2020 6:59:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T22:59:58.917Z] Apr 15, 2020 6:59:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:08.537Z] Apr 15, 2020 7:00:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:10.610Z] Apr 15, 2020 7:00:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:10.613Z] Apr 15, 2020 7:00:10 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:00:10.773Z] Apr 15, 2020 7:00:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:10.872Z] Apr 15, 2020 7:00:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:10.910Z] Apr 15, 2020 7:00:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:27.278Z] Apr 15, 2020 7:00:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:28.496Z] Apr 15, 2020 7:00:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:28.499Z] Apr 15, 2020 7:00:28 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:00:28.598Z] Apr 15, 2020 7:00:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:28.688Z] Apr 15, 2020 7:00:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:28.720Z] Apr 15, 2020 7:00:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:58.891Z] Apr 15, 2020 7:00:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:58.908Z] Apr 15, 2020 7:00:58 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:00:59.366Z] Apr 15, 2020 7:00:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:59.814Z] Apr 15, 2020 7:00:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:00:59.871Z] Apr 15, 2020 7:00:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:01:27.468Z] Apr 15, 2020 7:01:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:01:27.499Z] Apr 15, 2020 7:01:27 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:01:27.603Z] Apr 15, 2020 7:01:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:01:27.751Z] Apr 15, 2020 7:01:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:01:27.801Z] Apr 15, 2020 7:01:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:02:27.836Z] Apr 15, 2020 7:02:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:02:43.018Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:02:44.025Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:02:44.026Z] [worker-~diagnostic~-073c8caa-859d-4397-8526-c3bbac07dbf2]: FINISHING 
+[debug] [2020-04-15T23:02:44.027Z] [worker-pool] Shutting down IDLE worker (createUser) 
+[debug] [2020-04-15T23:02:44.027Z] [worker-createUser-5194136c-5fa5-4379-9310-bcd609a78134]: FINISHING 
+[debug] [2020-04-15T23:02:44.047Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:02:44.048Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:02:44.048Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:02:44.051Z] [worker-~diagnostic~-b4eaab62-33bc-4443-86b7-d0f427daf04d]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8242.sock 
+[debug] [2020-04-15T23:02:44.052Z] [worker-~diagnostic~-b4eaab62-33bc-4443-86b7-d0f427daf04d]: BUSY 
+[debug] [2020-04-15T23:02:44.054Z] [worker-~diagnostic~-073c8caa-859d-4397-8526-c3bbac07dbf2]: exited 
+[debug] [2020-04-15T23:02:44.054Z] [worker-~diagnostic~-073c8caa-859d-4397-8526-c3bbac07dbf2]: FINISHED 
+[debug] [2020-04-15T23:02:44.054Z] [worker-createUser-5194136c-5fa5-4379-9310-bcd609a78134]: exited 
+[debug] [2020-04-15T23:02:44.054Z] [worker-createUser-5194136c-5fa5-4379-9310-bcd609a78134]: FINISHED 
+[debug] [2020-04-15T23:02:44.982Z] [runtime-status] [8242] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:02:44.992Z] [runtime-status] [8242] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:02:44.992Z] [runtime-status] [8242] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:02:44.993Z] [runtime-status] [8242] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:02:44.995Z] [runtime-status] [8242] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:02:45.080Z] [runtime-status] [8242] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:02:45.083Z] [runtime-status] [8242] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:02:45.083Z] [runtime-status] [8242] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:02:45.083Z] [runtime-status] [8242] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:02:45.083Z] [runtime-status] [8242] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:02:45.442Z] [runtime-status] [8242] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:02:46.188Z] [worker-~diagnostic~-b4eaab62-33bc-4443-86b7-d0f427daf04d]: IDLE 
+[debug] [2020-04-15T23:03:27.866Z] Apr 15, 2020 7:03:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:04:27.889Z] Apr 15, 2020 7:04:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:05:27.932Z] Apr 15, 2020 7:05:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:00.473Z] Apr 15, 2020 7:06:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:00.483Z] Apr 15, 2020 7:06:00 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:06:00.564Z] Apr 15, 2020 7:06:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:01.388Z] Apr 15, 2020 7:06:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:01.411Z] Apr 15, 2020 7:06:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:14.583Z] Apr 15, 2020 7:06:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:14.588Z] Apr 15, 2020 7:06:14 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:06:14.636Z] Apr 15, 2020 7:06:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:14.975Z] Apr 15, 2020 7:06:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:15.175Z] Apr 15, 2020 7:06:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:33.455Z] Apr 15, 2020 7:06:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:33.465Z] Apr 15, 2020 7:06:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:06:33.741Z] Apr 15, 2020 7:06:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:34.072Z] Apr 15, 2020 7:06:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:06:34.168Z] Apr 15, 2020 7:06:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:07:34.248Z] Apr 15, 2020 7:07:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:08:34.288Z] Apr 15, 2020 7:08:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:09:34.369Z] Apr 15, 2020 7:09:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:10:34.419Z] Apr 15, 2020 7:10:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:11:34.517Z] Apr 15, 2020 7:11:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:12:34.627Z] Apr 15, 2020 7:12:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:13:34.704Z] Apr 15, 2020 7:13:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:14:34.746Z] Apr 15, 2020 7:14:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:15:34.803Z] Apr 15, 2020 7:15:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:16:34.840Z] Apr 15, 2020 7:16:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:17:34.891Z] Apr 15, 2020 7:17:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:18:34.939Z] Apr 15, 2020 7:18:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:19:21.154Z] Apr 15, 2020 7:19:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:20:21.182Z] Apr 15, 2020 7:20:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:21:21.223Z] Apr 15, 2020 7:21:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:22:21.254Z] Apr 15, 2020 7:22:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:23:21.277Z] Apr 15, 2020 7:23:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:23:23.280Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:23:24.287Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:23:24.287Z] [worker-~diagnostic~-b4eaab62-33bc-4443-86b7-d0f427daf04d]: FINISHING 
+[debug] [2020-04-15T23:23:24.297Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:23:24.297Z] [worker-pool] Cleaned up workers for createUser: 1 --> 0 
+[debug] [2020-04-15T23:23:24.310Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:23:24.310Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:23:24.310Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:23:24.312Z] [worker-~diagnostic~-0c696b57-4a74-4afc-b766-71efe3b79a8f]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8730.sock 
+[debug] [2020-04-15T23:23:24.312Z] [worker-~diagnostic~-0c696b57-4a74-4afc-b766-71efe3b79a8f]: BUSY 
+[debug] [2020-04-15T23:23:24.315Z] [worker-~diagnostic~-b4eaab62-33bc-4443-86b7-d0f427daf04d]: exited 
+[debug] [2020-04-15T23:23:24.315Z] [worker-~diagnostic~-b4eaab62-33bc-4443-86b7-d0f427daf04d]: FINISHED 
+[debug] [2020-04-15T23:23:25.361Z] [runtime-status] [8730] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:23:25.366Z] [runtime-status] [8730] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:23:25.369Z] [runtime-status] [8730] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:23:25.374Z] [runtime-status] [8730] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:23:25.376Z] [runtime-status] [8730] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:23:25.494Z] [runtime-status] [8730] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:23:25.494Z] [runtime-status] [8730] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:23:25.498Z] [runtime-status] [8730] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:23:25.498Z] [runtime-status] [8730] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:23:25.498Z] [runtime-status] [8730] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:23:25.938Z] [runtime-status] [8730] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:23:26.792Z] addFirestoreTrigger "{\"eventTrigger\":{\"resource\":\"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}\",\"eventType\":\"providers/cloud.firestore/eventTypes/document.delete\",\"service\":\"firestore.googleapis.com\"}}"
+[debug] [2020-04-15T23:23:26.809Z] >>> HTTP REQUEST PUT http://localhost:8080/emulator/v1/projects/dispatch-7fe76/triggers/deleteUser  
+ {"eventTrigger":{"resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}","eventType":"providers/cloud.firestore/eventTypes/document.delete","service":"firestore.googleapis.com"}}
+[debug] [2020-04-15T23:23:26.817Z] [worker-~diagnostic~-0c696b57-4a74-4afc-b766-71efe3b79a8f]: IDLE 
+[debug] [2020-04-15T23:23:26.820Z] Apr 15, 2020 7:23:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:23:26.847Z] Apr 15, 2020 7:23:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+
+[debug] [2020-04-15T23:23:26.867Z] <<< HTTP RESPONSE 200 {"content-type":"application/json","content-length":"4"}
+[info] ✔  functions[deleteUser]: firestore function initialized.
+[debug] [2020-04-15T23:23:29.982Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:23:30.986Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:23:30.986Z] [worker-~diagnostic~-0c696b57-4a74-4afc-b766-71efe3b79a8f]: FINISHING 
+[debug] [2020-04-15T23:23:30.990Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:23:31.010Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:23:31.010Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:23:31.010Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:23:31.010Z] [worker-~diagnostic~-c83c24d1-bae8-4386-872c-1378e15700fc]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8739.sock 
+[debug] [2020-04-15T23:23:31.010Z] [worker-~diagnostic~-c83c24d1-bae8-4386-872c-1378e15700fc]: BUSY 
+[debug] [2020-04-15T23:23:31.012Z] [worker-~diagnostic~-0c696b57-4a74-4afc-b766-71efe3b79a8f]: exited 
+[debug] [2020-04-15T23:23:31.012Z] [worker-~diagnostic~-0c696b57-4a74-4afc-b766-71efe3b79a8f]: FINISHED 
+[debug] [2020-04-15T23:23:31.602Z] [runtime-status] [8739] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:23:31.610Z] [runtime-status] [8739] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:23:31.612Z] [runtime-status] [8739] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:23:31.618Z] [runtime-status] [8739] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:23:31.620Z] [runtime-status] [8739] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:23:31.672Z] [runtime-status] [8739] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:23:31.677Z] [runtime-status] [8739] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:23:31.684Z] [runtime-status] [8739] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:23:31.685Z] [runtime-status] [8739] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:23:31.685Z] [runtime-status] [8739] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:23:31.864Z] [runtime-status] [8739] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:23:32.462Z] [worker-~diagnostic~-c83c24d1-bae8-4386-872c-1378e15700fc]: IDLE 
+[debug] [2020-04-15T23:24:21.301Z] Apr 15, 2020 7:24:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:24:39.459Z] File /Users/alexandersantos/Projects/dispatcher/functions/utils/FirebaseAdmin.js changed, reloading triggers 
+[debug] [2020-04-15T23:24:40.462Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:24:40.462Z] [worker-~diagnostic~-c83c24d1-bae8-4386-872c-1378e15700fc]: FINISHING 
+[debug] [2020-04-15T23:24:40.463Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:24:40.469Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:24:40.470Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:24:40.470Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:24:40.470Z] [worker-~diagnostic~-473a8895-b110-4833-9630-f6b036480157]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8753.sock 
+[debug] [2020-04-15T23:24:40.470Z] [worker-~diagnostic~-473a8895-b110-4833-9630-f6b036480157]: BUSY 
+[debug] [2020-04-15T23:24:40.471Z] [worker-~diagnostic~-c83c24d1-bae8-4386-872c-1378e15700fc]: exited 
+[debug] [2020-04-15T23:24:40.471Z] [worker-~diagnostic~-c83c24d1-bae8-4386-872c-1378e15700fc]: FINISHED 
+[debug] [2020-04-15T23:24:41.498Z] [runtime-status] [8753] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:24:41.514Z] [runtime-status] [8753] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:24:41.535Z] [runtime-status] [8753] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:24:41.548Z] [runtime-status] [8753] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:24:41.552Z] [runtime-status] [8753] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:24:41.690Z] [runtime-status] [8753] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:24:41.692Z] [runtime-status] [8753] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:24:41.694Z] [runtime-status] [8753] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:24:41.695Z] [runtime-status] [8753] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:24:41.695Z] [runtime-status] [8753] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:24:42.079Z] [runtime-status] [8753] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:24:42.840Z] [worker-~diagnostic~-473a8895-b110-4833-9630-f6b036480157]: IDLE 
+[debug] [2020-04-15T23:25:12.151Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:25:13.157Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:25:13.157Z] [worker-~diagnostic~-473a8895-b110-4833-9630-f6b036480157]: FINISHING 
+[debug] [2020-04-15T23:25:13.157Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:25:13.172Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:25:13.172Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:25:13.172Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:25:13.173Z] [worker-~diagnostic~-6546b9a9-7e7c-4da6-ab2c-fb5febb4dff7]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8789.sock 
+[debug] [2020-04-15T23:25:13.173Z] [worker-~diagnostic~-6546b9a9-7e7c-4da6-ab2c-fb5febb4dff7]: BUSY 
+[debug] [2020-04-15T23:25:13.174Z] [worker-~diagnostic~-473a8895-b110-4833-9630-f6b036480157]: exited 
+[debug] [2020-04-15T23:25:13.174Z] [worker-~diagnostic~-473a8895-b110-4833-9630-f6b036480157]: FINISHED 
+[debug] [2020-04-15T23:25:13.939Z] [runtime-status] [8789] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:25:13.947Z] [runtime-status] [8789] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:25:13.956Z] [runtime-status] [8789] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:25:13.957Z] [runtime-status] [8789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:25:13.961Z] [runtime-status] [8789] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:25:14.059Z] [runtime-status] [8789] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:25:14.061Z] [runtime-status] [8789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:25:14.063Z] [runtime-status] [8789] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:25:14.065Z] [runtime-status] [8789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:25:14.066Z] [runtime-status] [8789] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:25:14.292Z] [runtime-status] [8789] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:25:14.635Z] [worker-~diagnostic~-6546b9a9-7e7c-4da6-ab2c-fb5febb4dff7]: IDLE 
+[debug] [2020-04-15T23:25:21.332Z] Apr 15, 2020 7:25:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:25:55.097Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:25:56.099Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:25:56.099Z] [worker-~diagnostic~-6546b9a9-7e7c-4da6-ab2c-fb5febb4dff7]: FINISHING 
+[debug] [2020-04-15T23:25:56.099Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:25:56.109Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:25:56.109Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:25:56.109Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:25:56.110Z] [worker-~diagnostic~-9379894d-ebd3-47e2-b19e-760ad0437b94]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8802.sock 
+[debug] [2020-04-15T23:25:56.110Z] [worker-~diagnostic~-9379894d-ebd3-47e2-b19e-760ad0437b94]: BUSY 
+[debug] [2020-04-15T23:25:56.111Z] [worker-~diagnostic~-6546b9a9-7e7c-4da6-ab2c-fb5febb4dff7]: exited 
+[debug] [2020-04-15T23:25:56.112Z] [worker-~diagnostic~-6546b9a9-7e7c-4da6-ab2c-fb5febb4dff7]: FINISHED 
+[debug] [2020-04-15T23:25:57.234Z] [runtime-status] [8802] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:25:57.301Z] [runtime-status] [8802] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:25:57.316Z] [runtime-status] [8802] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:25:57.317Z] [runtime-status] [8802] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:25:57.327Z] [runtime-status] [8802] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:25:57.402Z] [runtime-status] [8802] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:25:57.403Z] [runtime-status] [8802] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:25:57.404Z] [runtime-status] [8802] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:25:57.405Z] [runtime-status] [8802] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:25:57.405Z] [runtime-status] [8802] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:25:57.792Z] [runtime-status] [8802] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:25:58.027Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:25:58.676Z] [worker-~diagnostic~-9379894d-ebd3-47e2-b19e-760ad0437b94]: IDLE 
+[debug] [2020-04-15T23:25:59.028Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:25:59.028Z] [worker-~diagnostic~-9379894d-ebd3-47e2-b19e-760ad0437b94]: FINISHING 
+[debug] [2020-04-15T23:25:59.028Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:25:59.035Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:25:59.036Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:25:59.036Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:25:59.036Z] [worker-~diagnostic~-3fc95992-92c5-413c-bb0a-a3a8fd97f9a1]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8811.sock 
+[debug] [2020-04-15T23:25:59.036Z] [worker-~diagnostic~-3fc95992-92c5-413c-bb0a-a3a8fd97f9a1]: BUSY 
+[debug] [2020-04-15T23:25:59.038Z] [worker-~diagnostic~-9379894d-ebd3-47e2-b19e-760ad0437b94]: exited 
+[debug] [2020-04-15T23:25:59.038Z] [worker-~diagnostic~-9379894d-ebd3-47e2-b19e-760ad0437b94]: FINISHED 
+[debug] [2020-04-15T23:25:59.342Z] [runtime-status] [8811] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:25:59.348Z] [runtime-status] [8811] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:25:59.349Z] [runtime-status] [8811] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:25:59.349Z] [runtime-status] [8811] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:25:59.352Z] [runtime-status] [8811] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:25:59.394Z] [runtime-status] [8811] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:25:59.403Z] [runtime-status] [8811] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:25:59.403Z] [runtime-status] [8811] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:25:59.403Z] [runtime-status] [8811] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:25:59.403Z] [runtime-status] [8811] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:25:59.506Z] [runtime-status] [8811] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:25:59.718Z] [worker-~diagnostic~-3fc95992-92c5-413c-bb0a-a3a8fd97f9a1]: IDLE 
+[debug] [2020-04-15T23:26:21.366Z] Apr 15, 2020 7:26:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:26:44.990Z] Apr 15, 2020 7:26:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:26:45.019Z] Apr 15, 2020 7:26:45 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:26:45.125Z] Apr 15, 2020 7:26:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:26:46.089Z] Apr 15, 2020 7:26:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:26:46.381Z] Apr 15, 2020 7:26:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:27:23.852Z] Apr 15, 2020 7:27:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:27:23.862Z] Apr 15, 2020 7:27:23 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:27:24.087Z] Apr 15, 2020 7:27:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:27:24.826Z] Apr 15, 2020 7:27:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:27:24.847Z] Apr 15, 2020 7:27:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:27:37.507Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:27:38.512Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:27:38.512Z] [worker-~diagnostic~-3fc95992-92c5-413c-bb0a-a3a8fd97f9a1]: FINISHING 
+[debug] [2020-04-15T23:27:38.513Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:27:38.522Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:27:38.522Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:27:38.523Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:27:38.523Z] [worker-~diagnostic~-fa91c8ed-42c6-4bb6-b8ae-2904cb6e39d3]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8868.sock 
+[debug] [2020-04-15T23:27:38.523Z] [worker-~diagnostic~-fa91c8ed-42c6-4bb6-b8ae-2904cb6e39d3]: BUSY 
+[debug] [2020-04-15T23:27:38.524Z] [worker-~diagnostic~-3fc95992-92c5-413c-bb0a-a3a8fd97f9a1]: exited 
+[debug] [2020-04-15T23:27:38.525Z] [worker-~diagnostic~-3fc95992-92c5-413c-bb0a-a3a8fd97f9a1]: FINISHED 
+[debug] [2020-04-15T23:27:39.389Z] [runtime-status] [8868] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:27:39.393Z] [runtime-status] [8868] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:27:39.397Z] [runtime-status] [8868] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:27:39.401Z] [runtime-status] [8868] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:27:39.403Z] [runtime-status] [8868] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:27:39.495Z] [runtime-status] [8868] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:27:39.496Z] [runtime-status] [8868] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:27:39.497Z] [runtime-status] [8868] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:27:39.497Z] [runtime-status] [8868] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:27:39.498Z] [runtime-status] [8868] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:27:39.875Z] [runtime-status] [8868] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:27:40.718Z] [worker-~diagnostic~-fa91c8ed-42c6-4bb6-b8ae-2904cb6e39d3]: IDLE 
+[debug] [2020-04-15T23:27:52.209Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:27:53.215Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:27:53.215Z] [worker-~diagnostic~-fa91c8ed-42c6-4bb6-b8ae-2904cb6e39d3]: FINISHING 
+[debug] [2020-04-15T23:27:53.225Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:27:53.230Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:27:53.230Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:27:53.230Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:27:53.231Z] [worker-~diagnostic~-2f2af5ce-f132-45db-899b-d72640997603]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8904.sock 
+[debug] [2020-04-15T23:27:53.231Z] [worker-~diagnostic~-2f2af5ce-f132-45db-899b-d72640997603]: BUSY 
+[debug] [2020-04-15T23:27:53.232Z] [worker-~diagnostic~-fa91c8ed-42c6-4bb6-b8ae-2904cb6e39d3]: exited 
+[debug] [2020-04-15T23:27:53.232Z] [worker-~diagnostic~-fa91c8ed-42c6-4bb6-b8ae-2904cb6e39d3]: FINISHED 
+[debug] [2020-04-15T23:27:54.112Z] [runtime-status] [8904] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:27:54.135Z] [runtime-status] [8904] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:27:54.162Z] [runtime-status] [8904] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:27:54.166Z] [runtime-status] [8904] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:27:54.231Z] [runtime-status] [8904] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:27:54.320Z] [runtime-status] [8904] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:27:54.322Z] [runtime-status] [8904] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:27:54.324Z] [runtime-status] [8904] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:27:54.327Z] [runtime-status] [8904] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:27:54.327Z] [runtime-status] [8904] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:27:54.580Z] [runtime-status] [8904] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:27:55.252Z] [worker-~diagnostic~-2f2af5ce-f132-45db-899b-d72640997603]: IDLE 
+[debug] [2020-04-15T23:28:24.882Z] Apr 15, 2020 7:28:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:29:24.921Z] Apr 15, 2020 7:29:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:30:24.968Z] Apr 15, 2020 7:30:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:30:53.090Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:30:54.093Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:30:54.093Z] [worker-~diagnostic~-2f2af5ce-f132-45db-899b-d72640997603]: FINISHING 
+[debug] [2020-04-15T23:30:54.093Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:30:54.101Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:30:54.102Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:30:54.102Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:30:54.104Z] [worker-~diagnostic~-24b2f12e-1cbe-46fd-80b5-eb6b2e0afa28]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8963.sock 
+[debug] [2020-04-15T23:30:54.104Z] [worker-~diagnostic~-24b2f12e-1cbe-46fd-80b5-eb6b2e0afa28]: BUSY 
+[debug] [2020-04-15T23:30:54.106Z] [worker-~diagnostic~-2f2af5ce-f132-45db-899b-d72640997603]: exited 
+[debug] [2020-04-15T23:30:54.106Z] [worker-~diagnostic~-2f2af5ce-f132-45db-899b-d72640997603]: FINISHED 
+[debug] [2020-04-15T23:30:56.187Z] [runtime-status] [8963] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:30:56.195Z] [runtime-status] [8963] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:30:56.207Z] [runtime-status] [8963] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:30:56.210Z] [runtime-status] [8963] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:30:56.214Z] [runtime-status] [8963] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:30:56.317Z] [runtime-status] [8963] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:30:56.319Z] [runtime-status] [8963] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:30:56.320Z] [runtime-status] [8963] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:30:56.321Z] [runtime-status] [8963] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:30:56.322Z] [runtime-status] [8963] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:30:56.690Z] [runtime-status] [8963] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:30:57.488Z] [worker-~diagnostic~-24b2f12e-1cbe-46fd-80b5-eb6b2e0afa28]: IDLE 
+[debug] [2020-04-15T23:31:25.005Z] Apr 15, 2020 7:31:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:31:32.621Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:31:33.626Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:31:33.626Z] [worker-~diagnostic~-24b2f12e-1cbe-46fd-80b5-eb6b2e0afa28]: FINISHING 
+[debug] [2020-04-15T23:31:33.627Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:31:33.633Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:31:33.634Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:31:33.634Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:31:33.634Z] [worker-~diagnostic~-ded07003-033d-47b9-8e92-195577534fb0]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8975.sock 
+[debug] [2020-04-15T23:31:33.634Z] [worker-~diagnostic~-ded07003-033d-47b9-8e92-195577534fb0]: BUSY 
+[debug] [2020-04-15T23:31:33.636Z] [worker-~diagnostic~-24b2f12e-1cbe-46fd-80b5-eb6b2e0afa28]: exited 
+[debug] [2020-04-15T23:31:33.637Z] [worker-~diagnostic~-24b2f12e-1cbe-46fd-80b5-eb6b2e0afa28]: FINISHED 
+[debug] [2020-04-15T23:31:34.652Z] [runtime-status] [8975] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:31:34.663Z] [runtime-status] [8975] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:31:34.773Z] [runtime-status] [8975] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:31:34.776Z] [runtime-status] [8975] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:31:34.782Z] [runtime-status] [8975] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:31:34.964Z] [runtime-status] [8975] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:31:34.965Z] [runtime-status] [8975] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:31:34.972Z] [runtime-status] [8975] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:31:34.973Z] [runtime-status] [8975] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:31:34.974Z] [runtime-status] [8975] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:31:35.807Z] [runtime-status] [8975] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:31:36.816Z] [worker-~diagnostic~-ded07003-033d-47b9-8e92-195577534fb0]: IDLE 
+[debug] [2020-04-15T23:31:43.141Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:31:44.146Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:31:44.147Z] [worker-~diagnostic~-ded07003-033d-47b9-8e92-195577534fb0]: FINISHING 
+[debug] [2020-04-15T23:31:44.148Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:31:44.156Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:31:44.157Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:31:44.157Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:31:44.157Z] [worker-~diagnostic~-31d27137-6987-4585-ab3a-d392277a3382]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8984.sock 
+[debug] [2020-04-15T23:31:44.157Z] [worker-~diagnostic~-31d27137-6987-4585-ab3a-d392277a3382]: BUSY 
+[debug] [2020-04-15T23:31:44.159Z] [worker-~diagnostic~-ded07003-033d-47b9-8e92-195577534fb0]: exited 
+[debug] [2020-04-15T23:31:44.159Z] [worker-~diagnostic~-ded07003-033d-47b9-8e92-195577534fb0]: FINISHED 
+[debug] [2020-04-15T23:31:44.985Z] [runtime-status] [8984] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:31:44.998Z] [runtime-status] [8984] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:31:45.024Z] [runtime-status] [8984] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:31:45.030Z] [runtime-status] [8984] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:31:45.046Z] [runtime-status] [8984] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:31:45.161Z] [runtime-status] [8984] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:31:45.162Z] [runtime-status] [8984] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:31:45.163Z] [runtime-status] [8984] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:31:45.163Z] [runtime-status] [8984] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:31:45.163Z] [runtime-status] [8984] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:31:45.318Z] [runtime-status] [8984] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:31:45.614Z] [worker-~diagnostic~-31d27137-6987-4585-ab3a-d392277a3382]: IDLE 
+[debug] [2020-04-15T23:31:46.077Z] File /Users/alexandersantos/Projects/dispatcher/functions/index.js changed, reloading triggers 
+[debug] [2020-04-15T23:31:47.083Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-15T23:31:47.083Z] [worker-~diagnostic~-31d27137-6987-4585-ab3a-d392277a3382]: FINISHING 
+[debug] [2020-04-15T23:31:47.083Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:31:47.099Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-15T23:31:47.099Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-15T23:31:47.099Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-15T23:31:47.099Z] [worker-~diagnostic~-e39f509a-9fad-4cc1-b076-0bf06353216b]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_8994.sock 
+[debug] [2020-04-15T23:31:47.100Z] [worker-~diagnostic~-e39f509a-9fad-4cc1-b076-0bf06353216b]: BUSY 
+[debug] [2020-04-15T23:31:47.101Z] [worker-~diagnostic~-31d27137-6987-4585-ab3a-d392277a3382]: exited 
+[debug] [2020-04-15T23:31:47.101Z] [worker-~diagnostic~-31d27137-6987-4585-ab3a-d392277a3382]: FINISHED 
+[debug] [2020-04-15T23:31:47.412Z] [runtime-status] [8994] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:31:47.419Z] [runtime-status] [8994] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:31:47.419Z] [runtime-status] [8994] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:31:47.419Z] [runtime-status] [8994] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:31:47.421Z] [runtime-status] [8994] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:31:47.466Z] [runtime-status] [8994] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:31:47.468Z] [runtime-status] [8994] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:31:47.473Z] [runtime-status] [8994] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:31:47.473Z] [runtime-status] [8994] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:31:47.473Z] [runtime-status] [8994] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:31:47.602Z] [runtime-status] [8994] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:31:47.823Z] [worker-~diagnostic~-e39f509a-9fad-4cc1-b076-0bf06353216b]: IDLE 
+[debug] [2020-04-15T23:32:11.552Z] Apr 15, 2020 7:32:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:32:13.619Z] Apr 15, 2020 7:32:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:32:13.624Z] Apr 15, 2020 7:32:13 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:32:13.714Z] Apr 15, 2020 7:32:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:32:14.460Z] Apr 15, 2020 7:32:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:32:14.480Z] Apr 15, 2020 7:32:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:33:14.511Z] Apr 15, 2020 7:33:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:34:14.540Z] Apr 15, 2020 7:34:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:35:00.611Z] Apr 15, 2020 7:35:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:36:00.646Z] Apr 15, 2020 7:36:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+

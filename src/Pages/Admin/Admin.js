@@ -3,6 +3,8 @@ import { FirebaseContext } from '../../Firebase';
 import { useHistory } from 'react-router-dom';
 import { AuthUserContext } from '../../Components/Session';
 import AddUserForm from './AddUserForm';
+import AdminController from './AdminController';
+import User from './User';
 
 const AdminPage = () => {
 	const history = useHistory();
@@ -14,20 +16,26 @@ const AdminPage = () => {
 	});
 	useEffect(() => {
 		setState((s) => ({ ...s, loading: true }));
-		firebase.users().then((users) => {
-			setState({
-				users,
-				loading: false,
+		const unsubscribe = firebase.getUsersListener((usersSnapshot) => {
+			let users = [];
+			usersSnapshot.forEach((doc) => {
+				users = [...users, { ...doc.data(), id: doc.id }];
 			});
+			setState(() => ({ users, loading: false }));
 		});
+		return () => {
+			unsubscribe();
+		};
 	}, [firebase, setState, email, history]);
 	const { users, loading } = state;
 	return (
 		<div>
-			<h1>Admin</h1>
-			{loading && <div>Loading ...</div>}
-			<UserList users={users} />
-			<AddUserForm />
+			<AdminController>
+				<h1>Admin</h1>
+				{loading && <div>Loading ...</div>}
+				<UserList users={users} />
+				<AddUserForm />
+			</AdminController>
 		</div>
 	);
 };
@@ -35,20 +43,7 @@ const AdminPage = () => {
 const UserList = ({ users }) => (
 	<ul>
 		{users.map((user) => (
-			<li key={user.uid}>
-				<span>
-					<strong>ID:</strong> {user.uid}
-				</span>
-				<span>
-					<strong>E-Mail:</strong> {user.email}
-				</span>
-				<span>
-					<strong>Username:</strong> {user.username}
-				</span>
-				<span>
-					<strong>Role:</strong> {user.role}
-				</span>
-			</li>
+			<User {...{ user, key: user.id }} />
 		))}
 	</ul>
 );

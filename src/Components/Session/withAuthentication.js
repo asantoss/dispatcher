@@ -32,6 +32,7 @@ const AuthUserContextProvider = ({ children }) => {
 			firebase.auth.removeAuthTokenListener(listener);
 		};
 	}, [firebase, dispatch, user]);
+
 	return (
 		<AuthUserContext.Provider value={state}>
 			{children}
