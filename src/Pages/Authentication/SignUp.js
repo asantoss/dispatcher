@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
-import { withFirebase } from '../Components/Firebase';
+import * as ROUTES from '../../constants/routes';
+import { withFirebase } from '../../Firebase';
 const INITIAL_STATE = {
 	username: '',
 	email: '',
 	passwordOne: '',
 	passwordTwo: '',
-	error: null
+	error: null,
 };
 const SignUpPage = () => (
 	<div>
@@ -20,29 +20,29 @@ class SignUpFormBase extends Component {
 		super(props);
 		this.state = { ...INITIAL_STATE };
 	}
-	onSubmit = event => {
+	onSubmit = (event) => {
 		const { username, email, passwordOne } = this.state;
 		this.props.firebase
 			.doCreateUserWithEmailAndPassword(email, passwordOne)
-			.then(authUser => {
+			.then((authUser) => {
 				// Create a user in your Firebase realtime database
 				return this.props.firebase.addUser(authUser.user.uid, {
 					username,
 					email,
-					role: 'user'
+					role: 'user',
 				});
 			})
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
 				this.props.history.push(ROUTES.HOME);
 			})
-			.catch(error => {
+			.catch((error) => {
 				this.setState({ error });
 			});
 
 		event.preventDefault();
 	};
-	onChange = event => {
+	onChange = (event) => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 	render() {

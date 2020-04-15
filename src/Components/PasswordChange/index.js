@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import { withFirebase } from '../Firebase';
+import { withFirebase } from '../../Firebase';
 const INITIAL_STATE = {
 	passwordOne: '',
 	passwordTwo: '',
-	error: null
+	error: null,
 };
 class PasswordChangeForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { ...INITIAL_STATE };
 	}
-	onSubmit = event => {
+	onSubmit = (event) => {
 		const { passwordOne } = this.state;
 		this.props.firebase
 			.doPasswordUpdate(passwordOne)
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
 			})
-			.catch(error => {
+			.catch((error) => {
 				this.setState({ error });
 			});
 		event.preventDefault();
 	};
-	onChange = event => {
+	onChange = (event) => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 	render() {

@@ -1,17 +1,15 @@
-import React from 'react';
-import { NavLink as Link, withRouter } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink as Link, useHistory } from 'react-router-dom';
 // import SignOutButton from './SignOut';
 import * as ROUTES from '../constants/routes';
 import styled from '@emotion/styled';
-import { compose } from 'recompose';
-import withAuthentication from './Session/withAuthentication';
 import { AuthUserContext } from './Session';
-import withFirebase from './PasswordChange/index';
+import { FirebaseContext } from '../Firebase';
 
 const NavLink = styled(Link)`
 	color: #222;
 	font-size: 1rem;
-	font-weight: ${props => props.fontWeight || 'normal'};
+	font-weight: ${(props) => props.fontWeight || 'normal'};
 	line-height: 1;
 	margin: 0 0.5rem 0 0;
 	padding: 0.25rem;
@@ -34,7 +32,7 @@ const HeaderStyled = styled.header`
 	}
 `;
 
-const HeaderAuthed = props => {
+const HeaderAuthed = (props) => {
 	return (
 		<HeaderStyled>
 			<NavLink to={ROUTES.LANDING} fontWeight='bold'>
@@ -56,7 +54,7 @@ const HeaderAuthed = props => {
 				{/* <SignOutButton /> */}
 				<a
 					href='/'
-					onClick={e => {
+					onClick={(e) => {
 						e.preventDefault();
 						props.firebase.doSignOut();
 						props.history.push('/');
@@ -84,13 +82,14 @@ const HeaderUnauthed = () => {
 		</HeaderStyled>
 	);
 };
-const Navigation = props => {
-	return (
-		<AuthUserContext.Consumer>
-			{authUser =>
-				authUser ? <HeaderAuthed {...props} /> : <HeaderUnauthed {...props} />
-			}
-		</AuthUserContext.Consumer>
+const Navigation = (props) => {
+	const firebase = useContext(FirebaseContext);
+	const authUser = useContext(AuthUserContext);
+	const history = useHistory();
+	return authUser ? (
+		<HeaderAuthed {...{ firebase, history }} />
+	) : (
+		<HeaderUnauthed {...{ firebase, history }} />
 	);
 };
-export default compose(withRouter, withAuthentication)(Navigation);
+export default Navigation;

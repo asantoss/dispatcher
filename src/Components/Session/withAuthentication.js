@@ -1,47 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import AuthUserContext from './context';
-import { withFirebase } from '../Firebase';
-import { connect } from 'react-redux';
+import { FirebaseContext } from '../../Firebase';
+import { useDispatch, useSelector } from 'react-redux';
 
-const mapToDispatch = dispatch => ({
-	logIn: payload => dispatch({ type: 'LOGIN', payload }),
-	logOut: () => dispatch({ type: 'LOGIN' })
-});
-const withAuthentication = Component => {
-	class WithAuthentication extends React.Component {
-		constructor(props) {
-			super(props);
-			this.state = {
-				authUser: null
-			};
-		}
-		componentDidMount() {
-			this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
-				if (authUser) {
-					this.setState({ authUser: authUser });
-					this.props.firebase.getUser(authUser.uid).then(user => {
-						this.props.logIn(user);
+const AuthUserContextProvider = ({ children }) => {
+	const firebase = useContext(FirebaseContext);
+	const [state, setState] = useState(null);
+	const dispatch = useDispatch();
+	const { user } = useSelector((s) => s);
+	useEffect(() => {
+		const listener = firebase.auth.onAuthStateChanged((firebaseUser) => {
+			if (firebaseUser) {
+				if (!user.isLoggedIn) {
+					firebase.doGetUserByEmail(firebaseUser.email).then((response) => {
+						if (response) {
+							dispatch({
+								type: 'LOGIN',
+								payload: { ...response, isLoggedIn: true },
+							});
+						}
+						setState({ ...response, isLoggedIn: true });
 					});
 				} else {
-					this.setState({ authUser: null });
-					// this.props.firebase.doSignOut();
-					this.props.logOut();
+					return setState(user);
 				}
-			});
-		}
-		componentWillUnmount() {
-			this.listener();
-		}
-
-		render() {
-			return (
-				<AuthUserContext.Provider value={this.state.authUser}>
-					<Component {...this.props} />
-				</AuthUserContext.Provider>
-			);
-		}
-	}
-	return connect(null, mapToDispatch)(withFirebase(WithAuthentication));
+			}
+			return setState(null);
+		});
+		return () => {
+			setState(null);
+			firebase.auth.removeAuthTokenListener(listener);
+		};
+	}, [firebase, dispatch, user]);
+	return (
+		<AuthUserContext.Provider value={state}>
+			{children}
+		</AuthUserContext.Provider>
+	);
 };
 
-export default withAuthentication;
+export default AuthUserContextProvider;

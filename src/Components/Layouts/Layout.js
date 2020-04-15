@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
 					}
 					main {
 						margin: 2rem auto;
-						max-width: 550px;
+						max-width: 600px;
 					}
 				`}
 			/>
