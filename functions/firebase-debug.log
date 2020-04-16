@@ -1651,3 +1651,1535 @@ INFO: Detected non-HTTP/2 connection.
 [debug] [2020-04-15T23:36:00.646Z] Apr 15, 2020 7:36:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
 
+[debug] [2020-04-15T23:39:30.157Z] Apr 15, 2020 7:39:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:39:30.189Z] Apr 15, 2020 7:39:30 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:39:30.236Z] Apr 15, 2020 7:39:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:39:30.290Z] Apr 15, 2020 7:39:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:39:32.104Z] Apr 15, 2020 7:39:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:32.142Z] Apr 15, 2020 7:40:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:46.515Z] Apr 15, 2020 7:40:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:46.519Z] Apr 15, 2020 7:40:46 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:40:46.561Z] Apr 15, 2020 7:40:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:47.577Z] Apr 15, 2020 7:40:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:47.669Z] Apr 15, 2020 7:40:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:57.801Z] Apr 15, 2020 7:40:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:57.807Z] Apr 15, 2020 7:40:57 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:40:57.835Z] Apr 15, 2020 7:40:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:57.975Z] Apr 15, 2020 7:40:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:58.021Z] Apr 15, 2020 7:40:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:59.812Z] Apr 15, 2020 7:40:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:59.818Z] Apr 15, 2020 7:40:59 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:40:59.839Z] Apr 15, 2020 7:40:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:40:59.866Z] Apr 15, 2020 7:40:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:41:00.445Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-04-15T23:41:00.445Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-04-15T23:41:00.445Z] Accepted request POST /functions/projects/dispatch-7fe76/triggers/deleteUser --> deleteUser 
+[debug] [2020-04-15T23:41:00.449Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1 
+[debug] [2020-04-15T23:41:00.456Z] [worker-pool] addWorker(deleteUser) 
+[debug] [2020-04-15T23:41:00.456Z] [worker-pool] Adding worker with key deleteUser, total=1 
+[debug] [2020-04-15T23:41:00.456Z] [worker-pool] submitWork(triggerId=deleteUser) 
+[debug] [2020-04-15T23:41:00.458Z] [worker-deleteUser-4f650edc-edd4-4820-a4e6-462ed690f247]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_10059.sock 
+[debug] [2020-04-15T23:41:00.458Z] [worker-deleteUser-4f650edc-edd4-4820-a4e6-462ed690f247]: BUSY 
+[debug] [2020-04-15T23:41:01.695Z] [runtime-status] [10059] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:41:01.698Z] [runtime-status] [10059] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:41:01.703Z] [runtime-status] [10059] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:41:01.712Z] [runtime-status] [10059] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:41:01.716Z] [runtime-status] [10059] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:41:01.821Z] [runtime-status] [10059] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:41:01.822Z] [runtime-status] [10059] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:41:01.823Z] [runtime-status] [10059] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:41:01.824Z] [runtime-status] [10059] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:41:01.824Z] [runtime-status] [10059] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:41:02.122Z] Apr 15, 2020 7:41:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:41:02.416Z] [runtime-status] [10059] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:41:03.318Z] [runtime-status] [10059] Trigger "deleteUser" has been found, beginning invocation! 
+[info] i  functions: Beginning execution of "deleteUser"
+[debug] [2020-04-15T23:41:03.319Z] [runtime-status] [10059] triggerDefinition {"eventTrigger":{"resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}","eventType":"providers/cloud.firestore/eventTypes/document.delete","service":"firestore.googleapis.com"},"name":"deleteUser","entryPoint":"deleteUser"} 
+[debug] [2020-04-15T23:41:03.320Z] [runtime-status] [10059] Running deleteUser in mode BACKGROUND 
+[debug] [2020-04-15T23:41:03.320Z] [runtime-status] [10059] ProcessBackground {"data":{"oldValue":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","fields":{"lastName":{"stringValue":"Santos"},"firstName":{"stringValue":"Alexander"},"email":{"stringValue":"alexsantosantana123@live.com"}},"createTime":"2020-04-15T22:50:45.266952Z","updateTime":"2020-04-15T22:50:50.007356Z"},"updateMask":{}},"context":{"eventId":"9655388f-d220-497a-987f-21c3bb536f2a","timestamp":"2020-04-15T23:40:59.880Z","eventType":"providers/cloud.firestore/eventTypes/document.delete","resource":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","service":"firestore.googleapis.com"}}} 
+[debug] [2020-04-15T23:41:03.320Z] [runtime-status] [10059] ProcessBackground: lifting resource.name from resource {"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","service":"firestore.googleapis.com"} 
+[debug] [2020-04-15T23:41:03.320Z] [runtime-status] [10059] RunBackground {"data":{"oldValue":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG","fields":{"lastName":{"stringValue":"Santos"},"firstName":{"stringValue":"Alexander"},"email":{"stringValue":"alexsantosantana123@live.com"}},"createTime":"2020-04-15T22:50:45.266952Z","updateTime":"2020-04-15T22:50:50.007356Z"},"updateMask":{}},"context":{"eventId":"9655388f-d220-497a-987f-21c3bb536f2a","timestamp":"2020-04-15T23:40:59.880Z","eventType":"providers/cloud.firestore/eventTypes/document.delete","resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/2wou4sWFRSWBZnzAT6GG"}} 
+[info] >  FirebaseAuthError: The uid must be a non-empty string with at most 128 characters. {"user":"FirebaseAuthError: The uid must be a non-empty string with at most 128 characters."}
+[info] >      at FirebaseAuthError.FirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:42:28) {"user":"    at FirebaseAuthError.FirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:42:28)"}
+[info] >      at FirebaseAuthError.PrefixedFirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:88:28) {"user":"    at FirebaseAuthError.PrefixedFirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:88:28)"}
+[info] >      at new FirebaseAuthError (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:147:16) {"user":"    at new FirebaseAuthError (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:147:16)"}
+[info] >      at AuthRequestHandler.AbstractAuthRequestHandler.deleteAccount (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth-api-request.js:849:35) {"user":"    at AuthRequestHandler.AbstractAuthRequestHandler.deleteAccount (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth-api-request.js:849:35)"}
+[info] >      at Auth.BaseAuth.deleteUser (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth.js:224:40) {"user":"    at Auth.BaseAuth.deleteUser (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth.js:224:40)"}
+[info] >      at FirebaseAdmin.doDeleteUser (/Users/alexandersantos/Projects/dispatcher/functions/utils/FirebaseAdmin.js:38:20) {"user":"    at FirebaseAdmin.doDeleteUser (/Users/alexandersantos/Projects/dispatcher/functions/utils/FirebaseAdmin.js:38:20)"}
+[info] >      at /Users/alexandersantos/Projects/dispatcher/functions/index.js:60:16 {"user":"    at /Users/alexandersantos/Projects/dispatcher/functions/index.js:60:16"}
+[info] >      at cloudFunction (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/cloud-functions.js:131:23) {"user":"    at cloudFunction (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/cloud-functions.js:131:23)"}
+[info] >      at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:560:20 {"user":"    at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:560:20"}
+[info] >      at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:545:19 { {"user":"    at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:545:19 {"}
+[info] >    errorInfo: { {"user":"  errorInfo: {"}
+[info] >      code: 'auth/invalid-uid', {"user":"    code: 'auth/invalid-uid',"}
+[info] >      message: 'The uid must be a non-empty string with at most 128 characters.' {"user":"    message: 'The uid must be a non-empty string with at most 128 characters.'"}
+[info] >    }, {"user":"  },"}
+[info] >    codePrefix: 'auth' {"user":"  codePrefix: 'auth'"}
+[info] >  } {"user":"}"}
+[debug] [2020-04-15T23:41:03.347Z] [runtime-status] [10059] Ephemeral server survived. 
+[info] i  functions: Finished "deleteUser" in ~1s
+[debug] [2020-04-15T23:41:03.347Z] [worker-deleteUser-4f650edc-edd4-4820-a4e6-462ed690f247]: IDLE 
+[debug] [2020-04-15T23:41:03.350Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-04-15T23:41:03.357Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-04-15T23:41:03.358Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-04-15T23:41:03.358Z] Accepted request POST /functions/projects/dispatch-7fe76/triggers/deleteUser --> deleteUser 
+[debug] [2020-04-15T23:41:03.358Z] [worker-pool] submitWork(triggerId=deleteUser) 
+[debug] [2020-04-15T23:41:03.358Z] [worker-deleteUser-4f650edc-edd4-4820-a4e6-462ed690f247]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_10059.sock 
+[debug] [2020-04-15T23:41:03.358Z] [worker-deleteUser-4f650edc-edd4-4820-a4e6-462ed690f247]: BUSY 
+[debug] [2020-04-15T23:41:03.363Z] [runtime-status] [10059] Trigger "deleteUser" has been found, beginning invocation! 
+[info] i  functions: Beginning execution of "deleteUser"
+[debug] [2020-04-15T23:41:03.363Z] [runtime-status] [10059] triggerDefinition {"eventTrigger":{"resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}","eventType":"providers/cloud.firestore/eventTypes/document.delete","service":"firestore.googleapis.com"},"name":"deleteUser","entryPoint":"deleteUser"} 
+[debug] [2020-04-15T23:41:03.363Z] [runtime-status] [10059] Running deleteUser in mode BACKGROUND 
+[debug] [2020-04-15T23:41:03.363Z] [runtime-status] [10059] ProcessBackground {"data":{"oldValue":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/yzFHWCL3hP7u4EH3aDFQ","fields":{"lastName":{"stringValue":"Santos"},"role":{"stringValue":"user"},"firstName":{"stringValue":"Alexander"},"password":{"stringValue":"alex1234"},"email":{"stringValue":"watts4@gmail.com"}},"createTime":"2020-04-15T22:15:10.300710Z","updateTime":"2020-04-15T22:15:10.300710Z"},"updateMask":{}},"context":{"eventId":"d44f12fd-b9bb-4235-8ea4-996cf194a1e2","timestamp":"2020-04-15T23:41:02.129Z","eventType":"providers/cloud.firestore/eventTypes/document.delete","resource":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/yzFHWCL3hP7u4EH3aDFQ","service":"firestore.googleapis.com"}}} 
+[debug] [2020-04-15T23:41:03.363Z] [runtime-status] [10059] ProcessBackground: lifting resource.name from resource {"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/yzFHWCL3hP7u4EH3aDFQ","service":"firestore.googleapis.com"} 
+[debug] [2020-04-15T23:41:03.365Z] [runtime-status] [10059] RunBackground {"data":{"oldValue":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/yzFHWCL3hP7u4EH3aDFQ","fields":{"lastName":{"stringValue":"Santos"},"role":{"stringValue":"user"},"firstName":{"stringValue":"Alexander"},"password":{"stringValue":"alex1234"},"email":{"stringValue":"watts4@gmail.com"}},"createTime":"2020-04-15T22:15:10.300710Z","updateTime":"2020-04-15T22:15:10.300710Z"},"updateMask":{}},"context":{"eventId":"d44f12fd-b9bb-4235-8ea4-996cf194a1e2","timestamp":"2020-04-15T23:41:02.129Z","eventType":"providers/cloud.firestore/eventTypes/document.delete","resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/yzFHWCL3hP7u4EH3aDFQ"}} 
+[debug] [2020-04-15T23:41:03.365Z] [runtime-status] [10059] Ephemeral server survived. 
+[info] i  functions: Finished "deleteUser" in ~1s
+[debug] [2020-04-15T23:41:03.365Z] [worker-deleteUser-4f650edc-edd4-4820-a4e6-462ed690f247]: IDLE 
+[debug] [2020-04-15T23:41:03.366Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] >  FirebaseAuthError: The uid must be a non-empty string with at most 128 characters. {"user":"FirebaseAuthError: The uid must be a non-empty string with at most 128 characters."}
+[info] >      at FirebaseAuthError.FirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:42:28) {"user":"    at FirebaseAuthError.FirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:42:28)"}
+[info] >      at FirebaseAuthError.PrefixedFirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:88:28) {"user":"    at FirebaseAuthError.PrefixedFirebaseError [as constructor] (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:88:28)"}
+[info] >      at new FirebaseAuthError (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:147:16) {"user":"    at new FirebaseAuthError (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/utils/error.js:147:16)"}
+[info] >      at AuthRequestHandler.AbstractAuthRequestHandler.deleteAccount (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth-api-request.js:849:35) {"user":"    at AuthRequestHandler.AbstractAuthRequestHandler.deleteAccount (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth-api-request.js:849:35)"}
+[info] >      at Auth.BaseAuth.deleteUser (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth.js:224:40) {"user":"    at Auth.BaseAuth.deleteUser (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/auth/auth.js:224:40)"}
+[info] >      at FirebaseAdmin.doDeleteUser (/Users/alexandersantos/Projects/dispatcher/functions/utils/FirebaseAdmin.js:38:20) {"user":"    at FirebaseAdmin.doDeleteUser (/Users/alexandersantos/Projects/dispatcher/functions/utils/FirebaseAdmin.js:38:20)"}
+[info] >      at /Users/alexandersantos/Projects/dispatcher/functions/index.js:60:16 {"user":"    at /Users/alexandersantos/Projects/dispatcher/functions/index.js:60:16"}
+[info] >      at cloudFunction (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/cloud-functions.js:131:23) {"user":"    at cloudFunction (/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/cloud-functions.js:131:23)"}
+[info] >      at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:560:20 {"user":"    at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:560:20"}
+[info] >      at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:545:19 { {"user":"    at /Users/alexandersantos/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:545:19 {"}
+[info] >    errorInfo: { {"user":"  errorInfo: {"}
+[info] >      code: 'auth/invalid-uid', {"user":"    code: 'auth/invalid-uid',"}
+[info] >      message: 'The uid must be a non-empty string with at most 128 characters.' {"user":"    message: 'The uid must be a non-empty string with at most 128 characters.'"}
+[info] >    }, {"user":"  },"}
+[info] >    codePrefix: 'auth' {"user":"  codePrefix: 'auth'"}
+[info] >  } {"user":"}"}
+[debug] [2020-04-15T23:41:28.655Z] Apr 15, 2020 7:41:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:41:28.846Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-04-15T23:41:28.846Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-04-15T23:41:28.846Z] Accepted request POST /functions/projects/dispatch-7fe76/triggers/createUser --> createUser 
+[debug] [2020-04-15T23:41:28.854Z] [worker-pool] addWorker(createUser) 
+[debug] [2020-04-15T23:41:28.854Z] [worker-pool] Adding worker with key createUser, total=1 
+[debug] [2020-04-15T23:41:28.854Z] [worker-pool] submitWork(triggerId=createUser) 
+[debug] [2020-04-15T23:41:28.854Z] [worker-createUser-7cb35320-574e-4a92-a2c9-41f689162973]: Assigning socketPath: /var/folders/fy/s4fx9nfn60x98l116twjzlb40000gn/T/fire_emu_10168.sock 
+[debug] [2020-04-15T23:41:28.854Z] [worker-createUser-7cb35320-574e-4a92-a2c9-41f689162973]: BUSY 
+[debug] [2020-04-15T23:41:29.180Z] [runtime-status] [10168] Functions runtime initialized. {"cwd":"/Users/alexandersantos/Projects/dispatcher/functions","node_version":"13.8.0"} 
+[debug] [2020-04-15T23:41:29.182Z] [runtime-status] [10168] Disabled runtime features: undefined 
+[debug] [2020-04-15T23:41:29.189Z] [runtime-status] [10168] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:41:29.196Z] [runtime-status] [10168] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /Users/alexandersantos/Desktop/serviceAccount.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-15T23:41:29.201Z] [runtime-status] [10168] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-15T23:41:29.241Z] [runtime-status] [10168] Checked functions.config() {"config":{}} 
+[debug] [2020-04-15T23:41:29.244Z] [runtime-status] [10168] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:41:29.245Z] [runtime-status] [10168] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-15T23:41:29.245Z] [runtime-status] [10168] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-15T23:41:29.246Z] [runtime-status] [10168] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/Users/alexandersantos/Projects/dispatcher/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-15T23:41:29.414Z] [runtime-status] [10168] initializeApp(DEFAULT) {"databaseURL":"https://dispatch-7fe76.firebaseio.com","storageBucket":"dispatch-7fe76.appspot.com","projectId":"dispatch-7fe76","credentials":{"implicit":true,"projectId":"dispatch-7fe76","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4QhDrUZmi0osS\nTAz7Vxi+UvgJyWTQsFv7njlynbs+FAOqBEL6BFl23MAF9NlJg7j9uyXgk38ZaC0S\nTPwPpuEfucRlBanKEukIio22s1CyF9Oyo1LQNilxpWtoF1vOvCroN4qv1kSSMDjl\nE22/wuoEUJ3pdxA1UrL7HIJhOQw2f6g3ssnxRSAK2I/BV1Po4nZ+95O+JRATBoQw\nOyLQjps7dbDmH6oZYrKpStcmQJxcMgolUCVUg42+Gzhh0qL4cJhvpB+9sjDfWgAd\nBpjhhBjHhlkqKQf39TO1B1RHalgjZnIKXyfej0URFerHuI4y37y6Pjimu6V8klS3\nfopFuKBxAgMBAAECggEAJh6w7mY64Ucqs3XdZ7BMs69plmi+fThHR2akHvTH9J9i\nZK2uB5iXw7IG3hSaUY25W3D49J2/OUvmqzcXHMvbHlup6HaD+oTwBi7YA7jUVIv+\nZaJJcz8JUvQ0pNvUSBCA1fsLq7YqCI6GbsoWtgoGrS7ahJ730PhThAURajjJsIpc\n29SwA1Wr3n+u1mtm+a9juDHSQr7jWYCNzFsZf6P1gKza5Nmt5y/o0So4rgByvXhk\nmzBiiC24mL7qqVtRviz+jXxk5gNlMIB4sg3aToWyR0QZ2WQsXfp63qEKPVXgZwMP\nyEHXINJl4GuJn4vcE+azeae8Vn2n2pV2pCExiUQy8wKBgQD4p7kiFux7Wb3XE9IT\nXW+JzhSwVG/EES2JRYkuPEypVy+H/pmCoBs0QE2eEgTxL0fU9QcXxz3qq7/q990F\nJYaoNKSfriOpmVXJ1YXCWnDL7xzA/CmS4PzclL5mJQKDO3qKFLqWA68pHHFkwmks\nzDyA92aTty3O5BPTEjt2ZHU3uwKBgQC9s2LMW/PQbUEGXy2ZMKbsz+XVqosRQrcv\nySLF4avMoJGnnKPZdZnab3bz4Bv42qDaYzx+KGUMzoagfsa5KfOQP5/7ktKGaCte\nJ+LJXEMof/dOAVfyzCp2lH2Xmr4MRH8Wp/HS+RWzF9uNQpRoWCGzoXmzhs+fg83L\nJeltRgI3wwKBgQDDEDB3wav6iEgY9X+TmXTqkjRAr7yN/zvNuDMJhlxNbAvpj501\nkAxHTTqWimQ+IG0lbqMF0FOOSPXhilhktS+RvNp4Oc/YOGXIVCz+bpyWHxpbenXS\nt5UmJbnHv7jc4kgbEm/dRz6d7aY2+Rww/HdqZKqfrs/MwbebmW30TpJ2CQKBgDUc\nvYO0Fw57GGKdUVn7qjDRgGsTRb5+bGWfrfGzXnN7XWyNSb6/02S6IpbjX1GMfM7I\nTA6SZsBwLndPJ3p+SWhQuA0qrXDeR44kIrX39AGp2mbnr2UWTqlGp+dDdwReRSrl\nuKo1/SJYgqsJQh341u7BPh7KluT1dS/0nGdw23wbAoGBAL9M9PE9OuYfCwVlUrql\n/8F6A7hp+OQKt3T7mfEpNk7W1D/3HZsrSdzBnwJn6A3wLVPDcn59N+Ycr7iYp4Ii\nP1o0lLJXJLxdijV+kFwRiqI/x38r0o6T2o4+4imkSkwUCR8d40dg9b7w63TwIiLd\nCTpxBI9tARyiu3ePvkz5bd3V\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-dzsxq@dispatch-7fe76.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} 
+[debug] [2020-04-15T23:41:29.717Z] [runtime-status] [10168] Trigger "createUser" has been found, beginning invocation! 
+[info] i  functions: Beginning execution of "createUser"
+[debug] [2020-04-15T23:41:29.717Z] [runtime-status] [10168] triggerDefinition {"eventTrigger":{"resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/{masterId}/users/{userId}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"},"name":"createUser","entryPoint":"createUser"} 
+[debug] [2020-04-15T23:41:29.717Z] [runtime-status] [10168] Running createUser in mode BACKGROUND 
+[debug] [2020-04-15T23:41:29.717Z] [runtime-status] [10168] ProcessBackground {"data":{"value":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/j1XsTQZaTStAHpnMnAQ8","fields":{"lastName":{"stringValue":"Santos"},"role":{"stringValue":"admin"},"firstName":{"stringValue":"Alexander"},"masterId":{"stringValue":"rQy2rRBgW9qAO6PCsT5c"},"password":{"stringValue":"alex1234"},"email":{"stringValue":"alexsantosantana123@live.com"}},"createTime":"2020-04-15T23:41:28.660970Z","updateTime":"2020-04-15T23:41:28.660970Z"},"updateMask":{}},"context":{"eventId":"95cb98d4-c472-435a-94a6-c0bb4e7bb0f5","timestamp":"2020-04-15T23:41:28.660Z","eventType":"providers/cloud.firestore/eventTypes/document.create","resource":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/j1XsTQZaTStAHpnMnAQ8","service":"firestore.googleapis.com"}}} 
+[debug] [2020-04-15T23:41:29.718Z] [runtime-status] [10168] ProcessBackground: lifting resource.name from resource {"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/j1XsTQZaTStAHpnMnAQ8","service":"firestore.googleapis.com"} 
+[debug] [2020-04-15T23:41:29.720Z] [runtime-status] [10168] RunBackground {"data":{"value":{"name":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/j1XsTQZaTStAHpnMnAQ8","fields":{"lastName":{"stringValue":"Santos"},"role":{"stringValue":"admin"},"firstName":{"stringValue":"Alexander"},"masterId":{"stringValue":"rQy2rRBgW9qAO6PCsT5c"},"password":{"stringValue":"alex1234"},"email":{"stringValue":"alexsantosantana123@live.com"}},"createTime":"2020-04-15T23:41:28.660970Z","updateTime":"2020-04-15T23:41:28.660970Z"},"updateMask":{}},"context":{"eventId":"95cb98d4-c472-435a-94a6-c0bb4e7bb0f5","timestamp":"2020-04-15T23:41:28.660Z","eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/dispatch-7fe76/databases/(default)/documents/masters/rQy2rRBgW9qAO6PCsT5c/users/j1XsTQZaTStAHpnMnAQ8"}} 
+[debug] [2020-04-15T23:41:30.383Z] [runtime-status] [10168] Ephemeral server survived. 
+[warn] ⚠  functions: TypeError: Cannot read property 'delete' of undefined
+    at /Users/alexandersantos/Projects/dispatcher/functions/index.js:50:35
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2020-04-15T23:41:30.398Z] [worker-createUser-7cb35320-574e-4a92-a2c9-41f689162973]: exited 
+[debug] [2020-04-15T23:41:30.399Z] [worker-createUser-7cb35320-574e-4a92-a2c9-41f689162973]: FINISHED 
+[debug] [2020-04-15T23:41:30.413Z] Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client 
+[debug] [2020-04-15T23:41:30.413Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-04-15T23:41:30.413Z] Apr 15, 2020 7:41:30 PM com.google.cloud.datastore.emulator.impl.events.FunctionsEmulatorEventPublisher sendHttpRequest
+WARNING: Unsuccessful HTTP response when publishing event for projects/dispatch-7fe76/triggers/createUser: 500 Internal Server Error
+TypeError: Cannot read property 'delete' of undefined
+    at /Users/alexandersantos/Projects/dispatcher/functions/index.js:50:35
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+
+[debug] [2020-04-15T23:41:33.291Z] Apr 15, 2020 7:41:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Apr 15, 2020 7:41:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:41:33.295Z] Apr 15, 2020 7:41:33 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:41:33.299Z] Apr 15, 2020 7:41:33 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:41:42.339Z] Apr 15, 2020 7:41:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:41:42.342Z] Apr 15, 2020 7:41:42 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:41:42.360Z] Apr 15, 2020 7:41:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:41:42.410Z] Apr 15, 2020 7:41:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:42:40.268Z] Apr 15, 2020 7:42:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:42:40.272Z] Apr 15, 2020 7:42:40 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:42:40.289Z] Apr 15, 2020 7:42:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:42:40.343Z] Apr 15, 2020 7:42:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:42:48.542Z] Apr 15, 2020 7:42:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:42:48.546Z] Apr 15, 2020 7:42:48 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:42:48.578Z] Apr 15, 2020 7:42:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:42:48.580Z] Apr 15, 2020 7:42:48 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:42:48.594Z] Apr 15, 2020 7:42:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:42:48.646Z] Apr 15, 2020 7:42:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:43:33.060Z] Apr 15, 2020 7:43:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:43:35.279Z] Apr 15, 2020 7:43:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:43:35.282Z] Apr 15, 2020 7:43:35 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:43:35.299Z] Apr 15, 2020 7:43:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:43:35.361Z] Apr 15, 2020 7:43:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:43:56.080Z] Apr 15, 2020 7:43:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:43:56.088Z] Apr 15, 2020 7:43:56 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:43:56.091Z] Apr 15, 2020 7:43:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:43:56.101Z] Apr 15, 2020 7:43:56 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:43:56.119Z] Apr 15, 2020 7:43:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:44:36.594Z] Apr 15, 2020 7:44:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:45:06.622Z] Apr 15, 2020 7:45:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:45:36.419Z] Apr 15, 2020 7:45:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:45:36.422Z] Apr 15, 2020 7:45:36 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:55:50.837Z] Apr 15, 2020 7:55:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:55:50.850Z] Apr 15, 2020 7:55:50 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:55:50.908Z] Apr 15, 2020 7:55:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:55:51.073Z] Apr 15, 2020 7:55:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:56:01.691Z] Apr 15, 2020 7:56:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:56:01.697Z] Apr 15, 2020 7:56:01 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:56:01.734Z] Apr 15, 2020 7:56:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:56:01.740Z] Apr 15, 2020 7:56:01 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:56:01.836Z] Apr 15, 2020 7:56:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:03.365Z] Apr 15, 2020 7:57:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:03.370Z] Apr 15, 2020 7:57:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:03.625Z] Apr 15, 2020 7:57:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:06.529Z] Apr 15, 2020 7:57:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:06.553Z] Apr 15, 2020 7:57:06 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:57:06.581Z] Apr 15, 2020 7:57:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:06.673Z] Apr 15, 2020 7:57:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:15.426Z] Apr 15, 2020 7:57:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:15.434Z] Apr 15, 2020 7:57:15 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:57:15.457Z] Apr 15, 2020 7:57:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:15.462Z] Apr 15, 2020 7:57:15 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:57:15.505Z] Apr 15, 2020 7:57:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:24.802Z] Apr 15, 2020 7:57:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:24.833Z] Apr 15, 2020 7:57:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:57:24.983Z] Apr 15, 2020 7:57:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:58:24.954Z] Apr 15, 2020 7:58:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:58:24.958Z] Apr 15, 2020 7:58:24 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:58:34.335Z] Apr 15, 2020 7:58:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:58:34.339Z] Apr 15, 2020 7:58:34 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:58:34.369Z] Apr 15, 2020 7:58:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:58:34.442Z] Apr 15, 2020 7:58:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:58:35.858Z] Apr 15, 2020 7:58:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:11.435Z] Apr 15, 2020 7:59:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:11.579Z] Apr 15, 2020 7:59:11 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:59:11.693Z] Apr 15, 2020 7:59:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:11.837Z] Apr 15, 2020 7:59:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:11.953Z] Apr 15, 2020 7:59:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:12.057Z] Apr 15, 2020 7:59:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:12.072Z] Apr 15, 2020 7:59:12 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:59:24.390Z] Apr 15, 2020 7:59:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:24.392Z] Apr 15, 2020 7:59:24 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:59:24.413Z] Apr 15, 2020 7:59:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:26.283Z] Apr 15, 2020 7:59:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:26.307Z] Apr 15, 2020 7:59:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:42.522Z] Apr 15, 2020 7:59:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:42.788Z] Apr 15, 2020 7:59:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Apr 15, 2020 7:59:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:47.344Z] Apr 15, 2020 7:59:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:47.349Z] Apr 15, 2020 7:59:47 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:59:47.372Z] Apr 15, 2020 7:59:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:47.477Z] Apr 15, 2020 7:59:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:48.672Z] Apr 15, 2020 7:59:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:48.678Z] Apr 15, 2020 7:59:48 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-15T23:59:59.289Z] Apr 15, 2020 7:59:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-15T23:59:59.295Z] Apr 15, 2020 7:59:59 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-15T23:59:59.314Z] Apr 15, 2020 7:59:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:00:04.171Z] Apr 15, 2020 8:00:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:00:04.203Z] Apr 15, 2020 8:00:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:00:07.033Z] Apr 15, 2020 8:00:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:01:06.938Z] Apr 15, 2020 8:01:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:01:06.946Z] Apr 15, 2020 8:01:06 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:01:25.141Z] Apr 15, 2020 8:01:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:01:25.146Z] Apr 15, 2020 8:01:25 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:01:25.208Z] Apr 15, 2020 8:01:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:01:26.169Z] Apr 15, 2020 8:01:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:13.096Z] Apr 15, 2020 8:02:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:13.101Z] Apr 15, 2020 8:02:13 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:02:13.185Z] Apr 15, 2020 8:02:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:13.283Z] Apr 15, 2020 8:02:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:14.371Z] Apr 15, 2020 8:02:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:14.380Z] Apr 15, 2020 8:02:14 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:02:32.214Z] Apr 15, 2020 8:02:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:32.219Z] Apr 15, 2020 8:02:32 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:02:32.238Z] Apr 15, 2020 8:02:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:37.773Z] Apr 15, 2020 8:02:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:39.717Z] Apr 15, 2020 8:02:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:40.655Z] Apr 15, 2020 8:02:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:41.948Z] Apr 15, 2020 8:02:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:43.221Z] Apr 15, 2020 8:02:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:44.219Z] Apr 15, 2020 8:02:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:02:44.735Z] Apr 15, 2020 8:02:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:03:44.776Z] Apr 15, 2020 8:03:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:03:45.030Z] Apr 15, 2020 8:03:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:03:45.033Z] Apr 15, 2020 8:03:45 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:15:17.060Z] Apr 15, 2020 8:15:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:17.107Z] Apr 15, 2020 8:15:17 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:15:17.197Z] Apr 15, 2020 8:15:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:18.048Z] Apr 15, 2020 8:15:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:27.054Z] Apr 15, 2020 8:15:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:27.057Z] Apr 15, 2020 8:15:27 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:15:27.103Z] Apr 15, 2020 8:15:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:27.892Z] Apr 15, 2020 8:15:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:33.258Z] Apr 15, 2020 8:15:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:33.266Z] Apr 15, 2020 8:15:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:15:33.298Z] Apr 15, 2020 8:15:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:34.373Z] Apr 15, 2020 8:15:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:15:58.936Z] Apr 15, 2020 8:15:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:04.528Z] Apr 15, 2020 8:16:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:04.541Z] Apr 15, 2020 8:16:04 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:16:04.637Z] Apr 15, 2020 8:16:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:05.633Z] Apr 15, 2020 8:16:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:13.318Z] Apr 15, 2020 8:16:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:14.081Z] Apr 15, 2020 8:16:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:14.761Z] Apr 15, 2020 8:16:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:15.748Z] Apr 15, 2020 8:16:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:18.622Z] Apr 15, 2020 8:16:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:54.631Z] Apr 15, 2020 8:16:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:54.671Z] Apr 15, 2020 8:16:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:56.145Z] Apr 15, 2020 8:16:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:56.846Z] Apr 15, 2020 8:16:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:57.546Z] Apr 15, 2020 8:16:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:16:58.992Z] Apr 15, 2020 8:16:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:17:01.212Z] Apr 15, 2020 8:17:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:17:39.652Z] Apr 15, 2020 8:17:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:17:39.698Z] Apr 15, 2020 8:17:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:17:39.702Z] Apr 15, 2020 8:17:39 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:17:50.326Z] Apr 15, 2020 8:17:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:17:50.349Z] Apr 15, 2020 8:17:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:17:50.383Z] Apr 15, 2020 8:17:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:18:50.441Z] Apr 15, 2020 8:18:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:18:50.529Z] Apr 15, 2020 8:18:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:18:50.543Z] Apr 15, 2020 8:18:50 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:20:03.971Z] Apr 15, 2020 8:20:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:20:04.019Z] Apr 15, 2020 8:20:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:20:04.075Z] Apr 15, 2020 8:20:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:20:31.519Z] Apr 15, 2020 8:20:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:20:31.859Z] Apr 15, 2020 8:20:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:20:31.999Z] Apr 15, 2020 8:20:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:48.417Z] Apr 15, 2020 8:21:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:48.570Z] Apr 15, 2020 8:21:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:48.774Z] Apr 15, 2020 8:21:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:52.980Z] Apr 15, 2020 8:21:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:53.070Z] Apr 15, 2020 8:21:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:53.667Z] Apr 15, 2020 8:21:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:53.750Z] Apr 15, 2020 8:21:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:53.790Z] Apr 15, 2020 8:21:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:21:53.868Z] Apr 15, 2020 8:21:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:22.529Z] Apr 15, 2020 8:22:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:31.067Z] Apr 15, 2020 8:22:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:31.121Z] Apr 15, 2020 8:22:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:31.189Z] Apr 15, 2020 8:22:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:47.360Z] Apr 15, 2020 8:22:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:47.362Z] Apr 15, 2020 8:22:47 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:22:47.382Z] Apr 15, 2020 8:22:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:47.385Z] Apr 15, 2020 8:22:47 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:22:47.407Z] Apr 15, 2020 8:22:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:22:47.477Z] Apr 15, 2020 8:22:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:23:23.276Z] Apr 15, 2020 8:23:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:23:23.283Z] Apr 15, 2020 8:23:23 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:23:23.356Z] Apr 15, 2020 8:23:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:23:24.308Z] Apr 15, 2020 8:23:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:23:31.566Z] Apr 15, 2020 8:23:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:23:31.570Z] Apr 15, 2020 8:23:31 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:26:36.185Z] Apr 15, 2020 8:26:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:26:36.275Z] Apr 15, 2020 8:26:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:26:36.321Z] Apr 15, 2020 8:26:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:27:12.717Z] Apr 15, 2020 8:27:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:27:12.784Z] Apr 15, 2020 8:27:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:27:12.866Z] Apr 15, 2020 8:27:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:28:15.306Z] Apr 15, 2020 8:28:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:28:15.411Z] Apr 15, 2020 8:28:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:28:15.533Z] Apr 15, 2020 8:28:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:28:36.171Z] Apr 15, 2020 8:28:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:28:59.089Z] Apr 15, 2020 8:28:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:28:59.119Z] Apr 15, 2020 8:28:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:28:59.213Z] Apr 15, 2020 8:28:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:17.626Z] Apr 15, 2020 8:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:25.645Z] Apr 15, 2020 8:29:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:26.377Z] Apr 15, 2020 8:29:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:43.421Z] Apr 15, 2020 8:29:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:43.888Z] Apr 15, 2020 8:29:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:53.151Z] Apr 15, 2020 8:29:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:53.187Z] Apr 15, 2020 8:29:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:53.224Z] Apr 15, 2020 8:29:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:58.978Z] Apr 15, 2020 8:29:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:29:59.065Z] Apr 15, 2020 8:29:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:30:05.240Z] Apr 15, 2020 8:30:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:30:05.317Z] Apr 15, 2020 8:30:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:30:07.271Z] Apr 15, 2020 8:30:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:30:07.346Z] Apr 15, 2020 8:30:07 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.newClosedChannelException(AbstractChannel.java:957)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:865)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1367)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:717)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:709)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteTask.run(AbstractChannelHandlerContext.java:1102)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:497)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+[debug] [2020-04-16T00:30:11.786Z] Apr 15, 2020 8:30:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:30:11.845Z] Apr 15, 2020 8:30:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:30:11.866Z] Apr 15, 2020 8:30:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:31:11.891Z] Apr 15, 2020 8:31:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:31:12.193Z] Apr 15, 2020 8:31:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:31:12.202Z] Apr 15, 2020 8:31:12 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:31:23.838Z] Apr 15, 2020 8:31:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:31:24.097Z] Apr 15, 2020 8:31:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:31:24.317Z] Apr 15, 2020 8:31:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:46:52.285Z] Apr 15, 2020 8:46:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:46:52.401Z] Apr 15, 2020 8:46:52 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:46:52.837Z] Apr 15, 2020 8:46:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:46:53.029Z] Apr 15, 2020 8:46:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:46:58.712Z] Apr 15, 2020 8:46:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:47:00.024Z] Apr 15, 2020 8:47:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:47:01.247Z] Apr 15, 2020 8:47:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:01.314Z] Apr 15, 2020 8:48:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:30.538Z] Apr 15, 2020 8:48:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:32.712Z] Apr 15, 2020 8:48:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:32.724Z] Apr 15, 2020 8:48:32 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:48:32.762Z] Apr 15, 2020 8:48:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:32.833Z] Apr 15, 2020 8:48:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:32.882Z] Apr 15, 2020 8:48:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:34.551Z] Apr 15, 2020 8:48:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:34.570Z] Apr 15, 2020 8:48:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:34.579Z] Apr 15, 2020 8:48:34 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T00:48:38.835Z] Apr 15, 2020 8:48:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:38.839Z] Apr 15, 2020 8:48:38 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T00:48:38.859Z] Apr 15, 2020 8:48:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:48:38.916Z] Apr 15, 2020 8:48:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:49:01.172Z] Apr 15, 2020 8:49:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:49:03.181Z] Apr 15, 2020 8:49:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:49:33.207Z] Apr 15, 2020 8:49:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:50:03.978Z] Apr 15, 2020 8:50:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T00:50:03.982Z] Apr 15, 2020 8:50:03 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T01:03:43.476Z] Apr 15, 2020 9:03:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:03:43.479Z] Apr 15, 2020 9:03:43 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:03:43.499Z] Apr 15, 2020 9:03:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:03:44.507Z] Apr 15, 2020 9:03:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:04:44.523Z] Apr 15, 2020 9:04:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:04:44.816Z] Apr 15, 2020 9:04:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:04:44.820Z] Apr 15, 2020 9:04:44 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T01:06:02.654Z] Apr 15, 2020 9:06:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:02.690Z] Apr 15, 2020 9:06:02 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:06:02.734Z] Apr 15, 2020 9:06:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:03.644Z] Apr 15, 2020 9:06:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:35.207Z] Apr 15, 2020 9:06:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:35.210Z] Apr 15, 2020 9:06:35 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:06:35.235Z] Apr 15, 2020 9:06:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:36.258Z] Apr 15, 2020 9:06:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:58.138Z] Apr 15, 2020 9:06:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:58.141Z] Apr 15, 2020 9:06:58 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:06:58.160Z] Apr 15, 2020 9:06:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:06:59.172Z] Apr 15, 2020 9:06:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:07:59.191Z] Apr 15, 2020 9:07:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:07:59.467Z] Apr 15, 2020 9:07:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:07:59.471Z] Apr 15, 2020 9:07:59 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T01:08:33.940Z] Apr 15, 2020 9:08:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:08:33.944Z] Apr 15, 2020 9:08:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:08:33.966Z] Apr 15, 2020 9:08:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:08:34.991Z] Apr 15, 2020 9:08:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:07.857Z] Apr 15, 2020 9:09:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:07.879Z] Apr 15, 2020 9:09:07 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:09:07.913Z] Apr 15, 2020 9:09:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:08.929Z] Apr 15, 2020 9:09:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:33.805Z] Apr 15, 2020 9:09:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:33.809Z] Apr 15, 2020 9:09:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:09:33.824Z] Apr 15, 2020 9:09:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:34.821Z] Apr 15, 2020 9:09:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:42.113Z] Apr 15, 2020 9:09:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:42.116Z] Apr 15, 2020 9:09:42 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:09:42.131Z] Apr 15, 2020 9:09:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:09:43.152Z] Apr 15, 2020 9:09:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:10:16.424Z] Apr 15, 2020 9:10:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:10:16.427Z] Apr 15, 2020 9:10:16 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:10:16.445Z] Apr 15, 2020 9:10:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:10:17.465Z] Apr 15, 2020 9:10:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:10:37.803Z] Apr 15, 2020 9:10:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:10:37.807Z] Apr 15, 2020 9:10:37 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:10:37.831Z] Apr 15, 2020 9:10:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:10:38.825Z] Apr 15, 2020 9:10:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:05.994Z] Apr 15, 2020 9:11:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:05.996Z] Apr 15, 2020 9:11:05 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:11:06.011Z] Apr 15, 2020 9:11:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:07.036Z] Apr 15, 2020 9:11:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:18.249Z] Apr 15, 2020 9:11:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:18.251Z] Apr 15, 2020 9:11:18 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:11:18.264Z] Apr 15, 2020 9:11:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:19.294Z] Apr 15, 2020 9:11:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:33.237Z] Apr 15, 2020 9:11:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:33.240Z] Apr 15, 2020 9:11:33 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:11:33.257Z] Apr 15, 2020 9:11:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:34.292Z] Apr 15, 2020 9:11:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:40.886Z] Apr 15, 2020 9:11:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:40.891Z] Apr 15, 2020 9:11:40 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:11:40.929Z] Apr 15, 2020 9:11:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:41.038Z] Apr 15, 2020 9:11:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:57.799Z] Apr 15, 2020 9:11:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:59.517Z] Apr 15, 2020 9:11:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:59.520Z] Apr 15, 2020 9:11:59 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:11:59.538Z] Apr 15, 2020 9:11:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:11:59.596Z] Apr 15, 2020 9:11:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:12:34.723Z] Apr 15, 2020 9:12:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:12:35.694Z] Apr 15, 2020 9:12:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:12:35.712Z] Apr 15, 2020 9:12:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:12:35.792Z] Apr 15, 2020 9:12:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:02.033Z] Apr 15, 2020 9:13:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:02.035Z] Apr 15, 2020 9:13:02 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:13:02.047Z] Apr 15, 2020 9:13:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:03.072Z] Apr 15, 2020 9:13:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:09.696Z] Apr 15, 2020 9:13:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:10.593Z] Apr 15, 2020 9:13:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:11.180Z] Apr 15, 2020 9:13:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:11.278Z] Apr 15, 2020 9:13:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:22.771Z] Apr 15, 2020 9:13:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:24.429Z] Apr 15, 2020 9:13:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:24.432Z] Apr 15, 2020 9:13:24 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:13:24.448Z] Apr 15, 2020 9:13:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:24.533Z] Apr 15, 2020 9:13:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:28.474Z] Apr 15, 2020 9:13:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:13:28.586Z] Apr 15, 2020 9:13:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:03.164Z] Apr 15, 2020 9:14:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:04.922Z] Apr 15, 2020 9:14:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:04.925Z] Apr 15, 2020 9:14:04 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:14:04.947Z] Apr 15, 2020 9:14:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:05.018Z] Apr 15, 2020 9:14:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:05.035Z] Apr 15, 2020 9:14:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:05.112Z] Apr 15, 2020 9:14:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:30.845Z] Apr 15, 2020 9:14:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:32.575Z] Apr 15, 2020 9:14:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:32.577Z] Apr 15, 2020 9:14:32 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:14:32.593Z] Apr 15, 2020 9:14:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:32.659Z] Apr 15, 2020 9:14:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:32.680Z] Apr 15, 2020 9:14:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:32.733Z] Apr 15, 2020 9:14:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:34.819Z] Apr 15, 2020 9:14:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:35.505Z] Apr 15, 2020 9:14:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:35.524Z] Apr 15, 2020 9:14:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:14:35.572Z] Apr 15, 2020 9:14:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:15:32.965Z] Apr 15, 2020 9:15:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:15:32.967Z] Apr 15, 2020 9:15:32 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:15:32.979Z] Apr 15, 2020 9:15:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:15:33.986Z] Apr 15, 2020 9:15:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:15:33.998Z] Apr 15, 2020 9:15:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:15:35.005Z] Apr 15, 2020 9:15:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:13.755Z] Apr 15, 2020 9:16:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:13.759Z] Apr 15, 2020 9:16:13 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:16:13.773Z] Apr 15, 2020 9:16:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:14.813Z] Apr 15, 2020 9:16:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:14.827Z] Apr 15, 2020 9:16:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:15.867Z] Apr 15, 2020 9:16:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:27.180Z] Apr 15, 2020 9:16:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:27.183Z] Apr 15, 2020 9:16:27 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:16:27.207Z] Apr 15, 2020 9:16:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:28.224Z] Apr 15, 2020 9:16:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:28.270Z] Apr 15, 2020 9:16:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:29.280Z] Apr 15, 2020 9:16:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:42.347Z] Apr 15, 2020 9:16:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:42.360Z] Apr 15, 2020 9:16:42 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:16:44.925Z] Apr 15, 2020 9:16:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:44.931Z] Apr 15, 2020 9:16:44 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:16:45.310Z] Apr 15, 2020 9:16:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:46.053Z] Apr 15, 2020 9:16:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:16:46.414Z] Apr 15, 2020 9:16:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:17:41.685Z] Apr 15, 2020 9:17:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Apr 15, 2020 9:17:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:17:41.920Z] Apr 15, 2020 9:17:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:17:44.412Z] Apr 15, 2020 9:17:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:17:44.415Z] Apr 15, 2020 9:17:44 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:17:44.460Z] Apr 15, 2020 9:17:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:17:44.526Z] Apr 15, 2020 9:17:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:17:44.550Z] Apr 15, 2020 9:17:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:18:16.055Z] Apr 15, 2020 9:18:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:18:42.251Z] Apr 15, 2020 9:18:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:18:42.254Z] Apr 15, 2020 9:18:42 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:18:42.428Z] Apr 15, 2020 9:18:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:18:43.543Z] Apr 15, 2020 9:18:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:18:43.626Z] Apr 15, 2020 9:18:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:19:21.063Z] Apr 15, 2020 9:19:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:19:21.088Z] Apr 15, 2020 9:19:21 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.newClosedChannelException(AbstractChannel.java:957)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:865)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1367)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:717)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:709)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteTask.run(AbstractChannelHandlerContext.java:1102)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:497)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+[debug] [2020-04-16T01:19:21.096Z] Apr 15, 2020 9:19:21 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.newClosedChannelException(AbstractChannel.java:957)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:865)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1367)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:717)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:709)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteTask.run(AbstractChannelHandlerContext.java:1102)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+[debug] [2020-04-16T01:19:21.314Z] Apr 15, 2020 9:19:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:19:21.315Z] Apr 15, 2020 9:19:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:19:23.890Z] Apr 15, 2020 9:19:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:19:23.893Z] Apr 15, 2020 9:19:23 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:19:23.924Z] Apr 15, 2020 9:19:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:19:24.013Z] Apr 15, 2020 9:19:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:19:24.041Z] Apr 15, 2020 9:19:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:21:59.040Z] Apr 15, 2020 9:21:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:21:59.042Z] Apr 15, 2020 9:21:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:21:59.305Z] Apr 15, 2020 9:21:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:22:01.688Z] Apr 15, 2020 9:22:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:22:01.701Z] Apr 15, 2020 9:22:01 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:22:01.736Z] Apr 15, 2020 9:22:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:22:01.806Z] Apr 15, 2020 9:22:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:22:01.950Z] Apr 15, 2020 9:22:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:08.410Z] Apr 15, 2020 9:23:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:08.413Z] Apr 15, 2020 9:23:08 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T01:23:10.979Z] Apr 15, 2020 9:23:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:10.982Z] Apr 15, 2020 9:23:10 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:23:11.012Z] Apr 15, 2020 9:23:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:11.108Z] Apr 15, 2020 9:23:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:11.170Z] Apr 15, 2020 9:23:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:15.972Z] Apr 15, 2020 9:23:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:36.771Z] Apr 15, 2020 9:23:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:36.776Z] Apr 15, 2020 9:23:36 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:23:36.814Z] Apr 15, 2020 9:23:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:36.942Z] Apr 15, 2020 9:23:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:37.014Z] Apr 15, 2020 9:23:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:23:50.182Z] Apr 15, 2020 9:23:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:24:06.287Z] Apr 15, 2020 9:24:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:24:06.453Z] Apr 15, 2020 9:24:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:24:36.482Z] Apr 15, 2020 9:24:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:25:06.454Z] Apr 15, 2020 9:25:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:25:06.458Z] Apr 15, 2020 9:25:06 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+
+[debug] [2020-04-16T01:28:18.498Z] Apr 15, 2020 9:28:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:28:18.502Z] Apr 15, 2020 9:28:18 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+
+[debug] [2020-04-16T01:28:18.521Z] Apr 15, 2020 9:28:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:28:54.077Z] Apr 15, 2020 9:28:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:28:54.123Z] Apr 15, 2020 9:28:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:28:54.262Z] Apr 15, 2020 9:28:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-04-16T01:29:24.283Z] Apr 15, 2020 9:29:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+

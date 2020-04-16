@@ -1,31 +1,35 @@
 import React, { useEffect, useContext } from 'react';
 // import data from '../data/data.json';
 import styled from '@emotion/styled';
-import { FirebaseContext } from '../Firebase';
-import { AuthUserContext } from '../Components/Session';
 import { useState } from 'react';
+import { LocationContext } from './LocationController';
 
 export default function Locations() {
-	const firebase = useContext(FirebaseContext);
-	const authUser = useContext(AuthUserContext);
-	const [state, setState] = useState({ loading: false, locations: [] });
+	const LocationController = useContext(LocationContext);
+	const [state, setState] = useState({
+		loading: false,
+		locations: [],
+		error: null,
+	});
+
 	useEffect(() => {
-		if (authUser && authUser.master) {
-			setState((s) => ({ ...s, loading: true }));
-			firebase
-				.doGetMasterLocations(authUser.master)
-				.then((data) => setState({ loading: false, locations: [...data] }));
-		}
-	}, [authUser, firebase]);
-	const { loading, locations } = state;
+		LocationController.getMasterLocations()
+			.then((locations) => {
+				debugger;
+				setState((s) => ({ loading: false, locations, error: null }));
+			})
+			.catch((e) => setState((s) => ({ ...s, error: e.message })));
+	}, [setState, LocationController]);
+	const { loading, locations, error } = state;
 	return (
 		<LocationList>
+			{error && error}
 			{loading ? (
 				<p>Loading....</p>
 			) : (
 				<>
-					{locations.length ? (
-						locations.map((location) => {
+					{locations?.length ? (
+						locations?.map((location) => {
 							return <pre>{JSON.stringify(location, null, 2)}</pre>;
 						})
 					) : (

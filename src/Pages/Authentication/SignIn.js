@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
-import { useDispatch } from 'react-redux';
+import { AuthPageContext } from './AuthController';
 import { PasswordForgetLink } from '../../Components/PasswordForget';
-import { FirebaseContext } from '../../Firebase';
 import * as ROUTES from '../../constants/routes';
 import googleNormal from '../../assets/btn_google_signin_dark_normal_web.png';
 
@@ -22,10 +21,9 @@ const INITIAL_STATE = {
 };
 
 const SignInFormBase = () => {
-	const dispatch = useDispatch();
-	const history = useHistory();
-	const firebase = useContext(FirebaseContext);
+	const Auth = useContext(AuthPageContext);
 	const [state, setState] = useState(INITIAL_STATE);
+	const history = useHistory();
 	const onChange = (event) => {
 		setState({ ...state, [event.target.name]: event.target.value });
 	};
@@ -33,24 +31,21 @@ const SignInFormBase = () => {
 	const onSubmit = (event) => {
 		event.preventDefault();
 		const { email, password } = state;
-		firebase
-			.doSignInWithEmailAndPassword(email, password)
-			.then((data) => {
-				firebase.getUser(data.user.uid).then((user) => {
+		Auth.signInWithEmail(email, password)
+			.then((user) => {
+				if (user) {
 					setState({ ...INITIAL_STATE });
 					history.push(ROUTES.HOME);
-					dispatch({ type: 'LOGIN', payload: { ...user, isLoggedIn: true } });
-				});
+				}
 			})
-			.catch((error) => {
-				setState({ ...state, error: error.message });
-			});
+			.catch((error) => setState({ ...state, error: error?.message }));
 	};
 	const { email, password, error } = state;
 	const isInvalid = password === '' || email === '';
 	return (
 		<>
 			<form onSubmit={onSubmit}>
+				{error && <p>{error}</p>}
 				<input
 					name='email'
 					value={email}
@@ -69,27 +64,23 @@ const SignInFormBase = () => {
 					Sign In
 				</button>
 				<SignInWithGoogle {...{ setState }} />
-				{error && <p>{error}</p>}
 			</form>
 		</>
 	);
 };
+
 const SignInForm = SignInFormBase;
 export default SignInPage;
 export { SignInForm };
 
 function SignInWithGoogle({ setState }) {
-	const firebase = useContext(FirebaseContext);
+	const Auth = useContext(AuthPageContext);
 	const history = useHistory();
 
 	const SignInWithGoogle = () => {
-		firebase
-			.doSignInWithGoogle()
-			.then((results) => {
-				history.push(ROUTES.HOME);
-			})
+		Auth.signInWithGoogle()
+			.then(() => history.push(ROUTES.HOME))
 			.catch((e) => {
-				firebase.doSignOut();
 				setState((s) => ({ ...s, error: e.message }));
 			});
 	};

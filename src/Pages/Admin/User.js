@@ -2,8 +2,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Delete } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
+import { useContext } from 'react';
+import { AdminContext } from './AdminController';
 
 export default function User({ user }) {
+	const Admin = useContext(AdminContext);
+	const handleClick = (id) => {
+		Admin.deleteUser(id);
+	};
 	return (
 		<UserDiv>
 			<span>
@@ -16,7 +22,7 @@ export default function User({ user }) {
 				<strong>Role:</strong> {user?.role}
 			</span>
 			<div className='button-group'>
-				<IconButton>
+				<IconButton onClick={() => handleClick(user.id)}>
 					<Delete />
 				</IconButton>
 			</div>
