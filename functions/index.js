@@ -3,8 +3,14 @@ const FirebaseAdmin = require('./utils/FirebaseAdmin');
 const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
+const { Client } = require('@googlemaps/google-maps-services-js');
+
 const app = express();
 const admin = new FirebaseAdmin();
+
+const mapsClient = new Client({
+	key: process.env.API_KEY,
+});
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -29,7 +35,30 @@ app.post('/user', (req, res) => {
 //  response.send("Hello from Firebase!");
 // });
 
-exports.createUser = functions.firestore
+exports.updateLocation = functions.firestore
+	.document('masters/{masterId}/locations/{locationId}')
+	.onUpdate(async (change, context) => {
+		const newValue = change.after.data();
+		const previousValues = changes.before.data();
+		const coordinates = newValue['coordinate'];
+		if (coordinates === previousValues['coordinates']) {
+			return null;
+		}
+		const response = await mapsClient.geocode({
+			params: { address: newValue.address },
+		});
+
+		if (response.data.results.length) {
+			const coords = response.data.results['geometry']['location'];
+			if (coords) {
+				change.after.ref.set({
+					coordinates: coords,
+				});
+			}
+		}
+	});
+
+exports.updateUser = functions.firestore
 	.document('masters/{masterId}/users/{userId}')
 	.onCreate(async (snap, context) => {
 		const { email, firstName, lastName, password, role } = snap.data();
@@ -41,13 +70,12 @@ exports.createUser = functions.firestore
 			})
 			.catch((e) => console.log(e));
 		if (user) {
-			return await snap.ref.update({
+			return await snap.ref.set({
 				email,
 				firstName,
 				lastName,
 				role,
 				authId: user.uid,
-				password: admin.db.FieldValue.delete(),
 			});
 		} else {
 			return await snap.ref.delete();

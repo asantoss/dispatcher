@@ -1,5 +1,6 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
+import NavBar from './Navigation/NavBar';
 const Layout = ({ children }) => {
 	return (
 		<>
@@ -12,9 +13,11 @@ const Layout = ({ children }) => {
 					main {
 						margin: 2rem auto;
 						max-width: 600px;
+						width: 100%;
 					}
 				`}
 			/>
+			<NavBar />
 			<main>{children}</main>
 		</>
 	);

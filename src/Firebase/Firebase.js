@@ -21,7 +21,7 @@ class Firebase {
 		this.functions = app.functions();
 		if (process.env.NODE_ENV === 'development') {
 			this.db.settings({
-				host: 'localhost:8080',
+				host: 'localhost:5005',
 				ssl: false,
 			});
 		}

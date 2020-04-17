@@ -12,15 +12,21 @@ const AuthUserContextProvider = ({ children }) => {
 		const listener = firebase.auth.onAuthStateChanged((firebaseUser) => {
 			if (firebaseUser) {
 				if (!user.isLoggedIn) {
-					firebase.doGetUserByEmail(firebaseUser.email).then((response) => {
-						if (response) {
-							dispatch({
-								type: 'LOGIN',
-								payload: { ...response, isLoggedIn: true },
-							});
-						}
-						setState({ ...response, isLoggedIn: true });
-					});
+					firebase
+						.doGetUserByEmail(firebaseUser.email)
+						.then((response) => {
+							if (response) {
+								dispatch({
+									type: 'LOGIN',
+									payload: { ...response, isLoggedIn: true },
+								});
+							}
+							setState({ ...response, isLoggedIn: true });
+						})
+						.catch(() => {
+							console.log('No user found in this session signing out.');
+							firebase.doSignOut();
+						});
 				} else {
 					return setState(user);
 				}

@@ -14,7 +14,6 @@ class LocationInterface {
 			.catch((e) => {
 				throw e;
 			});
-		console.log(mastersSnapshot);
 		if (mastersSnapshot) {
 			const locations = [];
 			await mastersSnapshot.forEach((doc) =>
@@ -23,8 +22,19 @@ class LocationInterface {
 			this.locations = locations;
 			return locations;
 		}
-
 		return this.locations;
+	};
+
+	getLocation = async (id) => {
+		const snapshot = await this.db
+			.document(`masters/${this.user.masterId}/locations/${id}`)
+			.get()
+			.catch((e) => {
+				throw e;
+			});
+		if (snapshot) {
+			return { ...snapshot.data(), docId: snapshot.id };
+		}
 	};
 }
 

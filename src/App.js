@@ -1,7 +1,6 @@
 import React from 'react';
 import * as ROLES from './constants/roles';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navigation from './Components/Containers/NavbarContainer';
+import { Route, Switch } from 'react-router-dom';
 import { AuthUserContextProvider } from './Components/Session';
 
 import {
@@ -10,6 +9,7 @@ import {
 	HomePage,
 	AdminPage,
 	LocationsPage,
+	LocationPage,
 } from './Pages';
 
 import SignInPage from './Components/Containers/SignInContainer';
@@ -21,37 +21,39 @@ const App = () => {
 	return (
 		<AuthUserContextProvider>
 			<AuthController>
-				<Router>
-					<Navigation />
-					<hr />
-					<Switch>
-						{/* <Route exact path={ROUTES.LANDING} component={LandingPage} /> */}
-						<Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
-						<Route path={ROUTES.SIGN_IN} component={SignInPage} />
-						{/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
-						<Route exact path={ROUTES.HOME} component={HomePage} />
+				<Switch>
+					{/* <Route exact path={ROUTES.LANDING} component={LandingPage} /> */}
+					<Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+					<Route path={ROUTES.SIGN_IN} component={SignInPage} />
+					{/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
+					<Route exact path={ROUTES.HOME} component={HomePage} />
+					<ProtectedRoute
+						exact
+						role={ROLES.USER}
+						path={ROUTES.ACCOUNT}
+						component={AccountPage}
+					/>
+					<ProtectedRoute
+						exact
+						path={ROUTES.ADMIN}
+						role={ROLES.ADMIN}
+						component={AdminPage}
+					/>
+					<LocationController>
 						<ProtectedRoute
 							exact
+							path={ROUTES.LOCATIONS}
 							role={ROLES.USER}
-							path={ROUTES.ACCOUNT}
-							component={AccountPage}
+							component={LocationsPage}
 						/>
 						<ProtectedRoute
 							exact
-							path={ROUTES.ADMIN}
-							role={ROLES.ADMIN}
-							component={AdminPage}
+							path={ROUTES.LOCATION}
+							role={ROLES.USER}
+							component={LocationPage}
 						/>
-						<LocationController>
-							<ProtectedRoute
-								exact
-								path={ROUTES.LOCATIONS}
-								role={ROLES.USER}
-								component={LocationsPage}
-							/>
-						</LocationController>
-					</Switch>
-				</Router>
+					</LocationController>
+				</Switch>
 			</AuthController>
 		</AuthUserContextProvider>
 	);

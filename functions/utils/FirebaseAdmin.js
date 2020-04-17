@@ -1,6 +1,5 @@
 const firebase_admin = require('firebase-admin');
 require('dotenv').config();
-const GOOGLE_APPLICATION_CREDENTIALS = require('/Users/alexandersantos/Desktop/serviceAccount.json');
 
 // console.log(GOOGLE_APPLICATION_CREDENTIALS);
 const config = {
@@ -28,10 +27,10 @@ class FirebaseAdmin {
 				...data,
 			});
 			if (user.uid) {
-				return 'Successfully created user ' + user.uid;
+				return user;
 			}
 		} catch (error) {
-			return error.message;
+			throw error;
 		}
 	};
 	doDeleteUser = (id) => {

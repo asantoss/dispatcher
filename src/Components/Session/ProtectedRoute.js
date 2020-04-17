@@ -14,7 +14,6 @@ export default function ProtectedRoute({
 		manager: ['user', 'manager'],
 		user: ['user'],
 	};
-	console.log({ value: rolesAccess[role].indexOf(authUser?.role), role });
 	return (
 		<Route
 			{...rest}

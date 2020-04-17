@@ -1,0 +1,71 @@
+[debug] [2020-04-16T03:26:55.321Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T03:26:55.322Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --import=seed
+[debug] [2020-04-16T03:26:55.323Z] CLI Version:   8.0.3
+[debug] [2020-04-16T03:26:55.323Z] Platform:      win32
+[debug] [2020-04-16T03:26:55.323Z] Node Version:  v12.13.0
+[debug] [2020-04-16T03:26:55.325Z] Time:          Wed Apr 15 2020 23:26:55 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-04-16T03:26:55.325Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T03:26:55.325Z] 
+[debug] [2020-04-16T03:26:55.331Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[info] i  emulators: Starting emulators: functions, firestore, hosting
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project dispatch-7fe76. This may result in unexpected behavior.
+[debug] [2020-04-16T03:26:57.485Z] [hub] writing locator at C:\Users\User\AppData\Local\Temp\hub-dispatch-7fe76.json
+[info] +  hub: emulator hub started at http://localhost:4400
+[info] i  emulators: Shutting down emulators.
+[info] i  hub: Stopping emulator hub
+[debug] [2020-04-16T03:26:57.495Z] Error: ENOENT: no such file or directory, open 'D:\WebDevelopment\dispatcher\seed\firebase-export-metadata.json'
+    at Object.openSync (fs.js:440:3)
+    at Object.readFileSync (fs.js:342:35)
+    at Object.<anonymous> (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:158:44)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:5:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2020-04-16T03:27:54.129Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T03:27:54.131Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --import=seed
+[debug] [2020-04-16T03:27:54.132Z] CLI Version:   8.0.3
+[debug] [2020-04-16T03:27:54.132Z] Platform:      win32
+[debug] [2020-04-16T03:27:54.132Z] Node Version:  v12.13.0
+[debug] [2020-04-16T03:27:54.133Z] Time:          Wed Apr 15 2020 23:27:54 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-04-16T03:27:54.133Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T03:27:54.133Z] 
+[debug] [2020-04-16T03:27:54.140Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[info] i  emulators: Starting emulators: functions, firestore, hosting
+[debug] [2020-04-16T03:27:56.296Z] [hub] writing locator at C:\Users\User\AppData\Local\Temp\hub-dispatch-7fe76.json
+[info] +  hub: emulator hub started at http://localhost:4400
+[info] i  emulators: Shutting down emulators.
+[info] i  hub: Stopping emulator hub
+[debug] [2020-04-16T03:27:56.303Z] Error: ENOENT: no such file or directory, open 'D:\WebDevelopment\dispatcher\seed\firebase-export-metadata.json'
+    at Object.openSync (fs.js:440:3)
+    at Object.readFileSync (fs.js:342:35)
+    at Object.<anonymous> (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:158:44)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:5:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2020-04-16T03:36:58.274Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T03:36:58.276Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --import=seeds
+[debug] [2020-04-16T03:36:58.276Z] CLI Version:   8.0.3
+[debug] [2020-04-16T03:36:58.276Z] Platform:      win32
+[debug] [2020-04-16T03:36:58.276Z] Node Version:  v12.13.0
+[debug] [2020-04-16T03:36:58.284Z] Time:          Wed Apr 15 2020 23:36:58 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-04-16T03:36:58.284Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T03:36:58.284Z] 
+[debug] [2020-04-16T03:36:58.293Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[info] i  emulators: Starting emulators: functions, firestore, hosting
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project dispatch-7fe76. This may result in unexpected behavior.
+[debug] [2020-04-16T03:37:00.491Z] [hub] writing locator at C:\Users\User\AppData\Local\Temp\hub-dispatch-7fe76.json
+[info] +  hub: emulator hub started at http://localhost:4400
+[info] i  emulators: Shutting down emulators.
+[info] i  hub: Stopping emulator hub
+[debug] [2020-04-16T03:37:00.515Z] Error: ENOENT: no such file or directory, open 'D:\WebDevelopment\dispatcher\seeds\firebase-export-metadata.json'
+    at Object.openSync (fs.js:440:3)
+    at Object.readFileSync (fs.js:342:35)
+    at Object.<anonymous> (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:158:44)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:5:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[error] 
+[error] Error: An unexpected error has occurred.

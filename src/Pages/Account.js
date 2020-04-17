@@ -1,16 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthUserContext } from '../Components/Session';
-import { PasswordForgetForm } from '../Components/PasswordForget';
 import PasswordChangeForm from '../Components/PasswordChange';
+import { Divider, Button } from '@material-ui/core';
+import styled from 'styled-components';
+
+const AccountPage = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 600px;
+	.btn-group {
+		text-align: center;
+	}
+`;
 
 const Account = () => {
+	const [state, setState] = useState(false);
 	const authUser = useContext(AuthUserContext);
 	return (
-		<div>
-			<h1>Account: {authUser.email}</h1>
-			<PasswordForgetForm />
-			<PasswordChangeForm />
-		</div>
+		<AccountPage>
+			<h3>Account: {authUser.email}</h3>
+			<div className='btn-group'>
+				<Divider />
+				<Button
+					variant='contained'
+					color='primary'
+					onClick={() => setState(true)}>
+					Manage Password
+				</Button>
+				<Divider />
+			</div>
+			{state && <PasswordChangeForm />}
+		</AccountPage>
 	);
 };
 export default Account;

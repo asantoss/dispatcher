@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../../Firebase';
+import { TextField, Button } from '@material-ui/core';
+import { Form } from './utils';
+
 const INITIAL_STATE = {
 	username: '',
 	email: '',
@@ -10,8 +13,8 @@ const INITIAL_STATE = {
 	error: null,
 };
 const SignUpPage = () => (
-	<div>
-		<h1>SignUp</h1>
+	<div style={{ textAlign: 'center' }}>
+		<h3>Sign Up</h3>
 		<SignUpForm />
 	</div>
 );
@@ -53,40 +56,48 @@ class SignUpFormBase extends Component {
 			email === '' ||
 			username === '';
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
+			<Form onSubmit={this.onSubmit}>
+				<TextField
+					variant='outlined'
 					name='username'
 					value={username}
 					onChange={this.onChange}
 					type='text'
 					placeholder='Full Name'
+					label='Full Name'
 				/>
-				<input
+				<TextField
+					variant='outlined'
 					name='email'
+					label='Email'
 					value={email}
 					onChange={this.onChange}
 					type='text'
 					placeholder='Email Address'
 				/>
-				<input
+				<TextField
+					variant='outlined'
 					name='passwordOne'
+					label='Password'
 					value={passwordOne}
 					onChange={this.onChange}
 					type='password'
 					placeholder='Password'
 				/>
-				<input
+				<TextField
+					variant='outlined'
 					name='passwordTwo'
+					label='Confirm Password'
 					value={passwordTwo}
 					onChange={this.onChange}
 					type='password'
 					placeholder='Confirm Password'
 				/>
-				<button disabled={isInvalid} type='submit'>
+				<Button disabled={isInvalid} type='submit'>
 					Sign Up
-				</button>
+				</Button>
 				{error && <p>{error.message}</p>}
-			</form>
+			</Form>
 		);
 	}
 }
