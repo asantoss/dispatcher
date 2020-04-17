@@ -9,7 +9,7 @@ import {
 	HomePage,
 	AdminPage,
 	LocationsPage,
-	LocationPage,
+	Location,
 } from './Pages';
 
 import SignInPage from './Components/Containers/SignInContainer';
@@ -50,7 +50,7 @@ const App = () => {
 							exact
 							path={ROUTES.LOCATION}
 							role={ROLES.USER}
-							component={LocationPage}
+							component={Location}
 						/>
 					</LocationController>
 				</Switch>

@@ -8,18 +8,18 @@ class Auth {
 		this.setError = setError;
 	}
 	signInWithEmail = async (email, password) => {
-		const user = await this.firebase
+		return this.firebase
 			.doSignInWithEmailAndPassword(email, password)
 			.catch((e) => {
 				throw e;
 			});
-		if (user) {
-			this.dispatch({
-				type: 'LOGIN',
-				payload: { ...user, isLoggedIn: true },
-			});
-			return user;
-		}
+		// if (user) {
+		// 	this.dispatch({
+		// 		type: 'LOGIN',
+		// 		payload: { ...user, isLoggedIn: true },
+		// 	});
+		// 	return user;
+		// }
 	};
 	signInWithGoogle = () => {
 		return this.firebase.doSignInWithGoogle().catch((e) => {

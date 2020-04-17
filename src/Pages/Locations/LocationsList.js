@@ -26,7 +26,7 @@ import {
 import { Link } from 'react-router-dom';
 import Filters from './Filters';
 
-export default function Locations() {
+export default function LocationsList() {
 	const LocationController = useContext(LocationContext);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
