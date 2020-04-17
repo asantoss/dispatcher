@@ -1,8 +1,0 @@
-{
-	"version": "7.14.0",
-	"firestore": {
-		"version": "1.10.4",
-		"path": ".",
-		"metadata_file": "2020-04-17T11:54:58_62665.overall_export_metadata"
-	}
-}
