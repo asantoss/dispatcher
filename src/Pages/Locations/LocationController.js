@@ -19,22 +19,13 @@ class LocationInterface {
 			await mastersSnapshot.forEach((doc) =>
 				locations.push({ ...doc.data(), docId: doc.id })
 			);
-			this.locations = locations;
-			return locations;
+			this.locations = locations.sort((a, b) =>
+				a['name'] > b['name'] ? 1 : -1
+			);
+			return this.locations;
 		}
-		return this.locations;
-	};
 
-	getLocation = async (id) => {
-		const snapshot = await this.db
-			.document(`masters/${this.user.masterId}/locations/${id}`)
-			.get()
-			.catch((e) => {
-				throw e;
-			});
-		if (snapshot) {
-			return { ...snapshot.data(), docId: snapshot.id };
-		}
+		return this.locations;
 	};
 }
 

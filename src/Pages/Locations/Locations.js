@@ -24,6 +24,7 @@ import {
 	LastPage,
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import Filters from './Filters';
 
 export default function Locations() {
 	const LocationController = useContext(LocationContext);
@@ -36,16 +37,19 @@ export default function Locations() {
 		error: null,
 	});
 
-	const emptyRows =
-		rowsPerPage -
-		Math.min(rowsPerPage, state.locations.length - page * rowsPerPage);
+	// const emptyRows =
+	// 	rowsPerPage -
+	// 	Math.min(rowsPerPage, state.locations.length - page * rowsPerPage);
 
 	useEffect(() => {
-		LocationController.getMasterLocations()
-			.then((locations) => {
-				setState((s) => ({ loading: false, locations, error: null }));
-			})
-			.catch((e) => setState((s) => ({ ...s, error: e.message })));
+		const { locations } = LocationController;
+		if (!locations.length) {
+			LocationController.getMasterLocations()
+				.then((locations) => {
+					setState((s) => ({ loading: false, locations, error: null }));
+				})
+				.catch((e) => setState((s) => ({ ...s, error: e.message })));
+		}
 	}, [setState, LocationController]);
 
 	const handleChangePage = (event, newPage) => {
@@ -60,57 +64,55 @@ export default function Locations() {
 	const { loading, locations, error } = state;
 	return (
 		<LocationList>
-			<Table stickyHeader>
-				{error && error}
-				{loading ? (
-					<p>Loading....</p>
-				) : (
-					<>
+			{error && <p>{error}</p>}
+			<Filters {...{ setState }} />
+			{loading ? (
+				<p>Loading....</p>
+			) : locations?.length ? (
+				<>
+					<Table stickyHeader className='table'>
 						<TableHead>
 							<TableRow>
 								<TableCell component='th'>View</TableCell>
+								<TableCell component='th'>License</TableCell>
 								<TableCell component='th'>Name</TableCell>
-								{/* <TableCell component='th'>Address</TableCell> */}
+								<TableCell component='th'>City</TableCell>
 								<TableCell component='th'>Actions</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{locations?.length ? (
-								<>
-									{(rowsPerPage > 0
-										? locations?.slice(
-												page * rowsPerPage,
-												page * rowsPerPage + rowsPerPage
-										  )
-										: locations
-									)?.map((location) => {
-										return (
-											<TableRow key={location?.docId}>
-												<TableCell>
-													<Link
-														to={{
-															pathname: `location/${location?.docId}`,
-															state: location,
-														}}>
-														View
-													</Link>
-												</TableCell>
-												<TableCell>{location?.name}</TableCell>
-												{/* <TableCell>
+							{(rowsPerPage > 0
+								? locations?.slice(
+										page * rowsPerPage,
+										page * rowsPerPage + rowsPerPage
+								  )
+								: locations
+							)?.map((location) => {
+								return (
+									<TableRow key={location?.docId}>
+										<TableCell>
+											<Link
+												to={{
+													pathname: `location/${location?.docId}`,
+													state: location,
+												}}>
+												View
+											</Link>
+										</TableCell>
+										<TableCell>{location?.id}</TableCell>
+										<TableCell>{location?.name}</TableCell>
+										<TableCell>{location?.city}</TableCell>
+										{/* <TableCell>
 													<p>
 														{location?.address},{location?.city}
 													</p>
 												</TableCell> */}
-												<TableCell>
-													<Actions {...location} />
-												</TableCell>
-											</TableRow>
-										);
-									})}
-								</>
-							) : (
-								<p>You don't have locations yet</p>
-							)}
+										<TableCell>
+											<Actions {...location} />
+										</TableCell>
+									</TableRow>
+								);
+							})}
 						</TableBody>
 						<TableFooter>
 							<TableRow>
@@ -126,9 +128,11 @@ export default function Locations() {
 								/>
 							</TableRow>
 						</TableFooter>
-					</>
-				)}
-			</Table>
+					</Table>
+				</>
+			) : (
+				<p>No Locations Found</p>
+			)}
 		</LocationList>
 	);
 }
@@ -153,13 +157,13 @@ function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
 
 	return (
 		<div style={{ display: 'flex', flexGrow: 1 }}>
-			{/* <IconButton
+			<IconButton
 				onClick={handleFirstPageButtonClick}
 				style={{ display: page === 0 ? 'none' : 'inline-flex' }}
 				disabled={page === 0}
 				aria-label='first page'>
 				{theme.direction === 'rtl' ? <LastPage /> : <FirstPage />}
-			</IconButton> */}
+			</IconButton>
 			<IconButton
 				onClick={handleBackButtonClick}
 				disabled={page === 0}
@@ -181,12 +185,12 @@ function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
 					<KeyboardArrowRight />
 				)}
 			</IconButton>
-			{/* <IconButton
+			<IconButton
 				onClick={handleLastPageButtonClick}
 				disabled={page >= Math.ceil(count / rowsPerPage) - 1}
 				aria-label='last page'>
 				{theme.direction === 'rtl' ? <FirstPage /> : <LastPage />}
-			</IconButton> */}
+			</IconButton>
 		</div>
 	);
 }
@@ -200,5 +204,13 @@ const LocationList = styled(TableContainer)`
 		width: 10px;
 		margin: auto;
 		background-color: green;
+	}
+	.table {
+		td {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			max-width: 75px;
+		}
 	}
 `;
