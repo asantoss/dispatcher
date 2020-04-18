@@ -2,9 +2,8 @@ import React, { createContext, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase';
 import { useDispatch } from 'react-redux';
 class Auth {
-	constructor(firebase, dispatch, setError) {
+	constructor(firebase, setError) {
 		this.firebase = firebase;
-		this.dispatch = dispatch;
 		this.setError = setError;
 	}
 	signInWithEmail = async (email, password) => {
@@ -13,13 +12,6 @@ class Auth {
 			.catch((e) => {
 				throw e;
 			});
-		// if (user) {
-		// 	this.dispatch({
-		// 		type: 'LOGIN',
-		// 		payload: { ...user, isLoggedIn: true },
-		// 	});
-		// 	return user;
-		// }
 	};
 	signInWithGoogle = () => {
 		return this.firebase.doSignInWithGoogle().catch((e) => {

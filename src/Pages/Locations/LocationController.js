@@ -6,6 +6,7 @@ class LocationInterface {
 		this.user = user;
 		this.db = firebase.db;
 		this.locations = [];
+		this.currentLocation = null;
 	}
 	getMasterLocations = async () => {
 		const mastersSnapshot = await this.db
@@ -26,6 +27,24 @@ class LocationInterface {
 		}
 
 		return this.locations;
+	};
+	getLocation = async (id) => {
+		const location = await this.db
+			.collection(`masters/${this.user.masterId}/locations`)
+			.doc(id)
+			.get()
+			.catch((e) => e);
+		if (location) {
+			const locationData = { ...location.data(), docId: location.id };
+			this.currentLocation = locationData;
+			return locationData;
+		}
+	};
+	updateLocation = async (id, data) => {
+		return this.db
+			.collection(`masters/${this.user.masterId}/locations`)
+			.doc(id)
+			.update(data);
 	};
 }
 

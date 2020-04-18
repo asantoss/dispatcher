@@ -2,6 +2,8 @@ const initialState = {
 	all: [],
 	currentLocation: null,
 	view: null,
+	loading: false,
+	error: null,
 };
 
 const locationsReducer = (state = initialState, action) => {
@@ -16,9 +18,26 @@ const locationsReducer = (state = initialState, action) => {
 			return {
 				...initialState,
 			};
-		case 'ALL':
+		case 'SET_CURRENT_LOCATION':
 			return {
-				...initialState,
+				...state,
+				currentLocation: payload,
+			};
+		case 'FIRED':
+			return {
+				...state,
+				loading: true,
+			};
+		case 'FUFILLED':
+			return {
+				...state,
+				loading: false,
+			};
+		case 'ERROR':
+			return {
+				...state,
+				error: payload,
+				loading: false,
 			};
 		default:
 			return state;

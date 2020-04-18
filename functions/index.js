@@ -37,8 +37,8 @@ app.post('/user', (req, res) => {
 
 exports.updateLocation = functions.firestore
 	.document('masters/{masterId}/locations/{locationId}')
-	.onUpdate(async (change, context) => {
-		const newValue = change.after.data();
+	.onUpdate(async (changes, context) => {
+		const newValue = changes.after.data();
 		const previousValues = changes.before.data();
 		const coordinates = newValue['coordinate'];
 		if (coordinates === previousValues['coordinates']) {
@@ -70,13 +70,7 @@ exports.updateUser = functions.firestore
 			})
 			.catch((e) => console.log(e));
 		if (user) {
-			return await snap.ref.set({
-				email,
-				firstName,
-				lastName,
-				role,
-				authId: user.uid,
-			});
+			return 'Completed';
 		} else {
 			return await snap.ref.delete();
 		}
@@ -84,8 +78,8 @@ exports.updateUser = functions.firestore
 exports.deleteUser = functions.firestore
 	.document('masters/{masterId}/users/{userId}')
 	.onDelete((snap, context) => {
-		const { authId } = snap.data();
-		return admin.doDeleteUser(authId).catch((e) => console.log(e));
+		const { email } = snap.data();
+		return admin.doDeleteUser(email).catch((e) => console.log(e));
 	});
 
 exports.server = functions.https.onRequest(app);

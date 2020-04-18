@@ -9,7 +9,8 @@ import googlePressed from '../../assets/btn_google_signin_dark_pressed_web.png';
 import { TextField, Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { Form } from './utils';
-const SignInPage = (props) => (
+
+const SignInPage = () => (
 	<div style={{ textAlign: 'center' }}>
 		<h3>Sign In</h3>
 		<SignInForm />
@@ -51,7 +52,11 @@ const SignInFormBase = () => {
 			.then((user) => {
 				if (user) {
 					setState({ ...INITIAL_STATE });
-					history.push(ROUTES.HOME);
+					if (history.location?.state?.fromProtectedRoute) {
+						history.goBack();
+					} else {
+						history.push(ROUTES.HOME);
+					}
 				}
 			})
 			.catch((error) => setState({ ...state, error: error?.message }));

@@ -2,7 +2,7 @@ const initialState = {
 	email: '',
 	id: '',
 	username: '',
-	isLoggedIn: false
+	isLoggedIn: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -11,11 +11,11 @@ const authReducer = (state = initialState, action) => {
 		case 'LOGIN':
 			return {
 				...initialState,
-				...payload
+				...payload,
 			};
 		case 'LOGOUT':
 			return {
-				...initialState
+				...initialState,
 			};
 		default:
 			return state;

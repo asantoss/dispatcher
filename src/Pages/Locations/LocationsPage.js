@@ -4,17 +4,25 @@ import { Button } from '@material-ui/core';
 import LocationsList from './LocationsList';
 import LocationForm from './Location';
 import { Add } from '@material-ui/icons';
+import Breadcrumb from '../../Components/shared/Breadcrumb';
+
 const LocationsPageContainer = styled.div`
 	padding: 1em 0;
 	display: flex;
 	flex-direction: column;
+	.filter {
+		display: flex;
+		padding: 0 0.5em;
+		justify-content: space-between;
+	}
 `;
 
 export default function LocationsPage({}) {
 	const [state, setState] = useState(true);
 	return (
 		<LocationsPageContainer>
-			<div className='btn-group'>
+			<Breadcrumb />
+			{/* <div className='btn-group'>
 				<Button
 					variant='outlined'
 					disabled={!state}
@@ -27,7 +35,7 @@ export default function LocationsPage({}) {
 					onClick={() => setState(true)}>
 					All
 				</Button>
-			</div>
+			</div> */}
 			{state ? <LocationsList /> : <LocationForm />}
 		</LocationsPageContainer>
 	);

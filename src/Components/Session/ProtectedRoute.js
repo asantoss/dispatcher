@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Route } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Route, useHistory } from 'react-router-dom';
 import AuthUserContext from './context';
 import * as ROLES from '../../constants/roles';
 
@@ -14,6 +14,12 @@ export default function ProtectedRoute({
 		manager: ['user', 'manager'],
 		user: ['user'],
 	};
+	// const history = useHistory();
+	// useEffect(() => {
+	// 	if (!authUser?.isLoggedIn) {
+	// 		history.push('/signin');
+	// 	}
+	// }, [authUser, history]);
 	return (
 		<Route
 			{...rest}

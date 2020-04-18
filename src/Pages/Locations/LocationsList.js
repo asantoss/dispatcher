@@ -13,7 +13,6 @@ import {
 	TableHead,
 	TablePagination,
 	TableFooter,
-	Paper,
 	useTheme,
 	IconButton,
 } from '@material-ui/core';
@@ -36,11 +35,6 @@ export default function LocationsList() {
 		locations: [],
 		error: null,
 	});
-
-	// const emptyRows =
-	// 	rowsPerPage -
-	// 	Math.min(rowsPerPage, state.locations.length - page * rowsPerPage);
-
 	useEffect(() => {
 		const { locations } = LocationController;
 		if (!locations.length) {
@@ -65,13 +59,25 @@ export default function LocationsList() {
 	return (
 		<LocationList>
 			{error && <p>{error}</p>}
-			<Filters {...{ setState }} />
 			{loading ? (
 				<p>Loading....</p>
 			) : locations?.length ? (
 				<>
+					<Filters {...{ setState }} />
 					<Table stickyHeader className='table'>
 						<TableHead>
+							<TableRow>
+								<TablePagination
+									className='footer'
+									rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
+									count={locations.length}
+									rowsPerPage={rowsPerPage}
+									page={page}
+									onChangePage={handleChangePage}
+									onChangeRowsPerPage={handleChangeRowsPerPage}
+									ActionsComponent={TablePaginationActions}
+								/>
+							</TableRow>
 							<TableRow>
 								<TableCell component='th'>View</TableCell>
 								<TableCell component='th'>License</TableCell>
@@ -114,20 +120,7 @@ export default function LocationsList() {
 								);
 							})}
 						</TableBody>
-						<TableFooter>
-							<TableRow>
-								<TablePagination
-									className='footer'
-									rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
-									count={locations.length}
-									rowsPerPage={rowsPerPage}
-									page={page}
-									onChangePage={handleChangePage}
-									onChangeRowsPerPage={handleChangeRowsPerPage}
-									ActionsComponent={TablePaginationActions}
-								/>
-							</TableRow>
-						</TableFooter>
+						<TableFooter></TableFooter>
 					</Table>
 				</>
 			) : (

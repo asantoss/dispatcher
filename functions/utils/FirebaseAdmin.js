@@ -33,8 +33,10 @@ class FirebaseAdmin {
 			throw error;
 		}
 	};
-	doDeleteUser = (id) => {
-		return this.auth.deleteUser(id);
+	doDeleteUser = (email) => {
+		return this.auth
+			.getUserByEmail(email)
+			.then((user) => this.auth.deleteUser(user.uid));
 	};
 
 	doAddUserToMaster = async (user, masterId) => {

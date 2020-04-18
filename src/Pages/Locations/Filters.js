@@ -54,7 +54,7 @@ export default function Filters({ setState }) {
 	};
 
 	return (
-		<div>
+		<div className='filter'>
 			<TextField
 				placeholder='Search...'
 				variant='outlined'
