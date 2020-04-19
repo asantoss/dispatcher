@@ -1,5 +1,6 @@
 const initialState = {
-	all: [],
+	allLocations: [],
+	filtered: null,
 	currentLocation: null,
 	view: null,
 	loading: false,
@@ -18,17 +19,44 @@ const locationsReducer = (state = initialState, action) => {
 			return {
 				...initialState,
 			};
+		case 'SORT_LOCATIONS':
+			if (state.filtered) {
+				return {
+					...state,
+					filtered: payload,
+				};
+			} else {
+				return {
+					...state,
+					allLocations: payload,
+				};
+			}
 		case 'SET_CURRENT_LOCATION':
 			return {
 				...state,
 				currentLocation: payload,
+			};
+		case 'SET_ALL_LOCATIONS':
+			return {
+				...state,
+				allLocations: payload,
+			};
+		case 'FILTER_LOCATIONS':
+			return {
+				...state,
+				filtered: payload,
+			};
+		case 'CANCEL_FILTERS':
+			return {
+				...state,
+				filtered: null,
 			};
 		case 'FIRED':
 			return {
 				...state,
 				loading: true,
 			};
-		case 'FUFILLED':
+		case 'FULFILLED':
 			return {
 				...state,
 				loading: false,

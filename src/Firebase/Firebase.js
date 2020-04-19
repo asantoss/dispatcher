@@ -32,26 +32,10 @@ class Firebase {
 		return this.auth.createUserWithEmailAndPassword(email, password);
 	};
 
-	doSignInWithEmailAndPassword = async (email, password) => {
-		const authUser = await this.auth.signInWithEmailAndPassword(
-			email,
-			password
-		);
-		if (authUser) {
-			const user = await this.doGetUserByEmail(email);
-			return user;
-		}
-	};
+	doSignInWithEmailAndPassword = (email, password) =>
+		this.auth.signInWithEmailAndPassword(email, password);
 
-	doSignInWithGoogle = async () => {
-		const results = await this.auth.signInWithPopup(this.googleProvider);
-		this.token = results.credential.accessToken;
-		// const user = await this.doGetUserByEmail(results.user.email);
-		// if (!user) {
-		// 	throw new Error('Please check with your admin and request an account!');
-		// }
-		return results;
-	};
+	doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
 	doSignOut = () => this.auth.signOut();
 

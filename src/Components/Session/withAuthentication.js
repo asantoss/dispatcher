@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import AuthUserContext from './context';
 import { FirebaseContext } from '../../Firebase';
 import { useDispatch, useSelector } from 'react-redux';
-
+import * as ACTIONS from '../../constants/actions';
 const AuthUserContextProvider = ({ children }) => {
 	const firebase = useContext(FirebaseContext);
 	const [state, setState] = useState(null);
@@ -16,10 +16,7 @@ const AuthUserContextProvider = ({ children }) => {
 						.doGetUserByEmail(firebaseUser.email)
 						.then((response) => {
 							if (response) {
-								dispatch({
-									type: 'LOGIN',
-									payload: { ...response, isLoggedIn: true },
-								});
+								dispatch(ACTIONS.LOGIN({ ...response, isLoggedIn: true }));
 							}
 							setState({ ...response, isLoggedIn: true });
 						})

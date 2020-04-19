@@ -51,12 +51,7 @@ const SignInFormBase = () => {
 		Auth.signInWithEmail(email, password)
 			.then((user) => {
 				if (user) {
-					setState({ ...INITIAL_STATE });
-					if (history.location?.state?.fromProtectedRoute) {
-						history.goBack();
-					} else {
-						history.push(ROUTES.HOME);
-					}
+					history.push(ROUTES.HOME);
 				}
 			})
 			.catch((error) => setState({ ...state, error: error?.message }));

@@ -2,6 +2,7 @@ const initialState = {
 	email: '',
 	id: '',
 	username: '',
+	location: null,
 	isLoggedIn: false,
 };
 
@@ -16,6 +17,11 @@ const authReducer = (state = initialState, action) => {
 		case 'LOGOUT':
 			return {
 				...initialState,
+			};
+		case 'SET_USER_LOCATION':
+			return {
+				...state,
+				location: payload,
 			};
 		default:
 			return state;

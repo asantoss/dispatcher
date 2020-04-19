@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Route } from 'react-router-dom';
 import AuthUserContext from './context';
 import * as ROLES from '../../constants/roles';
 
@@ -10,21 +10,15 @@ export default function ProtectedRoute({
 }) {
 	const authUser = useContext(AuthUserContext);
 	const rolesAccess = {
-		admin: ['user', 'manager', 'admi'],
-		manager: ['user', 'manager'],
-		user: ['user'],
+		manager: ['manager', 'admin'],
+		user: ['user', 'manager'],
 	};
-	// const history = useHistory();
-	// useEffect(() => {
-	// 	if (!authUser?.isLoggedIn) {
-	// 		history.push('/signin');
-	// 	}
-	// }, [authUser, history]);
+
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				rolesAccess[role].includes(authUser?.role) ||
+				rolesAccess[role]?.includes(authUser?.role) ||
 				authUser?.role === ROLES.ADMIN ? (
 					<Component {...props} />
 				) : (

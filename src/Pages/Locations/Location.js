@@ -6,28 +6,33 @@ import LocationForm from './LocationForm';
 import usePanelBar from '../../Components/shared/PanelBar';
 import { useSelector, useDispatch } from 'react-redux';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
+import * as ACTIONS from '../../constants/actions';
 
 export default function LocationPage() {
+	const tabs = ['Info', 'Terminal', 'Edit'];
 	const { id } = useParams();
-	const [value, PanelBar, PanelTab] = usePanelBar(['Info', 'Terminal', 'Edit']);
+	const [value, PanelBar, Panel] = usePanelBar(tabs);
 
 	const LocationInterface = useContext(LocationContext);
-	const location = useLocation();
+	const { state } = useLocation();
 	const dispatch = useDispatch();
 	const { loading, currentLocation } = useSelector((state) => state.locations);
 
 	useEffect(() => {
-		if (id) {
-			dispatch({ type: 'FIRED' });
+		if (state) {
+			dispatch(ACTIONS.SET_CURRENT_LOCATION(state));
+		} else if (id) {
+			dispatch(ACTIONS.FIRED());
 			LocationInterface.getLocation(id)
 				.then((results) => {
-					dispatch({ type: 'FUFILLED' });
+					dispatch(ACTIONS.FULFILLED());
 					return results;
 				})
-				.then((payload) => dispatch({ type: 'SET_CURRENT_LOCATION', payload }))
-				.catch((e) => dispatch({ type: 'ERROR', payload: e.message }));
+				.then((payload) => dispatch(ACTIONS.SET_CURRENT_LOCATION(payload)))
+				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
 		}
-	}, [location, id, LocationInterface, dispatch]);
+	}, [state, id, LocationInterface, dispatch]);
+
 	return (
 		<LocationPageContainer>
 			<Breadcrumb {...{ name: currentLocation?.name }} />
@@ -36,20 +41,20 @@ export default function LocationPage() {
 			) : (
 				<>
 					<PanelBar />
-					<PanelTab value={value} index={0}>
+					<Panel value={value} index={0}>
 						All Info
-					</PanelTab>
-					<PanelTab value={value} index={1}>
+					</Panel>
+					<Panel value={value} index={1}>
 						"Terminals"
-					</PanelTab>
-					<PanelTab value={value} index={2}>
+					</Panel>
+					<Panel value={value} index={2}>
 						<LocationForm
 							{...{
 								docId: currentLocation?.docId,
 								initialState: currentLocation && initialState(currentLocation),
 							}}
 						/>
-					</PanelTab>
+					</Panel>
 				</>
 			)}
 		</LocationPageContainer>

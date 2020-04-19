@@ -29,10 +29,8 @@ export default function usePanelBar(list) {
 		);
 	}
 
-	function TabPanel(props) {
-		const { children, value, index } = props;
-
+	function Panel({ children, value, index }) {
 		return value === index && children;
 	}
-	return [value, PanelBar, TabPanel];
+	return [value, PanelBar, Panel];
 }

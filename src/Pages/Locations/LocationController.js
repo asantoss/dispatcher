@@ -40,12 +40,16 @@ class LocationInterface {
 			return locationData;
 		}
 	};
-	updateLocation = async (id, data) => {
-		return this.db
+	updateLocation = (id, data) =>
+		this.db
 			.collection(`masters/${this.user.masterId}/locations`)
 			.doc(id)
 			.update(data);
-	};
+	deleteLocation = (id) =>
+		this.db
+			.collection(`masters/${this.user.masterId}/locations`)
+			.doc(id)
+			.delete();
 }
 
 export const LocationContext = createContext();

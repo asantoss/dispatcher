@@ -3,14 +3,10 @@ const FirebaseAdmin = require('./utils/FirebaseAdmin');
 const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
-const { Client } = require('@googlemaps/google-maps-services-js');
+const { geocodeAddress } = require('./utils/googleMaps');
 
 const app = express();
 const admin = new FirebaseAdmin();
-
-const mapsClient = new Client({
-	key: process.env.API_KEY,
-});
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -39,22 +35,15 @@ exports.updateLocation = functions.firestore
 	.document('masters/{masterId}/locations/{locationId}')
 	.onUpdate(async (changes, context) => {
 		const newValue = changes.after.data();
-		const previousValues = changes.before.data();
-		const coordinates = newValue['coordinate'];
-		if (coordinates === previousValues['coordinates']) {
+		// const previousValues = changes.before.data();
+		const coordinates = newValue['coordinates'];
+		const coords = await geocodeAddress(newValue.address, process.env.API_KEY);
+		if (coordinates === coords) {
 			return null;
-		}
-		const response = await mapsClient.geocode({
-			params: { address: newValue.address },
-		});
-
-		if (response.data.results.length) {
-			const coords = response.data.results['geometry']['location'];
-			if (coords) {
-				change.after.ref.set({
-					coordinates: coords,
-				});
-			}
+		} else {
+			changes.after.ref.update({
+				coordinates: coords,
+			});
 		}
 	});
 

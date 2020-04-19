@@ -26,9 +26,9 @@ const NavLink = styled(Link)`
 	}
 `;
 
-const Navigation = (props) => {
+const Navigation = ({ isLoggedIn, ...rest }) => {
 	return (
-		<List {...props}>
+		<List {...rest}>
 			<ListItem button>
 				<ListItemIcon>
 					<HomeOutlined />
@@ -37,33 +37,33 @@ const Navigation = (props) => {
 					Home
 				</NavLink>
 			</ListItem>
-			{props.isLoggedIn && (
+			{isLoggedIn && (
 				<>
-					<ListItem button>
-						<ListItemIcon>
-							<Storefront />
-						</ListItemIcon>
-						<NavLink to={ROUTES.LOCATIONS} exact activeClassName='current-page'>
+					<NavLink to={ROUTES.LOCATIONS} exact activeClassName='current-page'>
+						<ListItem button>
+							<ListItemIcon>
+								<Storefront />
+							</ListItemIcon>
 							Locations
-						</NavLink>
-					</ListItem>
+						</ListItem>
+					</NavLink>
 					<Divider />
-					<ListItem button>
-						<ListItemIcon>
-							<AccountCircleOutlined />
-						</ListItemIcon>
-						<NavLink to={ROUTES.ACCOUNT} exact activeClassName='current-page'>
+					<NavLink to={ROUTES.ACCOUNT} exact activeClassName='current-page'>
+						<ListItem button>
+							<ListItemIcon>
+								<AccountCircleOutlined />
+							</ListItemIcon>
 							Account
-						</NavLink>
-					</ListItem>
-					<ListItem button>
-						<ListItemIcon>
-							<SupervisorAccountOutlined />
-						</ListItemIcon>
-						<NavLink to={ROUTES.ADMIN} exact activeClassName='current-page'>
+						</ListItem>
+					</NavLink>
+					<NavLink to={ROUTES.ADMIN} exact activeClassName='current-page'>
+						<ListItem button>
+							<ListItemIcon>
+								<SupervisorAccountOutlined />
+							</ListItemIcon>
 							Admin
-						</NavLink>
-					</ListItem>
+						</ListItem>
+					</NavLink>
 				</>
 			)}
 		</List>

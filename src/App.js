@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as ROLES from './constants/roles';
 import { Route, Switch } from 'react-router-dom';
 import { AuthUserContextProvider } from './Components/Session';
@@ -17,7 +17,26 @@ import * as ROUTES from './constants/routes';
 import ProtectedRoute from './Components/Session/ProtectedRoute';
 import AuthController from './Pages/Authentication/AuthController';
 import LocationController from './Pages/Locations/LocationController';
+import { useDispatch } from 'react-redux';
+import * as ACTIONS from './constants/actions';
+
 const App = () => {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		const options = {
+			enableHighAccuracy: true,
+			timeout: 5000,
+			maximumAge: 0,
+		};
+		navigator.geolocation.getCurrentPosition(
+			(pos) => {
+				const { latitude, longitude } = pos.coords;
+				dispatch(ACTIONS.SET_USER_LOCATION({ latitude, longitude }));
+			},
+			null,
+			options
+		);
+	}, [dispatch]);
 	return (
 		<AuthUserContextProvider>
 			<AuthController>

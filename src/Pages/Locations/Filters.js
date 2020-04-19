@@ -1,56 +1,83 @@
-import React, { createRef, useContext, useState, useEffect } from 'react';
-import { TextField, Select, MenuItem } from '@material-ui/core';
-import { LocationContext } from './LocationController';
+import React, { useRef, useState } from 'react';
+import {
+	TextField,
+	Select,
+	MenuItem,
+	FormControl,
+	InputLabel,
+} from '@material-ui/core';
+import * as ACTIONS from '../../constants/actions';
 import { debounce } from 'lodash';
-export default function Filters({ setState }) {
-	let debounced;
+import { useDispatch, useSelector } from 'react-redux';
+import { Filter } from '@material-ui/icons';
+
+export default function Filters() {
+	let debounced = useRef(null);
 	const [filter, setFilter] = useState({
-		search: '',
-		sort: { key: 'name', type: 'ASC' },
+		key: 'name',
+		type: 'ASC',
 	});
-	const allLocations = createRef();
-	const LocationController = useContext(LocationContext);
-	const filterFunction = () => {
-		const {
-			search,
-			sort: { type, key },
-		} = filter;
-		const { locations } = LocationController;
-		const filtered = locations
-			.filter((element) => {
-				const elementValues = Object.values(element).map((e) =>
-					e.toLowerCase()
-				);
+
+	const dispatch = useDispatch();
+
+	const { allLocations, filtered } = useSelector(({ locations }) => locations);
+
+	const filterFunction = (search) => {
+		if (search) {
+			const filtered = allLocations.filter((element) => {
+				const elementValues = Object.values(element).map((e) => {
+					return e.toString().toLowerCase();
+				});
 				return Boolean(elementValues.filter((e) => e.includes(search)).length);
-			})
-			.sort((a, b) => {
-				if (type === 'ASC') {
-					if (b[key] > a[key]) return 1;
-					return -1;
-				}
-				if (type === 'DESC') {
-					if (b[key] < a[key]) return 1;
-					return -1;
-				}
 			});
-		if (filtered.length) {
-			setState((s) => ({ ...s, locations: filtered }));
+			return dispatch(ACTIONS.FILTER_LOCATIONS(filtered));
 		} else {
-			setState((s) => ({ ...s, locations: allLocations.current }));
+			dispatch(ACTIONS.CANCEL_FILTERS());
 		}
 	};
+
+	const dispatchSort = ({ type, key }) => {
+		let sorted = [];
+		if (filtered) {
+			sorted = [...filtered].sort((a, b) => {
+				if (type === 'ASC') {
+					if (b[key] > a[key]) return -1;
+					return 1;
+				}
+				if (type === 'DESC') {
+					if (b[key] < a[key]) return -1;
+					return 1;
+				}
+			});
+			dispatch(ACTIONS.SORT_LOCATIONS(sorted));
+		} else {
+			sorted = [...allLocations].sort((a, b) => {
+				if (type === 'ASC') {
+					if (b[key] > a[key]) return -1;
+					return 1;
+				}
+				if (type === 'DESC') {
+					if (b[key] < a[key]) return -1;
+					return 1;
+				}
+			});
+			dispatch(ACTIONS.SORT_LOCATIONS(sorted));
+		}
+	};
+
 	const handleSort = (e) => {
 		const input = e.target.name;
 		const value = e.target.value;
-		filterFunction();
-		setFilter((s) => ({ ...s, sort: { ...s.sort, [input]: value } }));
+		setFilter((s) => ({ ...s, [input]: value }));
+		dispatchSort({ ...filter, [input]: value });
 	};
+
 	const handleSearch = (e) => {
-		setFilter({ ...filter, search: e.target.value.toLowerCase() });
-		if (!debounced) {
-			debounced = debounce(filterFunction, 1000);
+		const search = e.target.value.toLowerCase();
+		if (!debounced.current) {
+			debounced.current = debounce(filterFunction, 500);
 		}
-		debounced();
+		debounced.current(search);
 	};
 
 	return (
@@ -60,24 +87,31 @@ export default function Filters({ setState }) {
 				variant='outlined'
 				onChange={handleSearch}
 			/>
-			<Select
-				name='key'
-				variant='outlined'
-				onChange={handleSort}
-				defaultValue='name'
-				label='Sort'>
-				<MenuItem value='name'>Name</MenuItem>
-				<MenuItem value='address'>addres</MenuItem>
-			</Select>
-			<Select
-				onChange={handleSort}
-				name='type'
-				variant='outlined'
-				defaultValue='ASC'
-				label='Order'>
-				<MenuItem value='ASC'>ASC</MenuItem>
-				<MenuItem value='DESC'>DESC</MenuItem>
-			</Select>
+			<FormControl>
+				<InputLabel htmlFor='key'>Sort by</InputLabel>
+				<Select
+					name='key'
+					id='key'
+					variant='outlined'
+					onChange={handleSort}
+					defaultValue='name'>
+					<MenuItem value='name'>Name</MenuItem>
+					<MenuItem value='city'>City</MenuItem>
+					<MenuItem value='terminals'>Terminals</MenuItem>
+				</Select>
+			</FormControl>
+			<FormControl>
+				<InputLabel htmlFor='order'>Order</InputLabel>
+				<Select
+					onChange={handleSort}
+					id='order'
+					name='type'
+					variant='outlined'
+					defaultValue='ASC'>
+					<MenuItem value='ASC'>ASC</MenuItem>
+					<MenuItem value='DESC'>DESC</MenuItem>
+				</Select>
+			</FormControl>
 		</div>
 	);
 }

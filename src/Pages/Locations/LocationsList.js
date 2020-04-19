@@ -3,6 +3,7 @@ import React, { useEffect, useContext } from 'react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { LocationContext } from './LocationController';
+import { useSelector, useDispatch } from 'react-redux';
 import Actions from './Actions';
 import {
 	Table,
@@ -24,27 +25,41 @@ import {
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import Filters from './Filters';
+import * as ACTIONS from '../../constants/actions';
 
 export default function LocationsList() {
+	const { allLocations, loading, error, filtered } = useSelector(
+		({ locations }) => locations
+	);
+	const dispatch = useDispatch();
 	const LocationController = useContext(LocationContext);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 
-	const [state, setState] = useState({
-		loading: false,
-		locations: [],
-		error: null,
-	});
+	const [state, setState] = useState([]);
+
 	useEffect(() => {
-		const { locations } = LocationController;
-		if (!locations.length) {
+		if (!allLocations.length) {
+			dispatch(ACTIONS.FIRED());
 			LocationController.getMasterLocations()
 				.then((locations) => {
-					setState((s) => ({ loading: false, locations, error: null }));
+					dispatch(ACTIONS.FULFILLED());
+					return locations;
 				})
-				.catch((e) => setState((s) => ({ ...s, error: e.message })));
+				.then((payload) => {
+					dispatch(ACTIONS.SET_ALL_LOCATIONS(payload));
+				})
+				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
 		}
-	}, [setState, LocationController]);
+		if (filtered?.length) {
+			setState(filtered);
+		} else {
+			setState(allLocations);
+		}
+		return () => {
+			setState(null);
+		};
+	}, [dispatch, LocationController, allLocations, setState, filtered]);
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
@@ -54,14 +69,12 @@ export default function LocationsList() {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
 	};
-
-	const { loading, locations, error } = state;
 	return (
 		<LocationList>
 			{error && <p>{error}</p>}
 			{loading ? (
-				<p>Loading....</p>
-			) : locations?.length ? (
+				<div className='spinner' />
+			) : state?.length ? (
 				<>
 					<Filters {...{ setState }} />
 					<Table stickyHeader className='table'>
@@ -70,7 +83,7 @@ export default function LocationsList() {
 								<TablePagination
 									className='footer'
 									rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
-									count={locations.length}
+									count={state.length}
 									rowsPerPage={rowsPerPage}
 									page={page}
 									onChangePage={handleChangePage}
@@ -79,7 +92,6 @@ export default function LocationsList() {
 								/>
 							</TableRow>
 							<TableRow>
-								<TableCell component='th'>View</TableCell>
 								<TableCell component='th'>License</TableCell>
 								<TableCell component='th'>Name</TableCell>
 								<TableCell component='th'>City</TableCell>
@@ -88,33 +100,19 @@ export default function LocationsList() {
 						</TableHead>
 						<TableBody>
 							{(rowsPerPage > 0
-								? locations?.slice(
+								? state?.slice(
 										page * rowsPerPage,
 										page * rowsPerPage + rowsPerPage
 								  )
-								: locations
-							)?.map((location) => {
+								: state
+							)?.map((location, index) => {
 								return (
 									<TableRow key={location?.docId}>
-										<TableCell>
-											<Link
-												to={{
-													pathname: `location/${location?.docId}`,
-													state: location,
-												}}>
-												View
-											</Link>
-										</TableCell>
 										<TableCell>{location?.id}</TableCell>
 										<TableCell>{location?.name}</TableCell>
 										<TableCell>{location?.city}</TableCell>
-										{/* <TableCell>
-													<p>
-														{location?.address},{location?.city}
-													</p>
-												</TableCell> */}
 										<TableCell>
-											<Actions {...location} />
+											<Actions {...{ location, index }} />
 										</TableCell>
 									</TableRow>
 								);

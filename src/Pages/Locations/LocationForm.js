@@ -11,6 +11,7 @@ import { useFormik } from 'formik';
 import styled from 'styled-components';
 import { LocationContext } from './LocationController';
 import { useDispatch } from 'react-redux';
+import * as ACTIONS from '../../constants/actions';
 
 const USStates = [
 	'AL',
@@ -119,15 +120,14 @@ export default function LocationForm({ docId, initialState }) {
 			zipCode: '',
 		},
 		onSubmit: (values) => {
-			debugger;
-			dispatch({ type: 'FIRED' });
+			dispatch(ACTIONS.FIRED);
 			controller
 				.updateLocation(docId, values)
 				.then(() => {
-					dispatch({ type: 'FUFILLED' });
+					dispatch(ACTIONS.FULFILLED);
 				})
-				.then(() => dispatch({ type: 'SET_CURRENT_LOCATION', payload: values }))
-				.catch((e) => dispatch({ type: 'ERROR', payload: e.message }));
+				.then(() => dispatch(ACTIONS.SET_CURRENT_LOCATION(values)))
+				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
 		},
 	});
 	return (
