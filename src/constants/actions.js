@@ -13,6 +13,9 @@ export const SORT_LOCATIONS = (payload) => {
 export const SET_CURRENT_LOCATION = (payload) => {
 	return { type: 'SET_CURRENT_LOCATION', payload };
 };
+export const UPDATE_LOCATION = (payload) => {
+	return { type: 'UPDATE_LOCATION', payload };
+};
 export const SET_ALL_LOCATIONS = (payload) => {
 	return { type: 'SET_ALL_LOCATIONS', payload };
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, Tab, Tabs } from '@material-ui/core';
 
 function a11yProps(index) {
@@ -8,11 +8,16 @@ function a11yProps(index) {
 	};
 }
 
-export default function usePanelBar(list) {
+export default function usePanelBar(list, initialPanel) {
 	const [value, setValue] = useState(0);
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
+	useEffect(() => {
+		if (initialPanel) {
+			setValue(initialPanel);
+		}
+	}, [setValue, initialPanel]);
 	function PanelBar() {
 		return (
 			<AppBar

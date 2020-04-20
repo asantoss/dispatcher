@@ -3,20 +3,21 @@
 	"description": "Cloud Functions for Firebase",
 	"scripts": {
 		"lint": "eslint .",
-		"serve": "firebase emulators:start --only functions",
+		"serve": "firebase emulators:start --import=seeds/ --only functions,firestore",
 		"shell": "firebase functions:shell",
 		"start": "npm run shell",
 		"deploy": "firebase deploy --only functions",
 		"logs": "firebase functions:log"
 	},
 	"engines": {
-		"node": "13"
+		"node": "12"
 	},
 	"dependencies": {
 		"@googlemaps/google-maps-services-js": "^2.5.5",
 		"body-parser": "^1.19.0",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
+		"es-abstract": "^1.17.5",
 		"express": "^4.17.1",
 		"firebase-admin": "^8.10.0",
 		"firebase-functions": "^3.3.0"

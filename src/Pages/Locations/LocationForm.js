@@ -6,12 +6,15 @@ import {
 	Button,
 	InputLabel,
 	FormControl,
+	Input,
 } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
 import { LocationContext } from './LocationController';
 import { useDispatch } from 'react-redux';
 import * as ACTIONS from '../../constants/actions';
+import { useConfirmModal } from '../../shared/Modal';
+import { useHistory } from 'react-router-dom';
 
 const USStates = [
 	'AL',
@@ -24,11 +27,8 @@ const USStates = [
 	'CT',
 	'DE',
 	'DC',
-	'FM',
 	'FL',
 	'GA',
-	'GU',
-	'HI',
 	'ID',
 	'IL',
 	'IN',
@@ -37,11 +37,9 @@ const USStates = [
 	'KY',
 	'LA',
 	'ME',
-	'MH',
 	'MD',
 	'MA',
 	'MI',
-	'MN',
 	'MS',
 	'MO',
 	'MT',
@@ -52,22 +50,17 @@ const USStates = [
 	'NM',
 	'NY',
 	'NC',
-	'ND',
-	'MP',
 	'OH',
 	'OK',
 	'OR',
-	'PW',
 	'PA',
 	'PR',
 	'RI',
 	'SC',
-	'SD',
 	'TN',
 	'TX',
 	'UT',
 	'VT',
-	'VI',
 	'VA',
 	'WA',
 	'WV',
@@ -100,8 +93,17 @@ const Form = styled.form`
 		justify-content: space-between;
 	}
 	.select {
-		[role='button'] {
+		/* [role='button'] {
 			padding: 14.5px 32px 14.5px 14px;
+		} */
+		min-width: 100px;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		label {
+			color: rgba(0, 0, 0, 0.54);
+			margin-bottom: -22px;
+			transform: scale(0.75);
 		}
 	}
 `;
@@ -109,6 +111,7 @@ const Form = styled.form`
 export default function LocationForm({ docId, initialState }) {
 	const controller = useContext(LocationContext);
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
 		initialValues: { ...initialState } || {
 			name: '',
@@ -120,18 +123,26 @@ export default function LocationForm({ docId, initialState }) {
 			zipCode: '',
 		},
 		onSubmit: (values) => {
-			dispatch(ACTIONS.FIRED);
+			dispatch(ACTIONS.FIRED());
 			controller
 				.updateLocation(docId, values)
 				.then(() => {
-					dispatch(ACTIONS.FULFILLED);
+					dispatch(ACTIONS.FULFILLED());
 				})
-				.then(() => dispatch(ACTIONS.SET_CURRENT_LOCATION(values)))
+				.then(() => {
+					history.replace({ state: { location: { ...values, docId } } });
+					dispatch(ACTIONS.UPDATE_LOCATION({ ...values, docId }));
+				})
 				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
 		},
 	});
+	const [openModal, Modal] = useConfirmModal(handleSubmit);
 	return (
-		<Form onSubmit={handleSubmit}>
+		<Form
+			onSubmit={(e) => {
+				e.preventDefault();
+				openModal();
+			}}>
 			<div id='storeInfo'>
 				<TextField
 					required
@@ -151,25 +162,24 @@ export default function LocationForm({ docId, initialState }) {
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
-				<FormControl variant='outlined' style={{ minWidth: 120 }}>
-					<InputLabel htmlFor='terminal'>Terminals</InputLabel>
+				<div className='select'>
+					<label htmlFor='terminal'>Terminals</label>
 					<Select
+						native
 						required
-						className='select'
+						variant='outlined'
 						labelId='terminal'
 						name='terminals'
-						label='Terminals'
 						value={values.terminals}
 						onChange={handleChange}
 						onBlur={handleBlur}>
-						<MenuItem></MenuItem>
 						{Array.from({ length: 9 }, (x, i) => (x = i + 1)).map((n, i) => (
-							<MenuItem value={n} key={i}>
+							<option value={n.toString()} key={i}>
 								{n}
-							</MenuItem>
+							</option>
 						))}
 					</Select>
-				</FormControl>
+				</div>
 			</div>
 			<div id='address'>
 				<TextField
@@ -193,7 +203,6 @@ export default function LocationForm({ docId, initialState }) {
 					onBlur={handleBlur}
 				/>
 				<TextField
-					required
 					variant='outlined'
 					value={values.zipCode}
 					name='zipCode'
@@ -202,29 +211,33 @@ export default function LocationForm({ docId, initialState }) {
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
-				<FormControl variant='outlined' style={{ minWidth: 90 }}>
-					<InputLabel htmlFor='state'>State</InputLabel>
+				<div variant='outlined' className='select'>
+					<label htmlFor='state'>State</label>
 					<Select
+						variant='outlined'
+						native
 						required
-						className='select'
 						name='state'
 						labelId='state'
 						value={values.state}
 						label='State'
 						onChange={handleChange}
 						onBlur={handleBlur}>
-						<MenuItem></MenuItem>
+						<option aria-label='None' value=''></option>
 						{USStates.map((state, i) => (
-							<MenuItem value={state} key={i}>
+							<option value={state} key={i}>
 								{state}
-							</MenuItem>
+							</option>
 						))}
 					</Select>
-				</FormControl>
+				</div>
 			</div>
 			<Button variant='outlined' type='submit'>
 				Submit
 			</Button>
+			<Modal>
+				<p>Are you sure you want to update this?</p>
+			</Modal>
 		</Form>
 	);
 }

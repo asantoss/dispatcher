@@ -201,7 +201,7 @@ const LocationList = styled(TableContainer)`
 			text-overflow: ellipsis;
 			overflow: hidden;
 			white-space: nowrap;
-			max-width: 75px;
+			max-width: 25%;
 		}
 	}
 `;

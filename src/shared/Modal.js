@@ -63,8 +63,8 @@ export default function Modal({ children }) {
 
 export function useConfirmModal(successCB) {
 	const [isModalOpen, setModalOpen] = useState(false);
-
-	function ConfirmModal() {
+	const openModal = () => setModalOpen(true);
+	function ConfirmModal({ children }) {
 		return (
 			isModalOpen && (
 				<Modal>
@@ -76,9 +76,13 @@ export function useConfirmModal(successCB) {
 							}
 						}}>
 						<div className='confirm'>
-							<p>Are you sure you want to delete this?</p>
+							{children}
 							<div className='buttons'>
-								<Button variant='contained' onClick={successCB} id='yes'>
+								<Button
+									variant='contained'
+									onClick={successCB}
+									id='yes'
+									type='submit'>
 									Yes
 								</Button>
 								<Button onClick={() => setModalOpen(false)} variant='contained'>
@@ -91,5 +95,5 @@ export function useConfirmModal(successCB) {
 			)
 		);
 	}
-	return [setModalOpen, ConfirmModal];
+	return [openModal, ConfirmModal];
 }

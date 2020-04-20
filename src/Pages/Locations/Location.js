@@ -9,18 +9,21 @@ import Breadcrumb from '../../Components/shared/Breadcrumb';
 import * as ACTIONS from '../../constants/actions';
 
 export default function LocationPage() {
-	const tabs = ['Info', 'Terminal', 'Edit'];
+	const tabs = ['Info', 'Terminals', 'Edit'];
 	const { id } = useParams();
-	const [value, PanelBar, Panel] = usePanelBar(tabs);
-
-	const LocationInterface = useContext(LocationContext);
 	const { state } = useLocation();
+	const [value, PanelBar, Panel] = usePanelBar(
+		tabs,
+		state?.panel && tabs.indexOf(state?.panel)
+	);
+	const LocationInterface = useContext(LocationContext);
 	const dispatch = useDispatch();
+
 	const { loading, currentLocation } = useSelector((state) => state.locations);
 
 	useEffect(() => {
 		if (state) {
-			dispatch(ACTIONS.SET_CURRENT_LOCATION(state));
+			dispatch(ACTIONS.SET_CURRENT_LOCATION(state.location));
 		} else if (id) {
 			dispatch(ACTIONS.FIRED());
 			LocationInterface.getLocation(id)
@@ -74,7 +77,7 @@ function initialState(state) {
 	return {
 		name: state?.name || '',
 		state: state?.state || '',
-		terminals: state?.terminals || ``,
+		terminals: state?.terminals || 0,
 		address: state?.address || '',
 		city: state?.city || '',
 		id: state?.id || '',

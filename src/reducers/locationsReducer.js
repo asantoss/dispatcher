@@ -31,6 +31,19 @@ const locationsReducer = (state = initialState, action) => {
 					allLocations: payload,
 				};
 			}
+		case 'UPDATE_LOCATION':
+			const idx = state.allLocations.findIndex(
+				(e) => e?.docId === payload?.docId
+			);
+			return {
+				...state,
+				currentLocation: payload,
+				allLocations: [
+					...state.allLocations.slice(0, idx),
+					payload,
+					...state.allLocations.slice(idx + 1),
+				],
+			};
 		case 'SET_CURRENT_LOCATION':
 			return {
 				...state,

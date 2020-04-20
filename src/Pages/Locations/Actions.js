@@ -6,6 +6,8 @@ import {
 	DeleteOutline,
 	DirectionsOutlined,
 	VisibilityOutlined,
+	GamesOutlined,
+	EditOutlined,
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -80,10 +82,33 @@ export default function Actions({ location, index }) {
 				)}
 				<MenuItem>
 					<Link
+						alt='Link to edit panel'
 						style={{ color: 'inherit' }}
 						to={{
 							pathname: `location/${location?.docId}`,
-							state: location,
+							state: { location, panel: 'Edit' },
+						}}>
+						<EditOutlined />
+					</Link>
+				</MenuItem>
+				<MenuItem>
+					<Link
+						alt='Link to terminals panel'
+						style={{ color: 'inherit' }}
+						to={{
+							pathname: `location/${location?.docId}`,
+							state: { location, panel: 'Terminals' },
+						}}>
+						<GamesOutlined />
+					</Link>
+				</MenuItem>
+				<MenuItem>
+					<Link
+						alt='Link to Info Panel'
+						style={{ color: 'inherit' }}
+						to={{
+							pathname: `location/${location?.docId}`,
+							state: { location, panel: 'Info' },
 						}}>
 						<VisibilityOutlined />
 					</Link>
