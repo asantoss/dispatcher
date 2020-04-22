@@ -9,7 +9,6 @@ import {
 import * as ACTIONS from '../../constants/actions';
 import { debounce } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
-import { Filter } from '@material-ui/icons';
 
 export default function Filters() {
 	let debounced = useRef(null);
@@ -43,8 +42,7 @@ export default function Filters() {
 				if (type === 'ASC') {
 					if (b[key] > a[key]) return -1;
 					return 1;
-				}
-				if (type === 'DESC') {
+				} else {
 					if (b[key] < a[key]) return -1;
 					return 1;
 				}

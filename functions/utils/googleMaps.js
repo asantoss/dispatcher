@@ -6,7 +6,8 @@ async function geocodeAddress(address, key) {
 		.geocode({
 			params: { address, key },
 		})
-		.catch((e) => e);
+		.catch((e) => console.log(e));
+	console.log(response.data);
 	const coordinates = response.data.results[0].geometry.location;
 	const place_id = response.data.results[0]['place_id'];
 	return { ...coordinates, place_id };

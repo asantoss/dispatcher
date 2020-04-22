@@ -25,6 +25,7 @@ export default function LocationPage() {
 		if (state) {
 			dispatch(ACTIONS.SET_CURRENT_LOCATION(state.location));
 		} else if (id) {
+			debugger;
 			dispatch(ACTIONS.FIRED());
 			LocationInterface.getLocation(id)
 				.then((results) => {
@@ -37,7 +38,7 @@ export default function LocationPage() {
 	}, [state, id, LocationInterface, dispatch]);
 
 	return (
-		<LocationPageContainer>
+		<Container>
 			<Breadcrumb {...{ name: currentLocation?.name }} />
 			{loading ? (
 				<div className='spinner'></div>
@@ -60,11 +61,11 @@ export default function LocationPage() {
 					</Panel>
 				</>
 			)}
-		</LocationPageContainer>
+		</Container>
 	);
 }
 
-const LocationPageContainer = styled.div`
+const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -80,7 +81,7 @@ function initialState(state) {
 		terminals: state?.terminals || 0,
 		address: state?.address || '',
 		city: state?.city || '',
-		id: state?.id || '',
+		license: state?.license || '',
 		zipCode: state?.zipCode || '',
 	};
 }

@@ -36,7 +36,7 @@ export default function LocationsPage({}) {
 					All
 				</Button>
 			</div> */}
-			{state ? <LocationsList /> : <LocationForm />}
+			<LocationsList />
 		</LocationsPageContainer>
 	);
 }

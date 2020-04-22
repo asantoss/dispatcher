@@ -1,32 +1,20 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { useHistory, useLocation, Redirect } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import { SignUpLink } from './SignUp';
 import { AuthPageContext } from './AuthController';
 import { PasswordForgetLink } from '../../Components/PasswordForget';
-import * as ROUTES from '../../constants/routes';
 import googleNormal from '../../assets/btn_google_signin_dark_normal_web.png';
 import googlePressed from '../../assets/btn_google_signin_dark_pressed_web.png';
 import { TextField, Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { Form } from './utils';
-import { useSelector } from 'react-redux';
-import Modal from '../../hooks/Modal';
-import SelectMaster from './SelectMaster';
 
 const SignInPage = () => {
-	const user = useSelector(({ user }) => user);
-
 	return (
 		<div style={{ textAlign: 'center' }}>
 			<h3>Sign In</h3>
 			<SignInForm />
 			<PasswordForgetLink />
 			<SignUpLink />(
-			{user?.isLoggedIn && !user?.currentMaster && (
-				<Modal>
-					<SelectMaster />
-				</Modal>
-			)}
 		</div>
 	);
 };

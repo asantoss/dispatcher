@@ -65,15 +65,17 @@ class Firebase {
 			});
 	};
 	doGetUserByEmail = async (email) => {
-		const usersQuery = await this.db
-			.collection('users')
-			.where('email', '==', email)
-			.get();
-		if (usersQuery.docs.length) {
-			this.user = {
-				...usersQuery.docs[0].data(),
-				id: usersQuery.docs[0].id,
-			};
+		if (!this?.user) {
+			const usersQuery = await this.db
+				.collection('users')
+				.where('email', '==', email)
+				.get();
+			if (usersQuery.docs.length) {
+				this.user = {
+					...usersQuery.docs[0].data(),
+					id: usersQuery.docs[0].id,
+				};
+			}
 			return this.user;
 		} else {
 			throw new Error('No user found please check with your administrator.');
@@ -89,15 +91,14 @@ class Firebase {
 				...usersQuery.docs[0].data(),
 				id: usersQuery.docs[0].id,
 			};
-			const masters = await Promise.all(
+			this.masters = await Promise.all(
 				this.user.masters.map(async ({ master, role }) => {
 					const { path, id } = master;
 					master = await (await this.db.doc(master.path).get()).data();
 					return { master: { ...master, path, id }, role };
 				})
 			);
-			this.masters = masters;
-			return { ...this.user, masters };
+			return this.masters;
 		} else {
 			throw new Error('No user found please check with your administrator.');
 		}
@@ -122,6 +123,32 @@ class Firebase {
 				},
 			])
 			.onSnapshot(callback);
+	};
+	getMasterTerminals = async (masterPath) => {
+		const terminalsSnapshot = await this.db
+			.collection(masterPath + '/terminals')
+			.get()
+			.catch((e) => e);
+		if (terminalsSnapshot) {
+			const terminals = [];
+			await terminalsSnapshot.forEach((doc) => {
+				const terminal = doc.data();
+				terminals.push({ ...terminal, docId: doc.id });
+			});
+			return await Promise.all(
+				terminals.map(async (terminal) => {
+					const location = await (
+						await this.db.doc(terminal.location.path).get()
+					).data();
+					terminal.location = {
+						...location,
+						path: terminal.location.path,
+						id: terminal.location.id,
+					};
+					return terminal;
+				})
+			);
+		}
 	};
 	addUserToMaster = async (values, masterId) => {
 		const addUser = await this.functions.httpsCallable('addUserToMaster');

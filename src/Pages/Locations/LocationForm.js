@@ -1,13 +1,5 @@
 import React, { useContext } from 'react';
-import {
-	TextField,
-	Select,
-	MenuItem,
-	Button,
-	InputLabel,
-	FormControl,
-	Input,
-} from '@material-ui/core';
+import { TextField, Select, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
 import { LocationContext } from './LocationController';
@@ -113,13 +105,13 @@ export default function LocationForm({ docId, initialState }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
-		initialValues: { ...initialState } || {
+		initialValues: initialState || {
 			name: '',
 			state: '',
 			terminals: ``,
 			address: '',
 			city: '',
-			id: '',
+			license: '',
 			zipCode: '',
 		},
 		onSubmit: (values) => {
@@ -147,9 +139,9 @@ export default function LocationForm({ docId, initialState }) {
 				<TextField
 					required
 					variant='outlined'
-					name='id'
+					name='license'
 					label='License No.'
-					value={values.id}
+					value={values.license}
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>

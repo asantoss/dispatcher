@@ -5,7 +5,6 @@ const express = require('express');
 const cors = require('cors');
 const { geocodeAddress } = require('./utils/googleMaps');
 const FieldValue = require('firebase-admin').firestore.FieldValue;
-const GeoPoint = require('firebase-admin').firestore.GeoPoint;
 const app = express();
 const admin = new FirebaseAdmin();
 
@@ -37,7 +36,7 @@ exports.updateLocation = functions.firestore
 				process.env.API_KEY
 			);
 			return changes.after.ref.update({
-				coordinates: new GeoPoint(coors.lat, coords.lng),
+				coordinates: { ...coords },
 			});
 		} else {
 			return null;

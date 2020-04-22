@@ -14,6 +14,7 @@ import Navigation from './Navigation';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../../constants/routes';
 import { FirebaseContext } from '../../../Firebase';
+import AuthMenu from './AuthMenu';
 
 const NavBarContainer = styled.div`
 	width: 100%;
@@ -46,7 +47,7 @@ const NavBarContainer = styled.div`
 
 export default function NavBar() {
 	const firebase = useContext(FirebaseContext);
-	const { isLoggedIn } = useSelector(({ user }) => user);
+	const { isLoggedIn, ...user } = useSelector(({ user }) => user);
 	const dispatch = useDispatch();
 	const [state, setState] = useState(false);
 
@@ -76,9 +77,7 @@ export default function NavBar() {
 					Dispatcher
 				</Typography>
 				{isLoggedIn ? (
-					<Button color='inherit' onClick={handleSignOut}>
-						Sign Out
-					</Button>
+					<AuthMenu {...{ user, handleSignOut }} />
 				) : (
 					<Button color='inherit'>
 						<Link to={ROUTES.SIGN_IN}>Sign In</Link>

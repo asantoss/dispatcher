@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
-import AuthUserContext from './context';
 import * as ROLES from '../../constants/roles';
 import { useSelector } from 'react-redux';
 

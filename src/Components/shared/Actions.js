@@ -12,7 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import * as ROLES from '../../constants/roles';
-import { LocationContext } from './LocationController';
+import { LocationContext } from '../../Pages/Locations/LocationController';
 import { useConfirmModal } from '../../hooks/Modal';
 import * as ACTIONS from '../../constants/actions';
 
@@ -23,14 +23,13 @@ const ActionsContainer = styled.div`
 	}
 `;
 
-export default function Actions({ location, index }) {
+export default function Actions({ item }) {
 	const [anchor, setAnchor] = useState(null);
 	const open = Boolean(anchor);
 
 	const { user, locations } = useSelector((state) => state);
 	const dispatch = useDispatch();
 	const LocationController = useContext(LocationContext);
-
 	const handleDelete = (id, index) => {
 		setModalOpen(false);
 		dispatch(ACTIONS.FIRED());
@@ -40,20 +39,20 @@ export default function Actions({ location, index }) {
 				if (locations.filtered?.length) {
 					dispatch(
 						ACTIONS.FILTER_LOCATIONS(
-							locations.filtered.filter((e) => e?.docId !== location?.docId)
+							locations.filtered.filter((e) => e?.docId !== item?.docId)
 						)
 					);
 				} else {
 					dispatch(
 						ACTIONS.SET_ALL_LOCATIONS(
-							locations.allLocations.filter((e) => e?.docId !== location?.docId)
+							locations.allLocations.filter((e) => e?.docId !== item?.docId)
 						)
 					);
 				}
 			});
 	};
 	const [setModalOpen, ConfirmModal] = useConfirmModal(() =>
-		handleDelete(location?.docId)
+		handleDelete(item?.docId)
 	);
 	return (
 		<ActionsContainer>
@@ -69,13 +68,13 @@ export default function Actions({ location, index }) {
 				open={open}
 				keepMounted
 				onClose={() => setAnchor(null)}>
-				{location?.coordinates && (
+				{item?.coordinates && (
 					<MenuItem
-						onClick={() => mapsOpener(location?.coordinates, user?.location)}>
+						onClick={() => mapsOpener(item?.coordinates, user?.location)}>
 						<DirectionsOutlined />
 					</MenuItem>
 				)}
-				{user.role === ROLES.ADMIN && (
+				{user?.currentMaster?.role === ROLES.ADMIN && (
 					<MenuItem onClick={() => setModalOpen(true)}>
 						<DeleteOutline />
 					</MenuItem>
@@ -85,8 +84,8 @@ export default function Actions({ location, index }) {
 						alt='Link to edit panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `location/${location?.docId}`,
-							state: { location, panel: 'Edit' },
+							pathname: `location/${item?.docId}`,
+							state: { location: item, panel: 'Edit' },
 						}}>
 						<EditOutlined />
 					</Link>
@@ -96,8 +95,8 @@ export default function Actions({ location, index }) {
 						alt='Link to terminals panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `location/${location?.docId}`,
-							state: { location, panel: 'Terminals' },
+							pathname: `location/${item?.docId}`,
+							state: { location: item, panel: 'Terminals' },
 						}}>
 						<GamesOutlined />
 					</Link>
@@ -107,14 +106,16 @@ export default function Actions({ location, index }) {
 						alt='Link to Info Panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `location/${location?.docId}`,
-							state: { location, panel: 'Info' },
+							pathname: `location/${item?.docId}`,
+							state: { location: item, panel: 'Info' },
 						}}>
 						<VisibilityOutlined />
 					</Link>
 				</MenuItem>
 			</Menu>
-			<ConfirmModal />
+			<ConfirmModal>
+				<p>Are you sure you want to delete this location?</p>
+			</ConfirmModal>
 		</ActionsContainer>
 	);
 }

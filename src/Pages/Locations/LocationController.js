@@ -17,16 +17,14 @@ class LocationInterface {
 			});
 		if (mastersSnapshot) {
 			const locations = [];
-			await mastersSnapshot.forEach((doc) =>
-				locations.push({ ...doc.data(), docId: doc.id })
-			);
+			await mastersSnapshot.forEach((doc) => {
+				return locations.push({ ...doc.data(), docId: doc.id });
+			});
 			this.locations = locations.sort((a, b) =>
 				a['name'] > b['name'] ? 1 : -1
 			);
 			return this.locations;
 		}
-
-		return this.locations;
 	};
 	getLocation = async (id) => {
 		const location = await this.db

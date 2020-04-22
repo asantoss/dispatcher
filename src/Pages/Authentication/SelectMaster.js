@@ -9,6 +9,7 @@ import {
 	ListItemText,
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import * as ACTIONS from '../../constants/actions';
 
 const MasterContainer = styled.div`
 	font-size: 1.2em;
@@ -40,25 +41,32 @@ export default function SelectMaster() {
 	const { masters } = user;
 	const handleClick = (item) => {
 		const { master, role } = item;
-		dispatch({ type: 'SET_USER_MASTER', payload: { ...master, role } });
+		dispatch(ACTIONS.SET_USER_MASTER({ ...master, role }));
 		history.push('/home');
 	};
 	return (
 		<MasterContainer>
 			<List className='master'>
-				{masters.map((item, i) => {
-					return (
-						<ListItem key={item.master?.id} onClick={() => handleClick(item)}>
-							<ListItemAvatar>
-								<Avatar>{item.master.name[0]}</Avatar>
-							</ListItemAvatar>
-							<ListItemText
-								primary={item.master.name}
-								secondary={item.master.license}
-							/>
-						</ListItem>
-					);
-				})}
+				{masters.length ? (
+					masters.map((item, i) => {
+						return (
+							<ListItem
+								className='master'
+								key={item.master?.id}
+								onClick={() => handleClick(item)}>
+								<ListItemAvatar>
+									<Avatar>{item.master.name[0]}</Avatar>
+								</ListItemAvatar>
+								<ListItemText
+									primary={item.master.name}
+									secondary={item.master.license}
+								/>
+							</ListItem>
+						);
+					})
+				) : (
+					<h5>No masters found please check with your administrator.</h5>
+				)}
 			</List>
 		</MasterContainer>
 	);

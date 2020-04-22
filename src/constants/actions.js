@@ -7,6 +7,12 @@ export const LOGOUT = () => {
 export const SET_USER_LOCATION = (payload) => {
 	return { type: 'SET_USER_LOCATION', payload };
 };
+export const SET_USER_MASTER = (payload) => {
+	return { type: 'SET_USER_MASTER', payload };
+};
+export const SET_USER_MASTERS = (payload) => {
+	return { type: 'SET_USER_MASTERS', payload };
+};
 export const SORT_LOCATIONS = (payload) => {
 	return { type: 'SORT_LOCATIONS', payload };
 };

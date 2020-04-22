@@ -11,8 +11,8 @@ const Layout = ({ children }) => {
 						margin: 0;
 					}
 					main {
-						margin: 1em auto;
-						max-width: 600px;
+						margin: auto;
+						max-width: 800px;
 						width: 100%;
 					}
 				`}

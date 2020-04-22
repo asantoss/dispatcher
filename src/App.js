@@ -19,6 +19,8 @@ import AuthController from './Pages/Authentication/AuthController';
 import LocationController from './Pages/Locations/LocationController';
 import { useDispatch } from 'react-redux';
 import * as ACTIONS from './constants/actions';
+import Terminals from './Pages/Terminals/Terminals';
+import Terminal from './Pages/Terminals/Terminal';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -46,12 +48,7 @@ const App = () => {
 					<Route path={ROUTES.SIGN_IN} component={SignInPage} />
 					{/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
 					<Route exact path={ROUTES.HOME} component={HomePage} />
-					<ProtectedRoute
-						exact
-						role={ROLES.USER}
-						path={ROUTES.ACCOUNT}
-						component={AccountPage}
-					/>
+					<Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
 					<ProtectedRoute
 						exact
 						path={ROUTES.ADMIN}
@@ -70,6 +67,18 @@ const App = () => {
 							path={ROUTES.LOCATION}
 							role={ROLES.USER}
 							component={Location}
+						/>
+						<ProtectedRoute
+							exact
+							path={ROUTES.TERMINALS}
+							role={ROLES.USER}
+							component={Terminals}
+						/>
+						<ProtectedRoute
+							exact
+							path={ROUTES.TERMINAL}
+							role={ROLES.USER}
+							component={Terminal}
 						/>
 					</LocationController>
 				</Switch>

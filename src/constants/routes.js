@@ -7,3 +7,5 @@ export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const LOCATIONS = '/locations';
 export const LOCATION = '/location/:id';
+export const TERMINALS = '/terminals';
+export const TERMINAL = '/terminals/:id';

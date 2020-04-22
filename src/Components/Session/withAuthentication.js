@@ -12,22 +12,28 @@ const AuthUserContextProvider = ({ children }) => {
 	const history = useHistory();
 	const { user } = useSelector((s) => s);
 	useEffect(() => {
-		const listener = firebase.auth.onAuthStateChanged(async (firebaseUser) => {
+		const listener = firebase.auth.onAuthStateChanged((firebaseUser) => {
 			if (firebaseUser) {
 				if (!user.isLoggedIn) {
-					const { displayName, email } = firebaseUser;
-					const userDoc = await firebase.getUserMasters(email).catch((e) => {
-						console.log('No user found in this session signing out.', e);
-						firebase.doSignOut();
-					});
+					const { displayName, email, photoURL } = firebaseUser;
 					dispatch(
 						ACTIONS.LOGIN({
+							photoURL,
 							displayName,
 							email,
-							...userDoc,
 							currentMaster: null,
 						})
 					);
+					firebase
+						.getUserMasters(email)
+						.then((res) => {
+							dispatch(ACTIONS.SET_USER_MASTERS(res));
+						})
+						.catch((e) => {
+							console.log('No user found in this session signing out.', e);
+							// dispatch(ACTIONS.LOGOUT());
+							// firebase.doSignOut();
+						});
 				}
 			}
 		});
@@ -38,7 +44,7 @@ const AuthUserContextProvider = ({ children }) => {
 			setState(null);
 			firebase.auth.removeAuthTokenListener(listener);
 		};
-	}, [firebase, dispatch, user]);
+	}, [firebase, dispatch, user, history]);
 
 	return (
 		<AuthUserContext.Provider value={state}>

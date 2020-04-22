@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styled from '@emotion/styled';
-import { Button } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
+import { CloseOutlined } from '@material-ui/icons';
 
 const ModalDiv = styled.div`
 	position: fixed;
@@ -14,6 +15,12 @@ const ModalDiv = styled.div`
 	#container {
 		width: 100%;
 		height: 100%;
+	}
+	#close {
+		position: relative;
+		color: white;
+		top: 10;
+		right: 10;
 	}
 	.confirm {
 		font-size: 1.2em;
@@ -47,30 +54,52 @@ const ModalDiv = styled.div`
 		}
 	}
 `;
-export default function ModalPortal({ children }) {
+export default function ModalPortal({ children, setState }) {
 	const ref = useRef(null);
+	const modalRef = useRef(null);
 	if (!ref.current) {
 		const container = document.createElement('div');
 		ref.current = container;
 	}
+
+	const handleClose = (e) => {
+		if (e.currentTarget === modalRef.current) {
+			setState(false);
+		}
+	};
 	useEffect(() => {
 		const root = document.getElementById('modal');
 		root.appendChild(ref.current);
 		return () => root?.removeChild(ref.current);
 	}, []);
-	return createPortal(<ModalDiv>{children}</ModalDiv>, ref.current);
+	return createPortal(
+		<ModalDiv ref={modalRef} onClick={handleClose}>
+			{children}
+		</ModalDiv>,
+		ref.current
+	);
 }
 
-export function useModal() {
-	const [isModalOpen, setModalOpen] = useState(false);
+export function useModal(initialState) {
+	const [state, setState] = useState(initialState || false);
+
 	function Modal({ children }) {
-		return isModalOpen && <ModalPortal>{children}</ModalPortal>;
+		return (
+			state && (
+				<ModalPortal {...{ setState }}>
+					<IconButton onClick={() => setState(false)} id='close'>
+						<CloseOutlined />
+					</IconButton>
+					{children}
+				</ModalPortal>
+			)
+		);
 	}
-	return [setModalOpen, Modal];
+	return [Modal, setState];
 }
 
 export function useConfirmModal(successCB) {
-	const [setModalOpen, Modal] = useModal();
+	const [Modal, setModalOpen] = useModal();
 	const openModal = () => setModalOpen(true);
 	function ConfirmModal({ children }) {
 		return (
