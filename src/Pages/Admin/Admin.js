@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase';
 import { useHistory } from 'react-router-dom';
-import { AuthUserContext } from '../../Components/Session';
+import { useSelector } from 'react-redux';
 import AddUserForm from './AddUserForm';
-import AdminController from './AdminController';
 import User from './User';
 
 const AdminPage = () => {
 	const history = useHistory();
-	const { email } = useContext(AuthUserContext);
+	const { currentMaster } = useSelector(({ user }) => user);
 	const firebase = useContext(FirebaseContext);
 	const [state, setState] = useState({
 		loading: false,
@@ -19,31 +18,34 @@ const AdminPage = () => {
 		const unsubscribe = firebase.getUsersListener((usersSnapshot) => {
 			let users = [];
 			usersSnapshot.forEach((doc) => {
-				users = [...users, { ...doc.data(), id: doc.id }];
+				const { masters, ...userData } = doc.data();
+				const idx = masters.findIndex((e) => e.master?.id === currentMaster.id);
+				users = [
+					...users,
+					{ ...userData, id: doc.id, role: masters[idx].role },
+				];
 			});
 			setState(() => ({ users, loading: false }));
-		});
+		}, currentMaster);
 		return () => {
 			unsubscribe();
 		};
-	}, [firebase, setState, email, history]);
+	}, [firebase, setState, history, currentMaster]);
 	const { users, loading } = state;
 	return (
 		<div>
-			<AdminController>
-				<h1>Admin</h1>
-				{loading && <div>Loading ...</div>}
-				<UserList users={users} />
-				<AddUserForm />
-			</AdminController>
+			<h1>Admin</h1>
+			{loading && <div className='spinner' />}
+			<UserList {...{ users, setState }} />
+			<AddUserForm />
 		</div>
 	);
 };
 
-const UserList = ({ users }) => (
+const UserList = ({ users, setState }) => (
 	<ul>
 		{users.map((user) => (
-			<User {...{ user, key: user.id }} />
+			<User {...{ user, key: user.id, setState }} />
 		))}
 	</ul>
 );

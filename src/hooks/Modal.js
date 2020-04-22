@@ -47,7 +47,7 @@ const ModalDiv = styled.div`
 		}
 	}
 `;
-export default function Modal({ children }) {
+export default function ModalPortal({ children }) {
 	const ref = useRef(null);
 	if (!ref.current) {
 		const container = document.createElement('div');
@@ -61,14 +61,51 @@ export default function Modal({ children }) {
 	return createPortal(<ModalDiv>{children}</ModalDiv>, ref.current);
 }
 
-export function useConfirmModal(successCB) {
+export function useModal() {
 	const [isModalOpen, setModalOpen] = useState(false);
+	function Modal({ children }) {
+		return isModalOpen && <ModalPortal>{children}</ModalPortal>;
+	}
+	return [setModalOpen, Modal];
+}
+
+export function useConfirmModal(successCB) {
+	const [setModalOpen, Modal] = useModal();
 	const openModal = () => setModalOpen(true);
 	function ConfirmModal({ children }) {
 		return (
-			isModalOpen && (
-				<Modal>
-					<div
+			<Modal>
+				<div
+					id='container'
+					onClick={(e) => {
+						if (e.currentTarget.id === 'container') {
+							setModalOpen(false);
+						}
+					}}>
+					<div className='confirm'>
+						{children}
+						<div className='buttons'>
+							<Button
+								variant='contained'
+								onClick={successCB}
+								id='yes'
+								type='submit'>
+								Yes
+							</Button>
+							<Button onClick={() => setModalOpen(false)} variant='contained'>
+								No
+							</Button>
+						</div>
+					</div>
+				</div>
+			</Modal>
+		);
+	}
+	return [openModal, ConfirmModal];
+}
+
+/**
+ * <div
 						id='container'
 						onClick={(e) => {
 							if (e.currentTarget.id === 'container') {
@@ -91,9 +128,6 @@ export function useConfirmModal(successCB) {
 							</div>
 						</div>
 					</div>
-				</Modal>
-			)
-		);
-	}
-	return [openModal, ConfirmModal];
-}
+ * 
+ * 
+ */

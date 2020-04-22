@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import * as ROLES from '../../constants/roles';
 import { LocationContext } from './LocationController';
-import { useConfirmModal } from '../../shared/Modal';
+import { useConfirmModal } from '../../hooks/Modal';
 import * as ACTIONS from '../../constants/actions';
 
 const ActionsContainer = styled.div`

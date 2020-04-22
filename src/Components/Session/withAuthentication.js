@@ -3,33 +3,37 @@ import AuthUserContext from './context';
 import { FirebaseContext } from '../../Firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import * as ACTIONS from '../../constants/actions';
+import { useHistory } from 'react-router-dom';
+
 const AuthUserContextProvider = ({ children }) => {
 	const firebase = useContext(FirebaseContext);
-	const [state, setState] = useState(null);
+	const [state, setState] = useState({ isLoggedIn: false, masterId: null });
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const { user } = useSelector((s) => s);
 	useEffect(() => {
-		const listener = firebase.auth.onAuthStateChanged((firebaseUser) => {
+		const listener = firebase.auth.onAuthStateChanged(async (firebaseUser) => {
 			if (firebaseUser) {
 				if (!user.isLoggedIn) {
-					firebase
-						.doGetUserByEmail(firebaseUser.email)
-						.then((response) => {
-							if (response) {
-								dispatch(ACTIONS.LOGIN({ ...response, isLoggedIn: true }));
-							}
-							setState({ ...response, isLoggedIn: true });
+					const { displayName, email } = firebaseUser;
+					const userDoc = await firebase.getUserMasters(email).catch((e) => {
+						console.log('No user found in this session signing out.', e);
+						firebase.doSignOut();
+					});
+					dispatch(
+						ACTIONS.LOGIN({
+							displayName,
+							email,
+							...userDoc,
+							currentMaster: null,
 						})
-						.catch(() => {
-							console.log('No user found in this session signing out.');
-							firebase.doSignOut();
-						});
-				} else {
-					return setState(user);
+					);
 				}
 			}
-			return setState(null);
 		});
+		if (!user.isLoggedIn) {
+			history.push('/signin');
+		}
 		return () => {
 			setState(null);
 			firebase.auth.removeAuthTokenListener(listener);

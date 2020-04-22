@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { AuthUserContext } from '../Components/Session';
 import PasswordChangeForm from '../Components/PasswordChange';
 import { Divider, Button } from '@material-ui/core';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const AccountPage = styled.div`
 	display: flex;
@@ -16,7 +16,7 @@ const AccountPage = styled.div`
 
 const Account = () => {
 	const [state, setState] = useState(false);
-	const authUser = useContext(AuthUserContext);
+	const authUser = useSelector(({ user }) => user);
 	return (
 		<AccountPage>
 			<h3>Account: {authUser.email}</h3>

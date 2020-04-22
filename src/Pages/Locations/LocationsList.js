@@ -17,13 +17,8 @@ import {
 	useTheme,
 	IconButton,
 } from '@material-ui/core';
-import {
-	FirstPage,
-	KeyboardArrowLeft,
-	KeyboardArrowRight,
-	LastPage,
-} from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { useTablePagination } from '../../hooks/useTable';
+
 import Filters from './Filters';
 import * as ACTIONS from '../../constants/actions';
 
@@ -33,8 +28,6 @@ export default function LocationsList() {
 	);
 	const dispatch = useDispatch();
 	const LocationController = useContext(LocationContext);
-	const [page, setPage] = useState(0);
-	const [rowsPerPage, setRowsPerPage] = useState(10);
 
 	const [state, setState] = useState([]);
 
@@ -61,14 +54,7 @@ export default function LocationsList() {
 		};
 	}, [dispatch, LocationController, allLocations, setState, filtered]);
 
-	const handleChangePage = (event, newPage) => {
-		setPage(newPage);
-	};
-
-	const handleChangeRowsPerPage = (event) => {
-		setRowsPerPage(parseInt(event.target.value, 10));
-		setPage(0);
-	};
+	const [Pagination, rowsPerPage, page] = useTablePagination();
 	return (
 		<LocationList>
 			{error && <p>{error}</p>}
@@ -79,18 +65,7 @@ export default function LocationsList() {
 					<Filters {...{ setState }} />
 					<Table stickyHeader className='table'>
 						<TableHead>
-							<TableRow>
-								<TablePagination
-									className='footer'
-									rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
-									count={state.length}
-									rowsPerPage={rowsPerPage}
-									page={page}
-									onChangePage={handleChangePage}
-									onChangeRowsPerPage={handleChangeRowsPerPage}
-									ActionsComponent={TablePaginationActions}
-								/>
-							</TableRow>
+							<Pagination {...{ state }} />
 							<TableRow>
 								<TableCell component='th'>License</TableCell>
 								<TableCell component='th'>Name</TableCell>
@@ -125,64 +100,6 @@ export default function LocationsList() {
 				<p>No Locations Found</p>
 			)}
 		</LocationList>
-	);
-}
-
-function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
-	const theme = useTheme();
-	const handleFirstPageButtonClick = (event) => {
-		onChangePage(event, 0);
-	};
-
-	const handleBackButtonClick = (event) => {
-		onChangePage(event, page - 1);
-	};
-
-	const handleNextButtonClick = (event) => {
-		onChangePage(event, page + 1);
-	};
-
-	const handleLastPageButtonClick = (event) => {
-		onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-	};
-
-	return (
-		<div style={{ display: 'flex', flexGrow: 1 }}>
-			<IconButton
-				onClick={handleFirstPageButtonClick}
-				style={{ display: page === 0 ? 'none' : 'inline-flex' }}
-				disabled={page === 0}
-				aria-label='first page'>
-				{theme.direction === 'rtl' ? <LastPage /> : <FirstPage />}
-			</IconButton>
-			<IconButton
-				onClick={handleBackButtonClick}
-				disabled={page === 0}
-				// style={{ display: page === 0 ? 'none' : 'inline-flex' }}
-				aria-label='previous page'>
-				{theme.direction === 'rtl' ? (
-					<KeyboardArrowRight />
-				) : (
-					<KeyboardArrowLeft />
-				)}
-			</IconButton>
-			<IconButton
-				onClick={handleNextButtonClick}
-				disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-				aria-label='next page'>
-				{theme.direction === 'rtl' ? (
-					<KeyboardArrowLeft />
-				) : (
-					<KeyboardArrowRight />
-				)}
-			</IconButton>
-			<IconButton
-				onClick={handleLastPageButtonClick}
-				disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-				aria-label='last page'>
-				{theme.direction === 'rtl' ? <FirstPage /> : <LastPage />}
-			</IconButton>
-		</div>
 	);
 }
 

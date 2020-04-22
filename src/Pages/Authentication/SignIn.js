@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory, useLocation, Redirect } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { AuthPageContext } from './AuthController';
 import { PasswordForgetLink } from '../../Components/PasswordForget';
@@ -9,15 +9,27 @@ import googlePressed from '../../assets/btn_google_signin_dark_pressed_web.png';
 import { TextField, Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { Form } from './utils';
+import { useSelector } from 'react-redux';
+import Modal from '../../hooks/Modal';
+import SelectMaster from './SelectMaster';
 
-const SignInPage = () => (
-	<div style={{ textAlign: 'center' }}>
-		<h3>Sign In</h3>
-		<SignInForm />
-		<PasswordForgetLink />
-		<SignUpLink />
-	</div>
-);
+const SignInPage = () => {
+	const user = useSelector(({ user }) => user);
+
+	return (
+		<div style={{ textAlign: 'center' }}>
+			<h3>Sign In</h3>
+			<SignInForm />
+			<PasswordForgetLink />
+			<SignUpLink />(
+			{user?.isLoggedIn && !user?.currentMaster && (
+				<Modal>
+					<SelectMaster />
+				</Modal>
+			)}
+		</div>
+	);
+};
 
 const INITIAL_STATE = {
 	email: '',
@@ -36,10 +48,9 @@ const GoogleButton = styled.button`
 	}
 `;
 
-const SignInFormBase = () => {
+const SignInForm = () => {
 	const Auth = useContext(AuthPageContext);
 	const [state, setState] = useState(INITIAL_STATE);
-	const history = useHistory();
 
 	const onChange = (event) => {
 		setState({ ...state, [event.target.name]: event.target.value });
@@ -48,21 +59,15 @@ const SignInFormBase = () => {
 	const onSubmit = (event) => {
 		event.preventDefault();
 		const { email, password } = state;
-		Auth.signInWithEmail(email, password)
-			.then((user) => {
-				if (user) {
-					history.push(ROUTES.HOME);
-				}
-			})
-			.catch((error) => setState({ ...state, error: error?.message }));
+		Auth.signInWithEmail(email, password).catch((error) =>
+			setState({ ...state, error: error?.message })
+		);
 	};
 
 	const SignInWithGoogle = () => {
-		Auth.signInWithGoogle()
-			.then(() => history.push(ROUTES.HOME))
-			.catch((e) => {
-				setState((s) => ({ ...s, error: e.message }));
-			});
+		Auth.signInWithGoogle().catch((e) => {
+			setState((s) => ({ ...s, error: e.message }));
+		});
 	};
 
 	const { email, password, error } = state;
@@ -100,6 +105,5 @@ const SignInFormBase = () => {
 	);
 };
 
-const SignInForm = SignInFormBase;
 export default SignInPage;
 export { SignInForm };

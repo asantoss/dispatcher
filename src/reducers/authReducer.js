@@ -1,7 +1,9 @@
 const initialState = {
 	email: '',
 	id: '',
-	username: '',
+	displayName: '',
+	masters: '',
+	currentMaster: null,
 	location: null,
 	isLoggedIn: false,
 };
@@ -13,11 +15,18 @@ const authReducer = (state = initialState, action) => {
 			return {
 				...initialState,
 				...payload,
+				isLoggedIn: true,
 			};
 		case 'LOGOUT':
 			return {
 				...initialState,
 			};
+		case 'SET_USER_MASTER': {
+			return {
+				...state,
+				currentMaster: payload,
+			};
+		}
 		case 'SET_USER_LOCATION':
 			return {
 				...state,

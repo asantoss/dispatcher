@@ -32,10 +32,6 @@ class FirebaseAdmin {
 			.getUserByEmail(email)
 			.then((user) => this.auth.deleteUser(user.uid));
 	};
-
-	doAddUserToMaster = async (user, masterId) => {
-		const recordRef = await this.db.collections('masters');
-	};
 }
 
 module.exports = FirebaseAdmin;

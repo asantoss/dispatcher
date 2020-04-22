@@ -3,12 +3,17 @@ import styled from '@emotion/styled';
 import { Delete } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
 import { useContext } from 'react';
-import { AdminContext } from './AdminController';
+import { FirebaseContext } from '../../Firebase';
+import { useSelector } from 'react-redux';
 
-export default function User({ user }) {
-	const Admin = useContext(AdminContext);
-	const handleClick = (id) => {
-		Admin.deleteUser(id);
+export default function User({ user, idx, setState }) {
+	const Admin = useContext(FirebaseContext);
+	const { currentMaster } = useSelector(({ user }) => user);
+	const handleClick = (id, role) => {
+		Admin.deleteUserFromMaster(id, role, currentMaster.id).then((res) => {
+			console.log(res);
+			setState((s) => ({ ...s, users: s.users.filter((e) => e.id !== id) }));
+		});
 	};
 	return (
 		<UserDiv>
@@ -22,7 +27,7 @@ export default function User({ user }) {
 				<strong>Role:</strong> {user?.role}
 			</span>
 			<div className='button-group'>
-				<IconButton onClick={() => handleClick(user.id)}>
+				<IconButton onClick={() => handleClick(user?.id, user?.role)}>
 					<Delete />
 				</IconButton>
 			</div>

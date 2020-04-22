@@ -24,6 +24,7 @@ class Firebase {
 				host: 'localhost:5005',
 				ssl: false,
 			});
+			this.functions.useFunctionsEmulator('http://localhost:5001');
 		}
 	}
 
@@ -65,14 +66,12 @@ class Firebase {
 	};
 	doGetUserByEmail = async (email) => {
 		const usersQuery = await this.db
-			.collectionGroup('users')
+			.collection('users')
 			.where('email', '==', email)
 			.get();
 		if (usersQuery.docs.length) {
-			const masterId = usersQuery?.docs[0].ref.parent.parent.id;
 			this.user = {
 				...usersQuery.docs[0].data(),
-				masterId,
 				id: usersQuery.docs[0].id,
 			};
 			return this.user;
@@ -80,10 +79,67 @@ class Firebase {
 			throw new Error('No user found please check with your administrator.');
 		}
 	};
-	getUsersListener = (callback) => {
+	getUserMasters = async (email) => {
+		const usersQuery = await this.db
+			.collection('users')
+			.where('email', '==', email)
+			.get();
+		if (usersQuery.docs.length) {
+			this.user = {
+				...usersQuery.docs[0].data(),
+				id: usersQuery.docs[0].id,
+			};
+			const masters = await Promise.all(
+				this.user.masters.map(async ({ master, role }) => {
+					const { path, id } = master;
+					master = await (await this.db.doc(master.path).get()).data();
+					return { master: { ...master, path, id }, role };
+				})
+			);
+			this.masters = masters;
+			return { ...this.user, masters };
+		} else {
+			throw new Error('No user found please check with your administrator.');
+		}
+	};
+	getUsersListener = (callback, master) => {
+		const masterRef = this.user.masters.find((e) => e.master.id === master.id)
+			.master;
 		return this.db
-			.collection(`masters/${this.user.masterId}/users`)
+			.collection(`users/`)
+			.where('masters', 'array-contains-any', [
+				{
+					master: masterRef,
+					role: 'admin',
+				},
+				{
+					master: masterRef,
+					role: 'user',
+				},
+				{
+					master: masterRef,
+					role: 'manager',
+				},
+			])
 			.onSnapshot(callback);
+	};
+	addUserToMaster = async (values, masterId) => {
+		const addUser = await this.functions.httpsCallable('addUserToMaster');
+		debugger;
+		return addUser({
+			...values,
+			masterId,
+		});
+	};
+	deleteUserFromMaster = async (id, role, masterId) => {
+		const deleteUser = await this.functions.httpsCallable(
+			'deleteUserFromMaster'
+		);
+		return deleteUser({
+			id,
+			role,
+			masterId,
+		});
 	};
 }
 export default Firebase;

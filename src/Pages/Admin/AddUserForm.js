@@ -1,26 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
-import { AdminContext } from './AdminController';
+import { FirebaseContext } from '../../Firebase';
+import { useSelector } from 'react-redux';
 export default function AddUserForm() {
 	const [error, setError] = useState(null);
-	const Admin = useContext(AdminContext);
-
+	const Admin = useContext(FirebaseContext);
+	const { currentMaster } = useSelector(({ user }) => user);
 	const formik = useFormik({
 		initialValues: {
 			email: '',
 			firstName: '',
 			lastName: '',
 			password: '',
+			phoneNumber: '',
 			role: 'user',
 		},
 		onSubmit: (values) => {
-			Admin.createUser(values)
-				.then((results) => {
-					console.log(results);
-				})
-				.catch((e) => {
-					setError(e.message);
-				});
+			return Admin.addUserToMaster(values, currentMaster.id);
 		},
 	});
 	return (
@@ -62,6 +58,15 @@ export default function AddUserForm() {
 					id='password'
 					onChange={formik.handleChange}
 					value={formik.values.password}
+				/>
+				<label htmlFor='phoneNumber'>Phone Number</label>
+				<input
+					required
+					type='tel'
+					name='phoneNumber'
+					id='phoneNumber'
+					onChange={formik.handleChange}
+					value={formik.values.phoneNumber}
 				/>
 				<label htmlFor='role'>Role</label>
 				<select

@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { LocationContext } from './LocationController';
 import LocationForm from './LocationForm';
-import usePanelBar from '../../Components/shared/PanelBar';
+import usePanelBar from '../../hooks/PanelBar';
 import { useSelector, useDispatch } from 'react-redux';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import * as ACTIONS from '../../constants/actions';

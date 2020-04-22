@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { Route } from 'react-router-dom';
 import AuthUserContext from './context';
 import * as ROLES from '../../constants/roles';
+import { useSelector } from 'react-redux';
 
 export default function ProtectedRoute({
 	component: Component,
 	role,
 	...rest
 }) {
-	const authUser = useContext(AuthUserContext);
+	const user = useSelector(({ user }) => user);
 	const rolesAccess = {
 		manager: ['manager', 'admin'],
 		user: ['user', 'manager'],
@@ -18,8 +19,8 @@ export default function ProtectedRoute({
 		<Route
 			{...rest}
 			render={(props) =>
-				rolesAccess[role]?.includes(authUser?.role) ||
-				authUser?.role === ROLES.ADMIN ? (
+				rolesAccess[role]?.includes(user?.currentMaster?.role) ||
+				user?.currentMaster?.role === ROLES.ADMIN ? (
 					<Component {...props} />
 				) : (
 					<p>You are not authorized to view this page.</p>
