@@ -41,6 +41,7 @@ const App = () => {
 	}, [dispatch]);
 	return (
 		<AuthUserContextProvider>
+			<p>Hello World</p>
 			<AuthController>
 				<Switch>
 					{/* <Route exact path={ROUTES.LANDING} component={LandingPage} /> */}

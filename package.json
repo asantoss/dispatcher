@@ -27,7 +27,8 @@
 		"styled-components": "^5.1.0"
 	},
 	"scripts": {
-		"emulators": "cd functions && npm serve",
+		"emulators_dependencies": "cd functions && npm i",
+		"emulators": "cd functions && npm run serve",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",

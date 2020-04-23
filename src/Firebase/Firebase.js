@@ -21,10 +21,10 @@ class Firebase {
 		this.functions = app.functions();
 		if (process.env.NODE_ENV === 'development') {
 			this.db.settings({
-				host: 'localhost:5005',
+				host: 'emulators:5005',
 				ssl: false,
 			});
-			this.functions.useFunctionsEmulator('http://localhost:5001');
+			this.functions.useFunctionsEmulator('http://emulators:5001');
 		}
 	}
 
