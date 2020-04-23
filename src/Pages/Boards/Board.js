@@ -3,10 +3,9 @@ import usePanelBar from '../../hooks/PanelBar';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
-import TerminalForm from './TerminalForm';
 
 export default function Terminal() {
-	const tabs = ['Info', 'Board', 'Edit'];
+	const tabs = ['Info', 'Edit'];
 	const { state } = useLocation();
 	const [value, PanelBar, Panel] = usePanelBar(tabs);
 	return (
@@ -19,9 +18,7 @@ export default function Terminal() {
 				<p>{state.type}</p>
 			</Panel>
 			<Panel {...{ value, index: 1 }}>"Board"</Panel>
-			<Panel {...{ value, index: 2 }}>
-				<TerminalForm />
-			</Panel>
+			<Panel {...{ value, index: 2 }}>"Edit"</Panel>
 		</Container>
 	);
 }

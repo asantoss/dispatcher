@@ -84,7 +84,7 @@ export default function Actions({ item }) {
 						alt='Link to edit panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `location/${item?.docId}`,
+							pathname: `locations/${item?.docId}`,
 							state: { location: item, panel: 'Edit' },
 						}}>
 						<EditOutlined />
@@ -95,7 +95,7 @@ export default function Actions({ item }) {
 						alt='Link to terminals panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `location/${item?.docId}`,
+							pathname: `locations/${item?.docId}`,
 							state: { location: item, panel: 'Terminals' },
 						}}>
 						<GamesOutlined />
@@ -106,7 +106,7 @@ export default function Actions({ item }) {
 						alt='Link to Info Panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `location/${item?.docId}`,
+							pathname: `locations/${item?.docId}`,
 							state: { location: item, panel: 'Info' },
 						}}>
 						<VisibilityOutlined />

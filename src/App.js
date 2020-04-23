@@ -21,6 +21,8 @@ import { useDispatch } from 'react-redux';
 import * as ACTIONS from './constants/actions';
 import Terminals from './Pages/Terminals/Terminals';
 import Terminal from './Pages/Terminals/Terminal';
+import Boards from './Pages/Boards/Boards';
+import Board from './Pages/Boards/Board';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -73,6 +75,18 @@ const App = () => {
 							path={ROUTES.TERMINALS}
 							role={ROLES.USER}
 							component={Terminals}
+						/>
+						<ProtectedRoute
+							exact
+							path={ROUTES.BOARDS}
+							role={ROLES.USER}
+							component={Boards}
+						/>
+						<ProtectedRoute
+							exact
+							path={ROUTES.BOARD}
+							role={ROLES.USER}
+							component={Board}
 						/>
 						<ProtectedRoute
 							exact

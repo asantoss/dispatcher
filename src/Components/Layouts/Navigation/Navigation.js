@@ -55,6 +55,14 @@ const Navigation = ({ isLoggedIn, ...rest }) => {
 							Terminals
 						</ListItem>
 					</NavLink>
+					<NavLink to={ROUTES.BOARDS} exact activeClassName='current-page'>
+						<ListItem button>
+							<ListItemIcon>
+								<AccountCircleOutlined />
+							</ListItemIcon>
+							Boards
+						</ListItem>
+					</NavLink>
 					<Divider />
 					<NavLink to={ROUTES.ACCOUNT} exact activeClassName='current-page'>
 						<ListItem button>
