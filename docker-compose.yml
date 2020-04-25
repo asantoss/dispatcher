@@ -1,20 +1,12 @@
-version: '3'
+version: "3"
 services:
   dev:
+    volumes:
+      - ./src:/app/src
     build:
       context: .
     ports:
       - 80:3000
     command: npm start
-    links:
-      - emulators
     #Needed to be able to run the WebPack CRA console if not there it will crash
     stdin_open: true
-  emulators:
-    build:
-      context: .
-    ports:
-      - 5001:5001
-      - 5005:5005
-      - 9005:9005
-    command: 'npm run emulators'

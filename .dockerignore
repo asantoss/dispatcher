@@ -2,3 +2,5 @@ node_modules
 *.log
 node_modules
 build
+functions/
+*/node_modules
