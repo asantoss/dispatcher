@@ -21,10 +21,10 @@ class Firebase {
 		this.functions = app.functions();
 		if (process.env.NODE_ENV === 'development') {
 			this.db.settings({
-				host: 'emulators:5005',
+				host: 'localhost:5005',
 				ssl: false,
 			});
-			this.functions.useFunctionsEmulator('http://emulators:5001');
+			this.functions.useFunctionsEmulator('http://localhost:5001');
 		}
 	}
 
@@ -148,6 +148,39 @@ class Firebase {
 					return terminal;
 				})
 			);
+		}
+	};
+	getMasterBoards = async (masterPath) => {
+		const boardsSnapshot = await this.db
+			.collection(masterPath + '/boards')
+			.get()
+			.catch((e) => e);
+		if (boardsSnapshot) {
+			const boards = [];
+			await boardsSnapshot.forEach((doc) => {
+				const { terminal, ...board } = doc.data();
+				boards.push({
+					...board,
+					terminal: { id: terminal.id, path: terminal.path },
+					docId: doc.id,
+				});
+			});
+
+			return boards;
+			// return await Promise.all(
+			// 	boards.map(async (board) => {
+			// 		const { location, ...terminal } = await (
+			// 			await this.db.doc(board.terminal.path).get()
+			// 		).data();
+			// 		debugger;
+			// 		board.terminal = {
+			// 			...terminal,
+			// 			path: board.terminal.path,
+			// 			id: board.terminal.id,
+			// 		};
+			// 		return board;
+			// 	})
+			// );
 		}
 	};
 	addUserToMaster = async (values, masterId) => {
