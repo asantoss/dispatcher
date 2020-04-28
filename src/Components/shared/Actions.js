@@ -36,19 +36,11 @@ export default function Actions({ item }) {
 		LocationController.deleteLocation(id)
 			.then(() => dispatch(ACTIONS.FULFILLED()))
 			.then(() => {
-				if (locations.filtered?.length) {
-					dispatch(
-						ACTIONS.FILTER_LOCATIONS(
-							locations.filtered.filter((e) => e?.docId !== item?.docId)
-						)
-					);
-				} else {
-					dispatch(
-						ACTIONS.SET_ALL_LOCATIONS(
-							locations.allLocations.filter((e) => e?.docId !== item?.docId)
-						)
-					);
-				}
+				dispatch(
+					ACTIONS.SET_ALL_LOCATIONS(
+						locations.allLocations.filter((e) => e?.docId !== item?.docId)
+					)
+				);
 			});
 	};
 	const [setModalOpen, ConfirmModal] = useConfirmModal(() =>

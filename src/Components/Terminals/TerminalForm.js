@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { TextField, Select, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import * as ACTIONS from '../../constants/actions';
+// import { useDispatch } from 'react-redux';
+// import * as ACTIONS from '../../constants/actions';
 import { useConfirmModal } from '../../hooks/Modal';
-import { useHistory } from 'react-router-dom';
+import { FirebaseContext } from '../../Firebase';
+// import { useHistory } from 'react-router-dom';
 
 const Form = styled.form`
 	display: flex;
@@ -47,10 +48,19 @@ const Form = styled.form`
 	}
 `;
 
-export default function TerminalForm({ docId, initialState }) {
-	const dispatch = useDispatch();
-	const history = useHistory();
-	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
+export default function TerminalForm({
+	initialState,
+	currentMaster,
+	location,
+}) {
+	const firebase = useContext(FirebaseContext);
+	const {
+		handleChange,
+		handleSubmit,
+		handleBlur,
+		values,
+		resetForm,
+	} = useFormik({
 		initialValues: initialState || {
 			game: '',
 			location: '',
@@ -59,15 +69,21 @@ export default function TerminalForm({ docId, initialState }) {
 			billAcceptor: '',
 			serial: '',
 		},
-		onSubmit: (values) => {},
+		onSubmit: (values) => {
+			firebase
+				.addTerminalToMaster(
+					{ ...values, locationId: location?.docId },
+					location.docId,
+					currentMaster.path
+				)
+				.then(() => {
+					resetForm();
+					alert('Success!');
+				});
+		},
 	});
-	const [openModal, Modal] = useConfirmModal(handleSubmit);
 	return (
-		<Form
-			onSubmit={(e) => {
-				e.preventDefault();
-				openModal();
-			}}>
+		<Form onSubmit={handleSubmit}>
 			<div id='storeInfo'>
 				<TextField
 					required
@@ -87,24 +103,6 @@ export default function TerminalForm({ docId, initialState }) {
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
-				<div className='select'>
-					<label htmlFor='terminal'>Location</label>
-					<Select
-						native
-						required
-						variant='outlined'
-						labelId='location'
-						name='location'
-						value={values.location}
-						onChange={handleChange}
-						onBlur={handleBlur}>
-						{Array.from({ length: 9 }, (x, i) => (x = i + 1)).map((n, i) => (
-							<option value={n.toString()} key={i}>
-								{n}
-							</option>
-						))}
-					</Select>
-				</div>
 			</div>
 			<div id='address'>
 				<TextField
@@ -138,15 +136,17 @@ export default function TerminalForm({ docId, initialState }) {
 						onChange={handleChange}
 						onBlur={handleBlur}>
 						<option aria-label='None' value=''></option>
+						{currentMaster?.cabinetTypes.map((type, i) => (
+							<option key={i} value={type}>
+								{type}
+							</option>
+						))}
 					</Select>
 				</div>
 			</div>
 			<Button variant='outlined' type='submit'>
 				Submit
 			</Button>
-			<Modal>
-				<p>Are you sure you want to update this?</p>
-			</Modal>
 		</Form>
 	);
 }

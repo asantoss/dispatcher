@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import LocationsList from './LocationsList';
-import LocationForm from './Location';
-import { Add } from '@material-ui/icons';
+// import LocationForm from './Location';
+// import { Add } from '@material-ui/icons';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 
 const LocationsPageContainer = styled.div`
@@ -17,25 +17,10 @@ const LocationsPageContainer = styled.div`
 	}
 `;
 
-export default function LocationsPage({}) {
-	const [state, setState] = useState(true);
+export default function LocationsPage() {
 	return (
 		<LocationsPageContainer>
 			<Breadcrumb />
-			{/* <div className='btn-group'>
-				<Button
-					variant='outlined'
-					disabled={!state}
-					onClick={() => setState(false)}>
-					<Add /> Add
-				</Button>
-				<Button
-					variant='outlined'
-					disabled={state}
-					onClick={() => setState(true)}>
-					All
-				</Button>
-			</div> */}
 			<LocationsList />
 		</LocationsPageContainer>
 	);

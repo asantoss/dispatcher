@@ -2,7 +2,7 @@ import React from 'react';
 import usePanelBar from '../../hooks/PanelBar';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import Breadcrumb from '../../Components/shared/Breadcrumb';
+import Breadcrumb from '../shared/Breadcrumb';
 import TerminalForm from './TerminalForm';
 
 export default function Terminal() {

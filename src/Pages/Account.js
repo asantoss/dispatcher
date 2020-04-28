@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import PasswordChangeForm from '../Components/PasswordChange';
 import { Divider, Button } from '@material-ui/core';
 import styled from 'styled-components';

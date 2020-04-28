@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useReducer, useEffect } from 'react';
 import {
 	FirstPage,
 	KeyboardArrowLeft,
@@ -13,90 +13,136 @@ import {
 	TableContainer,
 	TableHead,
 	TablePagination,
-	TableFooter,
 	IconButton,
 	useTheme,
 } from '@material-ui/core';
 import Actions from './Actions';
+import Filters from './Filters';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
+
+export const TableContext = createContext(null);
+
+function reducer(state, action) {
+	const { type, payload } = action;
+	switch (type) {
+		case 'INITIAL':
+			return { ...state, originalData: payload, data: payload };
+		case 'SET_DATA':
+			return { ...state, data: payload };
+		case 'FILTER':
+			return { ...state, isFiltered: true, data: payload };
+		case 'CANCEL':
+			return { ...state, isFiltered: false, data: state.originalData };
+		default:
+			return state;
+	}
+}
 
 export default function TableComponent({ data, headers }) {
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
+
+	const [state, dispatch] = useReducer(reducer, {
+		isFiltered: false,
+		originalData: [],
+		data: [],
+		filtered: [],
+	});
+
+	useEffect(() => {
+		if (data) {
+			dispatch({ type: 'INITIAL', payload: data });
+		}
+		return () => {
+			dispatch({ type: 'INITIAL', payload: [] });
+		};
+	}, [data]);
+
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
 	};
+
 	const { pathname } = useLocation();
 
 	const handleChangeRowsPerPage = (event) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
 	};
+
 	return (
-		<StyledTable>
-			<Table stickyHeader className='table'>
-				<TableHead>
-					<TableRow>
-						<TablePagination
-							className='footer'
-							rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
-							count={data.length}
-							rowsPerPage={rowsPerPage}
-							page={page}
-							onChangePage={handleChangePage}
-							onChangeRowsPerPage={handleChangeRowsPerPage}
-							ActionsComponent={TablePaginationActions}
-						/>
-					</TableRow>
-					<TableRow>
-						{headers.map((head, i) => (
-							<TableCell
-								key={i}
-								component='th'
-								style={{ textTransform: 'uppercase' }}>
-								{head}
-							</TableCell>
-						))}
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{(rowsPerPage > 0
-						? data?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-						: data
-					)?.map((item, index) => {
-						return (
-							<TableRow key={item?.docId}>
-								{headers?.map((head, i) => {
-									if (head === 'view') {
-										return (
-											<TableCell key={i}>
-												<Link
-													to={{
-														state: item,
-														pathname: `${pathname}/${item?.docId}`,
-													}}>
-													View
-												</Link>
-											</TableCell>
-										);
+		state.data?.length && (
+			<TableContext.Provider value={{ dispatch, state, headers }}>
+				<StyledTable>
+					<Filters />
+					<Table stickyHeader className='table'>
+						<TableHead>
+							<TableRow>
+								<TablePagination
+									className='footer'
+									rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
+									count={
+										state.isFiltered ? state.filtered.length : state.data.length
 									}
-									if (head === 'actions') {
-										return (
-											<TableCell key={i}>
-												<Actions {...{ item, index }} />
-											</TableCell>
-										);
-									}
-									return <TableCell key={i}>{item[head]}</TableCell>;
-								})}
+									rowsPerPage={rowsPerPage}
+									page={page}
+									onChangePage={handleChangePage}
+									onChangeRowsPerPage={handleChangeRowsPerPage}
+									ActionsComponent={TablePaginationActions}
+								/>
 							</TableRow>
-						);
-					})}
-				</TableBody>
-				<TableFooter></TableFooter>
-			</Table>
-		</StyledTable>
+							<TableRow>
+								{headers.map((head, i) => (
+									<TableCell
+										key={i}
+										component='th'
+										style={{ textTransform: 'uppercase' }}>
+										{head}
+									</TableCell>
+								))}
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{(rowsPerPage > 0
+								? state.data?.slice(
+										page * rowsPerPage,
+										page * rowsPerPage + rowsPerPage
+								  )
+								: state.data
+							)?.map((item, index) => {
+								return (
+									<TableRow key={item?.docId}>
+										{headers?.map((head, i) => {
+											if (head === 'view') {
+												return (
+													<TableCell key={i}>
+														<Link
+															to={{
+																state: item,
+																pathname: `${pathname}/${item?.docId}`,
+															}}>
+															View
+														</Link>
+													</TableCell>
+												);
+											}
+											if (head === 'actions') {
+												return (
+													<TableCell key={i}>
+														<Actions {...{ item, index }} />
+													</TableCell>
+												);
+											}
+											return <TableCell key={i}>{item[head]}</TableCell>;
+										})}
+									</TableRow>
+								);
+							})}
+						</TableBody>
+					</Table>
+				</StyledTable>
+			</TableContext.Provider>
+		)
 	);
 }
 
@@ -159,8 +205,20 @@ function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
 }
 
 const StyledTable = styled(TableContainer)`
-	overflow-x: scroll;
 	width: 100%;
+	.filter {
+		display: flex;
+		justify-content: space-between;
+		.sort {
+			text-transform: capitalize;
+			width: 120px;
+		}
+		.sort_opt {
+			& > * {
+				text-transform: capitalize;
+			}
+		}
+	}
 	.status {
 		border-radius: 50%;
 		height: 10px;

@@ -1,13 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import {
-	Paper,
-	Button,
-	MenuList,
-	Menu,
-	MenuItem,
-	Avatar,
-	IconButton,
-} from '@material-ui/core';
+import { Menu, MenuItem, Avatar, IconButton } from '@material-ui/core';
 import styled from 'styled-components';
 import SelectMaster from '../../../Pages/Authentication/SelectMaster';
 import { useModal } from '../../../hooks/Modal';
@@ -34,13 +26,6 @@ export default function AuthMenu({ user, handleSignOut }) {
 
 		setOpen(false);
 	};
-
-	function handleListKeyDown(event) {
-		if (event.key === 'Tab') {
-			event.preventDefault();
-			setOpen(false);
-		}
-	}
 
 	// return focus to the button when we transitioned from !open -> open
 	const prevOpen = useRef(open);

@@ -85,9 +85,6 @@ const Form = styled.form`
 		justify-content: space-between;
 	}
 	.select {
-		/* [role='button'] {
-			padding: 14.5px 32px 14.5px 14px;
-		} */
 		min-width: 100px;
 		display: flex;
 		flex-wrap: wrap;
@@ -108,22 +105,17 @@ export default function LocationForm({ docId, initialState }) {
 		initialValues: initialState || {
 			name: '',
 			state: '',
-			terminals: ``,
+			terminalsTotal: ``,
 			address: '',
 			city: '',
 			license: '',
 			zipCode: '',
 		},
 		onSubmit: (values) => {
-			dispatch(ACTIONS.FIRED());
 			controller
 				.updateLocation(docId, values)
 				.then(() => {
-					dispatch(ACTIONS.FULFILLED());
-				})
-				.then(() => {
 					history.replace({ state: { location: { ...values, docId } } });
-					dispatch(ACTIONS.UPDATE_LOCATION({ ...values, docId }));
 				})
 				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
 		},
@@ -161,8 +153,8 @@ export default function LocationForm({ docId, initialState }) {
 						required
 						variant='outlined'
 						labelId='terminal'
-						name='terminals'
-						value={values.terminals}
+						name='terminalsTotal'
+						value={values.terminalsTotal}
 						onChange={handleChange}
 						onBlur={handleBlur}>
 						{Array.from({ length: 9 }, (x, i) => (x = i + 1)).map((n, i) => (

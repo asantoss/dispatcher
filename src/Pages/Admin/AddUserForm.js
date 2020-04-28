@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { FirebaseContext } from '../../Firebase';
 import { useSelector } from 'react-redux';
 export default function AddUserForm() {
-	const [error, setError] = useState(null);
+	const [error] = useState(null);
 	const Admin = useContext(FirebaseContext);
 	const { currentMaster } = useSelector(({ user }) => user);
 	const formik = useFormik({

@@ -16,14 +16,12 @@ class LocationInterface {
 				throw e;
 			});
 		if (mastersSnapshot) {
-			const locations = [];
+			let locations = [];
 			await mastersSnapshot.forEach((doc) => {
 				return locations.push({ ...doc.data(), docId: doc.id });
 			});
-			this.locations = locations.sort((a, b) =>
-				a['name'] > b['name'] ? 1 : -1
-			);
-			return this.locations;
+			locations = locations.sort((a, b) => (a['name'] > b['name'] ? 1 : -1));
+			return locations;
 		}
 	};
 	getLocation = async (id) => {
@@ -38,11 +36,12 @@ class LocationInterface {
 			return locationData;
 		}
 	};
-	updateLocation = (id, data) =>
-		this.db
+	updateLocation = (id, data) => {
+		return this.db
 			.collection(`masters/${this.user.currentMaster.id}/locations`)
 			.doc(id)
 			.update(data);
+	};
 	deleteLocation = (id) =>
 		this.db
 			.collection(`masters/${this.user.currentMaster.id}/locations`)
