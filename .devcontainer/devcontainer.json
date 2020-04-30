@@ -1,0 +1,12 @@
+{
+	"name": "dispatcher",
+	"appPort": [3000],
+	"dockerFile": "dockerfile",
+	"runArgs": ["-u", "node"],
+	"settings": {
+		"editor.formatOnSave": true,
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"postCreateCommand": "npm install",
+	"extensions": ["dbauemer.vscode-eslint", "esbenp.prettier-vscode"]
+}

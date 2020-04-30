@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import styled from 'styled-components';
 // import { useDispatch } from 'react-redux';
 // import * as ACTIONS from '../../constants/actions';
-import { useConfirmModal } from '../../hooks/Modal';
+// import { useConfirmModal } from '../../hooks/Modal';
 import { FirebaseContext } from '../../Firebase';
 // import { useHistory } from 'react-router-dom';
 

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useState } from 'react';
 import { LocationContext } from './LocationController';
 
-import * as ACTIONS from '../../constants/actions';
+// import * as ACTIONS from '../../constants/actions';
 import TableComponent from '../../Components/shared/Table';
 
 export default function LocationsList() {
