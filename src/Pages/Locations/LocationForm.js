@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { TextField, Select, Button } from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
 import { LocationContext } from './LocationController';
@@ -71,8 +70,9 @@ const Form = styled.form`
 		width: 25%;
 	}
 	& > div {
+		width: 100%;
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-between;
 		margin: 1em;
 		align-items: center;
 	}
@@ -140,6 +140,7 @@ export default function LocationForm({ docId, initialState }) {
 				/>
 				<TextField
 					required
+					style={{ flexGrow: 1 }}
 					variant='outlined'
 					value={values.name}
 					name='name'
@@ -167,21 +168,15 @@ export default function LocationForm({ docId, initialState }) {
 				</div>
 			</div>
 			<div id='address'>
-				<Autocomplete
-					intputValue={values.address}
-					onInputChange={handleChange}
-					renderInput={(params) => (
-						<TextField
-							required
-							variant='outlined'
-							name='address'
-							label='Address'
-							value={values.address}
-							onChange={handleChange}
-							onBlur={handleBlur}
-							style={{ flexGrow: 2, minWidth: '85%' }}
-						/>
-					)}
+				<TextField
+					required
+					variant='outlined'
+					name='address'
+					label='Address'
+					value={values.address}
+					onChange={handleChange}
+					onBlur={handleBlur}
+					style={{ flexGrow: 2, minWidth: '85%' }}
 				/>
 				<TextField
 					required

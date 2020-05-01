@@ -64,7 +64,7 @@ export default function TerminalsChecked({ location }) {
 		}
 	};
 	return state.length ? (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
 			{state.map((terminal, i) => (
 				<List key={i}>
 					<ListItem>
@@ -93,7 +93,7 @@ export default function TerminalsChecked({ location }) {
 					</ListItem>
 				</List>
 			))}
-			<Button color='primary' type='submit'>
+			<Button variant='contained' color='primary' type='submit'>
 				Save
 			</Button>
 		</form>

@@ -14,14 +14,13 @@ import { FirebaseContext } from '../../Firebase';
 import * as ACTIONS from '../../constants/actions';
 export default function Terminals({ terminals }) {
 	const {
-		user: { currentMaster },
 		locations: { currentLocation },
 	} = useSelector((state) => state);
 	const dispatch = useDispatch();
 	const firebase = useContext(FirebaseContext);
 	const handleRemove = (terminal) => {
 		firebase
-			.removeTerminalFromLocation(terminal, currentLocation, currentMaster.path)
+			.removeTerminalFromLocation(terminal, currentLocation)
 			.then((terminals) => {
 				alert('Success');
 				dispatch(

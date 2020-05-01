@@ -47,6 +47,14 @@ const Navigation = ({ isLoggedIn, ...rest }) => {
 							Locations
 						</ListItem>
 					</NavLink>
+					<NavLink to={ROUTES.TERMINALS} exact activeClassName='current-page'>
+						<ListItem button>
+							<ListItemIcon>
+								<Storefront />
+							</ListItemIcon>
+							Locations
+						</ListItem>
+					</NavLink>
 					<Divider />
 					<NavLink to={ROUTES.ACCOUNT} exact activeClassName='current-page'>
 						<ListItem button>

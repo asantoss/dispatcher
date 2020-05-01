@@ -19,6 +19,8 @@ import AuthController from './Pages/Authentication/AuthController';
 import LocationController from './Pages/Locations/LocationController';
 import { useDispatch } from 'react-redux';
 import * as ACTIONS from './constants/actions';
+import TerminalPage from './Pages/Terminals/TerminalsPage';
+import Terminal from './Pages/Terminals/Terminal';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -52,6 +54,18 @@ const App = () => {
 						path={ROUTES.ADMIN}
 						role={ROLES.ADMIN}
 						component={AdminPage}
+					/>
+					<ProtectedRoute
+						exact
+						path={ROUTES.TERMINALS}
+						role={ROLES.USER}
+						component={TerminalPage}
+					/>
+					<ProtectedRoute
+						exact
+						path={ROUTES.TERMINAL}
+						role={ROLES.USER}
+						component={Terminal}
 					/>
 					<LocationController>
 						<ProtectedRoute

@@ -40,33 +40,31 @@ export default function LocationPage() {
 		}
 	}, [state, id, LocationInterface, dispatch]);
 
+	if (loading) {
+		return <div className='spinner' />;
+	}
+
 	return (
 		<Container>
 			<Breadcrumb {...{ name: currentLocation?.name }} />
-			{loading ? (
-				<div className='spinner'></div>
-			) : (
-				<>
-					<PanelBar />
-					<Panel value={value} index={0}>
-						All Info
-					</Panel>
-					<Panel value={value} index={1}>
-						<LocationTerminals
-							location={currentLocation}
-							currentMaster={currentMaster}
-						/>
-					</Panel>
-					<Panel value={value} index={2}>
-						<LocationForm
-							{...{
-								docId: currentLocation?.docId,
-								initialState: currentLocation && initialState(currentLocation),
-							}}
-						/>
-					</Panel>
-				</>
-			)}
+			<PanelBar />
+			<Panel value={value} index={0}>
+				All Info
+			</Panel>
+			<Panel value={value} index={1}>
+				<LocationTerminals
+					location={currentLocation}
+					currentMaster={currentMaster}
+				/>
+			</Panel>
+			<Panel value={value} index={2}>
+				<LocationForm
+					{...{
+						docId: currentLocation?.docId,
+						initialState: currentLocation && initialState(currentLocation),
+					}}
+				/>
+			</Panel>
 		</Container>
 	);
 }

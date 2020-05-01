@@ -1,58 +1,28 @@
 import React, { useContext } from 'react';
-import { TextField, Select, Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
-// import { useDispatch } from 'react-redux';
-// import * as ACTIONS from '../../constants/actions';
-// import { useConfirmModal } from '../../hooks/Modal';
 import { FirebaseContext } from '../../Firebase';
+import { useSelector } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
 
 const Form = styled.form`
+	margin: 1em;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	flex-wrap: wrap;
 	align-items: center;
-	width: 100%;
+	justify-content: center;
+	width: 95%;
 	button {
 		width: 25%;
-	}
-	& > div {
-		display: flex;
-		justify-content: space-evenly;
-		margin: 1em;
-		align-items: center;
 	}
 	div {
 		margin: 0.25em;
 	}
-	#address {
-		flex-wrap: wrap;
-		align-self: flex-start;
-		height: 200px;
-		justify-content: space-between;
-	}
-	.select {
-		/* [role='button'] {
-        padding: 14.5px 32px 14.5px 14px;
-    } */
-		min-width: 100px;
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: column;
-		label {
-			color: rgba(0, 0, 0, 0.54);
-			margin-bottom: -22px;
-			transform: scale(0.75);
-		}
-	}
 `;
 
-export default function TerminalForm({
-	initialState,
-	currentMaster,
-	location,
-}) {
+export default function TerminalForm({ initialState, location }) {
+	const { currentMaster } = useSelector(({ user }) => user);
 	const firebase = useContext(FirebaseContext);
 	const {
 		handleChange,
@@ -70,11 +40,18 @@ export default function TerminalForm({
 			serial: '',
 		},
 		onSubmit: (values) => {
-			firebase
+			const locationRef = location?.docId ?? null;
+			const docId = initialState?.docId ?? null;
+			if (docId) {
+				debugger;
+				return firebase.updateTerminal(values, docId).then(() => {
+					alert('Success');
+				});
+			}
+			return firebase
 				.addTerminalToMaster(
 					{ ...values, locationId: location?.docId },
-					location.docId,
-					currentMaster.path
+					locationRef
 				)
 				.then(() => {
 					resetForm();
@@ -84,67 +61,67 @@ export default function TerminalForm({
 	});
 	return (
 		<Form onSubmit={handleSubmit}>
-			<div id='storeInfo'>
-				<TextField
-					required
-					variant='outlined'
-					name='game'
-					label='Game'
-					value={values.game}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-				<TextField
-					required
-					variant='outlined'
-					value={values.monitor}
-					name='monitor'
-					label='Monitor'
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-			</div>
-			<div id='address'>
-				<TextField
-					required
-					variant='outlined'
-					name='billAcceptor'
-					value={values.billAcceptor}
-					label='Bill Acceptor'
-					style={{ flexGrow: 1 }}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-				<TextField
-					variant='outlined'
-					value={values.zipCode}
-					name='serial'
-					label='Serial No.'
-					style={{ maxWidth: 120 }}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-				<div variant='outlined' className='select'>
-					<label htmlFor='type'>Type</label>
-					<Select
-						variant='outlined'
-						native
-						required
-						name='type'
-						labelId='type'
-						value={values.type}
-						onChange={handleChange}
-						onBlur={handleBlur}>
-						<option aria-label='None' value=''></option>
-						{currentMaster?.cabinetTypes.map((type, i) => (
-							<option key={i} value={type}>
-								{type}
-							</option>
-						))}
-					</Select>
-				</div>
-			</div>
-			<Button variant='outlined' type='submit'>
+			<TextField
+				style={{ flexGrow: 3 }}
+				required
+				variant='outlined'
+				name='game'
+				label='Game'
+				value={values.game}
+				onChange={handleChange}
+				onBlur={handleBlur}
+			/>
+			<TextField
+				style={{ flexGrow: 1 }}
+				required
+				variant='outlined'
+				value={values.monitor}
+				name='monitor'
+				label='Monitor'
+				onChange={handleChange}
+				onBlur={handleBlur}
+			/>
+			<TextField
+				style={{ flexGrow: 2 }}
+				required
+				variant='outlined'
+				name='billAcceptor'
+				value={values.billAcceptor}
+				label='Bill Acceptor'
+				onChange={handleChange}
+				onBlur={handleBlur}
+			/>
+			<TextField
+				style={{ flexGrow: 2 }}
+				variant='outlined'
+				value={values.serial}
+				name='serial'
+				label='Serial No.'
+				onChange={handleChange}
+				onBlur={handleBlur}
+			/>
+			<TextField
+				style={{ flexGrow: 3 }}
+				select
+				variant='outlined'
+				required
+				name='type'
+				label='Type'
+				value={values.type}
+				onChange={handleChange}
+				SelectProps={{
+					native: true,
+				}}
+				onBlur={handleBlur}>
+				<option aria-label='None' value=''></option>
+				{currentMaster?.cabinetTypes.map((type, i) => (
+					<option key={i} value={type}>
+						{type}
+					</option>
+				))}
+			</TextField>
+			<div style={{ flexBasis: '100%' }}></div>
+			<Button style={{ width: '25%' }} variant='outlined' type='submit'>
 				Submit
 			</Button>
 		</Form>

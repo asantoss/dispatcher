@@ -81,6 +81,10 @@ class Firebase {
 			throw new Error('No user found please check with your administrator.');
 		}
 	};
+	setMaster = async (master) => {
+		this.currentMaster = master.path;
+	};
+
 	getUserMasters = async (email) => {
 		const usersQuery = await this.db
 			.collection('users')
@@ -124,6 +128,27 @@ class Firebase {
 			])
 			.onSnapshot(callback);
 	};
+	getLocation = async (id) => {
+		const location = await this.db
+			.collection(`${this.currentMaster}/locations`)
+			.doc(id)
+			.get()
+			.catch((e) => e);
+		if (location) {
+			const locationData = { ...location.data(), docId: location.id };
+			return locationData;
+		}
+	};
+
+	getTerminal = async (id) => {
+		const terminal = await this.db
+			.doc(`${this.currentMaster}/terminals/${id}`)
+			.get()
+			.catch((e) => e);
+		if (terminal) {
+			return { ...terminal.data(), docId: terminal.id };
+		}
+	};
 	getMasterTerminals = async (masterPath) => {
 		const terminalsSnapshot = await this.db
 			.collection(masterPath + '/terminals')
@@ -156,28 +181,45 @@ class Firebase {
 			return boards;
 		}
 	};
-	addTerminalToLocation = async (terminal, locationId, path) => {
-		await this.db.doc(`${path}/terminals/${terminal.docId}`).update({
-			locationId: locationId,
-		});
-		return this.db.doc(`${path}/locations/${locationId}`).update({
-			terminals: app.firestore.FieldValue.arrayUnion(terminal),
-		});
-	};
-	addTerminalToMaster = async (values, locationId, path) => {
-		const terminalDoc = await this.db.collection(`${path}/terminals`).doc();
-		await terminalDoc.set({ ...values, locationId });
-		return this.db.doc(`${path}/locations/${locationId}`).update({
+	addTerminalToLocation = async (terminal, locationId) => {
+		await this.db
+			.doc(`${this.currentMaster}/terminals/${terminal.docId}`)
+			.update({
+				locationId: locationId,
+			});
+		return this.db.doc(`${this.currentMaster}/locations/${locationId}`).update({
 			terminals: app.firestore.FieldValue.arrayUnion({
-				...values,
+				...terminal,
 				locationId,
-				docId: terminalDoc.id,
 			}),
 		});
 	};
-	removeTerminalFromLocation = async (terminal, location, path) => {
+	addTerminalToMaster = async (values, locationId, docId) => {
+		const terminalDoc = await this.db
+			.collection(`${this.currentMaster}/terminals`)
+			.doc();
+		await terminalDoc.set({ ...values, locationId });
+		if (locationId) {
+			return this.db
+				.doc(`${this.currentMaster}/locations/${locationId}`)
+				.update({
+					terminals: app.firestore.FieldValue.arrayUnion({
+						...values,
+						locationId,
+						docId: terminalDoc.id,
+					}),
+				});
+		}
+	};
+	updateTerminal = async (values, docId) => {
+		const terminalDoc = await this.db
+			.collection(`${this.currentMaster}/terminals`)
+			.doc(docId);
+		return await terminalDoc.update(values);
+	};
+	removeTerminalFromLocation = async (terminal, location) => {
 		const locationDoc = await this.db.doc(
-			`${path}/locations/${location.docId}`
+			`${this.currentMaster}/locations/${location.docId}`
 		);
 
 		const terminals = location.terminals.filter(
@@ -187,7 +229,7 @@ class Firebase {
 			terminals,
 		});
 		return this.db
-			.doc(`${path}/terminals/${terminal.docId}`)
+			.doc(`${this.currentMaster}/terminals/${terminal.docId}`)
 			.update({ locationId: null })
 			.then(() => {
 				return terminals;

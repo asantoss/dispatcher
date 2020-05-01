@@ -32,13 +32,16 @@ export default function LocationsList() {
 	return (
 		<div>
 			{error && <p>{error}</p>}
-			{loading && <div className='spinner' />}
-			<TableComponent
-				{...{
-					data,
-					headers: ['license', 'name', 'city', 'actions'],
-				}}
-			/>
+			{loading ? (
+				<div className='spinner' />
+			) : (
+				<TableComponent
+					{...{
+						data,
+						headers: ['license', 'name', 'city', 'actions'],
+					}}
+				/>
+			)}
 		</div>
 	);
 }

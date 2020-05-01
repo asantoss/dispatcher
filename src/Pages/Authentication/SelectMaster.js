@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import {
@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import * as ACTIONS from '../../constants/actions';
+import { FirebaseContext } from '../../Firebase';
 
 const MasterContainer = styled.div`
 	font-size: 1.2em;
@@ -36,11 +37,13 @@ const MasterContainer = styled.div`
 
 export default function SelectMaster() {
 	const user = useSelector(({ user }) => user);
+	const firebase = useContext(FirebaseContext);
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { masters } = user;
 	const handleClick = (item) => {
 		const { master, role } = item;
+		firebase.setMaster(master);
 		dispatch(ACTIONS.SET_USER_MASTER({ ...master, role }));
 		history.push('/home');
 	};
