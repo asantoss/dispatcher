@@ -1,25 +1,10 @@
 import React, { useContext } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
-import styled from 'styled-components';
+import { Form } from '../shared/styles/Form.js';
 import { FirebaseContext } from '../../Firebase';
 import { useSelector } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
-
-const Form = styled.form`
-	margin: 1em;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	width: 95%;
-	button {
-		width: 25%;
-	}
-	div {
-		margin: 0.25em;
-	}
-`;
 
 export default function TerminalForm({ initialState, location }) {
 	const { currentMaster } = useSelector(({ user }) => user);

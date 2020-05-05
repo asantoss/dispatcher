@@ -5,6 +5,7 @@ import Table from '../../Components/shared/Table';
 
 export default function BoardList() {
 	const [state, setState] = useState([]);
+
 	const firebase = useContext(FirebaseContext);
 	const { currentMaster } = useSelector(({ user }) => user);
 	useEffect(() => {

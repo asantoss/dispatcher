@@ -174,12 +174,38 @@ class Firebase {
 				const { terminal, ...board } = doc.data();
 				boards.push({
 					...board,
-					terminal: { id: terminal.id, path: terminal.path },
 					docId: doc.id,
 				});
 			});
 			return boards;
 		}
+	};
+	getBoard = async (docId) => {
+		const board = await this.db
+			.doc(`${this.currentMaster}/boards/${docId}`)
+			.get()
+			.catch((e) => e);
+		if (board) {
+			return {
+				...board.data(),
+				docId: board.id,
+			};
+		}
+	};
+	updateBoard = async (docId, boardInfo) => {
+		const board = await this.db
+			.doc(`${this.currentMaster}/boards/${docId}`)
+			.get()
+			.catch((e) => e);
+		if (board) {
+			return board.ref.update(boardInfo);
+		}
+	};
+	addBoard = (boardInfo) => {
+		return this.db
+			.doc(`${this.currentMaster}/boards/`)
+			.set(boardInfo)
+			.catch((e) => e);
 	};
 	addTerminalToLocation = async (terminal, locationId) => {
 		await this.db
@@ -237,7 +263,6 @@ class Firebase {
 	};
 	addUserToMaster = async (values, masterId) => {
 		const addUser = await this.functions.httpsCallable('addUserToMaster');
-		debugger;
 		return addUser({
 			...values,
 			masterId,

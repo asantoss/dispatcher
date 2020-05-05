@@ -39,15 +39,23 @@ const Navigation = ({ isLoggedIn, ...rest }) => {
 			</ListItem>
 			{isLoggedIn && (
 				<>
-					<NavLink to={ROUTES.LOCATIONS} exact activeClassName='current-page'>
+					<NavLink to={ROUTES.BOARDS} exact activeClassName='current-page'>
 						<ListItem button>
 							<ListItemIcon>
 								<Storefront />
 							</ListItemIcon>
-							Locations
+							Boards
 						</ListItem>
 					</NavLink>
 					<NavLink to={ROUTES.TERMINALS} exact activeClassName='current-page'>
+						<ListItem button>
+							<ListItemIcon>
+								<Storefront />
+							</ListItemIcon>
+							Terminals
+						</ListItem>
+					</NavLink>
+					<NavLink to={ROUTES.LOCATIONS} exact activeClassName='current-page'>
 						<ListItem button>
 							<ListItemIcon>
 								<Storefront />

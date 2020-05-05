@@ -9,6 +9,8 @@ FROM node:lts
 
 RUN npm install --global firebase-tools
 
+RUN npm ci
+
 # ** [Optional] Uncomment this section to install additional packages. **
 #
 # ENV DEBIAN_FRONTEND=noninteractive
