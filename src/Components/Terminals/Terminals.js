@@ -12,12 +12,15 @@ import { CloseOutlined, EditOutlined } from '@material-ui/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { FirebaseContext } from '../../Firebase';
 import * as ACTIONS from '../../constants/actions';
+import { Link } from 'react-router-dom';
+
 export default function Terminals({ terminals }) {
 	const {
 		locations: { currentLocation },
 	} = useSelector((state) => state);
 	const dispatch = useDispatch();
 	const firebase = useContext(FirebaseContext);
+
 	const handleRemove = (terminal) => {
 		firebase
 			.removeTerminalFromLocation(terminal, currentLocation)
@@ -37,7 +40,7 @@ export default function Terminals({ terminals }) {
 						<Avatar />
 					</ListItemAvatar>
 					<ListItemText
-						primary={terminal.game}
+						primary={terminal?.board.game ?? 'No Game'}
 						secondary={
 							<>
 								<span>{terminal.serial}</span>
@@ -53,7 +56,9 @@ export default function Terminals({ terminals }) {
 							<CloseOutlined />
 						</IconButton>
 						<IconButton>
-							<EditOutlined />
+							<Link to={`/terminals/${terminal.docId}`}>
+								<EditOutlined />
+							</Link>
 						</IconButton>
 					</ListItemSecondaryAction>
 				</ListItem>

@@ -72,7 +72,7 @@ export default function TerminalsChecked({ location }) {
 							<Avatar />
 						</ListItemAvatar>
 						<ListItemText
-							primary={terminal.game}
+							primary={terminal?.board?.game ?? 'No Game'}
 							secondary={
 								<>
 									<span>{terminal.serial}</span>

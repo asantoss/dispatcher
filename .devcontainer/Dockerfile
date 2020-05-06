@@ -3,13 +3,15 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
+FROM openjdk:stretch
 # To fully customize the contents of this image, use the following Dockerfile instead:
 # https://github.com/microsoft/vscode-dev-containers/tree/v0.112.0/containers/javascript-node-12/.devcontainer/Dockerfile
-FROM node:lts
+RUN apt install -y curl \
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && apt install -y nodejs \
+    && curl -L https://www.npmjs.com/install.sh | sh 
 
 RUN npm install --global firebase-tools
-
-RUN npm ci
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #

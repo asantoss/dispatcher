@@ -7,18 +7,17 @@ import BoardForm from './BoardForm';
 import { isEmpty } from 'lodash';
 import { FirebaseContext } from '../../Firebase';
 
-export default function Board({}) {
+export default function Board() {
 	const tabs = ['Info', 'Edit'];
 	const { state } = useLocation();
 	const firebase = useContext(FirebaseContext);
 	const {
 		params: { id },
 	} = useRouteMatch();
-	const [value, PanelBar, Panel] = usePanelBar(tabs);
+
 	const [isLoading, setLoading] = useState(true);
 	const [board, setBoard] = useState(null);
 	useEffect(() => {
-		console.log(isEmpty(state));
 		if (isEmpty(state)) {
 			firebase
 				.getBoard(id)
@@ -28,18 +27,21 @@ export default function Board({}) {
 				})
 				.catch((e) => console.log(e));
 		} else {
-			setBoard(state);
+			setBoard(state?.data);
 			setLoading(false);
 		}
 	}, [id, firebase, state]);
 
+	const [value, PanelBar, Panel] = usePanelBar(
+		tabs,
+		state?.panel && tabs.indexOf(state.panel)
+	);
 	if (isLoading) {
 		return <div className='spinner'></div>;
 	}
-
 	return (
 		<Container>
-			<Breadcrumb name={board?.name} />
+			<Breadcrumb name={board?.refrence} />
 			<PanelBar />
 			<Panel {...{ value, index: 0 }}>
 				{/* <p>{board.game}</p> */}

@@ -16,7 +16,6 @@ export default function Terminal() {
 	useEffect(() => {
 		if (id) {
 			firebase.getTerminal(id).then((results) => {
-				console.log(results);
 				setTerminal({ ...results, location: null });
 				if (results?.locationId) {
 					firebase.getLocation(results.locationId).then((location) => {
@@ -41,7 +40,7 @@ export default function Terminal() {
 		manufacturer,
 		location,
 		billAcceptor,
-		game,
+		board,
 		docId,
 		serial,
 	} = terminal;
@@ -54,7 +53,6 @@ export default function Terminal() {
 				<p>{manufacturer}</p>
 				<p>{monitor}</p>
 				<p>{billAcceptor}</p>
-				<pre>{JSON.stringify(location, null, 2)}</pre>
 			</Panel>
 			<Panel {...{ value, index: 1 }}>
 				<TerminalForm
@@ -63,7 +61,7 @@ export default function Terminal() {
 						type,
 						manufacturer,
 						billAcceptor,
-						game,
+						board,
 						docId,
 						serial,
 					}}

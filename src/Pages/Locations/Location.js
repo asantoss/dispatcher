@@ -27,7 +27,7 @@ export default function LocationPage() {
 
 	useEffect(() => {
 		if (state) {
-			dispatch(ACTIONS.SET_CURRENT_LOCATION(state.location));
+			dispatch(ACTIONS.SET_CURRENT_LOCATION(state.data));
 		} else if (id) {
 			dispatch(ACTIONS.FIRED());
 			LocationInterface.getLocation(id)

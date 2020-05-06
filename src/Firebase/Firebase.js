@@ -24,7 +24,7 @@ class Firebase {
 		// 		host: 'localhost:5005',
 		// 		ssl: false,
 		// 	});
-		// 	this.functions.useFunctionsEmulator('http://localhost:5001');
+		// this.functions.useFunctionsEmulator('http://localhost:5001');
 		// }
 	}
 
@@ -48,13 +48,6 @@ class Firebase {
 	};
 
 	// *** Database Api
-
-	getUser = (uid) => {
-		return this.db
-			.collection(`/master/${this.user.masterId}/users`)
-			.doc(uid)
-			.get();
-	};
 
 	addUser = async (id, payload) => {
 		return await this.db
@@ -81,11 +74,12 @@ class Firebase {
 			throw new Error('No user found please check with your administrator.');
 		}
 	};
+
 	setMaster = async (master) => {
-		this.currentMaster = master.path;
+		this.master = master.path;
 	};
 
-	getUserMasters = async (email) => {
+	getUserMaster = async (email) => {
 		const usersQuery = await this.db
 			.collection('users')
 			.where('email', '==', email)
@@ -95,14 +89,10 @@ class Firebase {
 				...usersQuery.docs[0].data(),
 				id: usersQuery.docs[0].id,
 			};
-			this.masters = await Promise.all(
-				this.user.masters.map(async ({ master, role }) => {
-					const { path, id } = master;
-					master = await (await this.db.doc(master.path).get()).data();
-					return { master: { ...master, path, id }, role };
-				})
-			);
-			return this.masters;
+			const role = this.user.master.role;
+			this.master = `masters/${this.user.master.id}`;
+			const master = await (await this.db.doc(this.master).get()).data();
+			return { ...master, role };
 		} else {
 			throw new Error('No user found please check with your administrator.');
 		}
@@ -130,7 +120,7 @@ class Firebase {
 	};
 	getLocation = async (id) => {
 		const location = await this.db
-			.collection(`${this.currentMaster}/locations`)
+			.collection(`${this.master}/locations`)
 			.doc(id)
 			.get()
 			.catch((e) => e);
@@ -142,16 +132,16 @@ class Firebase {
 
 	getTerminal = async (id) => {
 		const terminal = await this.db
-			.doc(`${this.currentMaster}/terminals/${id}`)
+			.doc(`${this.master}/terminals/${id}`)
 			.get()
 			.catch((e) => e);
 		if (terminal) {
 			return { ...terminal.data(), docId: terminal.id };
 		}
 	};
-	getMasterTerminals = async (masterPath) => {
+	getMasterTerminals = async () => {
 		const terminalsSnapshot = await this.db
-			.collection(masterPath + '/terminals')
+			.collection(this.master + '/terminals')
 			.get()
 			.catch((e) => e);
 		if (terminalsSnapshot) {
@@ -163,9 +153,72 @@ class Firebase {
 			return terminals;
 		}
 	};
-	getMasterBoards = async (masterPath) => {
+	getMasterFreeTerminals = async () => {
+		const terminalsSnapshot = await this.db
+			.collection(this.master + '/terminals')
+			.where('boardId', '==', null)
+			.get()
+			.catch((e) => e);
+		if (terminalsSnapshot) {
+			const terminals = [];
+			await terminalsSnapshot.forEach((doc) => {
+				const terminal = doc.data();
+				terminals.push({ ...terminal, docId: doc.id });
+			});
+			return terminals;
+		}
+	};
+	getMasterTerminalsListener = (callBack) => {
+		return this.db
+			.collection(this.master + '/terminals')
+			.onSnapshot((querySnapshot) => {
+				const terminals = [];
+				querySnapshot.forEach((doc) => {
+					const { terminal, ...board } = doc.data();
+					terminals.push({
+						...board,
+						docId: doc.id,
+					});
+				});
+				callBack(terminals);
+			});
+	};
+	getMasterBoardsListener = (callBack) => {
+		return this.db
+			.collection(this.master + '/boards')
+			.onSnapshot((querySnapshot) => {
+				const boards = [];
+				querySnapshot.forEach((doc) => {
+					const { terminal, ...board } = doc.data();
+					boards.push({
+						...board,
+						docId: doc.id,
+					});
+				});
+				callBack(boards);
+			});
+	};
+	getMasterBoards = async () => {
 		const boardsSnapshot = await this.db
-			.collection(masterPath + '/boards')
+			.collection(this.master + '/boards')
+			.get()
+			.catch((e) => e);
+		if (boardsSnapshot) {
+			const boards = [];
+			await boardsSnapshot.forEach((doc) => {
+				const { terminal, ...board } = doc.data();
+				boards.push({
+					...board,
+					docId: doc.id,
+				});
+			});
+			return boards;
+		}
+	};
+	getMasterFreeBoards = async () => {
+		const boardsSnapshot = await this.db
+			.collection(this.master + '/boards')
+			.where('terminalId', '==', null)
 			.get()
 			.catch((e) => e);
 		if (boardsSnapshot) {
@@ -182,7 +235,7 @@ class Firebase {
 	};
 	getBoard = async (docId) => {
 		const board = await this.db
-			.doc(`${this.currentMaster}/boards/${docId}`)
+			.doc(`${this.master}/boards/${docId}`)
 			.get()
 			.catch((e) => e);
 		if (board) {
@@ -194,26 +247,31 @@ class Firebase {
 	};
 	updateBoard = async (docId, boardInfo) => {
 		const board = await this.db
-			.doc(`${this.currentMaster}/boards/${docId}`)
+			.doc(`${this.master}/boards/${docId}`)
 			.get()
 			.catch((e) => e);
 		if (board) {
 			return board.ref.update(boardInfo);
 		}
 	};
-	addBoard = (boardInfo) => {
-		return this.db
-			.doc(`${this.currentMaster}/boards/`)
-			.set(boardInfo)
-			.catch((e) => e);
+	addBoard = async (boardInfo) => {
+		const boardRef = await this.db
+			.collection(`${this.master}/boards`)
+			.doc(boardInfo.refrence)
+			.get();
+
+		if (boardRef.exists) {
+			console.log('Board already exists');
+			throw new Error('Board already exists');
+		} else {
+			return boardRef.set(boardInfo);
+		}
 	};
 	addTerminalToLocation = async (terminal, locationId) => {
-		await this.db
-			.doc(`${this.currentMaster}/terminals/${terminal.docId}`)
-			.update({
-				locationId: locationId,
-			});
-		return this.db.doc(`${this.currentMaster}/locations/${locationId}`).update({
+		await this.db.doc(`${this.master}/terminals/${terminal.docId}`).update({
+			locationId: locationId,
+		});
+		return this.db.doc(`${this.master}/locations/${locationId}`).update({
 			terminals: app.firestore.FieldValue.arrayUnion({
 				...terminal,
 				locationId,
@@ -222,30 +280,37 @@ class Firebase {
 	};
 	addTerminalToMaster = async (values, locationId, docId) => {
 		const terminalDoc = await this.db
-			.collection(`${this.currentMaster}/terminals`)
-			.doc();
-		await terminalDoc.set({ ...values, locationId });
-		if (locationId) {
-			return this.db
-				.doc(`${this.currentMaster}/locations/${locationId}`)
-				.update({
+			.collection(`${this.master}/terminals`)
+			.doc(values.serial)
+			.get();
+		if (terminalDoc.exists) {
+			throw new Error('Terminal already exists');
+		} else {
+			if (locationId) {
+				return this.db.doc(`${this.master}/locations/${locationId}`).update({
 					terminals: app.firestore.FieldValue.arrayUnion({
 						...values,
 						locationId,
 						docId: terminalDoc.id,
 					}),
 				});
+			}
+			return await terminalDoc.set({ ...values });
 		}
 	};
 	updateTerminal = async (values, docId) => {
 		const terminalDoc = await this.db
-			.collection(`${this.currentMaster}/terminals`)
+			.collection(`${this.master}/terminals`)
 			.doc(docId);
+		const currentData = await (await terminalDoc.get()).data();
+		if (currentData.boardId && !values.boardId) {
+			await this.updateBoard(currentData.boardId, { terminalId: null });
+		}
 		return await terminalDoc.update(values);
 	};
 	removeTerminalFromLocation = async (terminal, location) => {
 		const locationDoc = await this.db.doc(
-			`${this.currentMaster}/locations/${location.docId}`
+			`${this.master}/locations/${location.docId}`
 		);
 
 		const terminals = location.terminals.filter(
@@ -255,7 +320,7 @@ class Firebase {
 			terminals,
 		});
 		return this.db
-			.doc(`${this.currentMaster}/terminals/${terminal.docId}`)
+			.doc(`${this.master}/terminals/${terminal.docId}`)
 			.update({ locationId: null })
 			.then(() => {
 				return terminals;

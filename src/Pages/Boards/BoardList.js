@@ -4,19 +4,22 @@ import { useSelector } from 'react-redux';
 import Table from '../../Components/shared/Table';
 
 export default function BoardList() {
-	const [state, setState] = useState([]);
+	const [state, setState] = useState({ isLoading: true, board: [] });
 
 	const firebase = useContext(FirebaseContext);
 	const { currentMaster } = useSelector(({ user }) => user);
 	useEffect(() => {
-		firebase.getMasterBoards(currentMaster.path).then((res) => {
-			setState(res);
+		const listener = firebase.getMasterBoardsListener((boards) => {
+			setState((s) => ({ isLoading: false, boards }));
 		});
+		return () => {
+			listener();
+		};
 	}, [firebase, setState, currentMaster]);
+	if (state.isLoading) {
+		return <div className='spinner'></div>;
+	}
 	return (
-		<div>
-			<Table data={state} headers={['game', 'manufacturer', 'view']} />
-			<pre>{JSON.stringify(state, null, 2)}</pre>
-		</div>
+		<Table data={state.boards} headers={['game', 'manufacturer', 'actions']} />
 	);
 }

@@ -13,7 +13,6 @@ export default function ProtectedRoute({
 		manager: ['manager', 'admin'],
 		user: ['user', 'manager'],
 	};
-
 	return (
 		<Route
 			{...rest}

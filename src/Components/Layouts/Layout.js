@@ -1,7 +1,7 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
 import NavBar from './Navigation/NavBar';
-const Layout = ({ children }) => {
+const Layout = ({ children, user }) => {
 	return (
 		<>
 			<Global

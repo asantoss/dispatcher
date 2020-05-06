@@ -6,6 +6,7 @@ import {
 	Typography,
 	Button,
 	SwipeableDrawer,
+	Avatar,
 } from '@material-ui/core';
 import styled from '@emotion/styled';
 import { Menu } from '@material-ui/icons';
@@ -14,7 +15,6 @@ import Navigation from './Navigation';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../../constants/routes';
 import { FirebaseContext } from '../../../Firebase';
-import AuthMenu from './AuthMenu';
 
 const NavBarContainer = styled.div`
 	width: 100%;
@@ -77,7 +77,9 @@ export default function NavBar() {
 					Dispatcher
 				</Typography>
 				{isLoggedIn ? (
-					<AuthMenu {...{ user, handleSignOut }} />
+					<IconButton onClick={handleSignOut}>
+						<Avatar src={user?.photoURL} />
+					</IconButton>
 				) : (
 					<Button color='inherit'>
 						<Link to={ROUTES.SIGN_IN}>Sign In</Link>

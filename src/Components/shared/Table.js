@@ -70,79 +70,79 @@ export default function TableComponent({ data, headers }) {
 		setPage(0);
 	};
 
-	return (
-		state.data?.length && (
-			<TableContext.Provider value={{ dispatch, state, headers }}>
-				<StyledTable>
-					<Filters />
-					<Table stickyHeader className='table'>
-						<TableHead>
-							<TableRow>
-								<TablePagination
-									className='footer'
-									rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
-									count={
-										state.isFiltered ? state.filtered.length : state.data.length
-									}
-									rowsPerPage={rowsPerPage}
-									page={page}
-									onChangePage={handleChangePage}
-									onChangeRowsPerPage={handleChangeRowsPerPage}
-									ActionsComponent={TablePaginationActions}
-								/>
-							</TableRow>
-							<TableRow>
-								{headers.map((head, i) => (
-									<TableCell
-										key={i}
-										component='th'
-										style={{ textTransform: 'uppercase' }}>
-										{head}
-									</TableCell>
-								))}
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{(rowsPerPage > 0
-								? state.data?.slice(
-										page * rowsPerPage,
-										page * rowsPerPage + rowsPerPage
-								  )
-								: state.data
-							)?.map((item, index) => {
-								return (
-									<TableRow key={item?.docId}>
-										{headers?.map((head, i) => {
-											if (head === 'view') {
-												return (
-													<TableCell key={i}>
-														<Link
-															to={{
-																state: item,
-																pathname: `${pathname}/${item?.docId}`,
-															}}>
-															View
-														</Link>
-													</TableCell>
-												);
-											}
-											if (head === 'actions') {
-												return (
-													<TableCell key={i}>
-														<Actions {...{ item, index }} />
-													</TableCell>
-												);
-											}
-											return <TableCell key={i}>{item[head]}</TableCell>;
-										})}
-									</TableRow>
-								);
-							})}
-						</TableBody>
-					</Table>
-				</StyledTable>
-			</TableContext.Provider>
-		)
+	return state.data?.length ? (
+		<TableContext.Provider value={{ dispatch, state, headers }}>
+			<StyledTable>
+				<Filters />
+				<Table stickyHeader className='table'>
+					<TableHead>
+						<TableRow>
+							<TablePagination
+								className='footer'
+								rowsPerPageOptions={[10, 25, 50, { label: 'All', value: -1 }]}
+								count={
+									state.isFiltered ? state.filtered.length : state.data.length
+								}
+								rowsPerPage={rowsPerPage}
+								page={page}
+								onChangePage={handleChangePage}
+								onChangeRowsPerPage={handleChangeRowsPerPage}
+								ActionsComponent={TablePaginationActions}
+							/>
+						</TableRow>
+						<TableRow>
+							{headers.map((head, i) => (
+								<TableCell
+									key={i}
+									component='th'
+									style={{ textTransform: 'uppercase' }}>
+									{head}
+								</TableCell>
+							))}
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{(rowsPerPage > 0
+							? state.data?.slice(
+									page * rowsPerPage,
+									page * rowsPerPage + rowsPerPage
+							  )
+							: state.data
+						)?.map((item, index) => {
+							return (
+								<TableRow key={item?.docId}>
+									{headers?.map((head, i) => {
+										if (head === 'view') {
+											return (
+												<TableCell key={i}>
+													<Link
+														to={{
+															state: item,
+															pathname: `${pathname}/${item?.docId}`,
+														}}>
+														View
+													</Link>
+												</TableCell>
+											);
+										}
+										if (head === 'actions') {
+											return (
+												<TableCell key={i}>
+													<Actions {...{ item, index }} />
+												</TableCell>
+											);
+										}
+										return <TableCell key={i}>{item[head]}</TableCell>;
+									})}
+								</TableRow>
+							);
+						})}
+					</TableBody>
+				</Table>
+			</StyledTable>
+		</TableContext.Provider>
+	) : (
+		<p>No data found.</p>
 	);
 }
 

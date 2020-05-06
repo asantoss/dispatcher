@@ -15,23 +15,14 @@ class FirebaseAdmin {
 	}
 	// *** Database API
 
-	doCreateUser = async (data) => {
-		try {
-			const user = await this.auth.createUser({
-				...data,
-			});
-			if (user.uid) {
-				return user;
-			}
-		} catch (error) {
-			throw error;
-		}
-	};
-	doDeleteUser = (email) => {
+	doCreateUser(data) {
+		return this.auth.createUser(data).catch((e) => console.error(e));
+	}
+	doDeleteUser(email) {
 		return this.auth
 			.getUserByEmail(email)
 			.then((user) => this.auth.deleteUser(user.uid));
-	};
+	}
 }
 
 module.exports = FirebaseAdmin;

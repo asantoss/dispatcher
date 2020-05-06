@@ -1,6 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase';
 import { useDispatch } from 'react-redux';
+
 class Auth {
 	constructor(firebase, setError) {
 		this.firebase = firebase;

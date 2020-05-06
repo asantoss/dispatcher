@@ -6,42 +6,32 @@ import { LocationContext } from './LocationController';
 import TableComponent from '../../Components/shared/Table';
 
 export default function LocationsList() {
-	const LocationController = useContext(LocationContext);
+	const [LocationController] = useContext(LocationContext);
 	const [data, setState] = useState([]);
-	const [{ error, loading }, setError] = useState({
-		loading: false,
-		error: null,
-	});
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		setError((s) => ({ ...s, loading: true }));
-		LocationController.getMasterLocations()
-			.then((payload) => {
-				setError((s) => ({ ...s, loading: false }));
-				setState(payload);
-			})
-			.catch((e) => {
-				setError((s) => ({ ...s, error: e.message }));
-				console.error(e);
-			});
+		const listener = LocationController.getMasterLocations((payload) => {
+			setLoading(false);
+			setState(payload);
+		});
 		return () => {
+			listener();
 			setState(null);
 		};
 	}, [LocationController]);
 
+	if (loading) {
+		return <div className='spinner' />;
+	}
 	return (
-		<div>
-			{error && <p>{error}</p>}
-			{loading ? (
-				<div className='spinner' />
-			) : (
-				<TableComponent
-					{...{
-						data,
-						headers: ['license', 'name', 'city', 'actions'],
-					}}
-				/>
-			)}
-		</div>
+		<>
+			<TableComponent
+				{...{
+					data,
+					headers: ['license', 'name', 'city', 'actions'],
+				}}
+			/>
+		</>
 	);
 }

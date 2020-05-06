@@ -116,7 +116,10 @@ export function useConfirmModal(successCB) {
 						<div className='buttons'>
 							<Button
 								variant='contained'
-								onClick={successCB}
+								onClick={() => {
+									setModalOpen(false);
+									successCB();
+								}}
 								id='yes'
 								type='submit'>
 								Yes

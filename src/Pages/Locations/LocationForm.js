@@ -98,11 +98,16 @@ const Form = styled.form`
 	}
 `;
 
-export default function LocationForm({ docId, initialState }) {
-	const controller = useContext(LocationContext);
-	const dispatch = useDispatch();
+export default function LocationForm({ docId, initialState, isNew }) {
+	const [controller, setStatus] = useContext(LocationContext);
 	const history = useHistory();
-	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
+	const {
+		handleChange,
+		handleSubmit,
+		handleBlur,
+		values,
+		resetForm,
+	} = useFormik({
 		initialValues: initialState || {
 			name: '',
 			state: '',
@@ -113,12 +118,16 @@ export default function LocationForm({ docId, initialState }) {
 			zipCode: '',
 		},
 		onSubmit: (values) => {
-			controller
-				.updateLocation(docId, values)
-				.then(() => {
-					history.replace({ state: { location: { ...values, docId } } });
-				})
-				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
+			if (isNew) {
+				controller.createLocation(values).then(() => {
+					resetForm();
+					setStatus('Successfully created location!');
+				});
+			} else {
+				controller.updateLocation(docId, values).then(() => {
+					history.replace({ state: { data: { ...values, docId } } });
+				});
+			}
 		},
 	});
 	const [openModal, Modal] = useConfirmModal(handleSubmit);

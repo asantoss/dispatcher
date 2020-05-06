@@ -9,6 +9,7 @@ import {
 	AccountCircleOutlined,
 	SupervisorAccountOutlined,
 } from '@material-ui/icons';
+import { useModal } from '../../../hooks/Modal';
 
 const NavLink = styled(Link)`
 	color: #222;

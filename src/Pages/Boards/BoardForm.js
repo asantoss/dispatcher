@@ -1,21 +1,17 @@
 import React, { useContext } from 'react';
-import { TextField, Select, Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
-import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import * as ACTIONS from '../../constants/actions';
+
 import { useConfirmModal } from '../../hooks/Modal';
-import { useHistory } from 'react-router-dom';
+
 import { Form } from '../../Components/shared/styles/Form';
 import { FirebaseContext } from '../../Firebase';
 
-export default function BoardForm({ initialState }) {
-	const dispatch = useDispatch();
-	const history = useHistory();
+export default function BoardForm({ initialState, isNew }) {
 	const firebase = useContext(FirebaseContext);
 	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
 		initialValues: initialState || {
-			name: '',
+			game: '',
 			manufacturer: '',
 			refrence: '',
 			type: '',
@@ -23,6 +19,14 @@ export default function BoardForm({ initialState }) {
 		},
 		onSubmit: (values) => {
 			const { docId, ...boardInfo } = values;
+			if (isNew) {
+				return firebase
+					.addBoard({ ...boardInfo, terminalId: null })
+					.then(() => alert('Sucess'))
+					.catch((e) => {
+						alert('Error: ' + e.message);
+					});
+			}
 			return firebase
 				.updateBoard(docId, boardInfo)
 				.then(() => alert('Success'));
@@ -31,8 +35,10 @@ export default function BoardForm({ initialState }) {
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
 	});
+
 	return (
 		<Form
+			className='board_form'
 			onSubmit={(e) => {
 				e.preventDefault();
 				openModal();
@@ -40,9 +46,9 @@ export default function BoardForm({ initialState }) {
 			<TextField
 				required
 				variant='outlined'
-				name='name'
+				name='game'
 				label='Board Name'
-				value={values.name}
+				value={values.game}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>
@@ -61,7 +67,6 @@ export default function BoardForm({ initialState }) {
 				name='refrence'
 				value={values.refrence}
 				label='Refrence'
-				style={{ flexGrow: 1 }}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>
@@ -70,7 +75,6 @@ export default function BoardForm({ initialState }) {
 				value={values.type}
 				name='type'
 				label='Type'
-				style={{ maxWidth: 120 }}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>
@@ -79,7 +83,6 @@ export default function BoardForm({ initialState }) {
 				value={values.version}
 				name='version'
 				label='Version'
-				style={{ maxWidth: 120 }}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>
@@ -92,3 +95,34 @@ export default function BoardForm({ initialState }) {
 		</Form>
 	);
 }
+
+/**
+ * 	<Autocomplete
+				open={open}
+				onOpen={() => setOpen(true)}
+				onClose={() => setOpen(false)}
+				getOptionSelected={(option, value) => option.game === value.game}
+				getOptionLabel={(option) => `${option?.type}/${option?.serial}`}
+				options={options}
+				onChange={(e) => {
+					setFieldValue('terminal', options[e.target.value]?.docId ?? null);
+				}}
+				loading={loading}
+				renderInput={(params) => (
+					<TextField
+						{...params}
+						label='Cabinet'
+						variant='outlined'
+						InputProps={{
+							...params.InputProps,
+							endAdornment: (
+								<>
+									{loading && <CircularProgress color='inherit' size={20} />}
+									{params.InputProps.endAdornment}
+								</>
+							),
+						}}
+					/>
+				)}
+			/>
+ */
