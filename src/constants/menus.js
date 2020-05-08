@@ -1,1 +1,1 @@
-export default ['board', 'terminal', 'location'];
+export default ['board', 'terminal', 'location', 'ticket'];

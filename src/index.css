@@ -8,6 +8,8 @@
 	--border: 1px solid #474a4d;
 	--border-radius: 8px;
 	--speed: 300ms;
+	--warning: #ffd939;
+	--success: #00cc1b;
 }
 
 body {
@@ -27,10 +29,6 @@ code {
 .google-btn {
 	background-color: transparent;
 	border: none;
-}
-
-main {
-	max-width: 600px;
 }
 
 .spinner {

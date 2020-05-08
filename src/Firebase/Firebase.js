@@ -153,6 +153,20 @@ class Firebase {
 			return terminals;
 		}
 	};
+	getMasterLocations = async () => {
+		const locationsSnapshot = await this.db
+			.collection(this.master + '/locations')
+			.get()
+			.catch((e) => e);
+		if (locationsSnapshot) {
+			const locations = [];
+			await locationsSnapshot.forEach((doc) => {
+				const location = doc.data();
+				locations.push({ ...location, docId: doc.id });
+			});
+			return locations;
+		}
+	};
 	getMasterFreeTerminals = async () => {
 		const terminalsSnapshot = await this.db
 			.collection(this.master + '/terminals')
@@ -181,6 +195,21 @@ class Firebase {
 					});
 				});
 				callBack(terminals);
+			});
+	};
+	getMasterTicketsListener = (callBack) => {
+		return this.db
+			.collection(this.master + '/tickets')
+			.onSnapshot((querySnapshot) => {
+				const tickets = [];
+				querySnapshot.forEach((doc) => {
+					const ticket = doc.data();
+					tickets.push({
+						...ticket,
+						docId: doc.id,
+					});
+				});
+				callBack(tickets);
 			});
 	};
 	getMasterBoardsListener = (callBack) => {
@@ -264,8 +293,16 @@ class Firebase {
 			console.log('Board already exists');
 			throw new Error('Board already exists');
 		} else {
-			return boardRef.set(boardInfo);
+			return boardRef.ref.set(boardInfo);
 		}
+	};
+	addTicket = async (ticketInfo) => {
+		const ticketRef = await this.db.collection(`${this.master}/tickets`).add({
+			...ticketInfo,
+			completed: false,
+			created: app.firestore.FieldValue.serverTimestamp(),
+		});
+		return ticketRef;
 	};
 	addTerminalToLocation = async (terminal, locationId) => {
 		await this.db.doc(`${this.master}/terminals/${terminal.docId}`).update({
@@ -287,7 +324,7 @@ class Firebase {
 			throw new Error('Terminal already exists');
 		} else {
 			if (locationId) {
-				return this.db.doc(`${this.master}/locations/${locationId}`).update({
+				await this.db.doc(`${this.master}/locations/${locationId}`).update({
 					terminals: app.firestore.FieldValue.arrayUnion({
 						...values,
 						locationId,
@@ -295,8 +332,18 @@ class Firebase {
 					}),
 				});
 			}
-			return await terminalDoc.set({ ...values });
+			await terminalDoc.ref.set({ ...values });
+			return terminalDoc.ref;
 		}
+	};
+	updateTicket = (id, data) => {
+		if (data?.complete) {
+			data.completedAt = app.firestore.FieldValue.serverTimestamp();
+		}
+		return this.db.doc(`${this.master}/tickets/${id}`).update(data);
+	};
+	removeTicket = (id) => {
+		return this.db.doc(`${this.master}/tickets/${id}`).delete();
 	};
 	updateTerminal = async (values, docId) => {
 		const terminalDoc = await this.db
@@ -312,7 +359,6 @@ class Firebase {
 		const locationDoc = await this.db.doc(
 			`${this.master}/locations/${location.docId}`
 		);
-
 		const terminals = location.terminals.filter(
 			(e) => e.docId !== terminal.docId
 		);

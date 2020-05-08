@@ -10,25 +10,24 @@ import {
 	ListItemSecondaryAction,
 	Button,
 } from '@material-ui/core';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as ACTIONS from '../../constants/actions';
 
 export default function TerminalsChecked({ location }) {
 	const [checked, setChecked] = useState([]);
 	const [state, setState] = useState([]);
-	const user = useSelector(({ user }) => user);
 	const dispatch = useDispatch();
 	const firebase = useContext(FirebaseContext);
 
 	useEffect(() => {
-		if (user?.currentMaster?.path)
-			firebase.getMasterTerminals(user.currentMaster.path).then((results) => {
-				const terminals = results.filter(
-					(terminal) => terminal?.locationId !== location?.docId
-				);
-				setState(terminals);
-			});
-	}, [user, setState, firebase, location]);
+		firebase.getMasterTerminals().then((results) => {
+			const terminals = results.filter(
+				(terminal) => terminal?.locationId !== location?.docId
+			);
+			setState(terminals);
+		});
+	}, [setState, firebase, location]);
+
 	const handleToggle = (value) => () => {
 		const currentIndex = checked.indexOf(value);
 		const newChecked = [...checked];
@@ -48,17 +47,11 @@ export default function TerminalsChecked({ location }) {
 		if (terminals.length < location.terminalsTotal) {
 			Promise.all(
 				checked.map((terminal) =>
-					firebase.addTerminalToLocation(
-						terminal,
-						location.docId,
-						user.currentMaster.path
-					)
+					firebase.addTerminalToLocation(terminal, location.docId)
 				)
 			).then(() => {
 				setChecked([]);
-				dispatch(
-					ACTIONS.SET_CURRENT_LOCATION({ ...location, terminals: checked })
-				);
+				dispatch(ACTIONS.SET_CURRENT_LOCATION({ ...location, terminals }));
 				alert('Success');
 			});
 		}
@@ -98,6 +91,9 @@ export default function TerminalsChecked({ location }) {
 			</Button>
 		</form>
 	) : (
-		<h4>No available terminals!</h4>
+		<>
+			<div className='spinner' />
+			<h4>No available terminals!</h4>
+		</>
 	);
 }

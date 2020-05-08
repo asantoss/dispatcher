@@ -1,15 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const slideIn = keyframes`
-  0% {
-   transform: scale(0.2);
-   top: 45px;
-  }
-  100% {
-	transform: scale(1);
-	top: 58px;
-  }
-`;
+import styled from 'styled-components';
 
 export const NavMenuContainer = styled.div`
 	position: absolute;

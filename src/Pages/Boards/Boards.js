@@ -1,22 +1,31 @@
-import React from 'react';
-import BoardList from './BoardList';
-import usePanelBar from '../../hooks/PanelBar';
-import Breadcrumb from '../../Components/shared/Breadcrumb';
-import BoardForm from './BoardForm';
+import React, { useState, useContext, useEffect } from 'react';
 
+import Table from '../../Components/shared/Table';
+import { FirebaseContext } from '../../Firebase';
+import Breadcrumb from '../../Components/shared/Breadcrumb';
 export default function Boards() {
-	const tabs = ['All', 'New'];
-	const [value, PanelBar, Panel] = usePanelBar(tabs);
+	const [state, setState] = useState({ isLoading: true, board: [] });
+	const firebase = useContext(FirebaseContext);
+
+	useEffect(() => {
+		const listener = firebase.getMasterBoardsListener((boards) => {
+			setState((s) => ({ isLoading: false, boards }));
+		});
+		return () => {
+			listener();
+		};
+	}, [firebase, setState]);
+
+	if (state.isLoading) {
+		return <div className='spinner'></div>;
+	}
 	return (
-		<div>
+		<>
 			<Breadcrumb />
-			<PanelBar />
-			<Panel {...{ value, index: 0 }}>
-				<BoardList />
-			</Panel>
-			<Panel {...{ value, index: 1 }}>
-				<BoardForm isNew={true} />
-			</Panel>
-		</div>
+			<Table
+				data={state.boards}
+				headers={['game', 'manufacturer', 'actions']}
+			/>
+		</>
 	);
 }

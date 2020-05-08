@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { LocationContext } from './LocationController';
-import LocationForm from './LocationForm';
+import LocationForm from '../../Components/Forms/LocationForm';
 import usePanelBar from '../../hooks/PanelBar';
 import { useSelector, useDispatch } from 'react-redux';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
@@ -17,7 +17,7 @@ export default function LocationPage() {
 		tabs,
 		state?.panel && tabs.indexOf(state?.panel)
 	);
-	const LocationInterface = useContext(LocationContext);
+	const [LocationInterface] = useContext(LocationContext);
 	const dispatch = useDispatch();
 
 	const {
@@ -26,19 +26,15 @@ export default function LocationPage() {
 	} = useSelector((state) => state);
 
 	useEffect(() => {
-		if (state) {
-			dispatch(ACTIONS.SET_CURRENT_LOCATION(state.data));
-		} else if (id) {
-			dispatch(ACTIONS.FIRED());
+		if (id) {
 			LocationInterface.getLocation(id)
 				.then((results) => {
-					dispatch(ACTIONS.FULFILLED());
 					return results;
 				})
 				.then((payload) => dispatch(ACTIONS.SET_CURRENT_LOCATION(payload)))
 				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
 		}
-	}, [state, id, LocationInterface, dispatch]);
+	}, [id, LocationInterface, dispatch]);
 
 	if (loading) {
 		return <div className='spinner' />;

@@ -4,13 +4,14 @@ import { FirebaseContext } from '../../Firebase';
 import styled from 'styled-components';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import usePanelBar from '../../hooks/PanelBar';
-import TerminalForm from '../../Components/Terminals/TerminalForm';
+import TerminalForm from '../../Components/Forms/TerminalForm';
 export default function Terminal() {
 	const firebase = useContext(FirebaseContext);
 	const {
 		params: { id },
 	} = useRouteMatch();
 	const [terminal, setTerminal] = useState({});
+	const [status, setStatus] = useState(null);
 	const [isLoading, setisLoading] = useState(true);
 	const [value, PanelBar, Panel] = usePanelBar(['Info', 'Edit']);
 	useEffect(() => {
@@ -47,6 +48,7 @@ export default function Terminal() {
 	return (
 		<Container>
 			<Breadcrumb name={terminal?.serial} />
+			{status && <p>{status}</p>}
 			<PanelBar />
 			<Panel {...{ value, index: 0 }}>
 				<p>{type}</p>
@@ -65,6 +67,7 @@ export default function Terminal() {
 						docId,
 						serial,
 					}}
+					setStatus={setStatus}
 					location={location}
 				/>
 			</Panel>

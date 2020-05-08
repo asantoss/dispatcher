@@ -9,7 +9,12 @@ import { useConfirmModal } from '../../hooks/Modal';
 
 // import { useHistory } from 'react-router-dom';
 
-export default function TerminalForm({ initialState, location }) {
+export default function TerminalForm({
+	initialState,
+	location,
+	isNew,
+	setStatus,
+}) {
 	const { currentMaster } = useSelector(({ user }) => user);
 	const firebase = useContext(FirebaseContext);
 
@@ -22,20 +27,35 @@ export default function TerminalForm({ initialState, location }) {
 		setFieldValue,
 	} = useFormik({
 		initialValues: initialState || {
-			game: '',
 			location: '',
 			monitor: ``,
 			type: '',
 			billAcceptor: '',
+			manufacturer: '',
 			serial: '',
 			boardId: null,
 		},
-		onSubmit: ({ board, ...values }) => {
+		onSubmit: async ({ board, ...values }) => {
 			const locationRef = location?.docId ?? null;
-			const docId = initialState?.docId ?? null;
-			debugger;
+			let docId;
+			if (isNew) {
+				const docRef = await firebase
+					.addTerminalToMaster({
+						...values,
+						locationId: locationRef,
+					})
+					.catch((e) => {
+						resetForm();
+						setStatus('Error: ' + e.message);
+					});
+				docId = docRef.id;
+			} else {
+				docId = initialState?.docId ?? null;
+			}
+
 			if (values?.boardId) {
-				firebase.updateBoard(values.boardId, { terminalId: docId });
+				await firebase.updateBoard(values.boardId, { terminalId: docId });
+				board.terminalId = docId;
 			} else {
 				values.boardId = null;
 				board = null;
@@ -44,17 +64,15 @@ export default function TerminalForm({ initialState, location }) {
 					initialState.boardId = null;
 				}
 			}
-			if (docId) {
-				return firebase.updateTerminal(values, docId).then(() => {
-					alert('Success');
-				});
-			}
 			return firebase
-				.addTerminalToMaster({ ...values, locationId: locationRef })
+				.updateTerminal({ ...values, board }, docId)
 				.then(() => {
-					resetForm();
-					alert('Success!');
-				});
+					setStatus('Successfuller updated: ' + values?.serial);
+					if (isNew) {
+						resetForm();
+					}
+				})
+				.catch((e) => setStatus('Error: ' + e.message));
 		},
 	});
 	const [open, setOpen] = useState(false);
@@ -64,7 +82,6 @@ export default function TerminalForm({ initialState, location }) {
 		if (!loading) {
 			return undefined;
 		}
-
 		let active = true;
 		(async () => {
 			const boards = await firebase.getMasterFreeBoards();
@@ -92,7 +109,9 @@ export default function TerminalForm({ initialState, location }) {
 				defaultValue={initialState?.board ?? undefined}
 				getOptionSelected={(option, value) => option.game === value.game}
 				getOptionLabel={(option) =>
-					option?.refrence ? `${option.game}/${option?.refrence}` : option.game
+					option?.refrence
+						? `${option.game}/ Refrence: ${option?.refrence}`
+						: option.game
 				}
 				options={options}
 				onChange={(e) => {
@@ -116,6 +135,16 @@ export default function TerminalForm({ initialState, location }) {
 						}}
 					/>
 				)}
+			/>
+			<TextField
+				style={{ flexGrow: 1 }}
+				required
+				variant='outlined'
+				value={values.manufacturer}
+				name='manufacturer'
+				label='Manufacturer'
+				onChange={handleChange}
+				onBlur={handleBlur}
 			/>
 			<TextField
 				style={{ flexGrow: 1 }}

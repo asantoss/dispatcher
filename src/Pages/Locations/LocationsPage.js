@@ -1,35 +1,36 @@
-import React from 'react';
-import styled from 'styled-components';
-// import { Button } from '@material-ui/core';
-import LocationsList from './LocationsList';
-import LocationForm from './LocationForm';
-// import { Add } from '@material-ui/icons';
+import React, { useState, useEffect, useContext } from 'react';
+import { LocationContext } from './LocationController';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
-import usePanelBar from '../../hooks/PanelBar';
-
-const LocationsPageContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	.filter {
-		display: flex;
-		padding: 0 0.5em;
-		justify-content: space-between;
-	}
-`;
+import TableComponent from '../../Components/shared/Table';
 
 export default function LocationsPage() {
-	const tabs = ['All', 'New'];
-	const [value, PanelBar, Panel] = usePanelBar(tabs);
+	const [LocationController] = useContext(LocationContext);
+	const [data, setState] = useState([]);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const listener = LocationController.getMasterLocations((payload) => {
+			setLoading(false);
+			setState(payload);
+		});
+		return () => {
+			listener();
+			setState(null);
+		};
+	}, [LocationController]);
+
+	if (loading) {
+		return <div className='spinner' />;
+	}
 	return (
-		<LocationsPageContainer>
+		<>
 			<Breadcrumb />
-			<PanelBar />
-			<Panel {...{ value, index: 0 }}>
-				<LocationsList />
-			</Panel>
-			<Panel {...{ value, index: 1 }}>
-				<LocationForm isNew={true} />
-			</Panel>
-		</LocationsPageContainer>
+			<TableComponent
+				{...{
+					data,
+					headers: ['license', 'name', 'city', 'actions'],
+				}}
+			/>
+		</>
 	);
 }

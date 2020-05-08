@@ -14,7 +14,7 @@ import * as ROLES from '../../constants/roles';
 import { useConfirmModal } from '../../hooks/Modal';
 import { useLocation } from 'react-router-dom';
 import { FirebaseContext } from '../../Firebase';
-
+import { mapsOpener } from '../../shared/utils';
 const ActionsContainer = styled.div`
 	display: flex;
 	#view {
@@ -64,7 +64,7 @@ export default function Actions({ item }) {
 						<DirectionsOutlined />
 					</MenuItem>
 				)}
-				{user?.currentMaster?.role === ROLES.ADMIN && (
+				{user?.currentMaster?.role === ROLES.ADMIN && pathname !== '/tickets' && (
 					<MenuItem onClick={() => setModalOpen(true)}>
 						<DeleteOutline />
 					</MenuItem>
@@ -97,20 +97,4 @@ export default function Actions({ item }) {
 			</ConfirmModal>
 		</ActionsContainer>
 	);
-}
-
-const urlRegEx = /http[s]+:\/\//g;
-const location = /[mMyY]+\+[Ll]ocation/g;
-function mapsOpener(url, origin) {
-	const browserLocation = origin?.latitude + ',' + origin?.longitude ?? null;
-
-	const isIphone = navigator.platform.indexOf('Iphone') !== -1;
-	if (isIphone) {
-		url = url.replace(urlRegEx, 'maps');
-	}
-	if (browserLocation) {
-		url = url.replace(location, browserLocation);
-	}
-	console.log({ isIphone, browserLocation, url });
-	return window.open(url);
 }

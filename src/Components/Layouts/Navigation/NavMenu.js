@@ -3,6 +3,7 @@ import * as ROUTES from '../../../constants/routes';
 import { NavMenuContainer } from '../styles/NavMenu.styled';
 import { Divider } from '@material-ui/core';
 import {
+	BugReportOutlined,
 	ArrowBackOutlined,
 	HomeOutlined,
 	Storefront,
@@ -40,14 +41,23 @@ const NavMenu = ({ isLoggedIn, toggleNav }) => {
 				mountOnEnter={true}
 				unmountOnExit>
 				<div className='menu'>
-					<NavItem to={ROUTES.HOME}>
-						<div>
-							<HomeOutlined />
-							<p>Home</p>
-						</div>
-					</NavItem>
+					<Link to={ROUTES.HOME} onClick={toggleNav}>
+						<NavItem>
+							<div>
+								<HomeOutlined />
+								<p>Home</p>
+							</div>
+						</NavItem>
+					</Link>
 					{isLoggedIn && (
 						<>
+							<NavItem onClick={() => setActiveMenu('ticket')}>
+								<div>
+									<BugReportOutlined />
+									<p>Tickets</p>
+								</div>
+								<ArrowRightAltOutlined />
+							</NavItem>
 							<NavItem onClick={() => setActiveMenu('board')}>
 								<div>
 									<VideogameAssetOutlined />
@@ -118,7 +128,7 @@ const SubMenu = ({
 					<p>Go back</p>
 				</div>
 			</NavItem>
-			<Link to={`/${menu}/:new`} onClick={toggleNav}>
+			<Link to={`/new/${menu}`} onClick={toggleNav}>
 				<NavItem>
 					<div>
 						<Add />

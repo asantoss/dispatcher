@@ -3,7 +3,7 @@ import usePanelBar from '../../hooks/PanelBar';
 import styled from 'styled-components';
 import { useLocation, useRouteMatch } from 'react-router-dom';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
-import BoardForm from './BoardForm';
+import BoardForm from '../../Components/Forms/BoardForm';
 import { isEmpty } from 'lodash';
 import { FirebaseContext } from '../../Firebase';
 
@@ -16,6 +16,7 @@ export default function Board() {
 	} = useRouteMatch();
 
 	const [isLoading, setLoading] = useState(true);
+	const [status, setStatus] = useState(null);
 	const [board, setBoard] = useState(null);
 	useEffect(() => {
 		if (isEmpty(state)) {
@@ -41,6 +42,7 @@ export default function Board() {
 	}
 	return (
 		<Container>
+			{status && <p>{status}</p>}
 			<Breadcrumb name={board?.refrence} />
 			<PanelBar />
 			<Panel {...{ value, index: 0 }}>
@@ -49,7 +51,11 @@ export default function Board() {
 				<p>{board.type}</p>
 			</Panel>
 			<Panel {...{ value, index: 1 }}>
-				<BoardForm initialState={board} docId={board.docId} />
+				<BoardForm
+					initialState={board}
+					docId={board.docId}
+					setStatus={setStatus}
+				/>
 			</Panel>
 		</Container>
 	);

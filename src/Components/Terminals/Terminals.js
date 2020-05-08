@@ -20,7 +20,6 @@ export default function Terminals({ terminals }) {
 	} = useSelector((state) => state);
 	const dispatch = useDispatch();
 	const firebase = useContext(FirebaseContext);
-
 	const handleRemove = (terminal) => {
 		firebase
 			.removeTerminalFromLocation(terminal, currentLocation)
@@ -30,7 +29,7 @@ export default function Terminals({ terminals }) {
 					ACTIONS.SET_CURRENT_LOCATION({ ...currentLocation, terminals })
 				);
 			})
-			.catch((e) => alert('Error please try againt \n ' + e.message));
+			.catch((e) => alert('Error please try again \n ' + e.message));
 	};
 	return terminals?.length ? (
 		terminals.map((terminal, i) => (

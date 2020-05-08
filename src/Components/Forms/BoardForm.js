@@ -4,12 +4,18 @@ import { useFormik } from 'formik';
 
 import { useConfirmModal } from '../../hooks/Modal';
 
-import { Form } from '../../Components/Layouts/styles/Form';
+import { Form } from '../Layouts/styles/Form';
 import { FirebaseContext } from '../../Firebase';
 
-export default function BoardForm({ initialState, isNew }) {
+export default function BoardForm({ initialState, isNew, setStatus }) {
 	const firebase = useContext(FirebaseContext);
-	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
+	const {
+		resetForm,
+		handleChange,
+		handleSubmit,
+		handleBlur,
+		values,
+	} = useFormik({
 		initialValues: initialState || {
 			game: '',
 			manufacturer: '',
@@ -22,14 +28,19 @@ export default function BoardForm({ initialState, isNew }) {
 			if (isNew) {
 				return firebase
 					.addBoard({ ...boardInfo, terminalId: null })
-					.then(() => alert('Sucess'))
+					.then(() =>
+						setStatus('Successfuller added board: ' + values?.refrence)
+					)
 					.catch((e) => {
-						alert('Error: ' + e.message);
+						setStatus('Error ' + e.message);
+						resetForm();
 					});
 			}
 			return firebase
 				.updateBoard(docId, boardInfo)
-				.then(() => alert('Success'));
+				.then(() =>
+					setStatus('Successfuller added board: ' + values?.refrence)
+				);
 		},
 	});
 	const [openModal, Modal] = useConfirmModal(() => {

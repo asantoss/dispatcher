@@ -23,6 +23,8 @@ import TerminalPage from './Pages/Terminals/TerminalsPage';
 import Terminal from './Pages/Terminals/Terminal';
 import BoardPage from './Pages/Boards/Boards';
 import Board from './Pages/Boards/Board';
+import NewItem from './Pages/NewItem';
+import Tickets from './Pages/Tickets';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -30,11 +32,14 @@ const App = () => {
 		const options = {
 			enableHighAccuracy: true,
 			timeout: 5000,
-			maximumAge: 0,
+			maximumAge: 1000 * 60 * 60 * 24 * 5,
 		};
 		navigator.geolocation.getCurrentPosition(
 			(pos) => {
 				const { latitude, longitude } = pos.coords;
+				console.log(
+					`Got your location with ${pos.coords.accuracy} more or less meters of accuracy.`
+				);
 				dispatch(ACTIONS.SET_USER_LOCATION({ latitude, longitude }));
 			},
 			null,
@@ -81,7 +86,19 @@ const App = () => {
 						role={ROLES.USER}
 						component={Terminal}
 					/>
+					<ProtectedRoute
+						exact
+						path={ROUTES.TICKETS}
+						role={ROLES.USER}
+						component={Tickets}
+					/>
 					<LocationController>
+						<ProtectedRoute
+							exact
+							path={ROUTES.NEW}
+							role={ROLES.ADMIN}
+							component={NewItem}
+						/>
 						<ProtectedRoute
 							exact
 							path={ROUTES.LOCATIONS}

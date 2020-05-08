@@ -10,4 +10,6 @@ export const LOCATION = '/locations/:id';
 export const TERMINALS = '/terminals';
 export const TERMINAL = '/terminals/:id';
 export const BOARDS = '/boards';
+export const TICKETS = '/tickets';
 export const BOARD = '/boards/:id';
+export const NEW = '/new/:item';

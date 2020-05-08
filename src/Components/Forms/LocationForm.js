@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { TextField, Select, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
-import { LocationContext } from './LocationController';
+import { LocationContext } from '../../Pages/Locations/LocationController';
 
 import { useConfirmModal } from '../../hooks/Modal';
 import { useHistory } from 'react-router-dom';
@@ -97,9 +97,17 @@ const Form = styled.form`
 	}
 `;
 
-export default function LocationForm({ docId, initialState, isNew }) {
-	const [controller, setStatus] = useContext(LocationContext);
+export default function LocationForm({
+	docId,
+	initialState,
+	isNew,
+	setStatus,
+}) {
+	const [controller, setStatusLocal] = useContext(LocationContext);
 	const history = useHistory();
+	if (!setStatus) {
+		setStatus = setStatusLocal;
+	}
 	const {
 		handleChange,
 		handleSubmit,
@@ -120,10 +128,11 @@ export default function LocationForm({ docId, initialState, isNew }) {
 			if (isNew) {
 				controller.createLocation(values).then(() => {
 					resetForm();
-					setStatus('Successfully created location!');
+					setStatus('Successfully created location: ' + values?.name);
 				});
 			} else {
 				controller.updateLocation(docId, values).then(() => {
+					setStatus('Successfuller added board: ' + values?.refrence);
 					history.replace({ state: { data: { ...values, docId } } });
 				});
 			}
