@@ -43,11 +43,11 @@ export default function Terminals({ terminals }) {
 						primary={terminal?.board?.game ?? 'No Game'}
 						secondary={
 							<>
-								<span>{terminal.serial}</span>
+								<span>{terminal?.serial}</span>
 								<br />
-								<span>{terminal.type}</span>
+								<span>{terminal?.type}</span>
 								<br />
-								<span>{terminal.billAcceptor}</span>
+								<span>{terminal?.billAcceptor}</span>
 							</>
 						}
 					/>
@@ -56,7 +56,7 @@ export default function Terminals({ terminals }) {
 							<CloseOutlined />
 						</IconButton>
 						<IconButton>
-							<Link to={`/terminals/${terminal.docId}`}>
+							<Link to={`/terminals/${terminal?.docId}`}>
 								<EditOutlined />
 							</Link>
 						</IconButton>

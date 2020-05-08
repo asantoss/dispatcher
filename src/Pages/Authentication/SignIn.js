@@ -14,7 +14,7 @@ const SignInPage = () => {
 			<h3>Sign In</h3>
 			<SignInForm />
 			<PasswordForgetLink />
-			<SignUpLink />(
+			<SignUpLink />
 		</div>
 	);
 };

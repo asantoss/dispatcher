@@ -2,18 +2,19 @@ import React, { useContext, useState, useRef } from 'react';
 
 import { Link } from 'react-router-dom';
 import { IconButton, Button, Avatar } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
 import { FirebaseContext } from '../../../Firebase';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useOnClickOutside } from '../../../hooks';
 import * as ROUTES from '../../../constants/routes';
 import NavMenu from './NavMenu';
 import styled from 'styled-components';
 import Burger from './Burger';
 import { CSSTransition } from 'react-transition-group';
 export default function NavBar(props) {
+	const node = useRef();
 	const firebase = useContext(FirebaseContext);
 	const [state, setState] = useState(false);
+	useOnClickOutside(node, () => setState(false));
 	const {
 		user: { isLoggedIn, photoURL },
 	} = useSelector((state) => state);
@@ -27,7 +28,7 @@ export default function NavBar(props) {
 	};
 
 	return (
-		<AppBar>
+		<AppBar ref={node}>
 			<div className='logo'>
 				<Burger open={state} toggleNav={toggleNav} />
 				<h2>Dispatcher</h2>
@@ -43,8 +44,11 @@ export default function NavBar(props) {
 					</Link>
 				</Button>
 			)}
-
-			{state && <NavMenu isOpen={state} {...{ isLoggedIn, toggleNav }} />}
+			<CSSTransition in={state} timeout={100} appear={true} unmountOnExit>
+				{/* <div> */}
+				<NavMenu isOpen={state} {...{ isLoggedIn, toggleNav }} />
+				{/* </div> */}
+			</CSSTransition>
 		</AppBar>
 	);
 }
