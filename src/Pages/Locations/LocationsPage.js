@@ -6,8 +6,8 @@ import LocationForm from './LocationForm';
 // import { Add } from '@material-ui/icons';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import usePanelBar from '../../hooks/PanelBar';
+
 const LocationsPageContainer = styled.div`
-	padding: 1em 0;
 	display: flex;
 	flex-direction: column;
 	.filter {

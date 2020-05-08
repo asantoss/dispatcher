@@ -40,7 +40,7 @@ export default function Terminals({ terminals }) {
 						<Avatar />
 					</ListItemAvatar>
 					<ListItemText
-						primary={terminal?.board.game ?? 'No Game'}
+						primary={terminal?.board?.game ?? 'No Game'}
 						secondary={
 							<>
 								<span>{terminal.serial}</span>

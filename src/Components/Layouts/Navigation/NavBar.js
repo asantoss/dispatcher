@@ -1,104 +1,79 @@
-import React, { useContext, useState } from 'react';
-import {
-	AppBar,
-	Toolbar,
-	IconButton,
-	Typography,
-	Button,
-	SwipeableDrawer,
-	Avatar,
-} from '@material-ui/core';
-import styled from '@emotion/styled';
-import { Menu } from '@material-ui/icons';
-import { useSelector, useDispatch } from 'react-redux';
-import Navigation from './Navigation';
+import React, { useContext, useState, useRef } from 'react';
+
 import { Link } from 'react-router-dom';
-import * as ROUTES from '../../../constants/routes';
+import { IconButton, Button, Avatar } from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
 import { FirebaseContext } from '../../../Firebase';
+import { useSelector, useDispatch } from 'react-redux';
 
-const NavBarContainer = styled.div`
-	width: 100%;
-	color: white;
-	header {
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.MenuButton {
-		margin-left: 0em;
-		color: inherit;
-	}
-	.title {
-		flex-grow: 1;
-	}
-	a {
-		text-decoration: none;
-		color: white;
-		&.current-page {
-			color: darkgray;
-		}
-	}
-	.drawer {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-	}
-`;
-
-export default function NavBar() {
+import * as ROUTES from '../../../constants/routes';
+import NavMenu from './NavMenu';
+import styled from 'styled-components';
+import Burger from './Burger';
+import { CSSTransition } from 'react-transition-group';
+export default function NavBar(props) {
 	const firebase = useContext(FirebaseContext);
-	const { isLoggedIn, ...user } = useSelector(({ user }) => user);
-	const dispatch = useDispatch();
 	const [state, setState] = useState(false);
-
+	const {
+		user: { isLoggedIn, photoURL },
+	} = useSelector((state) => state);
+	const dispatch = useDispatch();
 	const handleSignOut = () => {
 		dispatch({ type: 'LOGOUT' });
 		return firebase.doSignOut();
 	};
-	const toggleNav = (state) => (event) => {
-		if (
-			event?.type === 'keydown' &&
-			(event?.key === 'Tab' || event?.key === 'Shift')
-		) {
-			return;
-		}
-		setState(state);
+	const toggleNav = () => {
+		setState(!state);
 	};
 
 	return (
-		<NavBarContainer>
-			<AppBar position='static'>
-				<Toolbar>
-					<IconButton onClick={toggleNav(true)} className='MenuButton'>
-						<Menu />
-					</IconButton>
-				</Toolbar>
-				<Typography variant='h6' className='title'>
-					Dispatcher
-				</Typography>
-				{isLoggedIn ? (
-					<IconButton onClick={handleSignOut}>
-						<Avatar src={user?.photoURL} />
-					</IconButton>
-				) : (
-					<Button color='inherit'>
-						<Link to={ROUTES.SIGN_IN}>Sign In</Link>
-					</Button>
-				)}
-			</AppBar>
-			<SwipeableDrawer
-				anchor='left'
-				open={state}
-				onClose={toggleNav(false)}
-				onOpen={toggleNav(true)}>
-				<Navigation
-					{...{ isLoggedIn }}
-					className='drawer'
-					role='presentation'
-					onClick={toggleNav(false)}
-					onKeyDown={toggleNav(false)}
-				/>
-			</SwipeableDrawer>
-		</NavBarContainer>
+		<AppBar>
+			<div className='logo'>
+				<Burger open={state} toggleNav={toggleNav} />
+				<h2>Dispatcher</h2>
+			</div>
+			{isLoggedIn ? (
+				<IconButton onClick={handleSignOut}>
+					<Avatar src={photoURL} />
+				</IconButton>
+			) : (
+				<Button color='inherit'>
+					<Link style={{ fontSize: '1.2em' }} to={ROUTES.SIGN_IN}>
+						Sign In
+					</Link>
+				</Button>
+			)}
+
+			{state && <NavMenu isOpen={state} {...{ isLoggedIn, toggleNav }} />}
+		</AppBar>
 	);
 }
+
+const AppBar = styled.nav`
+	z-index: 1300;
+	grid-area: a;
+	display: flex;
+	width: 100vw;
+	height: var(--nav-size);
+	border-bottom: var(--border);
+	color: var(--text-color);
+	align-items: center;
+	padding: 0 1rem;
+	justify-content: space-between;
+	.logo {
+		display: flex;
+		justify-content: space-between;
+	}
+	a {
+		color: var(--text-color);
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.open {
+		transform: rotate(180deg);
+	}
+	background-color: var(--bg);
+`;

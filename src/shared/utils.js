@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export function useDebounce(func, delay) {
 	const [value, setValue] = useState(null);
@@ -16,6 +16,12 @@ export function useDebounce(func, delay) {
 				);
 			}
 		},
-		[func]
+		[func, delay, value]
 	);
+}
+
+export function sleep(time) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, time);
+	});
 }

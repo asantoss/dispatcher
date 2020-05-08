@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 
 import { useConfirmModal } from '../../hooks/Modal';
 
-import { Form } from '../../Components/shared/styles/Form';
+import { Form } from '../../Components/Layouts/styles/Form';
 import { FirebaseContext } from '../../Firebase';
 
 export default function BoardForm({ initialState, isNew }) {

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { TextField, Button, CircularProgress } from '@material-ui/core';
 import { useFormik } from 'formik';
-import { Form } from '../shared/styles/Form.js';
+import { Form } from '../Layouts/styles/Form';
 import { FirebaseContext } from '../../Firebase';
 import { Autocomplete } from '@material-ui/lab';
 import { useSelector } from 'react-redux';

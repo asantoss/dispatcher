@@ -3,8 +3,7 @@ import { TextField, Select, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
 import { LocationContext } from './LocationController';
-import { useDispatch } from 'react-redux';
-import * as ACTIONS from '../../constants/actions';
+
 import { useConfirmModal } from '../../hooks/Modal';
 import { useHistory } from 'react-router-dom';
 
