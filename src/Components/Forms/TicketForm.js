@@ -30,6 +30,7 @@ export default function TicketForm({
 			message: '',
 		},
 		onSubmit: async (values) => {
+			debugger;
 			values.terminal = values?.location?.terminals[values?.terminal] ?? null;
 			return firebase
 				.addTicket(values)
@@ -48,6 +49,7 @@ export default function TicketForm({
 	const [open, setOpen] = useState(false);
 	const [options, setOptions] = useState([]);
 	const loading = open && options.length === 0;
+
 	useEffect(() => {
 		if (!loading) {
 			return undefined;
@@ -63,6 +65,7 @@ export default function TicketForm({
 			active = false;
 		};
 	}, [loading, firebase]);
+
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
 	});
@@ -85,6 +88,7 @@ export default function TicketForm({
 				}
 				options={options}
 				onChange={(e) => {
+					debugger;
 					setFieldValue('location', options[e.target.value]);
 				}}
 				loading={loading}

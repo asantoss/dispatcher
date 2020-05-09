@@ -135,31 +135,3 @@ export function useConfirmModal(successCB) {
 	}
 	return [openModal, ConfirmModal];
 }
-
-/**
- * <div
-						id='container'
-						onClick={(e) => {
-							if (e.currentTarget.id === 'container') {
-								setModalOpen(false);
-							}
-						}}>
-						<div className='confirm'>
-							{children}
-							<div className='buttons'>
-								<Button
-									variant='contained'
-									onClick={successCB}
-									id='yes'
-									type='submit'>
-									Yes
-								</Button>
-								<Button onClick={() => setModalOpen(false)} variant='contained'>
-									No
-								</Button>
-							</div>
-						</div>
-					</div>
- * 
- * 
- */
