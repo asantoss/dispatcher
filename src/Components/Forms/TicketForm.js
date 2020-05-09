@@ -3,7 +3,7 @@ import { TextField, Button, CircularProgress } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Form } from '../Layouts/styles/Form';
 import { FirebaseContext } from '../../Firebase';
-import { Autocomplete } from '@material-ui/lab';
+import Autocomplete from '../shared/Autocomplete';
 import { useConfirmModal } from '../../hooks/Modal';
 
 // import { useHistory } from 'react-router-dom';
@@ -46,25 +46,16 @@ export default function TicketForm({
 				});
 		},
 	});
-	const [open, setOpen] = useState(false);
+
 	const [options, setOptions] = useState([]);
-	const loading = open && options.length === 0;
 
 	useEffect(() => {
-		if (!loading) {
-			return undefined;
-		}
-		let active = true;
 		(async () => {
 			const locations = await firebase.getMasterLocations();
-			if (active) {
-				setOptions(locations);
-			}
+			setOptions(locations);
 		})();
-		return () => {
-			active = false;
-		};
-	}, [loading, firebase]);
+		return () => {};
+	}, [firebase]);
 
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
@@ -76,6 +67,16 @@ export default function TicketForm({
 				openModal(true);
 			}}>
 			<Autocomplete
+				keys={['license', 'name', 'address']}
+				{...{ options }}
+				getLabel={(option) =>
+					option?.license
+						? `${option.name}/ License: ${option?.license}`
+						: option.name
+				}
+				getSelected={(option) => setFieldValue('location', option)}
+			/>
+			{/* <Autocomplete
 				open={open}
 				onOpen={() => setOpen(true)}
 				onClose={() => setOpen(false)}
@@ -109,7 +110,7 @@ export default function TicketForm({
 						}}
 					/>
 				)}
-			/>
+			/> */}
 
 			<TextField
 				style={{ flexGrow: 3 }}
