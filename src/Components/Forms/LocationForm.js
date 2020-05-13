@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { TextField, Select, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
-import { LocationContext } from '../../Pages/Locations/LocationController';
-
 import { useConfirmModal } from '../../hooks/Modal';
-import { useHistory } from 'react-router-dom';
 
 const USStates = [
 	'AL',
@@ -97,24 +94,8 @@ const Form = styled.form`
 	}
 `;
 
-export default function LocationForm({
-	docId,
-	initialState,
-	isNew,
-	setStatus,
-}) {
-	const [controller, setStatusLocal] = useContext(LocationContext);
-	const history = useHistory();
-	if (!setStatus) {
-		setStatus = setStatusLocal;
-	}
-	const {
-		handleChange,
-		handleSubmit,
-		handleBlur,
-		values,
-		resetForm,
-	} = useFormik({
+export default function LocationForm({ initialState, onSubmit }) {
+	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
 		initialValues: initialState || {
 			name: '',
 			state: '',
@@ -124,19 +105,7 @@ export default function LocationForm({
 			license: '',
 			zipCode: '',
 		},
-		onSubmit: (values) => {
-			if (isNew) {
-				controller.createLocation(values).then(() => {
-					resetForm();
-					setStatus('Successfully created location: ' + values?.name);
-				});
-			} else {
-				controller.updateLocation(docId, values).then(() => {
-					setStatus('Successfuller added board: ' + values?.refrence);
-					history.replace({ state: { data: { ...values, docId } } });
-				});
-			}
-		},
+		onSubmit,
 	});
 	const [openModal, Modal] = useConfirmModal(handleSubmit);
 	return (

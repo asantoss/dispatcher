@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { LocationContext } from './LocationController';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import TableComponent from '../../Components/shared/Table';
+import { FirebaseContext } from '../../Firebase';
 
 export default function LocationsPage() {
-	const [LocationController] = useContext(LocationContext);
+	const firebase = useContext(FirebaseContext);
 	const [data, setState] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const listener = LocationController.getMasterLocations((payload) => {
+		const listener = firebase.getMasterLocationsListener((payload) => {
 			setLoading(false);
 			setState(payload);
 		});
@@ -17,7 +17,7 @@ export default function LocationsPage() {
 			listener();
 			setState(null);
 		};
-	}, [LocationController]);
+	}, [firebase]);
 
 	if (loading) {
 		return <div className='spinner' />;

@@ -11,9 +11,9 @@ export default function Terminal() {
 		params: { id },
 	} = useRouteMatch();
 	const [terminal, setTerminal] = useState({});
-	const [status, setStatus] = useState(null);
 	const [isLoading, setisLoading] = useState(true);
 	const [value, PanelBar, Panel] = usePanelBar(['Info', 'Edit']);
+
 	useEffect(() => {
 		if (id) {
 			firebase.getTerminal(id).then((results) => {
@@ -39,16 +39,33 @@ export default function Terminal() {
 		monitor,
 		type,
 		manufacturer,
-		location,
 		billAcceptor,
 		board,
 		docId,
 		serial,
 	} = terminal;
+
+	const formSubmit = async ({ docId, ...values }) => {
+		if (values?.boardId) {
+			await firebase.updateBoard(values.boardId, { terminalId: docId });
+			values.board.terminalId = docId;
+		} else {
+			// values.boardId = null;
+			// values.board.terminalId = null;
+			if (board?.docId) {
+				await firebase.updateBoard(board.boardId, { terminalId: null });
+			}
+		}
+		return firebase
+			.updateTerminal({ ...values }, docId)
+			.then(() => {
+				alert('Successfuller updated terminal: ' + values?.serial);
+			})
+			.catch((e) => alert('Error: ' + e.message));
+	};
 	return (
 		<Container>
 			<Breadcrumb name={terminal?.serial} />
-			{status && <p>{status}</p>}
 			<PanelBar />
 			<Panel {...{ value, index: 0 }}>
 				<p>{type}</p>
@@ -67,8 +84,7 @@ export default function Terminal() {
 						docId,
 						serial,
 					}}
-					setStatus={setStatus}
-					location={location}
+					onSubmit={formSubmit}
 				/>
 			</Panel>
 		</Container>

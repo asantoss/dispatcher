@@ -5,8 +5,8 @@ import { mapsOpener } from '../shared/utils';
 import { useSelector } from 'react-redux';
 import { DirectionsOutlined } from '@material-ui/icons';
 
-export default function Ticket({ ticket, handleComplete, handleDelete }) {
-	const date = ticket?.created.toDate();
+export default function Ticket({ ticket, toggleComplete, handleDelete }) {
+	const date = ticket?.created?.toDate() || new Date();
 	const { user } = useSelector((state) => state);
 	const [OpenModal, Modal] = useConfirmModal(() => handleDelete(ticket?.docId));
 	return (
@@ -45,7 +45,7 @@ export default function Ticket({ ticket, handleComplete, handleDelete }) {
 						{date.toLocaleTimeString('en-US')}
 					</time>
 				</p>
-				{ticket?.completedAt && (
+				{ticket?.complete && ticket?.completedAt && (
 					<p>
 						Completed on:{' '}
 						<time dateTime={date}>
@@ -58,11 +58,13 @@ export default function Ticket({ ticket, handleComplete, handleDelete }) {
 			</div>
 			<div className='footer'>
 				{' '}
-				{!ticket?.complete && (
-					<button className='item' onClick={() => handleComplete(ticket.docId)}>
-						Mark Complete
+				{
+					<button
+						className='item'
+						onClick={() => toggleComplete(ticket.docId, ticket?.complete)}>
+						{ticket?.complete ? 'Mark Open' : 'Mark Closed'}
 					</button>
-				)}
+				}
 				<button className='item' onClick={OpenModal}>
 					Delete
 				</button>

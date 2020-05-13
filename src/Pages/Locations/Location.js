@@ -1,13 +1,13 @@
 import React, { useEffect, useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { LocationContext } from './LocationController';
 import LocationForm from '../../Components/Forms/LocationForm';
 import usePanelBar from '../../hooks/PanelBar';
 import { useSelector, useDispatch } from 'react-redux';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import * as ACTIONS from '../../constants/actions';
 import LocationTerminals from './LocationTerminals';
+import { FirebaseContext } from '../../Firebase';
 
 export default function LocationPage() {
 	const tabs = ['Info', 'Terminals', 'Edit'];
@@ -17,7 +17,8 @@ export default function LocationPage() {
 		tabs,
 		state?.panel && tabs.indexOf(state?.panel)
 	);
-	const [LocationInterface] = useContext(LocationContext);
+	const firebase = useContext(FirebaseContext);
+	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const {
@@ -25,16 +26,25 @@ export default function LocationPage() {
 		user: { currentMaster },
 	} = useSelector((state) => state);
 
+	const formSubmit = (values) => {
+		firebase.updateLocation(currentLocation.docId, values).then(() => {
+			alert('Successfuller updated location: ' + values?.name);
+			history.replace({
+				state: { data: { ...values, docId: currentLocation.docId } },
+			});
+		});
+	};
 	useEffect(() => {
 		if (id) {
-			LocationInterface.getLocation(id)
+			firebase
+				.getLocation(id)
 				.then((results) => {
 					return results;
 				})
 				.then((payload) => dispatch(ACTIONS.SET_CURRENT_LOCATION(payload)))
 				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
 		}
-	}, [id, LocationInterface, dispatch]);
+	}, [id, firebase, dispatch]);
 
 	if (loading) {
 		return <div className='spinner' />;
@@ -56,6 +66,7 @@ export default function LocationPage() {
 			<Panel value={value} index={2}>
 				<LocationForm
 					{...{
+						onSubmit: formSubmit,
 						docId: currentLocation?.docId,
 						initialState: currentLocation && initialState(currentLocation),
 					}}

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { TextField, Button, CircularProgress } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Form } from '../Layouts/styles/Form';
 import { FirebaseContext } from '../../Firebase';
@@ -8,20 +8,13 @@ import { useConfirmModal } from '../../hooks/Modal';
 
 // import { useHistory } from 'react-router-dom';
 
-export default function TicketForm({
-	initialState,
-	location,
-	isNew,
-	setStatus,
-}) {
+export default function TicketForm({ initialState, onSubmit }) {
 	const firebase = useContext(FirebaseContext);
-
 	const {
 		handleChange,
 		handleSubmit,
 		handleBlur,
 		values,
-		resetForm,
 		setFieldValue,
 	} = useFormik({
 		initialValues: initialState || {
@@ -29,32 +22,22 @@ export default function TicketForm({
 			terminal: '',
 			message: '',
 		},
-		onSubmit: async (values) => {
-			debugger;
-			values.terminal = values?.location?.terminals[values?.terminal] ?? null;
-			return firebase
-				.addTicket(values)
-				.then((res) => {
-					console.log(res);
-					setStatus(
-						'Success created a new ticket for: ' + values?.location?.name
-					);
-				})
-				.catch((e) => {
-					resetForm();
-					setStatus('Error: ' + e.message);
-				});
-		},
+		onSubmit,
 	});
 
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
+		let active = true;
 		(async () => {
 			const locations = await firebase.getMasterLocations();
-			setOptions(locations);
+			if (active) {
+				setOptions(locations);
+			}
 		})();
-		return () => {};
+		return () => {
+			active = false;
+		};
 	}, [firebase]);
 
 	const [openModal, Modal] = useConfirmModal(() => {
@@ -67,6 +50,8 @@ export default function TicketForm({
 				openModal(true);
 			}}>
 			<Autocomplete
+				required
+				label='Location'
 				keys={['license', 'name', 'address']}
 				{...{ options }}
 				getLabel={(option) =>
@@ -76,42 +61,6 @@ export default function TicketForm({
 				}
 				getSelected={(option) => setFieldValue('location', option)}
 			/>
-			{/* <Autocomplete
-				open={open}
-				onOpen={() => setOpen(true)}
-				onClose={() => setOpen(false)}
-				defaultValue={initialState?.board ?? undefined}
-				getOptionSelected={(option, value) => option.game === value.game}
-				getOptionLabel={(option) =>
-					option?.license
-						? `${option.name}/ License: ${option?.license}`
-						: option.name
-				}
-				options={options}
-				onChange={(e) => {
-					debugger;
-					setFieldValue('location', options[e.target.value]);
-				}}
-				loading={loading}
-				renderInput={(params) => (
-					<TextField
-						required
-						{...params}
-						label='Location'
-						variant='outlined'
-						InputProps={{
-							...params.InputProps,
-							endAdornment: (
-								<>
-									{loading && <CircularProgress color='inherit' size={20} />}
-									{params.InputProps.endAdornment}
-								</>
-							),
-						}}
-					/>
-				)}
-			/> */}
-
 			<TextField
 				style={{ flexGrow: 3 }}
 				select
@@ -119,7 +68,12 @@ export default function TicketForm({
 				name='terminal'
 				label='Terminal'
 				value={values.type}
-				onChange={handleChange}
+				onChange={(e) => {
+					setFieldValue(
+						'terminal',
+						values?.location?.terminals[e.target.value]
+					);
+				}}
 				SelectProps={{
 					native: true,
 				}}

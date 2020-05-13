@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { debounce } from 'lodash';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, IconButton } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
 export default function Autocomplete({
 	options,
 	open,
@@ -17,19 +18,16 @@ export default function Autocomplete({
 		activeOption: 0,
 		filteredOptions: [],
 		showOptions: false,
-		// What the user has entered
 		userInput: '',
 		isLoading: false,
 	});
 	const [height, setHeight] = useState(null);
-
 	const calcHeight = (el) => {
 		const height = el.offsetHeight;
-		console.log(height);
-		setHeight(height);
+		setHeight(height * state.filteredOptions.length);
 	};
 	const handleChange = (e) => {
-		const userInput = e.currentTarget.value;
+		const userInput = e?.currentTarget?.value ?? null;
 		setState((s) => ({ ...s, userInput, isLoading: true }));
 		if (!debounced.current) {
 			debounced.current = debounce((userInput) => {
@@ -46,7 +44,7 @@ export default function Autocomplete({
 					showOptions: true,
 					isLoading: false,
 				}));
-			}, 1000);
+			}, 500);
 		}
 		debounced.current(userInput);
 		// calcHeight();
@@ -61,7 +59,17 @@ export default function Autocomplete({
 			activeOption: i,
 			filteredOptions: [],
 			showOptions: false,
-			userInput: e.target.innerText,
+			userInput: e.currentTarget.innerText,
+		}));
+	};
+	const handleClear = () => {
+		getSelected(null);
+		setState((s) => ({
+			...s,
+			activeOption: 0,
+			filteredOptions: [],
+			showOptions: false,
+			userInput: '',
 		}));
 	};
 	//Event fired when a user hits a key
@@ -86,26 +94,24 @@ export default function Autocomplete({
 
 	function Options() {
 		return (
-			<ul
-				className='option_container'
-				style={{
-					height,
-				}}>
-				<TransitionGroup component={null} enter appear>
-					{filteredOptions.map((option, i) => {
-						return (
-							<CSSTransition
-								classNames='option_item'
-								timeout={500}
-								key={option.docId}>
-								<li className='option_item' onClick={(e) => handleClick(e, i)}>
-									{getLabel(option)}
-								</li>
-							</CSSTransition>
-						);
-					})}
-				</TransitionGroup>
-			</ul>
+			<TransitionGroup component={null} enter appear>
+				{filteredOptions.map((option, i) => {
+					return (
+						<CSSTransition
+							unmountOnExit
+							mountOnEnter
+							classNames='item'
+							timeout={500}
+							onEnter={calcHeight}
+							onExit={calcHeight}
+							key={option.docId}>
+							<li className='option_item' onClick={(e) => handleClick(e, i)}>
+								{getLabel(option)}
+							</li>
+						</CSSTransition>
+					);
+				})}
+			</TransitionGroup>
 		);
 	}
 	return (
@@ -115,35 +121,49 @@ export default function Autocomplete({
 				variant='outlined'
 				onKeyDown={handleKeyDown}
 				onChange={handleChange}
-				label='Location'
 				value={userInput}
+				{...props}
 				InputProps={{
 					endAdornment: (
 						<InputAdornment position='end'>
 							{isLoading && <span className='spinner' />}
+							{userInput && (
+								<IconButton onClick={handleClear}>
+									<Close />
+								</IconButton>
+							)}
 						</InputAdornment>
 					),
 				}}
 			/>
-
-			{/* <div className='autocomplete_input'>
-				<input
-					onKeyDown={handleKeyDown}
-					// onBlur={() => setOpen(false)}
-					onChange={handleChange}
-					value={userInput}
-					{...props}
-					/>
-				{/* {isLoading && <span className='spinner' />} */}
-			{/* </div> */}
-			{showOptions && userInput && <Options />}
+			<CSSTransition
+				in={Boolean(showOptions && userInput)}
+				classNames='option_container'
+				timeout={500}
+				unmountOnExit>
+				<ul
+					className='option_container'
+					style={{
+						height,
+					}}>
+					{showOptions && userInput && <Options />}
+				</ul>
+			</CSSTransition>
 		</AutocompleteContainer>
 	);
 }
 
 const AutocompleteContainer = styled.div`
+	@keyframes slideIn {
+		from {
+			transform: scale(0.5);
+		}
+		to {
+			transform: scale(1);
+		}
+	}
 	height: auto;
-	width: calc(300px + 1rem);
+	/* width: calc(300px + 1rem); */
 	.input {
 		width: 100%;
 	}
@@ -173,6 +193,7 @@ const AutocompleteContainer = styled.div`
 		/* overflow-y: auto; */
 		padding-left: 0;
 		transform-origin: top left;
+		animation: slideIn 500ms ease;
 		transition: height var(--speed) ease;
 		.option_item {
 			padding: 0.5rem;
@@ -187,23 +208,24 @@ const AutocompleteContainer = styled.div`
 			&:not(:last-of-type) {
 				border-bottom: 1px solid #999;
 			}
-
-			&-enter {
-				opacity: 0;
-			}
-			&-enter-active {
-				opacity: 1;
-				transition: opacity var(--speed) ease;
-			}
-			&-exit {
-				opacity: 1;
-			}
-			&-exit-active {
-				opacity: 0;
-				transition: opacity var(--speed) ease;
-			}
 		}
 	}
+
+	.item-enter {
+		opacity: 0;
+	}
+	.item-enter-active {
+		opacity: 1;
+		transition: opacity 500ms ease-in;
+	}
+	.item-exit {
+		opacity: 1;
+	}
+	.item-exit-active {
+		opacity: 0;
+		transition: opacity 500ms ease-in;
+	}
+
 	.spinner {
 		display: inline-block;
 		height: 1rem;
