@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
 import { useConfirmModal } from '../hooks/Modal';
 import { mapsOpener } from '../shared/utils';
 import { useSelector } from 'react-redux';
 import { DirectionsOutlined } from '@material-ui/icons';
 
 export default function Ticket({ ticket, toggleComplete, handleDelete }) {
-	const date = ticket?.created?.toDate() || new Date();
+	const [expanded, setExpanded] = useState(false);
+	const [height, setHeight] = useState(null);
 	const { user } = useSelector((state) => state);
 	const [OpenModal, Modal] = useConfirmModal(() => handleDelete(ticket?.docId));
+	const handleExpand = (e) => {
+		const element = e.currentTarget.nextSibling;
+		if (!expanded) {
+			const height = element.scrollHeight;
+			setHeight(height);
+		} else {
+			setHeight(0);
+		}
+		setExpanded(!expanded);
+	};
 	return (
 		<TicketContainer isComplete={ticket?.complete}>
 			<div className='header'>
@@ -26,32 +38,47 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 				)}
 			</div>
 			<div className='content'>
-				{ticket?.message}
+				<p className={'message'}>
+					<span className='message_title'>Message: </span>
+					{ticket?.message}
+				</p>
+
 				{ticket?.terminal && (
-					<div className='terminal-info'>
-						<p>Terminal Game: {ticket?.terminal?.game ?? 'N/A'}</p>
-						<p>Terminal Serial: {ticket?.terminal?.serial}</p>
-						<p>Terminal B/A: {ticket?.terminal?.billAcceptor}</p>
-						<p>Terminal Monitor: {ticket?.terminal?.monitor}</p>
-						<p>Terminal Type: {ticket?.terminal?.type}</p>
-					</div>
+					<>
+						<span onClick={handleExpand} className='showMore'>
+							{expanded ? '- Show Less' : '+ Show More'}
+						</span>
+						<div style={{ maxHeight: height }} className='terminal-info'>
+							<p>Terminal Game: {ticket?.terminal?.game ?? 'N/A'}</p>
+							<p>Terminal Serial: {ticket?.terminal?.serial}</p>
+							<p>Terminal B/A: {ticket?.terminal?.billAcceptor}</p>
+							<p>Terminal Monitor: {ticket?.terminal?.monitor}</p>
+							<p>Terminal Type: {ticket?.terminal?.type}</p>
+						</div>
+					</>
 				)}
 				<br />
 				<p>
-					Submitted on:{' '}
-					<time dateTime={date}>
-						{' '}
-						{date.toLocaleDateString('en-US')} -{' '}
-						{date.toLocaleTimeString('en-US')}
+					Submitted on:
+					<br />
+					<time dateTime={ticket?.created?.toDate()}>
+						<span>{ticket?.created?.toDate().toLocaleDateString('en-US')}</span>
+						<span>@</span>
+						<span>{ticket?.created?.toDate().toLocaleTimeString('en-US')}</span>
 					</time>
 				</p>
 				{ticket?.complete && ticket?.completedAt && (
 					<p>
-						Completed on:{' '}
-						<time dateTime={date}>
-							{' '}
-							{ticket.completedAt.toDate().toLocaleDateString('en-US')} -{' '}
-							{ticket.completedAt.toDate().toLocaleTimeString('en-US')}
+						Completed on:
+						<br />
+						<time dateTime={ticket.completedAt.toDate()}>
+							<span>
+								{ticket.completedAt.toDate().toLocaleDateString('en-US')}
+							</span>
+							<span>@</span>
+							<span>
+								{ticket.completedAt.toDate().toLocaleTimeString('en-US')}
+							</span>
 						</time>
 					</p>
 				)}
@@ -83,6 +110,7 @@ const TicketContainer = styled.div`
 	box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
 		0 0 0 1px rgba(10, 10, 10, 0.02);
 	color: #4a4a4a;
+
 	.directions-btn {
 		cursor: pointer;
 		&:hover {
@@ -97,8 +125,12 @@ const TicketContainer = styled.div`
 		background-color: ${({ isComplete }) =>
 			isComplete ? 'var(--success)' : 'var(--warning)'};
 	}
+
 	.terminal-info {
 		margin-top: 1em;
+		max-height: 0;
+		transition: max-height 0.2s ease-out;
+		overflow: hidden;
 	}
 	.header {
 		display: flex;
@@ -112,6 +144,25 @@ const TicketContainer = styled.div`
 			padding: 0.75rem 1rem;
 		}
 	}
+	.showMore {
+		position: absolute;
+		right: 1.25rem;
+		&:hover {
+			font-size: 1.2rem;
+		}
+	}
+
+	/* .message {
+		&::after {
+			content: '+ Show More';
+			font-size: 1.2rem;
+			float: right;
+			margin-left: 5px;
+		}
+		&.active::after {
+			content: '- Show Less';
+		}
+	} */
 	.content {
 		padding: 1.5rem;
 	}
@@ -142,5 +193,11 @@ const TicketContainer = styled.div`
 	}
 	time {
 		margin: 0.5rem 0;
+		display: flex;
+		justify-content: flex-start;
+		span {
+			margin-right: 0.5rem;
+		}
+		align-items: flex-start;
 	}
 `;

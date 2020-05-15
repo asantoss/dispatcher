@@ -68,21 +68,28 @@ const Form = styled.form`
 	& > div {
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
 		margin: 1em;
 		align-items: center;
+		flex-wrap: wrap;
 	}
 	div {
 		margin: 0.25em;
 	}
 	#address {
+		margin: 3rem 0;
 		flex-wrap: wrap;
 		align-self: flex-start;
 		height: 200px;
 		justify-content: space-between;
 	}
+	.title {
+		margin: 1rem;
+		font-weight: 500;
+		flex-grow: 2;
+	}
 	.select {
 		min-width: 100px;
+		flex-grow: 1;
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: column;
@@ -115,15 +122,7 @@ export default function LocationForm({ initialState, onSubmit }) {
 				openModal();
 			}}>
 			<div id='storeInfo'>
-				<TextField
-					required
-					variant='outlined'
-					name='license'
-					label='License No.'
-					value={values.license}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
+				<h4 className='title'>COAM Information</h4>
 				<TextField
 					required
 					style={{ flexGrow: 1 }}
@@ -134,8 +133,18 @@ export default function LocationForm({ initialState, onSubmit }) {
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
+				<TextField
+					required
+					variant='outlined'
+					name='license'
+					label='License No.'
+					value={values.license}
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+
 				<div className='select'>
-					<label htmlFor='terminal'>Terminals</label>
+					<label htmlFor='terminal'>Terminals *</label>
 					<Select
 						native
 						required
@@ -154,6 +163,7 @@ export default function LocationForm({ initialState, onSubmit }) {
 				</div>
 			</div>
 			<div id='address'>
+				<h4 className='title'>Address</h4>
 				<TextField
 					required
 					variant='outlined'
@@ -170,21 +180,13 @@ export default function LocationForm({ initialState, onSubmit }) {
 					name='city'
 					value={values.city}
 					label='City'
-					style={{ flexGrow: 1 }}
+					style={{ flexGrow: 0.5 }}
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
-				<TextField
-					variant='outlined'
-					value={values.zipCode}
-					name='zipCode'
-					label='Zip'
-					style={{ maxWidth: 120 }}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
+
 				<div variant='outlined' className='select'>
-					<label htmlFor='state'>State</label>
+					<label htmlFor='state'>State *</label>
 					<Select
 						variant='outlined'
 						native
@@ -203,6 +205,15 @@ export default function LocationForm({ initialState, onSubmit }) {
 						))}
 					</Select>
 				</div>
+				<TextField
+					variant='outlined'
+					value={values.zipCode}
+					name='zipCode'
+					label='Zip'
+					style={{ maxWidth: 120 }}
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
 			</div>
 			<Button variant='outlined' type='submit'>
 				Submit

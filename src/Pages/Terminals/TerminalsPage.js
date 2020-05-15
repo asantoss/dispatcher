@@ -32,7 +32,7 @@ export default function Terminals() {
 				data: state.terminals.map((e) => {
 					return { ...e, game: e?.board?.game ?? 'N/A' };
 				}),
-				headers: ['serial', 'type', 'game', 'actions'],
+				headers: ['serial', 'type', 'actions'],
 			}}
 		/>
 	);

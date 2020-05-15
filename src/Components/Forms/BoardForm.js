@@ -26,49 +26,53 @@ export default function BoardForm({ initialState, onSubmit }) {
 				e.preventDefault();
 				openModal();
 			}}>
-			<TextField
-				required
-				variant='outlined'
-				name='game'
-				label='Board Name'
-				value={values.game}
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				required
-				variant='outlined'
-				value={values.manufacturer}
-				name='manufacturer'
-				label='Manufacturer'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				required
-				variant='outlined'
-				name='refrence'
-				value={values.refrence}
-				label='Refrence'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				variant='outlined'
-				value={values.type}
-				name='type'
-				label='Type'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				variant='outlined'
-				value={values.version}
-				name='version'
-				label='Version'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
+			<div className='main_info'>
+				<TextField
+					required
+					variant='outlined'
+					name='game'
+					label='Board Name'
+					value={values.game}
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					required
+					variant='outlined'
+					value={values.manufacturer}
+					name='manufacturer'
+					label='Manufacturer'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					required
+					variant='outlined'
+					name='refrence'
+					value={values.refrence}
+					label='Refrence'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+			</div>
+			<div className='secondary_info'>
+				<TextField
+					variant='outlined'
+					value={values.type}
+					name='type'
+					label='Type'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					variant='outlined'
+					value={values.version}
+					name='version'
+					label='Version'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+			</div>
 			<Button variant='outlined' type='submit'>
 				Submit
 			</Button>

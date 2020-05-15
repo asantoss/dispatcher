@@ -28,7 +28,7 @@ export default function LocationsPage() {
 			<TableComponent
 				{...{
 					data,
-					headers: ['license', 'name', 'city', 'actions'],
+					headers: ['name', 'city', 'actions'],
 				}}
 			/>
 		</>

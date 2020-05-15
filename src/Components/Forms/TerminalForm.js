@@ -54,81 +54,87 @@ export default function TerminalForm({ initialState, onSubmit }) {
 				e.preventDefault();
 				openModal(true);
 			}}>
-			<Autocomplete
-				keys={['game', 'refrence', 'version']}
-				label='Game'
-				defaultValue={initialState?.board ?? undefined}
-				getSelected={(option) => {
-					setFieldValue('board', option);
-					setFieldValue('boardId', option?.docId);
-				}}
-				getLabel={(option) =>
-					option?.refrence
-						? `${option.game}/ Refrence: ${option?.refrence}`
-						: option.game
-				}
-				options={options}
-			/>
-			<TextField
-				style={{ flexGrow: 1 }}
-				required
-				variant='outlined'
-				value={values.manufacturer}
-				name='manufacturer'
-				label='Manufacturer'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				style={{ flexGrow: 1 }}
-				required
-				variant='outlined'
-				value={values.monitor}
-				name='monitor'
-				label='Monitor'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				style={{ flexGrow: 2 }}
-				required
-				variant='outlined'
-				name='billAcceptor'
-				value={values.billAcceptor}
-				label='Bill Acceptor'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				style={{ flexGrow: 2 }}
-				variant='outlined'
-				value={values.serial}
-				name='serial'
-				label='Serial No.'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				style={{ flexGrow: 3 }}
-				select
-				variant='outlined'
-				required
-				name='type'
-				label='Type'
-				value={values.type}
-				onChange={handleChange}
-				SelectProps={{
-					native: true,
-				}}
-				onBlur={handleBlur}>
-				<option aria-label='None' value=''></option>
-				{currentMaster?.cabinetTypes.map((type, i) => (
-					<option key={i} value={type}>
-						{type}
-					</option>
-				))}
-			</TextField>
-			<div style={{ flexBasis: '100%' }}></div>
+			<div id='main_info'>
+				<TextField
+					style={{ flexGrow: 0.5 }}
+					variant='outlined'
+					value={values.serial}
+					name='serial'
+					label='Serial No.'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					style={{ flexGrow: 1 }}
+					select
+					variant='outlined'
+					required
+					name='type'
+					label='Type'
+					value={values.type}
+					onChange={handleChange}
+					SelectProps={{
+						native: true,
+					}}
+					onBlur={handleBlur}>
+					<option aria-label='None' value=''></option>
+					{currentMaster?.cabinetTypes.map((type, i) => (
+						<option key={i} value={type}>
+							{type}
+						</option>
+					))}
+				</TextField>
+				<TextField
+					style={{ flexGrow: 1 }}
+					required
+					variant='outlined'
+					value={values.manufacturer}
+					name='manufacturer'
+					label='Manufacturer'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+			</div>
+
+			<div id='secondary_info'>
+				<div style={{ flexGrow: 1 }}>
+					<Autocomplete
+						keys={['game', 'refrence', 'version']}
+						label='Game'
+						defaultValue={initialState?.board ?? undefined}
+						getSelected={(option) => {
+							setFieldValue('board', option);
+							setFieldValue('boardId', option?.docId);
+						}}
+						getLabel={(option) =>
+							option?.refrence
+								? `${option.game}/ Refrence: ${option?.refrence}`
+								: option.game
+						}
+						options={options}
+					/>
+				</div>
+				<TextField
+					style={{ flexBasis: '40%' }}
+					required
+					variant='outlined'
+					value={values.monitor}
+					name='monitor'
+					label='Monitor'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					style={{ flexBasis: '40%' }}
+					required
+					variant='outlined'
+					name='billAcceptor'
+					value={values.billAcceptor}
+					label='Bill Acceptor'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+			</div>
 			<Button style={{ width: '25%' }} variant='outlined' type='submit'>
 				Submit
 			</Button>
