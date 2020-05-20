@@ -1,21 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
-
 import { useConfirmModal } from '../../hooks/Modal';
-
 import { Form } from '../Layouts/styles/Form';
-import { FirebaseContext } from '../../Firebase';
 
-export default function BoardForm({ initialState, isNew, setStatus }) {
-	const firebase = useContext(FirebaseContext);
-	const {
-		resetForm,
-		handleChange,
-		handleSubmit,
-		handleBlur,
-		values,
-	} = useFormik({
+export default function BoardForm({ initialState, onSubmit }) {
+	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
 		initialValues: initialState || {
 			game: '',
 			manufacturer: '',
@@ -23,25 +13,7 @@ export default function BoardForm({ initialState, isNew, setStatus }) {
 			type: '',
 			version: '',
 		},
-		onSubmit: (values) => {
-			const { docId, ...boardInfo } = values;
-			if (isNew) {
-				return firebase
-					.addBoard({ ...boardInfo, terminalId: null })
-					.then(() =>
-						setStatus('Successfuller added board: ' + values?.refrence)
-					)
-					.catch((e) => {
-						setStatus('Error ' + e.message);
-						resetForm();
-					});
-			}
-			return firebase
-				.updateBoard(docId, boardInfo)
-				.then(() =>
-					setStatus('Successfuller added board: ' + values?.refrence)
-				);
-		},
+		onSubmit,
 	});
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
@@ -54,49 +26,53 @@ export default function BoardForm({ initialState, isNew, setStatus }) {
 				e.preventDefault();
 				openModal();
 			}}>
-			<TextField
-				required
-				variant='outlined'
-				name='game'
-				label='Board Name'
-				value={values.game}
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				required
-				variant='outlined'
-				value={values.manufacturer}
-				name='manufacturer'
-				label='Manufacturer'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				required
-				variant='outlined'
-				name='refrence'
-				value={values.refrence}
-				label='Refrence'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				variant='outlined'
-				value={values.type}
-				name='type'
-				label='Type'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
-			<TextField
-				variant='outlined'
-				value={values.version}
-				name='version'
-				label='Version'
-				onChange={handleChange}
-				onBlur={handleBlur}
-			/>
+			<div className='main_info'>
+				<TextField
+					required
+					variant='outlined'
+					name='game'
+					label='Board Name'
+					value={values.game}
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					required
+					variant='outlined'
+					value={values.manufacturer}
+					name='manufacturer'
+					label='Manufacturer'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					required
+					variant='outlined'
+					name='refrence'
+					value={values.refrence}
+					label='Refrence'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+			</div>
+			<div className='secondary_info'>
+				<TextField
+					variant='outlined'
+					value={values.type}
+					name='type'
+					label='Type'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<TextField
+					variant='outlined'
+					value={values.version}
+					name='version'
+					label='Version'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+			</div>
 			<Button variant='outlined' type='submit'>
 				Submit
 			</Button>

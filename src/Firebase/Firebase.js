@@ -389,5 +389,60 @@ class Firebase {
 			masterId,
 		});
 	};
+
+	// *** Locations logic
+	getMasterLocationsListener = (callback) => {
+		return this.db.collection(`${this.master}/locations`).onSnapshot(
+			(querySnapshot) => {
+				let locations = [];
+				querySnapshot.forEach((doc) => {
+					return locations.push({ ...doc.data(), docId: doc.id });
+				});
+				locations = locations.sort((a, b) => (a['name'] > b['name'] ? 1 : -1));
+				callback(locations);
+			},
+			(error) => {
+				alert('Error: ' + error.message);
+			}
+		);
+	};
+	getLocation = async (id) => {
+		const location = await this.db
+			.collection(`${this.master}/locations`)
+			.doc(id)
+			.get()
+			.catch((e) => alert('Error:' + e.message));
+		if (location) {
+			const locationData = { ...location.data(), docId: location.id };
+			this.currentLocation = locationData;
+			return locationData;
+		}
+	};
+	createLocation = async (data) => {
+		const newItem = await this.db
+			.collection(`${this.master}/locations`)
+			.doc(data.license)
+			.get();
+		if (newItem.exists) {
+			throw new Error(
+				'Item already exists with this license alread exists! \n License: ' +
+					data.license
+			);
+		}
+		return newItem.ref.set(data).catch((e) => alert('Error: ' + e.message));
+	};
+	updateLocation = (id, data) => {
+		return this.db
+			.collection(`${this.master}/locations`)
+			.doc(id)
+			.update(data)
+			.catch((e) => alert('Error: ' + e.message));
+	};
+	deleteLocation = (id) =>
+		this.db
+			.collection(`${this.master}/locations`)
+			.doc(id)
+			.delete()
+			.catch((e) => alert('Error: ' + e.message));
 }
 export default Firebase;

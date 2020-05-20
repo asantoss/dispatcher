@@ -39,6 +39,7 @@ export default function Terminals({ terminals }) {
 						<Avatar />
 					</ListItemAvatar>
 					<ListItemText
+						data-testid={'terminal' + i}
 						primary={terminal?.board?.game ?? 'No Game'}
 						secondary={
 							<>

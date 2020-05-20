@@ -19,15 +19,18 @@ export default function Tickets() {
 	const handleDelete = (id) => {
 		firebase.removeTicket(id);
 	};
-	const handleComplete = (id) => {
-		firebase.updateTicket(id, { complete: true });
+
+	const toggleComplete = (id, state) => {
+		firebase.updateTicket(id, { complete: !state });
 	};
+
 	if (isLoading) {
 		return <div className='spinner'></div>;
 	}
+
 	return state.length ? (
 		state.map((ticket, i) => (
-			<Ticket {...{ ticket, key: i, handleDelete, handleComplete }} />
+			<Ticket {...{ ticket, key: i, handleDelete, toggleComplete }} />
 		))
 	) : (
 		<p>No data found</p>

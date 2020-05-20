@@ -37,6 +37,12 @@ export default function Board() {
 		tabs,
 		state?.panel && tabs.indexOf(state.panel)
 	);
+	const formSubmit = (values) => {
+		const { docId, ...boardInfo } = values;
+		return firebase
+			.updateBoard(docId, boardInfo)
+			.then(() => setStatus('Successfuller added board: ' + values?.refrence));
+	};
 	if (isLoading) {
 		return <div className='spinner'></div>;
 	}
@@ -51,11 +57,7 @@ export default function Board() {
 				<p>{board.type}</p>
 			</Panel>
 			<Panel {...{ value, index: 1 }}>
-				<BoardForm
-					initialState={board}
-					docId={board.docId}
-					setStatus={setStatus}
-				/>
+				<BoardForm onSubmit={formSubmit} initialState={board} />
 			</Panel>
 		</Container>
 	);

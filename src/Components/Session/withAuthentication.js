@@ -43,12 +43,6 @@ const AuthUserContextProvider = ({ children }) => {
 				}
 			}
 		});
-		if (!user.isLoggedIn && history.location.pathname !== '/signin') {
-			history.replace('/signin', {
-				fromProtected: true,
-				path: history.location.pathname,
-			});
-		}
 		return () => {
 			setState({ isLoggedIn: false });
 			firebase.auth.removeAuthTokenListener(listener);

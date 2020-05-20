@@ -15,6 +15,7 @@ import { useConfirmModal } from '../../hooks/Modal';
 import { useLocation } from 'react-router-dom';
 import { FirebaseContext } from '../../Firebase';
 import { mapsOpener } from '../../shared/utils';
+
 const ActionsContainer = styled.div`
 	display: flex;
 	#view {
@@ -28,7 +29,8 @@ export default function Actions({ item }) {
 	const { pathname } = useLocation();
 	const { user } = useSelector((state) => state);
 	const firebase = useContext(FirebaseContext);
-	const handleDelete = (id, index) => {
+
+	const handleDelete = (id) => {
 		setModalOpen(false);
 		firebase.db
 			.doc(`${firebase.master}${pathname}/${id}`)

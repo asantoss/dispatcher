@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { TextField, Select, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
-import { LocationContext } from '../../Pages/Locations/LocationController';
-
 import { useConfirmModal } from '../../hooks/Modal';
-import { useHistory } from 'react-router-dom';
 
 const USStates = [
 	'AL',
@@ -71,21 +68,28 @@ const Form = styled.form`
 	& > div {
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
 		margin: 1em;
 		align-items: center;
+		flex-wrap: wrap;
 	}
 	div {
 		margin: 0.25em;
 	}
 	#address {
+		margin: 3rem 0;
 		flex-wrap: wrap;
 		align-self: flex-start;
 		height: 200px;
 		justify-content: space-between;
 	}
+	.title {
+		margin: 1rem;
+		font-weight: 500;
+		flex-grow: 2;
+	}
 	.select {
 		min-width: 100px;
+		flex-grow: 1;
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: column;
@@ -97,24 +101,8 @@ const Form = styled.form`
 	}
 `;
 
-export default function LocationForm({
-	docId,
-	initialState,
-	isNew,
-	setStatus,
-}) {
-	const [controller, setStatusLocal] = useContext(LocationContext);
-	const history = useHistory();
-	if (!setStatus) {
-		setStatus = setStatusLocal;
-	}
-	const {
-		handleChange,
-		handleSubmit,
-		handleBlur,
-		values,
-		resetForm,
-	} = useFormik({
+export default function LocationForm({ initialState, onSubmit }) {
+	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
 		initialValues: initialState || {
 			name: '',
 			state: '',
@@ -124,19 +112,7 @@ export default function LocationForm({
 			license: '',
 			zipCode: '',
 		},
-		onSubmit: (values) => {
-			if (isNew) {
-				controller.createLocation(values).then(() => {
-					resetForm();
-					setStatus('Successfully created location: ' + values?.name);
-				});
-			} else {
-				controller.updateLocation(docId, values).then(() => {
-					setStatus('Successfuller added board: ' + values?.refrence);
-					history.replace({ state: { data: { ...values, docId } } });
-				});
-			}
-		},
+		onSubmit,
 	});
 	const [openModal, Modal] = useConfirmModal(handleSubmit);
 	return (
@@ -146,15 +122,7 @@ export default function LocationForm({
 				openModal();
 			}}>
 			<div id='storeInfo'>
-				<TextField
-					required
-					variant='outlined'
-					name='license'
-					label='License No.'
-					value={values.license}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
+				<h4 className='title'>COAM Information</h4>
 				<TextField
 					required
 					style={{ flexGrow: 1 }}
@@ -165,8 +133,18 @@ export default function LocationForm({
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
+				<TextField
+					required
+					variant='outlined'
+					name='license'
+					label='License No.'
+					value={values.license}
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+
 				<div className='select'>
-					<label htmlFor='terminal'>Terminals</label>
+					<label htmlFor='terminal'>Terminals *</label>
 					<Select
 						native
 						required
@@ -185,6 +163,7 @@ export default function LocationForm({
 				</div>
 			</div>
 			<div id='address'>
+				<h4 className='title'>Address</h4>
 				<TextField
 					required
 					variant='outlined'
@@ -201,21 +180,13 @@ export default function LocationForm({
 					name='city'
 					value={values.city}
 					label='City'
-					style={{ flexGrow: 1 }}
+					style={{ flexGrow: 0.5 }}
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
-				<TextField
-					variant='outlined'
-					value={values.zipCode}
-					name='zipCode'
-					label='Zip'
-					style={{ maxWidth: 120 }}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
+
 				<div variant='outlined' className='select'>
-					<label htmlFor='state'>State</label>
+					<label htmlFor='state'>State *</label>
 					<Select
 						variant='outlined'
 						native
@@ -234,6 +205,15 @@ export default function LocationForm({
 						))}
 					</Select>
 				</div>
+				<TextField
+					variant='outlined'
+					value={values.zipCode}
+					name='zipCode'
+					label='Zip'
+					style={{ maxWidth: 120 }}
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
 			</div>
 			<Button variant='outlined' type='submit'>
 				Submit
