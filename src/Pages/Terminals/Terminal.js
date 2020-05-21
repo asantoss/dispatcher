@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
 import { FirebaseContext } from '../../Firebase';
 import styled from 'styled-components';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
@@ -68,10 +68,38 @@ export default function Terminal() {
 			<Breadcrumb name={terminal?.serial} />
 			<PanelBar />
 			<Panel {...{ value, index: 0 }}>
-				<p>{type}</p>
-				<p>{manufacturer}</p>
-				<p>{monitor}</p>
-				<p>{billAcceptor}</p>
+				<div className='information'>
+					<h4>Terminal Type</h4>
+					<p>{type}</p>
+					<h4>Manufacturer</h4>
+					<p>{manufacturer}</p>
+					<h4>Bill Acceptor</h4>
+					<p>{billAcceptor}</p>
+					<h4>Location</h4>
+					{terminal?.location ? (
+						<>
+							<p>
+								<Link to={`/locations/${terminal.locationId}`}>
+									{terminal?.location?.name}
+								</Link>
+							</p>
+						</>
+					) : (
+						<p>No location set.</p>
+					)}
+					<h4>Board</h4>
+					{terminal?.board ? (
+						<>
+							<p>
+								<Link to={`/boards/${terminal?.boardId}`}>
+									{terminal?.board?.game}
+								</Link>
+							</p>
+						</>
+					) : (
+						<p>No board set.</p>
+					)}
+				</div>
 			</Panel>
 			<Panel {...{ value, index: 1 }}>
 				<TerminalForm

@@ -12,15 +12,16 @@ exports.updateLocation = functions.firestore
 	.document('masters/{masterId}/locations/{locationId}')
 	.onUpdate(async (changes, context) => {
 		const newValue = changes.after.data();
-		const coordinates = newValue['coordinates'];
-		const coords = await geocodeAddress(
+		const url = newValue['url'];
+		const { lat, lng } = await geocodeAddress(
 			`${newValue.address}+${newValue.city}+${newValue.zipCode}`,
 			process.env.API_KEY
 		);
-		const coordsURL = `https://www.google.com/maps?saddr=My+Location&daddr=${coords.lat},${coords.lng}&amp;ll`;
-		if (coordinates !== coords) {
+		const coordsURL = `https://www.google.com/maps?saddr=My+Location&daddr=${lat},${lng}&amp;ll`;
+		if (url !== coordsURL) {
 			return changes.after.ref.update({
-				coordinates: coordsURL,
+				coordinates: { lat, lng },
+				url: coordsURL,
 			});
 		} else {
 			return null;

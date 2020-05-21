@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { useLocation, useParams, useHistory } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import LocationForm from '../../Components/Forms/LocationForm';
 import usePanelBar from '../../hooks/PanelBar';
@@ -10,7 +10,7 @@ import LocationTerminals from './LocationTerminals';
 import { FirebaseContext } from '../../Firebase';
 
 export default function LocationPage() {
-	const tabs = ['Info', 'Terminals', 'Edit'];
+	const tabs = ['Info', 'Edit'];
 	const { id } = useParams();
 	const { state } = useLocation();
 	const [value, PanelBar, Panel] = usePanelBar(
@@ -18,7 +18,6 @@ export default function LocationPage() {
 		state?.panel && tabs.indexOf(state?.panel)
 	);
 	const firebase = useContext(FirebaseContext);
-	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const {
@@ -29,9 +28,7 @@ export default function LocationPage() {
 	const formSubmit = (values) => {
 		firebase.updateLocation(currentLocation.docId, values).then(() => {
 			alert('Successfuller updated location: ' + values?.name);
-			history.replace({
-				state: { data: { ...values, docId: currentLocation.docId } },
-			});
+			dispatch(ACTIONS.SET_CURRENT_LOCATION({ ...currentLocation, ...values }));
 		});
 	};
 	useEffect(() => {
@@ -55,15 +52,25 @@ export default function LocationPage() {
 			<Breadcrumb {...{ name: currentLocation?.name }} />
 			<PanelBar />
 			<Panel value={value} index={0}>
-				All Info
+				<div className='information'>
+					<h4>Name:</h4>
+
+					<p>{currentLocation?.name}</p>
+					<h4>Address:</h4>
+					<p>
+						{currentLocation?.address} {currentLocation?.city},
+						{currentLocation?.state}, {currentLocation?.zipCode}
+					</p>
+
+					<h4>Terminals:</h4>
+					<p>{currentLocation?.terminalsTotal}</p>
+					<LocationTerminals
+						location={currentLocation}
+						currentMaster={currentMaster}
+					/>
+				</div>
 			</Panel>
 			<Panel value={value} index={1}>
-				<LocationTerminals
-					location={currentLocation}
-					currentMaster={currentMaster}
-				/>
-			</Panel>
-			<Panel value={value} index={2}>
 				<LocationForm
 					{...{
 						onSubmit: formSubmit,

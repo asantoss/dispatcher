@@ -24,15 +24,15 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 	return (
 		<TicketContainer isComplete={ticket?.complete}>
 			<div className='header'>
-				<p className='title'>{ticket?.location.name}</p>
-				<p className='sub-title'>License {ticket?.location?.license}</p>
+				<div className='title_container'>
+					<p className='title'>{ticket?.location.name}</p>
+					<p className='sub-title'>{ticket?.location?.license}</p>
+				</div>
 				<span className='status'></span>
-				{ticket?.location?.coordinates && (
+				{ticket?.location?.url && (
 					<span
 						className='directions-btn'
-						onClick={() =>
-							mapsOpener(ticket.location.coordinates, user?.location)
-						}>
+						onClick={() => mapsOpener(ticket.location.url, user?.location)}>
 						<DirectionsOutlined />
 					</span>
 				)}
@@ -58,20 +58,26 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 					</>
 				)}
 				<br />
-				<p>
-					Submitted on:
-					<br />
-					<time dateTime={ticket?.created?.toDate()}>
-						<span>{ticket?.created?.toDate().toLocaleDateString('en-US')}</span>
-						<span>@</span>
-						<span>{ticket?.created?.toDate().toLocaleTimeString('en-US')}</span>
-					</time>
-				</p>
+				{!ticket?.complete && (
+					<p>
+						<br />
+						<time dateTime={ticket?.created?.toDate()}>
+							<span>In:</span>
+							<span>
+								{ticket?.created?.toDate().toLocaleDateString('en-US')}
+							</span>
+							<span>@</span>
+							<span>
+								{ticket?.created?.toDate().toLocaleTimeString('en-US')}
+							</span>
+						</time>
+					</p>
+				)}
 				{ticket?.complete && ticket?.completedAt && (
 					<p>
-						Completed on:
 						<br />
 						<time dateTime={ticket.completedAt.toDate()}>
+							<span>Out:</span>
 							<span>
 								{ticket.completedAt.toDate().toLocaleDateString('en-US')}
 							</span>
@@ -110,7 +116,10 @@ const TicketContainer = styled.div`
 	box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
 		0 0 0 1px rgba(10, 10, 10, 0.02);
 	color: #4a4a4a;
-
+	.content {
+		display: flex;
+		flex-direction: column;
+	}
 	.directions-btn {
 		cursor: pointer;
 		&:hover {
@@ -127,7 +136,6 @@ const TicketContainer = styled.div`
 	}
 
 	.terminal-info {
-		margin-top: 1em;
 		max-height: 0;
 		transition: max-height 0.2s ease-out;
 		overflow: hidden;
@@ -135,20 +143,23 @@ const TicketContainer = styled.div`
 	.header {
 		display: flex;
 		align-items: center;
+		.title_container {
+			flex-grow: 1;
+			padding: 0.75rem 1rem;
+		}
 		.title {
 			font-size: 1rem;
 			display: flex;
 			align-items: center;
 			flex-grow: 1;
 			font-weight: 700;
-			padding: 0.75rem 1rem;
 		}
 	}
 	.showMore {
-		position: absolute;
-		right: 1.25rem;
+		cursor: pointer;
+		align-self: flex-end;
 		&:hover {
-			font-size: 1.2rem;
+			opacity: 0.7;
 		}
 	}
 
@@ -194,6 +205,7 @@ const TicketContainer = styled.div`
 	time {
 		margin: 0.5rem 0;
 		display: flex;
+		font-size: 0.75rem;
 		justify-content: flex-start;
 		span {
 			margin-right: 0.5rem;

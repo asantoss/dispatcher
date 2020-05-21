@@ -1,9 +1,8 @@
 import React from 'react';
-import { TextField, Select, Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
-import styled from 'styled-components';
 import { useConfirmModal } from '../../hooks/Modal';
-
+import { Form } from '../Layouts/styles/Form';
 const USStates = [
 	'AL',
 	'AK',
@@ -56,51 +55,6 @@ const USStates = [
 	'WY',
 ];
 
-const Form = styled.form`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	button {
-		width: 25%;
-	}
-	& > div {
-		width: 100%;
-		display: flex;
-		margin: 1em;
-		align-items: center;
-		flex-wrap: wrap;
-	}
-	div {
-		margin: 0.25em;
-	}
-	#address {
-		margin: 3rem 0;
-		flex-wrap: wrap;
-		align-self: flex-start;
-		height: 200px;
-		justify-content: space-between;
-	}
-	.title {
-		margin: 1rem;
-		font-weight: 500;
-		flex-grow: 2;
-	}
-	.select {
-		min-width: 100px;
-		flex-grow: 1;
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: column;
-		label {
-			color: rgba(0, 0, 0, 0.54);
-			margin-bottom: -22px;
-			transform: scale(0.75);
-		}
-	}
-`;
-
 export default function LocationForm({ initialState, onSubmit }) {
 	const { handleChange, handleSubmit, handleBlur, values } = useFormik({
 		initialValues: initialState || {
@@ -121,48 +75,7 @@ export default function LocationForm({ initialState, onSubmit }) {
 				e.preventDefault();
 				openModal();
 			}}>
-			<div id='storeInfo'>
-				<h4 className='title'>COAM Information</h4>
-				<TextField
-					required
-					style={{ flexGrow: 1 }}
-					variant='outlined'
-					value={values.name}
-					name='name'
-					label='Name'
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-				<TextField
-					required
-					variant='outlined'
-					name='license'
-					label='License No.'
-					value={values.license}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-
-				<div className='select'>
-					<label htmlFor='terminal'>Terminals *</label>
-					<Select
-						native
-						required
-						variant='outlined'
-						labelId='terminal'
-						name='terminalsTotal'
-						value={values.terminalsTotal}
-						onChange={handleChange}
-						onBlur={handleBlur}>
-						{Array.from({ length: 9 }, (x, i) => (x = i + 1)).map((n, i) => (
-							<option value={n.toString()} key={i}>
-								{n}
-							</option>
-						))}
-					</Select>
-				</div>
-			</div>
-			<div id='address'>
+			<div id='main_info'>
 				<h4 className='title'>Address</h4>
 				<TextField
 					required
@@ -172,27 +85,26 @@ export default function LocationForm({ initialState, onSubmit }) {
 					value={values.address}
 					onChange={handleChange}
 					onBlur={handleBlur}
-					style={{ flexGrow: 2, minWidth: '85%' }}
 				/>
-				<TextField
-					required
-					variant='outlined'
-					name='city'
-					value={values.city}
-					label='City'
-					style={{ flexGrow: 0.5 }}
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-
-				<div variant='outlined' className='select'>
-					<label htmlFor='state'>State *</label>
-					<Select
+				<div>
+					<TextField
+						required
+						style={{ marginBottom: '8px' }}
 						variant='outlined'
-						native
+						name='city'
+						value={values.city}
+						label='City'
+						onChange={handleChange}
+						onBlur={handleBlur}
+					/>
+
+					<TextField
+						style={{ margin: '0 1rem' }}
+						select
+						SelectProps={{ native: true }}
+						variant='outlined'
 						required
 						name='state'
-						labelId='state'
 						value={values.state}
 						label='State'
 						onChange={handleChange}
@@ -203,17 +115,60 @@ export default function LocationForm({ initialState, onSubmit }) {
 								{state}
 							</option>
 						))}
-					</Select>
+					</TextField>
+					<TextField
+						style={{ maxWidth: 100 }}
+						variant='outlined'
+						value={values.zipCode}
+						name='zipCode'
+						label='Zip'
+						onChange={handleChange}
+						onBlur={handleBlur}
+					/>
 				</div>
+			</div>
+			<div id='secondary_info'>
+				<h4 className='title'>COAM Information</h4>
 				<TextField
+					required
 					variant='outlined'
-					value={values.zipCode}
-					name='zipCode'
-					label='Zip'
-					style={{ maxWidth: 120 }}
+					value={values.name}
+					name='name'
+					label='Name'
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
+				<div>
+					<TextField
+						required
+						variant='outlined'
+						name='license'
+						label='License No.'
+						value={values.license}
+						onChange={handleChange}
+						onBlur={handleBlur}
+					/>
+
+					<TextField
+						style={{ margin: '0 1rem' }}
+						select
+						SelectProps={{
+							native: true,
+						}}
+						required
+						variant='outlined'
+						label='Terminal'
+						name='terminalsTotal'
+						value={values.terminalsTotal}
+						onChange={handleChange}
+						onBlur={handleBlur}>
+						{Array.from({ length: 9 }, (x, i) => (x = i + 1)).map((n, i) => (
+							<option value={n.toString()} key={i}>
+								{n}
+							</option>
+						))}
+					</TextField>
+				</div>
 			</div>
 			<Button variant='outlined' type='submit'>
 				Submit
