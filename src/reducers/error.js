@@ -5,10 +5,21 @@ const initialState = {
 export default function reducer(state = initialState, action) {
 	const { type, payload } = action;
 	switch (type) {
+		case 'FIRED':
+			return {
+				...state,
+				loading: true,
+			};
+		case 'FULFILLED':
+			return {
+				...state,
+				loading: false,
+			};
 		case 'SET_ERROR':
 			return {
 				...state,
-				...payload,
+				error: payload,
+				loading: false,
 			};
 		case 'CLEAR':
 			return {

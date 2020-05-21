@@ -1,5 +1,5 @@
 const initialState = {
-	allLocations: [],
+	entities: [],
 	filtered: null,
 	currentLocation: null,
 	view: null,
@@ -32,9 +32,7 @@ const locationsReducer = (state = initialState, action) => {
 				};
 			}
 		case 'UPDATE_LOCATION':
-			const idx = state.allLocations.findIndex(
-				(e) => e?.docId === payload?.docId
-			);
+			const idx = state.allLocations.findIndex((e) => e?.id === payload?.id);
 			return {
 				...state,
 				currentLocation: payload,
@@ -54,32 +52,7 @@ const locationsReducer = (state = initialState, action) => {
 				...state,
 				allLocations: payload,
 			};
-		case 'FILTER_LOCATIONS':
-			return {
-				...state,
-				filtered: payload,
-			};
-		case 'CANCEL_FILTERS':
-			return {
-				...state,
-				filtered: null,
-			};
-		case 'FIRED':
-			return {
-				...state,
-				loading: true,
-			};
-		case 'FULFILLED':
-			return {
-				...state,
-				loading: false,
-			};
-		case 'ERROR':
-			return {
-				...state,
-				error: payload,
-				loading: false,
-			};
+
 		default:
 			return state;
 	}

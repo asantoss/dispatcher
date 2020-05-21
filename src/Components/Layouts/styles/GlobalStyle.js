@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 	grid-template-columns: 150px 1fr;
 	& > main {
 		width: 100%;
+		max-width: 800px;
 		grid-area: c;
 		justify-self: center;
 			}

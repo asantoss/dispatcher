@@ -1,3 +1,5 @@
+import { value as firebase } from '../index';
+
 export const LOGIN = (payload) => {
 	return { type: 'LOGIN', payload };
 };
@@ -39,4 +41,10 @@ export const FULFILLED = () => {
 };
 export const ERROR = (payload) => {
 	return { type: 'ERROR', payload };
+};
+
+export const GET_ALL_LOCATIONS = () => {
+	return (dispatch) => {
+		firebase.getMasterLocations();
+	};
 };

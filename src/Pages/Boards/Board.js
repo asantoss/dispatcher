@@ -9,34 +9,24 @@ import { FirebaseContext } from '../../Firebase';
 
 export default function Board() {
 	const tabs = ['Info', 'Edit'];
-	const { state } = useLocation();
 	const firebase = useContext(FirebaseContext);
 	const {
 		params: { id },
 	} = useRouteMatch();
-
 	const [isLoading, setLoading] = useState(true);
 	const [status, setStatus] = useState(null);
 	const [board, setBoard] = useState(null);
 	useEffect(() => {
-		if (isEmpty(state)) {
-			firebase
-				.getBoard(id)
-				.then((board) => {
-					setLoading(false);
-					setBoard(board);
-				})
-				.catch((e) => console.log(e));
-		} else {
-			setBoard(state?.data);
-			setLoading(false);
-		}
-	}, [id, firebase, state]);
+		firebase
+			.getBoard(id)
+			.then((board) => {
+				setLoading(false);
+				setBoard(board);
+			})
+			.catch((e) => console.log(e));
+	}, [id, firebase]);
 
-	const [value, PanelBar, Panel] = usePanelBar(
-		tabs,
-		state?.panel && tabs.indexOf(state.panel)
-	);
+	const [value, PanelBar, Panel] = usePanelBar(tabs);
 	const formSubmit = (values) => {
 		const { docId, ...boardInfo } = values;
 		return firebase

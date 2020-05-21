@@ -49,55 +49,61 @@ export default function TicketForm({ initialState, onSubmit }) {
 				e.preventDefault();
 				openModal(true);
 			}}>
-			<Autocomplete
-				required
-				label='Location'
-				keys={['license', 'name', 'address']}
-				{...{ options }}
-				getLabel={(option) =>
-					option?.license
-						? `${option.name}/ License: ${option?.license}`
-						: option.name
-				}
-				getSelected={(option) => setFieldValue('location', option)}
-			/>
-			<TextField
-				style={{ flexGrow: 3 }}
-				select
-				variant='outlined'
-				name='terminal'
-				label='Terminal'
-				value={values.type}
-				onChange={(e) => {
-					setFieldValue(
-						'terminal',
-						values?.location?.terminals[e.target.value]
-					);
-				}}
-				SelectProps={{
-					native: true,
-				}}
-				onBlur={handleBlur}>
-				<option aria-label='None' value=''></option>
-				{values.location?.terminals?.map((terminal, i) => (
-					<option key={i} value={i}>
-						{terminal?.game ? terminal.game : 'No Game'} / {terminal?.serial}
-					</option>
-				))}
-			</TextField>
-			<TextField
-				label='Message'
-				multiline
-				onChange={handleChange}
-				onBlur={handleBlur}
-				rows={10}
-				variant='outlined'
-				aria-label='message'
-				placeholder='Message'
-				name='message'
-				value={values.message}
-			/>
-			<div style={{ flexBasis: '100%' }}></div>
+			<div id='main_info'>
+				<Autocomplete
+					required
+					label='Location'
+					keys={['license', 'name', 'address']}
+					{...{ options }}
+					getLabel={(option) =>
+						option?.license
+							? `${option.name}/ License: ${option?.license}`
+							: option.name
+					}
+					getSelected={(option) => setFieldValue('location', option)}
+				/>
+				{values?.location?.terminals && (
+					<TextField
+						select
+						variant='outlined'
+						name='terminal'
+						label='Terminal'
+						value={values.type}
+						onChange={(e) => {
+							setFieldValue(
+								'terminal',
+								values.location.terminals[e.target.value]
+							);
+						}}
+						SelectProps={{
+							native: true,
+						}}
+						onBlur={handleBlur}>
+						<option aria-label='None' value=''></option>
+						{values.location?.terminals?.map((terminal, i) => (
+							<option key={i} value={i}>
+								{terminal?.game ? terminal.game : 'No Game'} /{' '}
+								{terminal?.serial}
+							</option>
+						))}
+					</TextField>
+				)}
+			</div>
+			<div id='secondary_info'>
+				<TextField
+					label='Message'
+					multiline
+					onChange={handleChange}
+					onBlur={handleBlur}
+					rows={10}
+					variant='outlined'
+					aria-label='message'
+					placeholder='Message'
+					name='message'
+					value={values.message}
+				/>
+				<div style={{ flexBasis: '100%' }}></div>
+			</div>
 			<Button style={{ width: '25%' }} variant='outlined' type='submit'>
 				Submit
 			</Button>

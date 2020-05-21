@@ -110,7 +110,7 @@ export default function TableComponent({ data, headers }) {
 							: state.data
 						)?.map((item, index) => {
 							return (
-								<TableRow key={item?.docId}>
+								<TableRow key={item?.id}>
 									{headers?.map((head, i) => {
 										if (head === 'view') {
 											return (
@@ -118,7 +118,7 @@ export default function TableComponent({ data, headers }) {
 													<Link
 														to={{
 															state: item,
-															pathname: `${pathname}/${item?.docId}`,
+															pathname: `${pathname}/${item?.id}`,
 														}}>
 														View
 													</Link>

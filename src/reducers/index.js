@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
-import locationsReducer from './locationsReducer';
-import errorReducer from './errorReducer';
+import authentication from './authentication';
+import locations from './locations';
+import errorReducer from './error';
 
 export default combineReducers({
-	user: authReducer,
-	locations: locationsReducer,
+	user: authentication,
+	locations: locations,
 	error: errorReducer,
 });

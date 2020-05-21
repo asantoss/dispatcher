@@ -37,6 +37,7 @@ export default function TerminalForm({ initialState, onSubmit }) {
 		let active = true;
 		(async () => {
 			const boards = await firebase.getMasterFreeBoards();
+			debugger;
 			if (active) {
 				setOptions(boards);
 			}
@@ -104,7 +105,7 @@ export default function TerminalForm({ initialState, onSubmit }) {
 						defaultValue={initialState?.board ?? undefined}
 						getSelected={(option) => {
 							setFieldValue('board', option);
-							setFieldValue('boardId', option?.docId);
+							setFieldValue('boardId', option?.id);
 						}}
 						getLabel={(option) =>
 							option?.refrence

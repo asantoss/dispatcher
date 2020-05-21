@@ -10,7 +10,7 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 	const [expanded, setExpanded] = useState(false);
 	const [height, setHeight] = useState(null);
 	const { user } = useSelector((state) => state);
-	const [OpenModal, Modal] = useConfirmModal(() => handleDelete(ticket?.docId));
+	const [OpenModal, Modal] = useConfirmModal(() => handleDelete(ticket?.id));
 	const handleExpand = (e) => {
 		const element = e.currentTarget.nextSibling;
 		if (!expanded) {
@@ -88,7 +88,7 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 				{
 					<button
 						className='item'
-						onClick={() => toggleComplete(ticket.docId, ticket?.complete)}>
+						onClick={() => toggleComplete(ticket.id, ticket?.complete)}>
 						{ticket?.complete ? 'Mark Open' : 'Mark Closed'}
 					</button>
 				}

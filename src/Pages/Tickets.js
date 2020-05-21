@@ -29,8 +29,8 @@ export default function Tickets() {
 	}
 
 	return state.length ? (
-		state.map((ticket, i) => (
-			<Ticket {...{ ticket, key: i, handleDelete, toggleComplete }} />
+		state.map((ticket) => (
+			<Ticket {...{ ticket, key: ticket.id, handleDelete, toggleComplete }} />
 		))
 	) : (
 		<p>No data found</p>

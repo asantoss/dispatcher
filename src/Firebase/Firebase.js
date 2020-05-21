@@ -125,7 +125,7 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (location) {
-			const locationData = { ...location.data(), docId: location.id };
+			const locationData = { ...location.data(), id: location.id };
 			return locationData;
 		}
 	};
@@ -136,7 +136,7 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (terminal) {
-			return { ...terminal.data(), docId: terminal.id };
+			return { ...terminal.data(), id: terminal.id };
 		}
 	};
 	getMasterTerminals = async () => {
@@ -148,7 +148,7 @@ class Firebase {
 			const terminals = [];
 			await terminalsSnapshot.forEach((doc) => {
 				const terminal = doc.data();
-				terminals.push({ ...terminal, docId: doc.id });
+				terminals.push({ ...terminal, id: doc.id });
 			});
 			return terminals;
 		}
@@ -162,7 +162,7 @@ class Firebase {
 			const locations = [];
 			await locationsSnapshot.forEach((doc) => {
 				const location = doc.data();
-				locations.push({ ...location, docId: doc.id });
+				locations.push({ ...location, id: doc.id });
 			});
 			return locations;
 		}
@@ -177,7 +177,7 @@ class Firebase {
 			const terminals = [];
 			await terminalsSnapshot.forEach((doc) => {
 				const terminal = doc.data();
-				terminals.push({ ...terminal, docId: doc.id });
+				terminals.push({ ...terminal, id: doc.id });
 			});
 			return terminals;
 		}
@@ -191,7 +191,7 @@ class Firebase {
 					const { terminal, ...board } = doc.data();
 					terminals.push({
 						...board,
-						docId: doc.id,
+						id: doc.id,
 					});
 				});
 				callBack(terminals);
@@ -206,7 +206,7 @@ class Firebase {
 					const ticket = doc.data();
 					tickets.push({
 						...ticket,
-						docId: doc.id,
+						id: doc.id,
 					});
 				});
 				callBack(tickets);
@@ -221,7 +221,7 @@ class Firebase {
 					const { terminal, ...board } = doc.data();
 					boards.push({
 						...board,
-						docId: doc.id,
+						id: doc.id,
 					});
 				});
 				callBack(boards);
@@ -238,7 +238,7 @@ class Firebase {
 				const { terminal, ...board } = doc.data();
 				boards.push({
 					...board,
-					docId: doc.id,
+					id: doc.id,
 				});
 			});
 			return boards;
@@ -256,27 +256,27 @@ class Firebase {
 				const { terminal, ...board } = doc.data();
 				boards.push({
 					...board,
-					docId: doc.id,
+					id: doc.id,
 				});
 			});
 			return boards;
 		}
 	};
-	getBoard = async (docId) => {
+	getBoard = async (id) => {
 		const board = await this.db
-			.doc(`${this.master}/boards/${docId}`)
+			.doc(`${this.master}/boards/${id}`)
 			.get()
 			.catch((e) => e);
 		if (board) {
 			return {
 				...board.data(),
-				docId: board.id,
+				id: board.id,
 			};
 		}
 	};
-	updateBoard = async (docId, boardInfo) => {
+	updateBoard = async (id, boardInfo) => {
 		const board = await this.db
-			.doc(`${this.master}/boards/${docId}`)
+			.doc(`${this.master}/boards/${id}`)
 			.get()
 			.catch((e) => e);
 		if (board) {
@@ -305,7 +305,7 @@ class Firebase {
 		return ticketRef;
 	};
 	addTerminalToLocation = async (terminal, locationId) => {
-		await this.db.doc(`${this.master}/terminals/${terminal.docId}`).update({
+		await this.db.doc(`${this.master}/terminals/${terminal.id}`).update({
 			locationId: locationId,
 		});
 		return this.db.doc(`${this.master}/locations/${locationId}`).update({
@@ -315,7 +315,7 @@ class Firebase {
 			}),
 		});
 	};
-	addTerminalToMaster = async (values, locationId, docId) => {
+	addTerminalToMaster = async (values, locationId, id) => {
 		const terminalDoc = await this.db
 			.collection(`${this.master}/terminals`)
 			.doc(values.serial)
@@ -328,7 +328,7 @@ class Firebase {
 					terminals: app.firestore.FieldValue.arrayUnion({
 						...values,
 						locationId,
-						docId: terminalDoc.id,
+						id: terminalDoc.id,
 					}),
 				});
 			}
@@ -345,10 +345,10 @@ class Firebase {
 	removeTicket = (id) => {
 		return this.db.doc(`${this.master}/tickets/${id}`).delete();
 	};
-	updateTerminal = async (values, docId) => {
+	updateTerminal = async (values, id) => {
 		const terminalDoc = await this.db
 			.collection(`${this.master}/terminals`)
-			.doc(docId);
+			.doc(id);
 		const currentData = await (await terminalDoc.get()).data();
 		if (currentData.boardId && !values.boardId) {
 			await this.updateBoard(currentData.boardId, { terminalId: null });
@@ -357,16 +357,14 @@ class Firebase {
 	};
 	removeTerminalFromLocation = async (terminal, location) => {
 		const locationDoc = await this.db.doc(
-			`${this.master}/locations/${location.docId}`
+			`${this.master}/locations/${location.id}`
 		);
-		const terminals = location.terminals.filter(
-			(e) => e.docId !== terminal.docId
-		);
+		const terminals = location.terminals.filter((e) => e.id !== terminal.id);
 		await locationDoc.update({
 			terminals,
 		});
 		return this.db
-			.doc(`${this.master}/terminals/${terminal.docId}`)
+			.doc(`${this.master}/terminals/${terminal.id}`)
 			.update({ locationId: null })
 			.then(() => {
 				return terminals;
@@ -396,7 +394,7 @@ class Firebase {
 			(querySnapshot) => {
 				let locations = [];
 				querySnapshot.forEach((doc) => {
-					return locations.push({ ...doc.data(), docId: doc.id });
+					return locations.push({ ...doc.data(), id: doc.id });
 				});
 				locations = locations.sort((a, b) => (a['name'] > b['name'] ? 1 : -1));
 				callback(locations);
@@ -413,7 +411,7 @@ class Firebase {
 			.get()
 			.catch((e) => alert('Error:' + e.message));
 		if (location) {
-			const locationData = { ...location.data(), docId: location.id };
+			const locationData = { ...location.data(), id: location.id };
 			this.currentLocation = locationData;
 			return locationData;
 		}
