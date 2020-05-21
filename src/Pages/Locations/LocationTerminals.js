@@ -42,7 +42,7 @@ export default function LocationTerminals({ location, currentMaster }) {
 	};
 	return (
 		<Container>
-			{location?.terminals.length <= parseInt(location?.terminalsTotal) && (
+			{location?.terminals?.length <= parseInt(location?.terminalsTotal) && (
 				<div className='btn-group'>
 					{isAdding ? (
 						<Button

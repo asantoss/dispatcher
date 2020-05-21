@@ -55,8 +55,8 @@ export default function TerminalForm({ initialState, onSubmit }) {
 				openModal(true);
 			}}>
 			<div id='main_info'>
+				<h4>Cabinet Information</h4>
 				<TextField
-					style={{ flexGrow: 0.5 }}
 					variant='outlined'
 					value={values.serial}
 					name='serial'
@@ -65,7 +65,6 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					onBlur={handleBlur}
 				/>
 				<TextField
-					style={{ flexGrow: 1 }}
 					select
 					variant='outlined'
 					required
@@ -85,7 +84,6 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					))}
 				</TextField>
 				<TextField
-					style={{ flexGrow: 1 }}
 					required
 					variant='outlined'
 					value={values.manufacturer}
@@ -97,7 +95,8 @@ export default function TerminalForm({ initialState, onSubmit }) {
 			</div>
 
 			<div id='secondary_info'>
-				<div style={{ flexGrow: 1 }}>
+				<h4>Board Information</h4>
+				<div>
 					<Autocomplete
 						keys={['game', 'refrence', 'version']}
 						label='Game'
@@ -115,7 +114,6 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					/>
 				</div>
 				<TextField
-					style={{ flexBasis: '40%' }}
 					required
 					variant='outlined'
 					value={values.monitor}
@@ -125,7 +123,6 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					onBlur={handleBlur}
 				/>
 				<TextField
-					style={{ flexBasis: '40%' }}
 					required
 					variant='outlined'
 					name='billAcceptor'

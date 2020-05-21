@@ -21,12 +21,21 @@ export default function BoardForm({ initialState, onSubmit }) {
 
 	return (
 		<Form
-			className='board_form'
 			onSubmit={(e) => {
 				e.preventDefault();
 				openModal();
 			}}>
-			<div className='main_info'>
+			<div id='main_info'>
+				<h4>Board Information</h4>
+				<TextField
+					required
+					variant='outlined'
+					name='refrence'
+					value={values.refrence}
+					label='Refrence'
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
 				<TextField
 					required
 					variant='outlined'
@@ -45,17 +54,6 @@ export default function BoardForm({ initialState, onSubmit }) {
 					onChange={handleChange}
 					onBlur={handleBlur}
 				/>
-				<TextField
-					required
-					variant='outlined'
-					name='refrence'
-					value={values.refrence}
-					label='Refrence'
-					onChange={handleChange}
-					onBlur={handleBlur}
-				/>
-			</div>
-			<div className='secondary_info'>
 				<TextField
 					variant='outlined'
 					value={values.type}
