@@ -1,5 +1,5 @@
 const initialState = {
-	entities: [],
+	entities: {},
 	ids: [],
 };
 

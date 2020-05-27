@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { debounce } from 'lodash';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -11,6 +11,7 @@ export default function Autocomplete({
 	getSelected,
 	setOpen,
 	keys,
+	defaultValue,
 	...props
 }) {
 	const debounced = useRef(null);
@@ -32,10 +33,8 @@ export default function Autocomplete({
 		if (!debounced.current) {
 			debounced.current = debounce((userInput) => {
 				const filteredOptions = options.filter((option) => {
-					const found = keys.filter((key) => {
-						return option[key].toLowerCase().includes(userInput.toLowerCase());
-					});
-					return found.length;
+					const value = getLabel(option);
+					return value.toLowerCase().includes(userInput.toLowerCase());
 				});
 				setState((s) => ({
 					...s,
@@ -90,6 +89,12 @@ export default function Autocomplete({
 			setState((s) => ({ ...s, activeOption: state.activeOption + 1 }));
 		}
 	};
+
+	useEffect(() => {
+		if (defaultValue) {
+			setState((s) => ({ ...s, activeOption: options.indexOf(defaultValue) }));
+		}
+	}, [defaultValue, options]);
 
 	const { userInput, filteredOptions, showOptions, isLoading } = state;
 

@@ -70,6 +70,7 @@ export const UPDATE_BOARD = (payload) => {
 	return (dispatch, getState) => {
 		dispatch({ type: FETCH });
 		const { boards } = getState();
+		debugger;
 		firebase.updateBoard(id, values).then(() =>
 			dispatch(
 				SET_BOARD({
@@ -86,6 +87,7 @@ export const UPDATE_BOARD = (payload) => {
 
 export const UPDATE_TERMINAL = (payload) => {
 	const { id, values } = payload;
+	debugger;
 	return (dispatch, getState) => {
 		dispatch({ type: FETCH });
 		const { boards } = getState();

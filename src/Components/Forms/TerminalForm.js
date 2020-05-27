@@ -1,12 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Form } from '../Layouts/styles/Form';
-import { FirebaseContext } from '../../Firebase';
 import Autocomplete from '../shared/Autocomplete';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useConfirmModal } from '../../hooks/Modal';
-
+import * as ACTIONS from '../../constants/actions';
 // import { useHistory } from 'react-router-dom';
 
 export default function TerminalForm({ initialState, onSubmit }) {
@@ -14,7 +13,7 @@ export default function TerminalForm({ initialState, onSubmit }) {
 		user: { currentMaster },
 		boards,
 	} = useSelector(({ user, boards }) => ({ user, boards }));
-	const firebase = useContext(FirebaseContext);
+	const dispatch = useDispatch();
 
 	const {
 		handleChange,
@@ -37,18 +36,13 @@ export default function TerminalForm({ initialState, onSubmit }) {
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
-		let active = true;
-		(async () => {
-			const boards = await firebase.getMasterFreeBoards();
-			debugger;
-			if (active) {
-				setOptions(boards);
-			}
-		})();
-		return () => {
-			active = false;
-		};
-	}, [firebase]);
+		if (!boards.ids.length) {
+			dispatch(ACTIONS.GET_ALL_BOARDS());
+		} else {
+			setOptions(boards.ids);
+		}
+	}, [boards, dispatch]);
+
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
 	});
@@ -105,17 +99,17 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					<Autocomplete
 						keys={['game', 'refrence', 'version']}
 						label='Game'
-						defaultValue={initialState?.board ?? undefined}
+						defaultValue={initialState?.boardId ?? undefined}
 						getSelected={(option) => {
-							setFieldValue('board', option);
-							setFieldValue('boardId', option?.id);
+							setFieldValue('boardId', option);
 						}}
 						getLabel={(option) =>
-							option?.refrence
-								? `${option.game}/ Refrence: ${option?.refrence}`
-								: option.game
+							boards.entities[option]?.refrence
+								? `${boards.entities[option]?.game}/ Refrence: ${boards.entities[option]?.refrence}`
+								: boards.entities[option]?.game
 						}
 						options={options}
+						entities={boards.entities}
 					/>
 				</div>
 				<TextField
