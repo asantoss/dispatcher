@@ -13,7 +13,7 @@ import {
 import { useDispatch } from 'react-redux';
 import * as ACTIONS from '../../constants/actions';
 
-export default function TerminalsChecked({ location }) {
+export default function TerminalsChecked({ location, id }) {
 	const [checked, setChecked] = useState([]);
 	const [state, setState] = useState([]);
 	const dispatch = useDispatch();
@@ -22,11 +22,11 @@ export default function TerminalsChecked({ location }) {
 	useEffect(() => {
 		firebase.getMasterTerminals().then((results) => {
 			const terminals = results.filter(
-				(terminal) => terminal?.locationId !== location?.docId
+				(terminal) => terminal?.locationId !== id
 			);
 			setState(terminals);
 		});
-	}, [setState, firebase, location]);
+	}, [setState, firebase, id]);
 
 	const handleToggle = (value) => () => {
 		const currentIndex = checked.indexOf(value);
@@ -43,17 +43,13 @@ export default function TerminalsChecked({ location }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const terminals = [...location.terminals, ...checked];
+		let terminals = [];
+		if (location?.terminals) {
+			terminals = [...location.terminals];
+		}
+		terminals = [...terminals, ...checked];
 		if (terminals.length < location.terminalsTotal) {
-			Promise.all(
-				checked.map((terminal) =>
-					firebase.addTerminalToLocation(terminal, location.docId)
-				)
-			).then(() => {
-				setChecked([]);
-				dispatch(ACTIONS.SET_CURRENT_LOCATION({ ...location, terminals }));
-				alert('Success');
-			});
+			dispatch(ACTIONS.ADD_TERMINALS({ terminals, id }));
 		}
 	};
 	return state.length ? (

@@ -15,6 +15,7 @@ export default function NewItem() {
 			.createLocation(values)
 			.then(() => {
 				// resetForm();
+
 				alert('Successfully created location: ' + values?.name);
 			})
 			.catch((e) => alert('Error: ' + e.message));
@@ -48,6 +49,7 @@ export default function NewItem() {
 			})
 			.catch((e) => alert('Error: ' + e.message));
 	};
+
 	const ticketSubmit = (values) => {
 		return firebase
 			.addTicket(values)
@@ -58,6 +60,7 @@ export default function NewItem() {
 				alert('Error: ' + e.message);
 			});
 	};
+
 	return (
 		<div style={{ padding: '1rem' }}>
 			{item && <h2>New {item}</h2>}

@@ -1,27 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import TableComponent from '../../Components/shared/Table';
-import { FirebaseContext } from '../../Firebase';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { GET_ALL_LOCATIONS } from '../../constants/actions';
 
 export default function LocationsPage() {
-	const locations = useSelector((state) => state.locations);
-	const firebase = useContext(FirebaseContext);
-	const [data, setState] = useState([]);
-	const [loading, setLoading] = useState(false);
+	const { locations, status } = useSelector((state) => state);
+	const dispatch = useDispatch();
 
-	// useEffect(() => {
-	// 	const listener = firebase.getMasterLocationsListener((payload) => {
-	// 		setLoading(false);
-	// 		setState(payload);
-	// 	});
-	// 	return () => {
-	// 		listener();
-	// 		setState(null);
-	// 	};
-	// }, [firebase]);
+	useEffect(() => {
+		dispatch(GET_ALL_LOCATIONS());
+	}, [dispatch]);
 
-	if (loading) {
+	if (status.loading) {
 		return <div className='spinner' />;
 	}
 	return (
@@ -29,8 +20,8 @@ export default function LocationsPage() {
 			<Breadcrumb />
 			<TableComponent
 				{...{
-					data: locations.entities,
-					headers: ['name', 'city', 'actions'],
+					data: locations,
+					headers: ['name', 'city', 'view'],
 				}}
 			/>
 		</>

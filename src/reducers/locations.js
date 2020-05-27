@@ -1,10 +1,6 @@
 const initialState = {
-	entities: [],
-	filtered: null,
-	currentLocation: null,
-	view: null,
-	loading: false,
-	error: null,
+	entities: {},
+	ids: [],
 };
 
 const locationsReducer = (state = initialState, action) => {
@@ -19,38 +15,19 @@ const locationsReducer = (state = initialState, action) => {
 			return {
 				...initialState,
 			};
-		case 'SORT_LOCATIONS':
-			if (state.filtered) {
-				return {
-					...state,
-					filtered: payload,
-				};
-			} else {
-				return {
-					...state,
-					allLocations: payload,
-				};
-			}
-		case 'UPDATE_LOCATION':
-			const idx = state.allLocations.findIndex((e) => e?.id === payload?.id);
+		case 'SET_LOCATION':
 			return {
 				...state,
-				currentLocation: payload,
-				allLocations: [
-					...state.allLocations.slice(0, idx),
-					payload,
-					...state.allLocations.slice(idx + 1),
-				],
-			};
-		case 'SET_CURRENT_LOCATION':
-			return {
-				...state,
-				currentLocation: payload,
+				entities: {
+					...state.entities,
+					[payload.id]: payload.entity,
+				},
 			};
 		case 'SET_ALL_LOCATIONS':
 			return {
 				...state,
-				allLocations: payload,
+				entities: payload.locations,
+				ids: payload.ids,
 			};
 
 		default:

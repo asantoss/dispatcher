@@ -1,91 +1,56 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { FirebaseContext } from '../../Firebase';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import styled from 'styled-components';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import usePanelBar from '../../hooks/PanelBar';
 import TerminalForm from '../../Components/Forms/TerminalForm';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+	GET_ALL_TERMINALS,
+	UPDATE_BOARD,
+	UPDATE_TERMINAL,
+} from '../../constants/actions';
 export default function Terminal() {
-	const firebase = useContext(FirebaseContext);
-	const {
-		params: { id },
-	} = useRouteMatch();
-	const [terminal, setTerminal] = useState({});
-	const [isLoading, setisLoading] = useState(true);
+	const { id } = useParams();
+	const dispatch = useDispatch();
 	const [value, PanelBar, Panel] = usePanelBar(['Info', 'Edit']);
-
+	const { status, terminals } = useSelector((state) => state);
 	useEffect(() => {
-		if (id) {
-			firebase.getTerminal(id).then((results) => {
-				setTerminal({ ...results, location: null });
-				if (results?.locationId) {
-					firebase.getLocation(results.locationId).then((location) => {
-						if (location) {
-							setTerminal((s) => ({ ...s, location }));
-						}
-						setisLoading(false);
-					});
-				} else {
-					setisLoading(false);
-				}
-			});
-		}
-	}, [id, firebase]);
+		dispatch(GET_ALL_TERMINALS());
+	}, [dispatch]);
 
-	if (isLoading) {
+	if (status.loading) {
 		return <div className='spinner' />;
 	}
-	const {
-		monitor,
-		type,
-		manufacturer,
-		billAcceptor,
-		board,
-		docId,
-		serial,
-	} = terminal;
+	const terminal = terminals.entities[id];
 
-	const formSubmit = async ({ docId, ...values }) => {
+	const formSubmit = async (values) => {
 		if (values?.boardId) {
-			await firebase.updateBoard(values.boardId, { terminalId: docId });
-			values.board.terminalId = docId;
+			dispatch(
+				UPDATE_BOARD({ id: values.boardId, values: { terminalId: id } })
+			);
 		} else {
-			// values.boardId = null;
-			// values.board.terminalId = null;
-			if (board?.docId) {
-				await firebase.updateBoard(board.boardId, { terminalId: null });
+			if (!values.boardId) {
+				dispatch(
+					UPDATE_BOARD({ id: values.boardId, values: { terminalId: id } })
+				);
 			}
 		}
-		return firebase
-			.updateTerminal({ ...values }, docId)
-			.then(() => {
-				alert('Successfuller updated terminal: ' + values?.serial);
-			})
-			.catch((e) => alert('Error: ' + e.message));
+		return dispatch(UPDATE_TERMINAL({ id, values }));
 	};
 	return (
 		<Container>
 			<Breadcrumb name={terminal?.serial} />
 			<PanelBar />
 			<Panel {...{ value, index: 0 }}>
-				<p>{type}</p>
-				<p>{manufacturer}</p>
-				<p>{monitor}</p>
-				<p>{billAcceptor}</p>
+				<p>{terminal?.type}</p>
+				<p>{terminal?.manufacturer}</p>
+				<p>{terminal?.monitor}</p>
+				<p>{terminal?.billAcceptor}</p>
 			</Panel>
 			<Panel {...{ value, index: 1 }}>
-				<TerminalForm
-					initialState={{
-						monitor,
-						type,
-						manufacturer,
-						billAcceptor,
-						board,
-						docId,
-						serial,
-					}}
-					onSubmit={formSubmit}
-				/>
+				<TerminalForm initialState={terminal} onSubmit={formSubmit} />
 			</Panel>
 		</Container>
 	);

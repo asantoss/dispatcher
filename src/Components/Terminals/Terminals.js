@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
 	List,
 	ListItem,
@@ -9,28 +9,16 @@ import {
 	ListItemSecondaryAction,
 } from '@material-ui/core';
 import { CloseOutlined, EditOutlined } from '@material-ui/icons';
-import { useSelector, useDispatch } from 'react-redux';
-import { FirebaseContext } from '../../Firebase';
+import { useDispatch } from 'react-redux';
 import * as ACTIONS from '../../constants/actions';
 import { Link } from 'react-router-dom';
 
-export default function Terminals({ terminals }) {
-	const {
-		locations: { currentLocation },
-	} = useSelector((state) => state);
+export default function Terminals({ location, id }) {
 	const dispatch = useDispatch();
-	const firebase = useContext(FirebaseContext);
 	const handleRemove = (terminal) => {
-		firebase
-			.removeTerminalFromLocation(terminal, currentLocation)
-			.then((terminals) => {
-				alert('Success');
-				dispatch(
-					ACTIONS.SET_CURRENT_LOCATION({ ...currentLocation, terminals })
-				);
-			})
-			.catch((e) => alert('Error please try again \n ' + e.message));
+		dispatch(ACTIONS.REMOVE_TERMINAL({ id, terminal }));
 	};
+	const { terminals } = location;
 	return terminals?.length ? (
 		terminals.map((terminal, i) => (
 			<List key={i}>
@@ -65,6 +53,6 @@ export default function Terminals({ terminals }) {
 			</List>
 		))
 	) : (
-		<p>No Terminals Set</p>
+		<p>No terminals found.</p>
 	);
 }

@@ -1,50 +1,45 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect } from 'react';
 import usePanelBar from '../../hooks/PanelBar';
 import styled from 'styled-components';
-import { useLocation, useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import BoardForm from '../../Components/Forms/BoardForm';
-import { isEmpty } from 'lodash';
-import { FirebaseContext } from '../../Firebase';
+import { useSelector, useDispatch } from 'react-redux';
+import * as ACTIONS from '../../constants/actions';
 
 export default function Board() {
 	const tabs = ['Info', 'Edit'];
-	const firebase = useContext(FirebaseContext);
-	const {
-		params: { id },
-	} = useRouteMatch();
-	const [isLoading, setLoading] = useState(true);
-	const [status, setStatus] = useState(null);
-	const [board, setBoard] = useState(null);
+	const { id } = useParams();
+
+	const dispatch = useDispatch();
+	const { boards, status } = useSelector((state) => state);
+
 	useEffect(() => {
-		firebase
-			.getBoard(id)
-			.then((board) => {
-				setLoading(false);
-				setBoard(board);
-			})
-			.catch((e) => console.log(e));
-	}, [id, firebase]);
+		if (!boards.entities[id]) {
+			dispatch(ACTIONS.GET_ALL_BOARDS());
+		}
+	}, [id, boards, dispatch]);
 
 	const [value, PanelBar, Panel] = usePanelBar(tabs);
+
 	const formSubmit = (values) => {
-		const { docId, ...boardInfo } = values;
-		return firebase
-			.updateBoard(docId, boardInfo)
-			.then(() => setStatus('Successfuller added board: ' + values?.refrence));
+		dispatch(ACTIONS.UPDATE_BOARD({ id, values }));
 	};
-	if (isLoading) {
+
+	if (status.loading) {
 		return <div className='spinner'></div>;
 	}
+
+	const board = boards.entities[id];
 	return (
 		<Container>
-			{status && <p>{status}</p>}
+			{status?.error && <p>{status?.error}</p>}
 			<Breadcrumb name={board?.refrence} />
 			<PanelBar />
 			<Panel {...{ value, index: 0 }}>
 				{/* <p>{board.game}</p> */}
-				<p>{board.manufacturer}</p>
-				<p>{board.type}</p>
+				<p>{board?.manufacturer}</p>
+				<p>{board?.type}</p>
 			</Panel>
 			<Panel {...{ value, index: 1 }}>
 				<BoardForm onSubmit={formSubmit} initialState={board} />

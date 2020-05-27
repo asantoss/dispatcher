@@ -31,7 +31,7 @@ const Container = styled.div`
 	}
 `;
 
-export default function LocationTerminals({ location, currentMaster }) {
+export default function LocationTerminals({ location, id }) {
 	const [state, dispatch] = useReducer(reducer, {
 		isAdding: false,
 		all: true,
@@ -42,31 +42,29 @@ export default function LocationTerminals({ location, currentMaster }) {
 	};
 	return (
 		<Container>
-			{location?.terminals.length <= parseInt(location?.terminalsTotal) && (
-				<div className='btn-group'>
-					{isAdding ? (
-						<Button
-							variant='contained'
-							color='default'
-							name='isNew'
-							style={{ filter: all && 'brightness(0.5)' }}
-							onClick={() => handleClick('ALL')}
-							startIcon={<ListAltOutlined />}>
-							All
-						</Button>
-					) : (
-						<Button
-							variant='contained'
-							color='default'
-							name='isAdding'
-							style={{ filter: isAdding && 'brightness(0.5)' }}
-							onClick={() => handleClick('IS_ADDING')}
-							startIcon={<Add />}>
-							Select From Inventory
-						</Button>
-					)}
-				</div>
-			)}
+			<div className='btn-group'>
+				{isAdding ? (
+					<Button
+						variant='contained'
+						color='default'
+						name='isNew'
+						style={{ filter: all && 'brightness(0.5)' }}
+						onClick={() => handleClick('ALL')}
+						startIcon={<ListAltOutlined />}>
+						All
+					</Button>
+				) : (
+					<Button
+						variant='contained'
+						color='default'
+						name='isAdding'
+						style={{ filter: isAdding && 'brightness(0.5)' }}
+						onClick={() => handleClick('IS_ADDING')}
+						startIcon={<Add />}>
+						Select From Inventory
+					</Button>
+				)}
+			</div>
 			<SwitchTransition mode='out-in'>
 				<CSSTransition
 					key={isAdding}
@@ -79,9 +77,9 @@ export default function LocationTerminals({ location, currentMaster }) {
 					unmountOnExit>
 					<div>
 						{isAdding ? (
-							<TerminalsChecked {...{ location }} />
+							<TerminalsChecked {...{ location, id }} />
 						) : (
-							<Terminals terminals={location?.terminals} />
+							<Terminals {...{ location, id }} />
 						)}
 					</div>
 				</CSSTransition>

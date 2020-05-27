@@ -10,7 +10,10 @@ import { useConfirmModal } from '../../hooks/Modal';
 // import { useHistory } from 'react-router-dom';
 
 export default function TerminalForm({ initialState, onSubmit }) {
-	const { currentMaster } = useSelector(({ user }) => user);
+	const {
+		user: { currentMaster },
+		boards,
+	} = useSelector(({ user, boards }) => ({ user, boards }));
 	const firebase = useContext(FirebaseContext);
 
 	const {

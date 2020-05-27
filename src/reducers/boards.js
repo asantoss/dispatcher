@@ -1,74 +1,23 @@
 const initialState = {
-	allLocations: [],
-	filtered: null,
-	currentLocation: null,
-	view: null,
-	loading: false,
-	error: null,
+	entities: [],
+	ids: [],
 };
 
 const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
 	switch (type) {
-		case 'VIEW':
+		case 'SET_BOARD':
 			return {
-				...initialState,
+				...state,
+				entities: {
+					...state.entities,
+					[payload.id]: payload.values,
+				},
+			};
+		case 'SET_ALL_BOARDS':
+			return {
+				...state,
 				...payload,
-			};
-		case 'EDIT':
-			return {
-				...initialState,
-			};
-		case 'SORT_LOCATIONS':
-			if (state.filtered) {
-				return {
-					...state,
-					filtered: payload,
-				};
-			} else {
-				return {
-					...state,
-					allLocations: payload,
-				};
-			}
-		case 'UPDATE_LOCATION':
-			const idx = state.allLocations.findIndex(
-				(e) => e?.docId === payload?.docId
-			);
-			return {
-				...state,
-				currentLocation: payload,
-				allLocations: [
-					...state.allLocations.slice(0, idx),
-					payload,
-					...state.allLocations.slice(idx + 1),
-				],
-			};
-		case 'SET_CURRENT_LOCATION':
-			return {
-				...state,
-				currentLocation: payload,
-			};
-		case 'SET_ALL_LOCATIONS':
-			return {
-				...state,
-				allLocations: payload,
-			};
-		case 'FIRED':
-			return {
-				...state,
-				loading: true,
-			};
-		case 'FULFILLED':
-			return {
-				...state,
-				loading: false,
-			};
-		case 'ERROR':
-			return {
-				...state,
-				error: payload,
-				loading: false,
 			};
 		default:
 			return state;

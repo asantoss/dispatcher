@@ -16,7 +16,7 @@ import {
 	IconButton,
 	useTheme,
 } from '@material-ui/core';
-import Actions from './Actions';
+
 import Filters from './Filters';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
@@ -52,7 +52,7 @@ export default function TableComponent({ data, headers }) {
 
 	useEffect(() => {
 		if (data) {
-			dispatch({ type: 'INITIAL', payload: data });
+			dispatch({ type: 'INITIAL', payload: data?.ids });
 		}
 		return () => {
 			dispatch({ type: 'INITIAL', payload: [] });
@@ -103,36 +103,38 @@ export default function TableComponent({ data, headers }) {
 					</TableHead>
 					<TableBody>
 						{(rowsPerPage > 0
-							? state.data?.slice(
+							? state.data.slice(
 									page * rowsPerPage,
 									page * rowsPerPage + rowsPerPage
 							  )
 							: state.data
-						)?.map((item, index) => {
+						).map((item, index) => {
 							return (
-								<TableRow key={item?.id}>
+								<TableRow key={item}>
 									{headers?.map((head, i) => {
 										if (head === 'view') {
 											return (
 												<TableCell key={i}>
 													<Link
 														to={{
-															state: item,
-															pathname: `${pathname}/${item?.id}`,
+															state: data?.entities[item],
+															pathname: `${pathname}/${item}`,
 														}}>
 														View
 													</Link>
 												</TableCell>
 											);
 										}
-										if (head === 'actions') {
-											return (
-												<TableCell key={i}>
-													<Actions {...{ item, index }} />
-												</TableCell>
-											);
-										}
-										return <TableCell key={i}>{item[head]}</TableCell>;
+										// if (head === 'actions') {
+										// 	return (
+										// 		<TableCell key={i}>
+										// 			<Actions {...{ item: data?.entities[item], index }} />
+										// 		</TableCell>
+										// 	);
+										// }
+										return (
+											<TableCell key={i}>{data.entities[item][head]}</TableCell>
+										);
 									})}
 								</TableRow>
 							);

@@ -145,12 +145,15 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (terminalsSnapshot) {
-			const terminals = [];
+			const terminals = {};
+			const ids = [];
 			await terminalsSnapshot.forEach((doc) => {
 				const terminal = doc.data();
-				terminals.push({ ...terminal, id: doc.id });
+				const id = doc.id;
+				terminals[id] = terminal;
+				ids.push(id);
 			});
-			return terminals;
+			return { entities: terminals, ids };
 		}
 	};
 	getMasterLocations = async () => {
@@ -159,12 +162,14 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (locationsSnapshot) {
-			const locations = [];
+			const locations = {};
+			const ids = [];
 			await locationsSnapshot.forEach((doc) => {
 				const location = doc.data();
-				locations.push({ ...location, id: doc.id });
+				locations[doc.id] = location;
+				ids.push(doc.id);
 			});
-			return locations;
+			return { locations, ids };
 		}
 	};
 	getMasterFreeTerminals = async () => {
@@ -182,6 +187,7 @@ class Firebase {
 			return terminals;
 		}
 	};
+
 	getMasterTerminalsListener = (callBack) => {
 		return this.db
 			.collection(this.master + '/terminals')
@@ -197,6 +203,7 @@ class Firebase {
 				callBack(terminals);
 			});
 	};
+
 	getMasterTicketsListener = (callBack) => {
 		return this.db
 			.collection(this.master + '/tickets')
@@ -212,6 +219,7 @@ class Firebase {
 				callBack(tickets);
 			});
 	};
+
 	getMasterBoardsListener = (callBack) => {
 		return this.db
 			.collection(this.master + '/boards')
@@ -227,23 +235,25 @@ class Firebase {
 				callBack(boards);
 			});
 	};
+
 	getMasterBoards = async () => {
 		const boardsSnapshot = await this.db
 			.collection(this.master + '/boards')
 			.get()
 			.catch((e) => e);
 		if (boardsSnapshot) {
-			const boards = [];
+			const boards = {};
+			const ids = [];
 			await boardsSnapshot.forEach((doc) => {
 				const { terminal, ...board } = doc.data();
-				boards.push({
-					...board,
-					id: doc.id,
-				});
+				const id = doc.id;
+				boards[id] = board;
+				ids.push(id);
 			});
-			return boards;
+			return { entities: boards, ids };
 		}
 	};
+
 	getMasterFreeBoards = async () => {
 		const boardsSnapshot = await this.db
 			.collection(this.master + '/boards')
@@ -262,6 +272,7 @@ class Firebase {
 			return boards;
 		}
 	};
+
 	getBoard = async (id) => {
 		const board = await this.db
 			.doc(`${this.master}/boards/${id}`)
@@ -274,6 +285,7 @@ class Firebase {
 			};
 		}
 	};
+
 	updateBoard = async (id, boardInfo) => {
 		const board = await this.db
 			.doc(`${this.master}/boards/${id}`)
@@ -283,6 +295,7 @@ class Firebase {
 			return board.ref.update(boardInfo);
 		}
 	};
+
 	addBoard = async (boardInfo) => {
 		const boardRef = await this.db
 			.collection(`${this.master}/boards`)
@@ -296,6 +309,7 @@ class Firebase {
 			return boardRef.ref.set(boardInfo);
 		}
 	};
+
 	addTicket = async (ticketInfo) => {
 		const ticketRef = await this.db.collection(`${this.master}/tickets`).add({
 			...ticketInfo,
@@ -304,6 +318,7 @@ class Firebase {
 		});
 		return ticketRef;
 	};
+
 	addTerminalToLocation = async (terminal, locationId) => {
 		await this.db.doc(`${this.master}/terminals/${terminal.id}`).update({
 			locationId: locationId,
@@ -315,6 +330,7 @@ class Firebase {
 			}),
 		});
 	};
+
 	addTerminalToMaster = async (values, locationId, id) => {
 		const terminalDoc = await this.db
 			.collection(`${this.master}/terminals`)
@@ -355,10 +371,8 @@ class Firebase {
 		}
 		return await terminalDoc.update(values);
 	};
-	removeTerminalFromLocation = async (terminal, location) => {
-		const locationDoc = await this.db.doc(
-			`${this.master}/locations/${location.id}`
-		);
+	removeTerminalFromLocation = async (terminal, location, id) => {
+		const locationDoc = await this.db.doc(`${this.master}/locations/${id}`);
 		const terminals = location.terminals.filter((e) => e.id !== terminal.id);
 		await locationDoc.update({
 			terminals,
