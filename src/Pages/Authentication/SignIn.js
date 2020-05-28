@@ -7,6 +7,8 @@ import googlePressed from '../../assets/btn_google_signin_dark_pressed_web.png';
 import { TextField, Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { Form } from './utils';
+import { useDispatch } from 'react-redux';
+import { LOGIN } from '../../constants/actions';
 
 const SignInPage = () => {
 	return (
@@ -37,25 +39,19 @@ const GoogleButton = styled.button`
 `;
 
 const SignInForm = () => {
-	const Auth = useContext(AuthPageContext);
 	const [state, setState] = useState(INITIAL_STATE);
-
+	const dispatch = useDispatch();
 	const onChange = (event) => {
 		setState({ ...state, [event.target.name]: event.target.value });
 	};
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		const { email, password } = state;
-		Auth.signInWithEmail(email, password).catch((error) =>
-			setState({ ...state, error: error?.message })
-		);
+		dispatch(LOGIN({ strategy: 'LOCAL', values: state }));
 	};
 
 	const SignInWithGoogle = () => {
-		Auth.signInWithGoogle().catch((e) => {
-			setState((s) => ({ ...s, error: e.message }));
-		});
+		dispatch(LOGIN({ strategy: 'GOOGLE', values: state }));
 	};
 
 	const { email, password, error } = state;

@@ -6,11 +6,11 @@ import { mapsOpener } from '../shared/utils';
 import { useSelector } from 'react-redux';
 import { DirectionsOutlined } from '@material-ui/icons';
 
-export default function Ticket({ ticket, toggleComplete, handleDelete }) {
+export default function Ticket({ toggleComplete, handleClose, id }) {
 	const [expanded, setExpanded] = useState(false);
 	const [height, setHeight] = useState(null);
-	const { user } = useSelector((state) => state);
-	const [OpenModal, Modal] = useConfirmModal(() => handleDelete(ticket?.id));
+	const { user, tickets, locations, terminals } = useSelector((state) => state);
+	const [OpenModal, Modal] = useConfirmModal(() => handleClose(id));
 	const handleExpand = (e) => {
 		const element = e.currentTarget.nextSibling;
 		if (!expanded) {
@@ -21,18 +21,21 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 		}
 		setExpanded(!expanded);
 	};
+	const ticket = tickets.entities[id];
+	const location = locations.entities[ticket?.locationId] ?? null;
+	const terminal = terminals.entities[ticket?.terminalId] ?? null;
+	const created = new Date(parseInt(ticket.created));
+	const completed = new Date(parseInt(ticket?.completedAt));
 	return (
 		<TicketContainer isComplete={ticket?.complete}>
 			<div className='header'>
-				<p className='title'>{ticket?.location.name}</p>
-				<p className='sub-title'>License {ticket?.location?.license}</p>
+				<p className='title'>{location?.name}</p>
+				<p className='sub-title'>License {location?.license}</p>
 				<span className='status'></span>
-				{ticket?.location?.coordinates && (
+				{location?.url && (
 					<span
 						className='directions-btn'
-						onClick={() =>
-							mapsOpener(ticket.location.coordinates, user?.location)
-						}>
+						onClick={() => mapsOpener(location?.url, user?.location)}>
 						<DirectionsOutlined />
 					</span>
 				)}
@@ -43,17 +46,17 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 					{ticket?.message}
 				</p>
 
-				{ticket?.terminal && (
+				{terminal && (
 					<>
 						<span onClick={handleExpand} className='showMore'>
 							{expanded ? '- Show Less' : '+ Show More'}
 						</span>
 						<div style={{ maxHeight: height }} className='terminal-info'>
-							<p>Terminal Game: {ticket?.terminal?.game ?? 'N/A'}</p>
-							<p>Terminal Serial: {ticket?.terminal?.serial}</p>
-							<p>Terminal B/A: {ticket?.terminal?.billAcceptor}</p>
-							<p>Terminal Monitor: {ticket?.terminal?.monitor}</p>
-							<p>Terminal Type: {ticket?.terminal?.type}</p>
+							<p>Terminal Game: {terminal?.game ?? 'N/A'}</p>
+							<p>Terminal Serial: {terminal?.serial}</p>
+							<p>Terminal B/A: {terminal?.billAcceptor}</p>
+							<p>Terminal Monitor: {terminal?.monitor}</p>
+							<p>Terminal Type: {terminal?.type}</p>
 						</div>
 					</>
 				)}
@@ -61,24 +64,20 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 				<p>
 					Submitted on:
 					<br />
-					<time dateTime={ticket?.created?.toDate()}>
-						<span>{ticket?.created?.toDate().toLocaleDateString('en-US')}</span>
+					<time dateTime={created}>
+						<span>{created?.toLocaleDateString('en-US')}</span>
 						<span>@</span>
-						<span>{ticket?.created?.toDate().toLocaleTimeString('en-US')}</span>
+						<span>{created?.toLocaleTimeString('en-US')}</span>
 					</time>
 				</p>
 				{ticket?.complete && ticket?.completedAt && (
 					<p>
 						Completed on:
 						<br />
-						<time dateTime={ticket.completedAt.toDate()}>
-							<span>
-								{ticket.completedAt.toDate().toLocaleDateString('en-US')}
-							</span>
+						<time dateTime={completed}>
+							<span>{completed.toLocaleDateString('en-US')}</span>
 							<span>@</span>
-							<span>
-								{ticket.completedAt.toDate().toLocaleTimeString('en-US')}
-							</span>
+							<span>{completed.toLocaleTimeString('en-US')}</span>
 						</time>
 					</p>
 				)}
@@ -88,7 +87,7 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 				{
 					<button
 						className='item'
-						onClick={() => toggleComplete(ticket.id, ticket?.complete)}>
+						onClick={() => toggleComplete(id, ticket?.complete)}>
 						{ticket?.complete ? 'Mark Open' : 'Mark Closed'}
 					</button>
 				}
@@ -145,7 +144,7 @@ const TicketContainer = styled.div`
 		}
 	}
 	.showMore {
-		position: absolute;
+		position: relative;
 		right: 1.25rem;
 		&:hover {
 			font-size: 1.2rem;

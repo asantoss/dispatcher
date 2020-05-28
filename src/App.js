@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import * as ROLES from './constants/roles';
 import { Route, Switch } from 'react-router-dom';
 import { AuthUserContextProvider } from './Components/Session';
-
+import 'react-toastify/dist/ReactToastify.css';
 import {
 	SignInPage,
 	SignUpPage,
@@ -22,32 +23,44 @@ import Board from './Pages/Boards/Board';
 import NewItem from './Pages/NewItem';
 import Tickets from './Pages/Tickets';
 import LandingPage from './Pages/LandingPage';
-
+import { ToastContainer } from 'react-toastify';
 // import { useDispatch } from 'react-redux';
-// import * as ACTIONS from './constants/actions';
+import * as ACTIONS from './constants/actions';
+import { FirebaseContext } from './Firebase';
 
 const App = () => {
-	// const dispatch = useDispatch();
-	// useEffect(() => {
-	// 	const options = {
-	// 		enableHighAccuracy: true,
-	// 		timeout: 5000,
-	// 		maximumAge: 1000 * 60 * 60 * 24 * 5,
-	// 	};
-	// 	navigator.geolocation.getCurrentPosition(
-	// 		(pos) => {
-	// 			const { latitude, longitude } = pos.coords;
-	// 			console.log(
-	// 				`Got your location with ${pos.coords.accuracy} more or less meters of accuracy.`
-	// 			);
-	// 			dispatch(ACTIONS.SET_USER_LOCATION({ latitude, longitude }));
-	// 		},
-	// 		null,
-	// 		options
-	// 	);
-	// }, [dispatch]);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		const options = {
+			enableHighAccuracy: true,
+			timeout: 5000,
+			maximumAge: 1000 * 60 * 60 * 24 * 5,
+		};
+		navigator.geolocation.getCurrentPosition(
+			(pos) => {
+				const { latitude, longitude } = pos.coords;
+				console.log(
+					`Got your location with ${pos.coords.accuracy} more or less meters of accuracy.`
+				);
+				dispatch(ACTIONS.SET_USER_LOCATION({ latitude, longitude }));
+			},
+			null,
+			options
+		);
+	}, [dispatch]);
 	return (
 		<>
+			<ToastContainer
+				position='top-right'
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<AuthUserContextProvider>
 				<AuthController>
 					{/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}

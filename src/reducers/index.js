@@ -4,6 +4,7 @@ import locations from './locations';
 import boards from './boards';
 import terminals from './terminals';
 import status from './status';
+import tickets from './tickets';
 
 export default combineReducers({
 	user: authentication,
@@ -11,4 +12,5 @@ export default combineReducers({
 	status,
 	boards,
 	terminals,
+	tickets,
 });

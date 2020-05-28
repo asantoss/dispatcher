@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import TableComponent from '../../Components/shared/Table';
-import { useSelector, useDispatch } from 'react-redux';
-import { GET_ALL_LOCATIONS } from '../../constants/actions';
-
+import { useSelector } from 'react-redux';
 export default function LocationsPage() {
 	const { locations, status } = useSelector((state) => state);
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(GET_ALL_LOCATIONS());
-	}, [dispatch]);
 
 	if (status.loading) {
 		return <div className='spinner' />;

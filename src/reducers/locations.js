@@ -20,14 +20,13 @@ const locationsReducer = (state = initialState, action) => {
 				...state,
 				entities: {
 					...state.entities,
-					[payload.id]: payload.entity,
+					[payload.id]: { ...state.entities[payload.id], ...payload.entity },
 				},
 			};
 		case 'SET_ALL_LOCATIONS':
 			return {
 				...state,
-				entities: payload.locations,
-				ids: payload.ids,
+				...payload,
 			};
 
 		default:

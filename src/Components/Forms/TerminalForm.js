@@ -3,17 +3,15 @@ import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Form } from '../Layouts/styles/Form';
 import Autocomplete from '../shared/Autocomplete';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useConfirmModal } from '../../hooks/Modal';
-import * as ACTIONS from '../../constants/actions';
 // import { useHistory } from 'react-router-dom';
 
 export default function TerminalForm({ initialState, onSubmit }) {
-	const {
-		user: { currentMaster },
+	const { user, boards } = useSelector(({ user, boards }) => ({
+		user,
 		boards,
-	} = useSelector(({ user, boards }) => ({ user, boards }));
-	const dispatch = useDispatch();
+	}));
 
 	const {
 		handleChange,
@@ -23,7 +21,6 @@ export default function TerminalForm({ initialState, onSubmit }) {
 		setFieldValue,
 	} = useFormik({
 		initialValues: initialState || {
-			location: '',
 			monitor: ``,
 			type: '',
 			billAcceptor: '',
@@ -36,12 +33,9 @@ export default function TerminalForm({ initialState, onSubmit }) {
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
-		if (!boards.ids.length) {
-			dispatch(ACTIONS.GET_ALL_BOARDS());
-		} else {
-			setOptions(boards.ids);
-		}
-	}, [boards, dispatch]);
+		//Filter the ones where the terminal id is null or false
+		setOptions(boards.ids.filter((e) => !boards.entities[e]?.terminalId));
+	}, [boards]);
 
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
@@ -76,7 +70,7 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					}}
 					onBlur={handleBlur}>
 					<option aria-label='None' value=''></option>
-					{currentMaster?.cabinetTypes.map((type, i) => (
+					{user?.cabinetTypes.map((type, i) => (
 						<option key={i} value={type}>
 							{type}
 						</option>
@@ -99,7 +93,7 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					<Autocomplete
 						keys={['game', 'refrence', 'version']}
 						label='Game'
-						defaultValue={initialState?.boardId ?? undefined}
+						defaultValue={values.boardId}
 						getSelected={(option) => {
 							setFieldValue('boardId', option);
 						}}

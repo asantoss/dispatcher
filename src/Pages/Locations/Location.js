@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import LocationForm from '../../Components/Forms/LocationForm';
@@ -10,19 +10,12 @@ import LocationTerminals from './LocationTerminals';
 
 export default function LocationPage() {
 	const tabs = ['Info', 'Terminals', 'Edit'];
-	const [location, setLocation] = useState({});
 	const { id } = useParams();
 	const [value, PanelBar, Panel] = usePanelBar(tabs);
 	const dispatch = useDispatch();
 
 	const { locations, status } = useSelector((state) => state);
-	useEffect(() => {
-		if (locations?.entities[id]) {
-			setLocation(locations?.entities[id]);
-		} else {
-			dispatch(ACTIONS.GET_ALL_LOCATIONS());
-		}
-	}, [locations, id, dispatch]);
+
 	const formSubmit = (values) => {
 		dispatch(ACTIONS.UPDATE_LOCATION({ id, values }));
 	};
@@ -30,6 +23,7 @@ export default function LocationPage() {
 	if (status.loading) {
 		return <div className='spinner' />;
 	}
+	const location = locations?.entities[id];
 	return (
 		<Container>
 			<Breadcrumb {...{ name: location?.name }} />

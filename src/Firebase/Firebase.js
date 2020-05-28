@@ -38,7 +38,13 @@ class Firebase {
 
 	doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
-	doSignOut = () => this.auth.signOut();
+	doSignOut = () => {
+		this.ticketsUnsubscribe();
+		this.terminalsUnsubscribe();
+		this.locationsUnsubscribe();
+		this.boardsUnsubscribe();
+		return this.auth.signOut();
+	};
 
 	doPasswordReset = (email) => {
 		this.auth.sendPasswordResetEmail(email);
@@ -188,52 +194,45 @@ class Firebase {
 		}
 	};
 
-	getMasterTerminalsListener = (callBack) => {
-		return this.db
+	getMasterTerminalsListener = (callback) => {
+		return (this.terminalsUnsubscribe = this.db
 			.collection(this.master + '/terminals')
 			.onSnapshot((querySnapshot) => {
-				const terminals = [];
+				let entities = {};
+				let ids = [];
 				querySnapshot.forEach((doc) => {
-					const { terminal, ...board } = doc.data();
-					terminals.push({
-						...board,
-						id: doc.id,
-					});
+					entities[doc.id] = doc.data();
+					ids.push(doc.id);
 				});
-				callBack(terminals);
-			});
+				callback({ entities, ids });
+			}));
 	};
-
 	getMasterTicketsListener = (callBack) => {
-		return this.db
+		return (this.ticketsUnsubscribe = this.db
 			.collection(this.master + '/tickets')
 			.onSnapshot((querySnapshot) => {
-				const tickets = [];
+				const entities = {};
+				const ids = [];
 				querySnapshot.forEach((doc) => {
-					const ticket = doc.data();
-					tickets.push({
-						...ticket,
-						id: doc.id,
-					});
+					entities[doc.id] = doc.data();
+					ids.push(doc.id);
 				});
-				callBack(tickets);
-			});
+				callBack({ entities, ids });
+			}));
 	};
 
-	getMasterBoardsListener = (callBack) => {
-		return this.db
+	getMasterBoardsListener = (callback) => {
+		return (this.boardsUnsubscribe = this.db
 			.collection(this.master + '/boards')
 			.onSnapshot((querySnapshot) => {
-				const boards = [];
+				let entities = {};
+				let ids = [];
 				querySnapshot.forEach((doc) => {
-					const { terminal, ...board } = doc.data();
-					boards.push({
-						...board,
-						id: doc.id,
-					});
+					entities[doc.id] = doc.data();
+					ids.push(doc.id);
 				});
-				callBack(boards);
-			});
+				callback({ entities, ids });
+			}));
 	};
 
 	getMasterBoards = async () => {
@@ -314,24 +313,23 @@ class Firebase {
 		const ticketRef = await this.db.collection(`${this.master}/tickets`).add({
 			...ticketInfo,
 			completed: false,
-			created: app.firestore.FieldValue.serverTimestamp(),
+			created: Date.now().toString(),
 		});
 		return ticketRef;
 	};
 
 	addTerminalToLocation = async (terminal, locationId) => {
-		await this.db.doc(`${this.master}/terminals/${terminal.id}`).update({
-			locationId: locationId,
+		// The location id is pass to the terminal.
+		await this.db.doc(`${this.master}/terminals/${terminal}`).update({
+			locationId,
 		});
+		//The terminals serial number is passed into the relationship to the location
 		return this.db.doc(`${this.master}/locations/${locationId}`).update({
-			terminals: app.firestore.FieldValue.arrayUnion({
-				...terminal,
-				locationId,
-			}),
+			terminals: app.firestore.FieldValue.arrayUnion(terminal),
 		});
 	};
 
-	addTerminalToMaster = async (values, locationId, id) => {
+	addTerminalToMaster = async (values, locationId) => {
 		const terminalDoc = await this.db
 			.collection(`${this.master}/terminals`)
 			.doc(values.serial)
@@ -354,7 +352,7 @@ class Firebase {
 	};
 	updateTicket = (id, data) => {
 		if (data?.complete) {
-			data.completedAt = app.firestore.FieldValue.serverTimestamp();
+			data.completedAt = Date.now().toString();
 		}
 		return this.db.doc(`${this.master}/tickets/${id}`).update(data);
 	};
@@ -404,19 +402,17 @@ class Firebase {
 
 	// *** Locations logic
 	getMasterLocationsListener = (callback) => {
-		return this.db.collection(`${this.master}/locations`).onSnapshot(
-			(querySnapshot) => {
-				let locations = [];
+		return (this.locationsUnsubscribe = this.db
+			.collection(`${this.master}/locations`)
+			.onSnapshot((querySnapshot) => {
+				let entities = {};
+				let ids = [];
 				querySnapshot.forEach((doc) => {
-					return locations.push({ ...doc.data(), id: doc.id });
+					entities[doc.id] = doc.data();
+					ids.push(doc.id);
 				});
-				locations = locations.sort((a, b) => (a['name'] > b['name'] ? 1 : -1));
-				callback(locations);
-			},
-			(error) => {
-				alert('Error: ' + error.message);
-			}
-		);
+				callback({ entities, ids });
+			}));
 	};
 	getLocation = async (id) => {
 		const location = await this.db

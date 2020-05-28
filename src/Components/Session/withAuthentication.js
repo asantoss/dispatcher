@@ -17,29 +17,21 @@ const AuthUserContextProvider = ({ children }) => {
 				if (!user.isLoggedIn) {
 					const { displayName, email, photoURL } = firebaseUser;
 					setState((s) => ({ ...s, isLoggedIn: true }));
-					firebase
-						.getUserMaster(email)
-						.then((res) => {
-							dispatch(
-								ACTIONS.LOGIN({
-									photoURL,
-									displayName,
-									email,
-									currentMaster: res,
-								})
-							);
-							if (history.location.state?.fromProtected) {
-								history.replace(
-									history.location.state.path,
-									history.location.state
-								);
-							} else {
-								history.replace('/home');
-							}
+					dispatch(
+						ACTIONS.LOGIN({
+							strategy: null,
+							values: {
+								photoURL,
+								displayName,
+								email,
+							},
 						})
-						.catch((e) => {
-							console.log('No user found in this session signing out.', e);
-						});
+					);
+				}
+				if (history.location.state?.fromProtected) {
+					history.replace(history.location.state.path, history.location.state);
+				} else {
+					history.replace('/home');
 				}
 			}
 		});

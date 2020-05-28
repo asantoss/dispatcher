@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TableComponent from '../../Components/shared/Table';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { GET_ALL_TERMINALS } from '../../constants/actions';
+import { useSelector } from 'react-redux';
 
 export default function Terminals() {
-	const dispatch = useDispatch();
 	const { status, terminals } = useSelector((state) => state);
-	useEffect(() => {
-		dispatch(GET_ALL_TERMINALS());
-	}, [dispatch]);
 	if (status.loading) {
 		return <div alt='loader' className='spinner'></div>;
 	}

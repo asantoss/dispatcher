@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -6,19 +6,12 @@ import Breadcrumb from '../../Components/shared/Breadcrumb';
 import usePanelBar from '../../hooks/PanelBar';
 import TerminalForm from '../../Components/Forms/TerminalForm';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-	GET_ALL_TERMINALS,
-	UPDATE_BOARD,
-	UPDATE_TERMINAL,
-} from '../../constants/actions';
+import { UPDATE_BOARD, UPDATE_TERMINAL } from '../../constants/actions';
 export default function Terminal() {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const [value, PanelBar, Panel] = usePanelBar(['Info', 'Edit']);
 	const { status, terminals } = useSelector((state) => state);
-	useEffect(() => {
-		dispatch(GET_ALL_TERMINALS());
-	}, [dispatch]);
 
 	if (status.loading) {
 		return <div className='spinner' />;

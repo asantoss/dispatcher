@@ -1,8 +1,7 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import { Link } from 'react-router-dom';
 import { IconButton, Button, Avatar } from '@material-ui/core';
-import { FirebaseContext } from '../../../Firebase';
 import { useSelector, useDispatch } from 'react-redux';
 import { useOnClickOutside } from '../../../hooks';
 import * as ROUTES from '../../../constants/routes';
@@ -10,9 +9,9 @@ import NavMenu from './NavMenu';
 import styled from 'styled-components';
 import Burger from './Burger';
 import { CSSTransition } from 'react-transition-group';
+import { LOGOUT } from '../../../constants/actions';
 export default function NavBar(props) {
 	const node = useRef();
-	const firebase = useContext(FirebaseContext);
 	const [state, setState] = useState(false);
 	useOnClickOutside(node, () => setState(false));
 	const {
@@ -20,8 +19,7 @@ export default function NavBar(props) {
 	} = useSelector((state) => state);
 	const dispatch = useDispatch();
 	const handleSignOut = () => {
-		dispatch({ type: 'LOGOUT' });
-		return firebase.doSignOut();
+		dispatch(LOGOUT());
 	};
 	const toggleNav = () => {
 		setState(!state);

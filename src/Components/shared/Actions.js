@@ -66,7 +66,7 @@ export default function Actions({ item }) {
 						<DirectionsOutlined />
 					</MenuItem>
 				)}
-				{user?.currentMaster?.role === ROLES.ADMIN && pathname !== '/tickets' && (
+				{user?.master?.role === ROLES.ADMIN && pathname !== '/tickets' && (
 					<MenuItem onClick={() => setModalOpen(true)}>
 						<DeleteOutline />
 					</MenuItem>

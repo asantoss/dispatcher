@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import usePanelBar from '../../hooks/PanelBar';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
@@ -13,12 +13,6 @@ export default function Board() {
 
 	const dispatch = useDispatch();
 	const { boards, status } = useSelector((state) => state);
-
-	useEffect(() => {
-		if (!boards.entities[id]) {
-			dispatch(ACTIONS.GET_ALL_BOARDS());
-		}
-	}, [id, boards, dispatch]);
 
 	const [value, PanelBar, Panel] = usePanelBar(tabs);
 

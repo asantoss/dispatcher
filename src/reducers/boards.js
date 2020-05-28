@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
 				...state,
 				entities: {
 					...state.entities,
-					[payload.id]: payload.values,
+					[payload.id]: { ...state.entities[payload.id], ...payload.entity },
 				},
 			};
 		case 'SET_ALL_BOARDS':

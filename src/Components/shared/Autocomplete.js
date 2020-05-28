@@ -63,17 +63,15 @@ export default function Autocomplete({
 	};
 	const handleClear = () => {
 		getSelected(null);
-		setState((s) => ({
-			...s,
+		setState({
 			activeOption: 0,
 			filteredOptions: [],
 			showOptions: false,
 			userInput: '',
-		}));
+		});
 	};
 	//Event fired when a user hits a key
 	const handleKeyDown = (e) => {
-		console.log(state);
 		const { activeOption, filteredOptions } = state;
 		if (e.keycode === 13) {
 			setState((s) => ({
@@ -90,13 +88,12 @@ export default function Autocomplete({
 		}
 	};
 
+	const { userInput, filteredOptions, showOptions, isLoading } = state;
 	useEffect(() => {
 		if (defaultValue) {
-			setState((s) => ({ ...s, activeOption: options.indexOf(defaultValue) }));
+			setState((s) => ({ ...s, userInput: getLabel(defaultValue) }));
 		}
-	}, [defaultValue, options]);
-
-	const { userInput, filteredOptions, showOptions, isLoading } = state;
+	}, [defaultValue, getLabel]);
 
 	function Options() {
 		return (
@@ -111,7 +108,7 @@ export default function Autocomplete({
 								timeout={500}
 								onEnter={calcHeight}
 								onExit={calcHeight}
-								key={option.docId}>
+								key={option}>
 								<li className='option_item' onClick={(e) => handleClick(e, i)}>
 									{getLabel(option)}
 								</li>
