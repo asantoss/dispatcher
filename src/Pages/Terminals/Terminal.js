@@ -23,12 +23,10 @@ export default function Terminal() {
 			dispatch(
 				UPDATE_BOARD({ id: values.boardId, values: { terminalId: id } })
 			);
-		} else {
-			if (!values.boardId) {
-				dispatch(
-					UPDATE_BOARD({ id: values.boardId, values: { terminalId: id } })
-				);
-			}
+		} else if (terminal?.boardId && !values.boardId) {
+			dispatch(
+				UPDATE_BOARD({ id: terminal.boardId, values: { terminalId: null } })
+			);
 		}
 		return dispatch(UPDATE_TERMINAL({ id, values }));
 	};

@@ -363,10 +363,10 @@ class Firebase {
 		const terminalDoc = await this.db
 			.collection(`${this.master}/terminals`)
 			.doc(id);
-		const currentData = await (await terminalDoc.get()).data();
-		if (currentData.boardId && !values.boardId) {
-			await this.updateBoard(currentData.boardId, { terminalId: null });
-		}
+		// const currentData = await (await terminalDoc.get()).data();
+		// if (currentData.boardId && !values.boardId) {
+		// 	await this.updateBoard(currentData.boardId, { terminalId: null });
+		// }
 		return await terminalDoc.update(values);
 	};
 	removeTerminalFromLocation = async (terminal, location, id) => {

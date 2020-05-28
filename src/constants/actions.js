@@ -170,9 +170,12 @@ export const UPDATE_TERMINAL = (payload) => {
 		firebase
 			.updateTerminal(values, id)
 			.then(() => {
-				toast.success('Succesfully updated board');
+				toast.success('Succesfully updated Terminal.');
 			})
-			.catch((e) => toast.warn(e.message));
+			.catch((e) => {
+				console.log(e);
+				toast.warn(e.message);
+			});
 	};
 };
 
