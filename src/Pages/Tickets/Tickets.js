@@ -1,70 +1,94 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { FirebaseContext } from '../../Firebase';
+import React from 'react';
 import Ticket from '../../Components/Ticket';
-import TicketStyled from './Tickets.styled';
-import { Button } from '@material-ui/core';
-import { useRef } from 'react';
-export default function Tickets() {
-	const [state, setstate] = useState([]);
-	const [isLoading, setLoading] = useState(true);
-	const firebase = useContext(FirebaseContext);
-	const allTicketsRef = useRef(null);
-	useEffect(() => {
-		const listener = firebase.getMasterTicketsListener((tickets) => {
-			setLoading(false);
-			setstate(tickets);
-			allTicketsRef.current = tickets;
-		});
-		return () => {
-			listener();
-		};
-	}, [firebase]);
+import { useSelector, useDispatch } from 'react-redux';
+import { UPDATE_TICKET, REMOVE_TICKET } from '../../constants/actions';
+import styled from 'styled-components';
 
-	const handleDelete = (id) => {
-		firebase.removeTicket(id);
+export default function Tickets() {
+	const { tickets, status } = useSelector((state) => state);
+	const dispatch = useDispatch();
+	const handleClose = (id) => {
+		dispatch(REMOVE_TICKET({ id }));
 	};
 
 	const toggleComplete = (id, state) => {
-		firebase.updateTicket(id, { complete: !state });
+		dispatch(UPDATE_TICKET({ id, values: { complete: !state } }));
+	};
+	const toggleList = (id, list) => {
+		dispatch(UPDATE_TICKET({ id, values: { list } }));
 	};
 
-	const filter = (key) => {
-		switch (key) {
-			case 'Open':
-				return setstate(allTicketsRef.current.filter((e) => !e.complete));
-			case 'Closed':
-				return setstate(allTicketsRef.current.filter((e) => e.complete));
-			default:
-				return setstate(allTicketsRef.current);
-		}
-	};
-
-	if (isLoading) {
+	if (status.loading) {
 		return <div className='spinner'></div>;
+	}
+	if (!tickets.ids.length) {
+		return (
+			<div>
+				<h3>Congrats there are no tickets.</h3>
+			</div>
+		);
 	}
 
 	return (
-		<TicketStyled>
-			<div className='ticket_list'>
-				<div className='controls'>
-					<Button onClick={() => filter()} variant='outlined'>
-						All
-					</Button>
-					<Button onClick={() => filter('Open')} variant='outlined'>
-						Open
-					</Button>
-					<Button onClick={() => filter('Closed')} variant='outlined'>
-						Closed
-					</Button>
-				</div>
-				{state.length ? (
-					state.map((ticket, i) => (
-						<Ticket {...{ ticket, key: i, handleDelete, toggleComplete }} />
-					))
-				) : (
-					<p>No data found</p>
-				)}
+		<Board>
+			<div className='backlog'>
+				<h3>Backlog</h3>
+				{tickets.ids.map((id) => {
+					const ticket = tickets.entities[id];
+					if (ticket.list === 'backLog' && !ticket.complete) {
+						return (
+							<Ticket
+								{...{ id, key: id, handleClose, toggleComplete, toggleList }}
+							/>
+						);
+					}
+					return null;
+				})}
 			</div>
-		</TicketStyled>
+			<div className='inProgress'>
+				<h3>In Progress</h3>
+				{tickets.ids.map((id) => {
+					const ticket = tickets.entities[id];
+					if (ticket.list === 'inProgress' && !ticket.complete) {
+						return (
+							<Ticket
+								{...{ id, key: id, handleClose, toggleComplete, toggleList }}
+							/>
+						);
+					}
+					return null;
+				})}
+			</div>
+			<div className='done'>
+				<h3>Done</h3>
+				{tickets.ids.map((id) => {
+					const ticket = tickets.entities[id];
+					if (ticket.complete) {
+						return (
+							<Ticket
+								{...{ id, key: id, handleClose, toggleComplete, toggleList }}
+							/>
+						);
+					}
+					return null;
+				})}
+			</div>
+		</Board>
 	);
 }
+
+const Board = styled.div`
+	display: flex;
+	height: 100vh;
+	& > div {
+		margin: 0 0.5rem;
+		width: 40%;
+		text-align: center;
+		/* &:not(:last-child) {
+			border-right: 1px solid grey;
+		}
+		&:not(:first-child) {
+			border-left: 1px solid grey;
+		} */
+	}
+`;

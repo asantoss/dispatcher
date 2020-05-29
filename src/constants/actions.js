@@ -142,7 +142,6 @@ export const CREATE_USER = (payload) => {
 export const CREATE_TICKET = (payload) => {
 	const { values } = payload;
 	return (dispatch) => {
-		debugger;
 		firebase
 			.addTicket(values)
 			.then(() => {
