@@ -4,7 +4,6 @@ import { debounce } from 'lodash';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { TextField, InputAdornment, IconButton } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
-import { useEffect } from 'react';
 export default function Autocomplete({
 	options,
 	open,

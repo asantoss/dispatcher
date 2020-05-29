@@ -32,19 +32,16 @@ export default function LocationPage() {
 				<div className='information'>
 					<h4>Name:</h4>
 
-					<p>{currentLocation?.name}</p>
+					<p>{location?.name}</p>
 					<h4>Address:</h4>
 					<p>
-						{currentLocation?.address} {currentLocation?.city},
-						{currentLocation?.state}, {currentLocation?.zipCode}
+						{location?.address} {location?.city},{location?.state},{' '}
+						{location?.zipCode}
 					</p>
 
 					<h4>Terminals:</h4>
-					<p>{currentLocation?.terminalsTotal}</p>
-					<LocationTerminals
-						location={currentLocation}
-						currentMaster={currentMaster}
-					/>
+					<p>{location?.terminalsTotal}</p>
+					<LocationTerminals location={location} />
 				</div>
 			</Panel>
 			<Panel value={value} index={1}>

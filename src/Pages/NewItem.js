@@ -23,7 +23,7 @@ export default function NewItem() {
 	};
 
 	const ticketSubmit = (values) => {
-		return dispatch(ACTIONS.CREATE_TICKET(values));
+		return dispatch(ACTIONS.CREATE_TICKET({ values }));
 	};
 
 	return (
