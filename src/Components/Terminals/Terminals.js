@@ -23,6 +23,7 @@ export default function Terminals({ location, id }) {
 	return location?.terminals?.length ? (
 		location.terminals.map((id, i) => {
 			const terminal = terminals.entities[id];
+			const board = boards.entities[terminal?.boardId];
 			return (
 				<List key={i}>
 					<ListItem>
@@ -31,7 +32,7 @@ export default function Terminals({ location, id }) {
 						</ListItemAvatar>
 						<ListItemText
 							data-testid={'terminal' + i}
-							primary={boards.entities[terminal?.boardId]?.game ?? 'No Game'}
+							primary={board?.game ?? 'No Game'}
 							secondary={
 								<>
 									<span>{terminal?.serial}</span>

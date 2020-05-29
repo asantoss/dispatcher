@@ -13,7 +13,7 @@ export default function Boards() {
 	return (
 		<>
 			<Breadcrumb />
-			<Table data={boards} headers={['game', 'manufacturer', 'view']} />
+			<Table data={boards} headers={['game', 'manufacturer', 'actions']} />
 		</>
 	);
 }

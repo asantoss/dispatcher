@@ -12,7 +12,7 @@ export default function Terminals() {
 		<TableComponent
 			{...{
 				data: terminals,
-				headers: ['serial', 'type', 'view'],
+				headers: ['serial', 'type', 'actions'],
 			}}
 		/>
 	);

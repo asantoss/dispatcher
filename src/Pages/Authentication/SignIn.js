@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { SignUpLink } from './SignUp';
-import { AuthPageContext } from './AuthController';
 import { PasswordForgetLink } from '../../Components/PasswordForget';
 import googleNormal from '../../assets/btn_google_signin_dark_normal_web.png';
 import googlePressed from '../../assets/btn_google_signin_dark_pressed_web.png';

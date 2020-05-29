@@ -26,6 +26,11 @@ class Firebase {
 		// 	});
 		// this.functions.useFunctionsEmulator('http://localhost:5001');
 		// }
+
+		this.locationsUnsubscribe = null;
+		this.ticketsUnsubscribe = null;
+		this.boardsUnsubscribe = null;
+		this.terminalsUnsubscribe = null;
 	}
 
 	// *** Auth API ***
@@ -40,9 +45,6 @@ class Firebase {
 
 	doSignOut = () => {
 		this.ticketsUnsubscribe();
-		this.terminalsUnsubscribe();
-		this.locationsUnsubscribe();
-		this.boardsUnsubscribe();
 		return this.auth.signOut();
 	};
 
@@ -56,12 +58,9 @@ class Firebase {
 	// *** Database Api
 
 	addUser = async (id, payload) => {
-		return await this.db
-			.collection('users')
-			.doc(id)
-			.set({
-				...payload,
-			});
+		const user = await this.db.collection('users').doc(id);
+		await user.set(payload);
+		return (await user.get()).data();
 	};
 	doGetUserByEmail = async (email) => {
 		if (!this?.user) {
@@ -168,14 +167,14 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (locationsSnapshot) {
-			const locations = {};
+			const entities = {};
 			const ids = [];
 			await locationsSnapshot.forEach((doc) => {
 				const location = doc.data();
-				locations[doc.id] = location;
+				entities[doc.id] = location;
 				ids.push(doc.id);
 			});
-			return { locations, ids };
+			return { entities, ids };
 		}
 	};
 	getMasterFreeTerminals = async () => {
@@ -195,44 +194,62 @@ class Firebase {
 	};
 
 	getMasterTerminalsListener = (callback) => {
-		return (this.terminalsUnsubscribe = this.db
-			.collection(this.master + '/terminals')
-			.onSnapshot((querySnapshot) => {
-				let entities = {};
-				let ids = [];
-				querySnapshot.forEach((doc) => {
-					entities[doc.id] = doc.data();
-					ids.push(doc.id);
+		if (!this.terminalsUnsubscribe) {
+			this.terminalsUnsubscribe = this.db
+				.collection(this.master + '/terminals')
+				.onSnapshot((querySnapshot) => {
+					let entities = {};
+					let ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
+					});
+					callback({ entities, ids });
 				});
-				callback({ entities, ids });
-			}));
+		} else {
+			this.terminalsUnsubscribe();
+			this.terminalsUnsubscribe = null;
+			return this.getMasterTerminalsListener(callback);
+		}
 	};
 	getMasterTicketsListener = (callBack) => {
-		return (this.ticketsUnsubscribe = this.db
-			.collection(this.master + '/tickets')
-			.onSnapshot((querySnapshot) => {
-				const entities = {};
-				const ids = [];
-				querySnapshot.forEach((doc) => {
-					entities[doc.id] = doc.data();
-					ids.push(doc.id);
+		if (!this.ticketsUnsubscribe) {
+			this.ticketsUnsubscribe = this.db
+				.collection(this.master + '/tickets')
+				.onSnapshot((querySnapshot) => {
+					const entities = {};
+					const ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
+					});
+					callBack({ entities, ids });
 				});
-				callBack({ entities, ids });
-			}));
+		} else {
+			this.ticketsUnsubscribe();
+			this.ticketsUnsubscribe = null;
+			return this.getMasterTicketsListener(callBack);
+		}
 	};
 
 	getMasterBoardsListener = (callback) => {
-		return (this.boardsUnsubscribe = this.db
-			.collection(this.master + '/boards')
-			.onSnapshot((querySnapshot) => {
-				let entities = {};
-				let ids = [];
-				querySnapshot.forEach((doc) => {
-					entities[doc.id] = doc.data();
-					ids.push(doc.id);
+		if (!this.boardsUnsubscribe) {
+			this.boardsUnsubscribe = this.db
+				.collection(this.master + '/boards')
+				.onSnapshot((querySnapshot) => {
+					let entities = {};
+					let ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
+					});
+					callback({ entities, ids });
 				});
-				callback({ entities, ids });
-			}));
+		} else {
+			this.boardsUnsubscribe();
+			this.boardsUnsubscribe = null;
+			this.getMasterBoardsListener(callback);
+		}
 	};
 
 	getMasterBoards = async () => {
@@ -371,12 +388,12 @@ class Firebase {
 	};
 	removeTerminalFromLocation = async (terminal, location, id) => {
 		const locationDoc = await this.db.doc(`${this.master}/locations/${id}`);
-		const terminals = location.terminals.filter((e) => e.id !== terminal.id);
+		const terminals = location.terminals.filter((e) => e !== terminal.serial);
 		await locationDoc.update({
 			terminals,
 		});
 		return this.db
-			.doc(`${this.master}/terminals/${terminal.id}`)
+			.doc(`${this.master}/terminals/${terminal.serial}`)
 			.update({ locationId: null })
 			.then(() => {
 				return terminals;
@@ -402,17 +419,23 @@ class Firebase {
 
 	// *** Locations logic
 	getMasterLocationsListener = (callback) => {
-		return (this.locationsUnsubscribe = this.db
-			.collection(`${this.master}/locations`)
-			.onSnapshot((querySnapshot) => {
-				let entities = {};
-				let ids = [];
-				querySnapshot.forEach((doc) => {
-					entities[doc.id] = doc.data();
-					ids.push(doc.id);
+		if (!this.locationsUnsubscribe) {
+			this.locationsUnsubscribe = this.db
+				.collection(`${this.master}/locations`)
+				.onSnapshot((querySnapshot) => {
+					let entities = {};
+					let ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
+					});
+					callback({ entities, ids });
 				});
-				callback({ entities, ids });
-			}));
+		} else {
+			this.locationsUnsubscribe();
+			this.locationsUnsubscribe = null;
+			this.getMasterLocationsListener(callback);
+		}
 	};
 	getLocation = async (id) => {
 		const location = await this.db

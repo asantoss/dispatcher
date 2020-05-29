@@ -11,14 +11,15 @@ const admin = new FirebaseAdmin();
 exports.updateLocation = functions.firestore
 	.document('masters/{masterId}/locations/{locationId}')
 	.onUpdate(async (changes, context) => {
+		const oldAddress = changes.before.data()['address'];
 		const newValue = changes.after.data();
-		const coordinates = newValue['coordinates'];
-		const coords = await geocodeAddress(
-			`${newValue.address}+${newValue.city}+${newValue.zipCode}`,
-			process.env.API_KEY
-		);
-		const coordsURL = `https://www.google.com/maps?saddr=My+Location&daddr=${coords.lat},${coords.lng}&amp;ll`;
-		if (coordinates !== coords) {
+		const newAddress = newValue['address'];
+		if (newAddress !== oldAddress) {
+			const coords = await geocodeAddress(
+				`${newValue.address}+${newValue.city}+${newValue.zipCode}`,
+				process.env.API_KEY
+			);
+			const coordsURL = `https://www.google.com/maps?saddr=My+Location&daddr=${coords.lat},${coords.lng}&amp;ll`;
 			return changes.after.ref.update({
 				coordinates: coordsURL,
 			});

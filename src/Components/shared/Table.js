@@ -16,7 +16,7 @@ import {
 	IconButton,
 	useTheme,
 } from '@material-ui/core';
-
+import Actions from './Actions';
 import Filters from './Filters';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
@@ -125,13 +125,13 @@ export default function TableComponent({ data, headers }) {
 												</TableCell>
 											);
 										}
-										// if (head === 'actions') {
-										// 	return (
-										// 		<TableCell key={i}>
-										// 			<Actions {...{ item: data?.entities[item], index }} />
-										// 		</TableCell>
-										// 	);
-										// }
+										if (head === 'actions') {
+											return (
+												<TableCell key={i}>
+													<Actions {...{ item, index }} />
+												</TableCell>
+											);
+										}
 										return (
 											<TableCell key={i}>{data.entities[item][head]}</TableCell>
 										);

@@ -24,9 +24,7 @@ import NewItem from './Pages/NewItem';
 import Tickets from './Pages/Tickets';
 import LandingPage from './Pages/LandingPage';
 import { ToastContainer } from 'react-toastify';
-// import { useDispatch } from 'react-redux';
 import * as ACTIONS from './constants/actions';
-import { FirebaseContext } from './Firebase';
 
 const App = () => {
 	const dispatch = useDispatch();

@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import BoardForm from '../Components/Forms/BoardForm';
 import LocationForm from '../Components/Forms/LocationForm';
 import TerminalForm from '../Components/Forms/TerminalForm';
 import TicketForm from '../Components/Forms/TicketForm';
-import { FirebaseContext } from '../Firebase';
 import { useDispatch } from 'react-redux';
 import * as ACTIONS from '../constants/actions';
 export default function NewItem() {
 	const { item } = useParams();
-	const firebase = useContext(FirebaseContext);
 	const dispatch = useDispatch();
 
 	const locationSubmit = (values) => {
@@ -17,24 +15,15 @@ export default function NewItem() {
 	};
 
 	const boardSubmit = (values) => {
-		debugger;
 		dispatch(ACTIONS.CREATE_BOARD({ id: values.refrence, values }));
 	};
 
 	const terminalSubmit = (values) => {
-		debugger;
 		dispatch(ACTIONS.CREATE_TERMINAL({ id: values.serial, values }));
 	};
 
 	const ticketSubmit = (values) => {
-		return firebase
-			.addTicket(values)
-			.then((res) => {
-				alert('Success created a new ticket for: ' + values?.location?.name);
-			})
-			.catch((e) => {
-				alert('Error: ' + e.message);
-			});
+		return dispatch(ACTIONS.CREATE_TICKET(values));
 	};
 
 	return (

@@ -5,8 +5,14 @@ import { useConfirmModal } from '../hooks/Modal';
 import { mapsOpener } from '../shared/utils';
 import { useSelector } from 'react-redux';
 import { DirectionsOutlined } from '@material-ui/icons';
+import { TextField } from '@material-ui/core';
 
-export default function Ticket({ toggleComplete, handleClose, id }) {
+export default function Ticket({
+	toggleComplete,
+	handleClose,
+	id,
+	toggleList,
+}) {
 	const [expanded, setExpanded] = useState(false);
 	const [height, setHeight] = useState(null);
 	const { user, tickets, locations, terminals } = useSelector((state) => state);
@@ -20,6 +26,9 @@ export default function Ticket({ toggleComplete, handleClose, id }) {
 			setHeight(0);
 		}
 		setExpanded(!expanded);
+	};
+	const handleChange = (e) => {
+		toggleList(id, e.target.value);
 	};
 	const ticket = tickets.entities[id];
 	const location = locations.entities[ticket?.locationId] ?? null;
@@ -60,37 +69,48 @@ export default function Ticket({ toggleComplete, handleClose, id }) {
 						</div>
 					</>
 				)}
+
 				<br />
-				<p>
-					Submitted on:
+				<div className='time'>
+					<p>Created:</p>
 					<br />
 					<time dateTime={created}>
 						<span>{created?.toLocaleDateString('en-US')}</span>
 						<span>@</span>
 						<span>{created?.toLocaleTimeString('en-US')}</span>
 					</time>
-				</p>
+				</div>
 				{ticket?.complete && ticket?.completedAt && (
-					<p>
-						Completed on:
+					<div className='time'>
+						<p>Closed:</p>
 						<br />
 						<time dateTime={completed}>
 							<span>{completed.toLocaleDateString('en-US')}</span>
 							<span>@</span>
 							<span>{completed.toLocaleTimeString('en-US')}</span>
 						</time>
-					</p>
+					</div>
 				)}
 			</div>
+			{!ticket?.complete && (
+				<TextField
+					className='input'
+					variant='outlined'
+					onChange={handleChange}
+					value={ticket.list}
+					select
+					SelectProps={{ native: true }}>
+					<option value='inProgress'>In Progress</option>
+					<option value='backLog'>Back Log</option>
+				</TextField>
+			)}
 			<div className='footer'>
-				{' '}
-				{
-					<button
-						className='item'
-						onClick={() => toggleComplete(id, ticket?.complete)}>
-						{ticket?.complete ? 'Mark Open' : 'Mark Closed'}
-					</button>
-				}
+				<button
+					className='item'
+					onClick={() => toggleComplete(id, ticket?.complete)}>
+					{ticket?.complete ? 'Mark Open' : 'Mark Closed'}
+				</button>
+
 				<button className='item' onClick={OpenModal}>
 					Delete
 				</button>
@@ -102,6 +122,7 @@ export default function Ticket({ toggleComplete, handleClose, id }) {
 	);
 }
 const TicketContainer = styled.div`
+	padding: 0.75rem 1rem;
 	width: calc(100% - 16px);
 	max-width: 400px;
 	margin: 0.5em auto;
@@ -118,11 +139,16 @@ const TicketContainer = styled.div`
 	}
 	.status {
 		margin: 0 1rem;
+		margin-left: auto;
 		height: 1rem;
 		width: 1rem;
 		border-radius: 50%;
 		background-color: ${({ isComplete }) =>
 			isComplete ? 'var(--success)' : 'var(--warning)'};
+	}
+	.input {
+		width: 100%;
+		margin: 0.5rem 0;
 	}
 
 	.terminal-info {
@@ -133,6 +159,7 @@ const TicketContainer = styled.div`
 	}
 	.header {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		.title {
 			font-size: 1rem;
@@ -140,7 +167,6 @@ const TicketContainer = styled.div`
 			align-items: center;
 			flex-grow: 1;
 			font-weight: 700;
-			padding: 0.75rem 1rem;
 		}
 	}
 	.showMore {
@@ -163,7 +189,7 @@ const TicketContainer = styled.div`
 		}
 	} */
 	.content {
-		padding: 1.5rem;
+		margin: 1rem 0;
 	}
 	.footer {
 		display: flex;
@@ -190,7 +216,8 @@ const TicketContainer = styled.div`
 			}
 		}
 	}
-	time {
+	.time {
+		font-size: 0.75rem;
 		margin: 0.5rem 0;
 		display: flex;
 		justify-content: flex-start;

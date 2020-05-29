@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import {
@@ -6,15 +6,14 @@ import {
 	DeleteOutline,
 	DirectionsOutlined,
 	VisibilityOutlined,
-	EditOutlined,
 } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as ROLES from '../../constants/roles';
 import { useConfirmModal } from '../../hooks/Modal';
 import { useLocation } from 'react-router-dom';
-import { FirebaseContext } from '../../Firebase';
 import { mapsOpener } from '../../shared/utils';
+import { REMOVE_ITEM } from '../../constants/actions';
 
 const ActionsContainer = styled.div`
 	display: flex;
@@ -28,23 +27,13 @@ export default function Actions({ item }) {
 	const open = Boolean(anchor);
 	const { pathname } = useLocation();
 	const { user } = useSelector((state) => state);
-	const firebase = useContext(FirebaseContext);
-
+	const dispatch = useDispatch();
 	const handleDelete = (id) => {
 		setModalOpen(false);
-		firebase.db
-			.doc(`${firebase.master}${pathname}/${id}`)
-			.get()
-			.then((element) => {
-				if (element.exists) {
-					return element.ref.delete();
-				}
-			})
-			.then((e) => alert('Success'))
-			.catch((e) => alert('Error ' + e.message));
+		dispatch(REMOVE_ITEM({ id, collection: pathname }));
 	};
 	const [setModalOpen, ConfirmModal] = useConfirmModal(() =>
-		handleDelete(item?.docId)
+		handleDelete(item)
 	);
 	return (
 		<ActionsContainer>
@@ -66,28 +55,28 @@ export default function Actions({ item }) {
 						<DirectionsOutlined />
 					</MenuItem>
 				)}
-				{user?.master?.role === ROLES.ADMIN && pathname !== '/tickets' && (
+				{user?.role === ROLES.ADMIN && pathname !== '/tickets' && (
 					<MenuItem onClick={() => setModalOpen(true)}>
 						<DeleteOutline />
 					</MenuItem>
 				)}
-				<MenuItem>
+				{/* <MenuItem>
 					<Link
 						alt='Link to edit panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `${pathname}/${item?.docId}`,
+							pathname: `${pathname}/${item}`,
 							state: { data: item, panel: 'Edit' },
 						}}>
 						<EditOutlined />
 					</Link>
-				</MenuItem>
+				</MenuItem> */}
 				<MenuItem>
 					<Link
 						alt='Link to Info Panel'
 						style={{ color: 'inherit' }}
 						to={{
-							pathname: `${pathname}/${item?.docId}`,
+							pathname: `${pathname}/${item}`,
 							state: { data: item, panel: 'Info' },
 						}}>
 						<VisibilityOutlined />

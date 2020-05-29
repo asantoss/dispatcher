@@ -43,7 +43,6 @@ export default function TerminalsChecked({ location, id }) {
 			terminals = [...location.terminals];
 		}
 		terminals = [...terminals, ...checked.map((e) => e.serial)];
-		debugger;
 		if (terminals.length < location.terminalsTotal) {
 			dispatch(ACTIONS.ADD_TERMINALS({ terminals, id }));
 		}

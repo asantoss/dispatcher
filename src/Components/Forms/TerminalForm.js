@@ -8,10 +8,7 @@ import { useConfirmModal } from '../../hooks/Modal';
 // import { useHistory } from 'react-router-dom';
 
 export default function TerminalForm({ initialState, onSubmit }) {
-	const { user, boards } = useSelector(({ user, boards }) => ({
-		user,
-		boards,
-	}));
+	const boards = useSelector(({ boards }) => boards);
 
 	const {
 		handleChange,
@@ -58,24 +55,14 @@ export default function TerminalForm({ initialState, onSubmit }) {
 				/>
 				<TextField
 					style={{ flexGrow: 1 }}
-					select
 					variant='outlined'
 					required
 					name='type'
 					label='Type'
 					value={values.type}
 					onChange={handleChange}
-					SelectProps={{
-						native: true,
-					}}
-					onBlur={handleBlur}>
-					<option aria-label='None' value=''></option>
-					{user?.cabinetTypes.map((type, i) => (
-						<option key={i} value={type}>
-							{type}
-						</option>
-					))}
-				</TextField>
+					onBlur={handleBlur}
+				/>
 				<TextField
 					style={{ flexGrow: 1 }}
 					required

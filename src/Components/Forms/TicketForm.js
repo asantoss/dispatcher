@@ -22,6 +22,7 @@ export default function TicketForm({ initialState, onSubmit }) {
 			locationId: '',
 			terminalId: '',
 			message: '',
+			list: 'inProgress',
 		},
 		onSubmit,
 	});
@@ -97,7 +98,16 @@ export default function TicketForm({ initialState, onSubmit }) {
 					name='message'
 					value={values.message}
 				/>
-				<div style={{ flexBasis: '100%' }}></div>
+				<TextField
+					select
+					label='List'
+					onChange={handleChange}
+					name='list'
+					SelectProps={{ native: true }}
+					variant='outlined'>
+					<option value='inProgress'>In Progress</option>
+					<option value='backlog'>Backlog</option>
+				</TextField>
 			</div>
 			<Button style={{ width: '25%' }} variant='outlined' type='submit'>
 				Submit
