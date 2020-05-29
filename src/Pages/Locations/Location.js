@@ -9,7 +9,7 @@ import * as ACTIONS from '../../constants/actions';
 import LocationTerminals from './LocationTerminals';
 
 export default function LocationPage() {
-	const tabs = ['Info', 'Terminals', 'Edit'];
+	const tabs = ['Info', 'Edit'];
 	const { id } = useParams();
 	const [value, PanelBar, Panel] = usePanelBar(tabs);
 	const dispatch = useDispatch();
@@ -29,7 +29,23 @@ export default function LocationPage() {
 			<Breadcrumb {...{ name: location?.name }} />
 			<PanelBar />
 			<Panel value={value} index={0}>
-				All Info
+				<div className='information'>
+					<h4>Name:</h4>
+
+					<p>{currentLocation?.name}</p>
+					<h4>Address:</h4>
+					<p>
+						{currentLocation?.address} {currentLocation?.city},
+						{currentLocation?.state}, {currentLocation?.zipCode}
+					</p>
+
+					<h4>Terminals:</h4>
+					<p>{currentLocation?.terminalsTotal}</p>
+					<LocationTerminals
+						location={currentLocation}
+						currentMaster={currentMaster}
+					/>
+				</div>
 			</Panel>
 			<Panel value={value} index={1}>
 				<LocationTerminals location={location} id={id} />

@@ -4,6 +4,7 @@ import { debounce } from 'lodash';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { TextField, InputAdornment, IconButton } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
+import { useEffect } from 'react';
 export default function Autocomplete({
 	options,
 	open,
@@ -27,6 +28,12 @@ export default function Autocomplete({
 		const height = el.offsetHeight;
 		setHeight(height * state.filteredOptions.length);
 	};
+
+	useEffect(() => {
+		if (defaultValue) {
+			setState((s) => ({ ...s, userInput: getLabel(defaultValue) }));
+		}
+	}, [getLabel, defaultValue]);
 	const handleChange = (e) => {
 		const userInput = e?.currentTarget?.value ?? null;
 		setState((s) => ({ ...s, userInput, isLoading: true }));
@@ -46,7 +53,6 @@ export default function Autocomplete({
 			}, 500);
 		}
 		debounced.current(userInput);
-		// calcHeight();
 	};
 
 	//Fired when a user clicks the option

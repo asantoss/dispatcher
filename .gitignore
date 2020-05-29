@@ -27,3 +27,6 @@ yarn-error.log*
 .env
 *.log
 functions/node_modules/
+functions/node_modules/
+functions/serviceAccount.json
+functions/*.json

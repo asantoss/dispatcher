@@ -24,7 +24,7 @@ class Firebase {
 		// 		host: 'localhost:5005',
 		// 		ssl: false,
 		// 	});
-		// this.functions.useFunctionsEmulator('http://localhost:5001');
+		// 	this.functions.useFunctionsEmulator('http://localhost:5001');
 		// }
 
 		this.locationsUnsubscribe = null;

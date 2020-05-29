@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 export const Form = styled.form`
-	margin: 1rem 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	flex-wrap: wrap;
 	& > button {
-		grid-column: 1/3;
-		justify-self: center;
+		margin-bottom: 1rem;
 	}
 	#main_info,
 	#secondary_info {

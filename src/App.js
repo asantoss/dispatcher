@@ -21,7 +21,7 @@ import Terminal from './Pages/Terminals/Terminal';
 import BoardPage from './Pages/Boards/Boards';
 import Board from './Pages/Boards/Board';
 import NewItem from './Pages/NewItem';
-import Tickets from './Pages/Tickets';
+import Tickets from './Pages/Tickets/Tickets';
 import LandingPage from './Pages/LandingPage';
 import { ToastContainer } from 'react-toastify';
 import * as ACTIONS from './constants/actions';
@@ -68,7 +68,12 @@ const App = () => {
 			</AuthUserContextProvider>
 			<Switch>
 				<Route exact path={ROUTES.LANDING} component={LandingPage} />
-				<Route exact path={ROUTES.HOME} component={HomePage} />
+				<ProtectedRoute
+					exact
+					path={ROUTES.HOME}
+					role={ROLES.USER}
+					component={HomePage}
+				/>
 				<Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
 				<ProtectedRoute
 					exact

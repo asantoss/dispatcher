@@ -49,9 +49,8 @@ export default function Actions({ item }) {
 				open={open}
 				keepMounted
 				onClose={() => setAnchor(null)}>
-				{item?.coordinates && (
-					<MenuItem
-						onClick={() => mapsOpener(item?.coordinates, user?.location)}>
+				{item?.url && (
+					<MenuItem onClick={() => mapsOpener(item?.url, user?.location)}>
 						<DirectionsOutlined />
 					</MenuItem>
 				)}

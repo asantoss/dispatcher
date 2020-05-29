@@ -130,7 +130,10 @@ const TicketContainer = styled.div`
 	box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
 		0 0 0 1px rgba(10, 10, 10, 0.02);
 	color: #4a4a4a;
-
+	.content {
+		display: flex;
+		flex-direction: column;
+	}
 	.directions-btn {
 		cursor: pointer;
 		&:hover {
@@ -152,7 +155,6 @@ const TicketContainer = styled.div`
 	}
 
 	.terminal-info {
-		margin-top: 1em;
 		max-height: 0;
 		transition: max-height 0.2s ease-out;
 		overflow: hidden;
@@ -161,6 +163,10 @@ const TicketContainer = styled.div`
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		.title_container {
+			flex-grow: 1;
+			padding: 0.75rem 1rem;
+		}
 		.title {
 			font-size: 1rem;
 			display: flex;
@@ -173,7 +179,7 @@ const TicketContainer = styled.div`
 		position: relative;
 		right: 1.25rem;
 		&:hover {
-			font-size: 1.2rem;
+			opacity: 0.7;
 		}
 	}
 
@@ -220,6 +226,7 @@ const TicketContainer = styled.div`
 		font-size: 0.75rem;
 		margin: 0.5rem 0;
 		display: flex;
+		font-size: 0.75rem;
 		justify-content: flex-start;
 		span {
 			margin-right: 0.5rem;
