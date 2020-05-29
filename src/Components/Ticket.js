@@ -5,12 +5,18 @@ import { useConfirmModal } from '../hooks/Modal';
 import { mapsOpener } from '../shared/utils';
 import { useSelector } from 'react-redux';
 import { DirectionsOutlined } from '@material-ui/icons';
+import { TextField } from '@material-ui/core';
 
-export default function Ticket({ ticket, toggleComplete, handleDelete }) {
+export default function Ticket({
+	toggleComplete,
+	handleClose,
+	id,
+	toggleList,
+}) {
 	const [expanded, setExpanded] = useState(false);
 	const [height, setHeight] = useState(null);
-	const { user } = useSelector((state) => state);
-	const [OpenModal, Modal] = useConfirmModal(() => handleDelete(ticket?.docId));
+	const { user, tickets, locations, terminals } = useSelector((state) => state);
+	const [OpenModal, Modal] = useConfirmModal(() => handleClose(id));
 	const handleExpand = (e) => {
 		const element = e.currentTarget.nextSibling;
 		if (!expanded) {
@@ -21,18 +27,24 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 		}
 		setExpanded(!expanded);
 	};
+	const handleChange = (e) => {
+		toggleList(id, e.target.value);
+	};
+	const ticket = tickets.entities[id];
+	const location = locations.entities[ticket?.locationId] ?? null;
+	const terminal = terminals.entities[ticket?.terminalId] ?? null;
+	const created = new Date(parseInt(ticket.created));
+	const completed = new Date(parseInt(ticket?.completedAt));
 	return (
 		<TicketContainer isComplete={ticket?.complete}>
 			<div className='header'>
-				<div className='title_container'>
-					<p className='title'>{ticket?.location.name}</p>
-					<p className='sub-title'>{ticket?.location?.license}</p>
-				</div>
+				<p className='title'>{location?.name}</p>
+				<p className='sub-title'>License {location?.license}</p>
 				<span className='status'></span>
-				{ticket?.location?.url && (
+				{location?.url && (
 					<span
 						className='directions-btn'
-						onClick={() => mapsOpener(ticket.location.url, user?.location)}>
+						onClick={() => mapsOpener(location?.url, user?.location)}>
 						<DirectionsOutlined />
 					</span>
 				)}
@@ -43,61 +55,62 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 					{ticket?.message}
 				</p>
 
-				{ticket?.terminal && (
+				{terminal && (
 					<>
 						<span onClick={handleExpand} className='showMore'>
 							{expanded ? '- Show Less' : '+ Show More'}
 						</span>
 						<div style={{ maxHeight: height }} className='terminal-info'>
-							<p>Terminal Game: {ticket?.terminal?.game ?? 'N/A'}</p>
-							<p>Terminal Serial: {ticket?.terminal?.serial}</p>
-							<p>Terminal B/A: {ticket?.terminal?.billAcceptor}</p>
-							<p>Terminal Monitor: {ticket?.terminal?.monitor}</p>
-							<p>Terminal Type: {ticket?.terminal?.type}</p>
+							<p>Terminal Game: {terminal?.game ?? 'N/A'}</p>
+							<p>Terminal Serial: {terminal?.serial}</p>
+							<p>Terminal B/A: {terminal?.billAcceptor}</p>
+							<p>Terminal Monitor: {terminal?.monitor}</p>
+							<p>Terminal Type: {terminal?.type}</p>
 						</div>
 					</>
 				)}
+
 				<br />
-				{!ticket?.complete && (
-					<p>
-						<br />
-						<time dateTime={ticket?.created?.toDate()}>
-							<span>In:</span>
-							<span>
-								{ticket?.created?.toDate().toLocaleDateString('en-US')}
-							</span>
-							<span>@</span>
-							<span>
-								{ticket?.created?.toDate().toLocaleTimeString('en-US')}
-							</span>
-						</time>
-					</p>
-				)}
+				<div className='time'>
+					<p>Created:</p>
+					<br />
+					<time dateTime={created}>
+						<span>{created?.toLocaleDateString('en-US')}</span>
+						<span>@</span>
+						<span>{created?.toLocaleTimeString('en-US')}</span>
+					</time>
+				</div>
 				{ticket?.complete && ticket?.completedAt && (
-					<p>
+					<div className='time'>
+						<p>Closed:</p>
 						<br />
-						<time dateTime={ticket.completedAt.toDate()}>
-							<span>Out:</span>
-							<span>
-								{ticket.completedAt.toDate().toLocaleDateString('en-US')}
-							</span>
+						<time dateTime={completed}>
+							<span>{completed.toLocaleDateString('en-US')}</span>
 							<span>@</span>
-							<span>
-								{ticket.completedAt.toDate().toLocaleTimeString('en-US')}
-							</span>
+							<span>{completed.toLocaleTimeString('en-US')}</span>
 						</time>
-					</p>
+					</div>
 				)}
 			</div>
+			{!ticket?.complete && (
+				<TextField
+					className='input'
+					variant='outlined'
+					onChange={handleChange}
+					value={ticket.list}
+					select
+					SelectProps={{ native: true }}>
+					<option value='inProgress'>In Progress</option>
+					<option value='backLog'>Back Log</option>
+				</TextField>
+			)}
 			<div className='footer'>
-				{' '}
-				{
-					<button
-						className='item'
-						onClick={() => toggleComplete(ticket.docId, ticket?.complete)}>
-						{ticket?.complete ? 'Mark Open' : 'Mark Closed'}
-					</button>
-				}
+				<button
+					className='item'
+					onClick={() => toggleComplete(id, ticket?.complete)}>
+					{ticket?.complete ? 'Mark Open' : 'Mark Closed'}
+				</button>
+
 				<button className='item' onClick={OpenModal}>
 					Delete
 				</button>
@@ -109,6 +122,7 @@ export default function Ticket({ ticket, toggleComplete, handleDelete }) {
 	);
 }
 const TicketContainer = styled.div`
+	padding: 0.75rem 1rem;
 	width: calc(100% - 16px);
 	max-width: 400px;
 	margin: 0.5em auto;
@@ -128,11 +142,16 @@ const TicketContainer = styled.div`
 	}
 	.status {
 		margin: 0 1rem;
+		margin-left: auto;
 		height: 1rem;
 		width: 1rem;
 		border-radius: 50%;
 		background-color: ${({ isComplete }) =>
 			isComplete ? 'var(--success)' : 'var(--warning)'};
+	}
+	.input {
+		width: 100%;
+		margin: 0.5rem 0;
 	}
 
 	.terminal-info {
@@ -142,6 +161,7 @@ const TicketContainer = styled.div`
 	}
 	.header {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		.title_container {
 			flex-grow: 1;
@@ -156,8 +176,8 @@ const TicketContainer = styled.div`
 		}
 	}
 	.showMore {
-		cursor: pointer;
-		align-self: flex-end;
+		position: relative;
+		right: 1.25rem;
 		&:hover {
 			opacity: 0.7;
 		}
@@ -175,7 +195,7 @@ const TicketContainer = styled.div`
 		}
 	} */
 	.content {
-		padding: 1.5rem;
+		margin: 1rem 0;
 	}
 	.footer {
 		display: flex;
@@ -202,7 +222,8 @@ const TicketContainer = styled.div`
 			}
 		}
 	}
-	time {
+	.time {
+		font-size: 0.75rem;
 		margin: 0.5rem 0;
 		display: flex;
 		font-size: 0.75rem;

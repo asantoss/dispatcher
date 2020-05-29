@@ -9,8 +9,10 @@ import Layout from './Components/Layouts/Layout';
 import 'animate.css/animate.css';
 import './index.css';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+export const value = new Firebase();
 ReactDOM.render(
-	<FirebaseContext.Provider value={new Firebase()}>
+	<FirebaseContext.Provider value={value}>
 		<Provider store={Store}>
 			<Router>
 				<Layout>

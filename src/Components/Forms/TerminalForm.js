@@ -1,17 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Form } from '../Layouts/styles/Form';
-import { FirebaseContext } from '../../Firebase';
 import Autocomplete from '../shared/Autocomplete';
 import { useSelector } from 'react-redux';
 import { useConfirmModal } from '../../hooks/Modal';
-
 // import { useHistory } from 'react-router-dom';
 
 export default function TerminalForm({ initialState, onSubmit }) {
-	const { currentMaster } = useSelector(({ user }) => user);
-	const firebase = useContext(FirebaseContext);
+	const boards = useSelector(({ boards }) => boards);
 
 	const {
 		handleChange,
@@ -21,7 +18,6 @@ export default function TerminalForm({ initialState, onSubmit }) {
 		setFieldValue,
 	} = useFormik({
 		initialValues: initialState || {
-			location: '',
 			monitor: ``,
 			type: '',
 			billAcceptor: '',
@@ -34,17 +30,10 @@ export default function TerminalForm({ initialState, onSubmit }) {
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
-		let active = true;
-		(async () => {
-			const boards = await firebase.getMasterFreeBoards();
-			if (active) {
-				setOptions(boards);
-			}
-		})();
-		return () => {
-			active = false;
-		};
-	}, [firebase]);
+		//Filter the ones where the terminal id is null or false
+		setOptions(boards.ids.filter((e) => !boards.entities[e]?.terminalId));
+	}, [boards]);
+
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
 	});
@@ -65,24 +54,15 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					onBlur={handleBlur}
 				/>
 				<TextField
-					select
+					style={{ flexGrow: 1 }}
 					variant='outlined'
 					required
 					name='type'
 					label='Type'
 					value={values.type}
 					onChange={handleChange}
-					SelectProps={{
-						native: true,
-					}}
-					onBlur={handleBlur}>
-					<option aria-label='None' value=''></option>
-					{currentMaster?.cabinetTypes.map((type, i) => (
-						<option key={i} value={type}>
-							{type}
-						</option>
-					))}
-				</TextField>
+					onBlur={handleBlur}
+				/>
 				<TextField
 					required
 					variant='outlined'
@@ -100,17 +80,17 @@ export default function TerminalForm({ initialState, onSubmit }) {
 					<Autocomplete
 						keys={['game', 'refrence', 'version']}
 						label='Game'
-						defaultValue={initialState?.board ?? undefined}
+						defaultValue={values.boardId}
 						getSelected={(option) => {
-							setFieldValue('board', option);
-							setFieldValue('boardId', option?.docId);
+							setFieldValue('boardId', option);
 						}}
 						getLabel={(option) =>
-							option?.refrence
-								? `${option.game}/ Refrence: ${option?.refrence}`
-								: option.game
+							boards.entities[option]?.refrence
+								? `${boards.entities[option]?.game}/ Refrence: ${boards.entities[option]?.refrence}`
+								: boards.entities[option]?.game
 						}
 						options={options}
+						entities={boards.entities}
 					/>
 				</div>
 				<TextField

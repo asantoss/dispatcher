@@ -1,0 +1,75 @@
+{
+	"locations":{
+		"name": "Alex's house",
+		"address": "1895 Beaver Ridge Cir Suite F",
+		"city": "Norcross",
+		"coordinates": {
+			"lat": 33.9358658,
+			"lng": -84.1661822
+		},
+		"url": "https: //www.google.com/maps?saddr=My+Location&daddr=33.9358658,-84.1661822&amp;ll",
+		"terminalsTotal": "7",
+		"state": "GA",
+		"zipCode": "30071",
+		"terminals": [
+			{
+				"boardId": "20004657",
+				"id": "2019-0367",
+				"type": "Fusion",
+				"board": {
+					"id": "20004657",
+					"type": "Fusion",
+					"refrence": "20004657",
+					"manufacturer": "Banilla Games",
+					"terminalId": null,
+					"game": "Fusion 4",
+					"version": "5.3"
+				},
+				"serial": "2019-0367",
+				"manufacturer": "Banilla Games",
+				"locationId": "eR9ZzRO02xggpzYA1Q4x",
+				"monitor": "Goldfinger",
+				"billAcceptor": "JCM"
+			},
+			{
+				"id": "2020-0375",
+				"location": "",
+				"type": "Primero Single Screen",
+				"serial": "2020-0375",
+				"manufacturer": "Banilla Games",
+				"locationId": "eR9ZzRO02xggpzYA1Q4x",
+				"monitor": "VSR",
+				"billAcceptor": "MEI Cash Flow",
+				"boardId": null
+			}
+		],
+		"license": "53056",
+		"id": "eR9ZzRO02xggpzYA1Q4x"
+	},
+	{
+		"zipCode": "30341",
+		"license": "5435",
+		"name": "Alexander Santos",
+		"address": "3155 Flowers Rd S",
+		"coordinates": {
+			"lat": 33.8705062,
+			"lng": -84.2610593
+		},
+		"city": "Atlanta",
+		"url": "https: //www.google.com/maps?saddr=My+Location&daddr=33.8705062,-84.2610593&amp;ll",
+		"terminalsTotal": "6",
+		"state": "GA",
+		"id": "5435"
+	},
+	{
+		"license": "35261",
+		"name": "Watt's Store",
+		"address": "1658 spruce valley",
+		"coordinates": "https: //www.google.com/maps?saddr=My+Location&daddr=33.8263715,-84.2586889&amp;ll",
+		"city": "decatur",
+		"terminalsTotal": "5",
+		"state": "GA",
+		"zipCode": "30033",
+		"id": "35261"
+	}
+}

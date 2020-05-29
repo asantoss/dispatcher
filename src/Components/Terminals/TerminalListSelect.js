@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { FirebaseContext } from '../../Firebase/index';
+import React, { useState, useEffect } from 'react';
+
 import {
 	List,
 	ListItem,
@@ -10,23 +10,18 @@ import {
 	ListItemSecondaryAction,
 	Button,
 } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as ACTIONS from '../../constants/actions';
 
-export default function TerminalsChecked({ location }) {
+export default function TerminalsChecked({ location, id }) {
 	const [checked, setChecked] = useState([]);
 	const [state, setState] = useState([]);
 	const dispatch = useDispatch();
-	const firebase = useContext(FirebaseContext);
+	const terminals = useSelector((state) => state.terminals);
 
 	useEffect(() => {
-		firebase.getMasterTerminals().then((results) => {
-			const terminals = results.filter(
-				(terminal) => terminal?.locationId !== location?.docId
-			);
-			setState(terminals);
-		});
-	}, [setState, firebase, location]);
+		setState(terminals.ids.filter((e) => !terminals.entities[e]?.locationId));
+	}, [dispatch, terminals, id]);
 
 	const handleToggle = (value) => () => {
 		const currentIndex = checked.indexOf(value);
@@ -43,49 +38,48 @@ export default function TerminalsChecked({ location }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const terminals = [...location.terminals, ...checked];
+		let terminals = [];
+		if (location?.terminals) {
+			terminals = [...location.terminals];
+		}
+		terminals = [...terminals, ...checked.map((e) => e.serial)];
 		if (terminals.length < location.terminalsTotal) {
-			Promise.all(
-				checked.map((terminal) =>
-					firebase.addTerminalToLocation(terminal, location.docId)
-				)
-			).then(() => {
-				setChecked([]);
-				dispatch(ACTIONS.SET_CURRENT_LOCATION({ ...location, terminals }));
-				alert('Success');
-			});
+			dispatch(ACTIONS.ADD_TERMINALS({ terminals, id }));
 		}
 	};
 	return state.length ? (
 		<form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
-			{state.map((terminal, i) => (
-				<List key={i}>
-					<ListItem>
-						<ListItemAvatar>
-							<Avatar />
-						</ListItemAvatar>
-						<ListItemText
-							primary={terminal?.board?.game ?? 'No Game'}
-							secondary={
-								<>
-									<span>{terminal.serial}</span>
-									<br />
-									<span>{terminal.type}</span>
-									<br />
-									<span>{terminal.billAcceptor}</span>
-								</>
-							}
-						/>
-						<ListItemSecondaryAction>
-							<Checkbox
-								edge='end'
-								onChange={handleToggle(terminal)}
-								checked={checked.indexOf(terminal) !== -1}
+			{state.map((terminalId, i) => {
+				const terminal = terminals.entities[terminalId];
+				return (
+					<List key={i}>
+						<ListItem>
+							<ListItemAvatar>
+								<Avatar />
+							</ListItemAvatar>
+							<ListItemText
+								primary={terminal?.board?.game ?? 'No Game'}
+								secondary={
+									<>
+										<span>{terminal.serial}</span>
+										<br />
+										<span>{terminal.type}</span>
+										<br />
+										<span>{terminal.billAcceptor}</span>
+									</>
+								}
 							/>
-						</ListItemSecondaryAction>
-					</ListItem>
-				</List>
-			))}
+							<ListItemSecondaryAction>
+								<Checkbox
+									edge='end'
+									onChange={handleToggle(terminal)}
+									checked={checked.indexOf(terminal) !== -1}
+								/>
+							</ListItemSecondaryAction>
+						</ListItem>
+					</List>
+				);
+			})}
 			<Button variant='contained' color='primary' type='submit'>
 				Save
 			</Button>

@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import LocationForm from '../../Components/Forms/LocationForm';
 import usePanelBar from '../../hooks/PanelBar';
@@ -7,49 +7,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import Breadcrumb from '../../Components/shared/Breadcrumb';
 import * as ACTIONS from '../../constants/actions';
 import LocationTerminals from './LocationTerminals';
-import { FirebaseContext } from '../../Firebase';
 
 export default function LocationPage() {
 	const tabs = ['Info', 'Edit'];
 	const { id } = useParams();
-	const { state } = useLocation();
-	const [value, PanelBar, Panel] = usePanelBar(
-		tabs,
-		state?.panel && tabs.indexOf(state?.panel)
-	);
-	const firebase = useContext(FirebaseContext);
+	const [value, PanelBar, Panel] = usePanelBar(tabs);
 	const dispatch = useDispatch();
 
-	const {
-		locations: { loading, currentLocation },
-		user: { currentMaster },
-	} = useSelector((state) => state);
+	const { locations, status } = useSelector((state) => state);
 
 	const formSubmit = (values) => {
-		firebase.updateLocation(currentLocation.docId, values).then(() => {
-			alert('Successfuller updated location: ' + values?.name);
-			dispatch(ACTIONS.SET_CURRENT_LOCATION({ ...currentLocation, ...values }));
-		});
+		dispatch(ACTIONS.UPDATE_LOCATION({ id, values }));
 	};
-	useEffect(() => {
-		if (id) {
-			firebase
-				.getLocation(id)
-				.then((results) => {
-					return results;
-				})
-				.then((payload) => dispatch(ACTIONS.SET_CURRENT_LOCATION(payload)))
-				.catch((e) => dispatch(ACTIONS.ERROR(e.message)));
-		}
-	}, [id, firebase, dispatch]);
 
-	if (loading) {
+	if (status.loading) {
 		return <div className='spinner' />;
 	}
-
+	const location = locations?.entities[id];
 	return (
 		<Container>
-			<Breadcrumb {...{ name: currentLocation?.name }} />
+			<Breadcrumb {...{ name: location?.name }} />
 			<PanelBar />
 			<Panel value={value} index={0}>
 				<div className='information'>
@@ -71,11 +48,14 @@ export default function LocationPage() {
 				</div>
 			</Panel>
 			<Panel value={value} index={1}>
+				<LocationTerminals location={location} id={id} />
+			</Panel>
+			<Panel value={value} index={2}>
 				<LocationForm
 					{...{
 						onSubmit: formSubmit,
-						docId: currentLocation?.docId,
-						initialState: currentLocation && initialState(currentLocation),
+						docId: location?.docId,
+						initialState: location && initialState(location),
 					}}
 				/>
 			</Panel>

@@ -27,8 +27,8 @@ export default function ProtectedRoute({
 		<Route
 			{...rest}
 			render={(props) =>
-				rolesAccess[role]?.includes(user?.currentMaster?.role) ||
-				user?.currentMaster?.role === ROLES.ADMIN ? (
+				rolesAccess[role]?.includes(user?.role) ||
+				user?.role === ROLES.ADMIN ? (
 					<Component {...props} />
 				) : (
 					<p>You are not authorized to view this page.</p>

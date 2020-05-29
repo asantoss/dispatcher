@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { debounce } from 'lodash';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -40,10 +40,8 @@ export default function Autocomplete({
 		if (!debounced.current) {
 			debounced.current = debounce((userInput) => {
 				const filteredOptions = options.filter((option) => {
-					const found = keys.filter((key) => {
-						return option[key].toLowerCase().includes(userInput.toLowerCase());
-					});
-					return found.length;
+					const value = getLabel(option);
+					return value.toLowerCase().includes(userInput.toLowerCase());
 				});
 				setState((s) => ({
 					...s,
@@ -71,13 +69,12 @@ export default function Autocomplete({
 	};
 	const handleClear = () => {
 		getSelected(null);
-		setState((s) => ({
-			...s,
+		setState({
 			activeOption: 0,
 			filteredOptions: [],
 			showOptions: false,
 			userInput: '',
-		}));
+		});
 	};
 	//Event fired when a user hits a key
 	const handleKeyDown = (e) => {
@@ -98,26 +95,35 @@ export default function Autocomplete({
 	};
 
 	const { userInput, filteredOptions, showOptions, isLoading } = state;
+	useEffect(() => {
+		if (defaultValue) {
+			setState((s) => ({ ...s, userInput: getLabel(defaultValue) }));
+		}
+	}, [defaultValue, getLabel]);
 
 	function Options() {
 		return (
 			<TransitionGroup component={null} enter appear>
-				{filteredOptions.map((option, i) => {
-					return (
-						<CSSTransition
-							unmountOnExit
-							mountOnEnter
-							classNames='item'
-							timeout={500}
-							onEnter={calcHeight}
-							onExit={calcHeight}
-							key={option.docId}>
-							<li className='option_item' onClick={(e) => handleClick(e, i)}>
-								{getLabel(option)}
-							</li>
-						</CSSTransition>
-					);
-				})}
+				{filteredOptions.length ? (
+					filteredOptions.map((option, i) => {
+						return (
+							<CSSTransition
+								unmountOnExit
+								mountOnEnter
+								classNames='item'
+								timeout={500}
+								onEnter={calcHeight}
+								onExit={calcHeight}
+								key={option}>
+								<li className='option_item' onClick={(e) => handleClick(e, i)}>
+									{getLabel(option)}
+								</li>
+							</CSSTransition>
+						);
+					})
+				) : (
+					<li className='option_item'>No options found.</li>
+				)}
 			</TransitionGroup>
 		);
 	}
@@ -161,6 +167,7 @@ export default function Autocomplete({
 }
 
 const AutocompleteContainer = styled.div`
+	margin: 0 1rem 1rem;
 	@keyframes slideIn {
 		from {
 			transform: scale(0.5);
@@ -175,6 +182,7 @@ const AutocompleteContainer = styled.div`
 		width: 100%;
 	}
 	.autocomplete_input {
+		position: relative;
 		display: flex;
 		border: 1px solid #999;
 		align-items: center;
@@ -194,7 +202,7 @@ const AutocompleteContainer = styled.div`
 		margin-top: 0;
 		max-height: 145px;
 		width: calc(300px + 1rem);
-		position: absolute;
+		position: relative;
 		z-index: 999;
 		background-color: #fff;
 		/* overflow-y: auto; */

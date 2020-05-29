@@ -1,37 +1,17 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React from 'react';
 import TableComponent from '../../Components/shared/Table';
-import { FirebaseContext } from '../../Firebase';
+
+import { useSelector } from 'react-redux';
 
 export default function Terminals() {
-	const [state, setState] = useState({
-		isLoading: true,
-		terminals: [],
-	});
-
-	const firebase = useContext(FirebaseContext);
-
-	useEffect(() => {
-		let listener = () => {};
-		if (firebase) {
-			listener = firebase.getMasterTerminalsListener((terminals) => {
-				setState(() => ({ isLoading: false, terminals }));
-			});
-		}
-		return () => {
-			if (listener) {
-				listener();
-			}
-		};
-	}, [firebase]);
-	if (state.isLoading) {
+	const { status, terminals } = useSelector((state) => state);
+	if (status.loading) {
 		return <div alt='loader' className='spinner'></div>;
 	}
 	return (
 		<TableComponent
 			{...{
-				data: state.terminals.map((e) => {
-					return { ...e, game: e?.board?.game ?? 'N/A' };
-				}),
+				data: terminals,
 				headers: ['serial', 'type', 'actions'],
 			}}
 		/>

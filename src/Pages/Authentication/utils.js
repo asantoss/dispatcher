@@ -11,4 +11,7 @@ export const Form = styled.form`
 	/* border: 0.5px solid grey; */
 	padding: 1em;
 	align-items: center;
+	& > div {
+		margin-bottom: 1rem;
+	}
 `;

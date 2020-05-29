@@ -1,15 +1,16 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Form } from '../Layouts/styles/Form';
-import { FirebaseContext } from '../../Firebase';
 import Autocomplete from '../shared/Autocomplete';
 import { useConfirmModal } from '../../hooks/Modal';
+import { useDispatch, useSelector } from 'react-redux';
 
 // import { useHistory } from 'react-router-dom';
 
 export default function TicketForm({ initialState, onSubmit }) {
-	const firebase = useContext(FirebaseContext);
+	const dispatch = useDispatch();
+	const locations = useSelector((state) => state.locations);
 	const {
 		handleChange,
 		handleSubmit,
@@ -18,9 +19,10 @@ export default function TicketForm({ initialState, onSubmit }) {
 		setFieldValue,
 	} = useFormik({
 		initialValues: initialState || {
-			location: '',
-			terminal: '',
+			locationId: '',
+			terminalId: '',
 			message: '',
+			list: 'inProgress',
 		},
 		onSubmit,
 	});
@@ -28,17 +30,8 @@ export default function TicketForm({ initialState, onSubmit }) {
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
-		let active = true;
-		(async () => {
-			const locations = await firebase.getMasterLocations();
-			if (active) {
-				setOptions(locations);
-			}
-		})();
-		return () => {
-			active = false;
-		};
-	}, [firebase]);
+		setOptions(locations.ids);
+	}, [dispatch, locations]);
 
 	const [openModal, Modal] = useConfirmModal(() => {
 		handleSubmit();
@@ -50,47 +43,49 @@ export default function TicketForm({ initialState, onSubmit }) {
 				openModal(true);
 			}}>
 			<div id='main_info'>
-				<h4>Location Info</h4>
 				<Autocomplete
 					required
 					label='Location'
 					keys={['license', 'name', 'address']}
 					{...{ options }}
-					getLabel={(option) =>
-						option?.license
-							? `${option.name}/ License: ${option?.license}`
-							: option.name
-					}
-					getSelected={(option) => setFieldValue('location', option)}
+					getLabel={(option) => {
+						const location = locations.entities[option];
+						return location?.license
+							? `${location.name}/ License: ${location?.license}`
+							: location.name;
+					}}
+					getSelected={(option) => setFieldValue('locationId', option)}
 				/>
-				<TextField
-					style={{ flexGrow: 3 }}
-					select
-					variant='outlined'
-					SelectProps={{
-						native: true,
-					}}
-					name='terminal'
-					label='Terminal'
-					value={values.type}
-					onChange={(e) => {
-						setFieldValue(
-							'terminal',
-							values?.location?.terminals[e.target.value]
-						);
-					}}
-					onBlur={handleBlur}>
-					<option aria-label='None' value=''></option>
-					{values.location?.terminals?.map((terminal, i) => (
-						<option key={i} value={i}>
-							{terminal?.board?.game ? terminal?.board?.game : 'No Game'} /{' '}
-							{terminal?.serial}
-						</option>
-					))}
-				</TextField>
+				{values.locationId && locations.entities[values.locationId]?.terminals && (
+					<TextField
+						select
+						variant='outlined'
+						name='terminal'
+						label='Terminal'
+						value={values.type}
+						onChange={(e) => {
+							setFieldValue(
+								'terminal',
+								locations.entities[values.locationId][e.target.value]
+							);
+						}}
+						SelectProps={{
+							native: true,
+						}}
+						onBlur={handleBlur}>
+						<option aria-label='None' value=''></option>
+						{locations.entities[values.locationId]?.terminals?.map(
+							(terminal, i) => (
+								<option key={i} value={i}>
+									{terminal?.game ? terminal.game : 'No Game'} /{' '}
+									{terminal?.serial}
+								</option>
+							)
+						)}
+					</TextField>
+				)}
 			</div>
 			<div id='secondary_info'>
-				<h4>Message</h4>
 				<TextField
 					label='Message'
 					multiline
@@ -103,6 +98,16 @@ export default function TicketForm({ initialState, onSubmit }) {
 					name='message'
 					value={values.message}
 				/>
+				<TextField
+					select
+					label='List'
+					onChange={handleChange}
+					name='list'
+					SelectProps={{ native: true }}
+					variant='outlined'>
+					<option value='inProgress'>In Progress</option>
+					<option value='backlog'>Backlog</option>
+				</TextField>
 			</div>
 			<Button style={{ width: '25%' }} variant='outlined' type='submit'>
 				Submit

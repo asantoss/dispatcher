@@ -26,6 +26,11 @@ class Firebase {
 		// 	});
 		// 	this.functions.useFunctionsEmulator('http://localhost:5001');
 		// }
+
+		this.locationsUnsubscribe = null;
+		this.ticketsUnsubscribe = null;
+		this.boardsUnsubscribe = null;
+		this.terminalsUnsubscribe = null;
 	}
 
 	// *** Auth API ***
@@ -38,7 +43,10 @@ class Firebase {
 
 	doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
-	doSignOut = () => this.auth.signOut();
+	doSignOut = () => {
+		this.ticketsUnsubscribe();
+		return this.auth.signOut();
+	};
 
 	doPasswordReset = (email) => {
 		this.auth.sendPasswordResetEmail(email);
@@ -50,12 +58,9 @@ class Firebase {
 	// *** Database Api
 
 	addUser = async (id, payload) => {
-		return await this.db
-			.collection('users')
-			.doc(id)
-			.set({
-				...payload,
-			});
+		const user = await this.db.collection('users').doc(id);
+		await user.set(payload);
+		return (await user.get()).data();
 	};
 	doGetUserByEmail = async (email) => {
 		if (!this?.user) {
@@ -125,7 +130,7 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (location) {
-			const locationData = { ...location.data(), docId: location.id };
+			const locationData = { ...location.data(), id: location.id };
 			return locationData;
 		}
 	};
@@ -136,7 +141,7 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (terminal) {
-			return { ...terminal.data(), docId: terminal.id };
+			return { ...terminal.data(), id: terminal.id };
 		}
 	};
 	getMasterTerminals = async () => {
@@ -145,12 +150,15 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (terminalsSnapshot) {
-			const terminals = [];
+			const terminals = {};
+			const ids = [];
 			await terminalsSnapshot.forEach((doc) => {
 				const terminal = doc.data();
-				terminals.push({ ...terminal, docId: doc.id });
+				const id = doc.id;
+				terminals[id] = terminal;
+				ids.push(id);
 			});
-			return terminals;
+			return { entities: terminals, ids };
 		}
 	};
 	getMasterLocations = async () => {
@@ -159,12 +167,14 @@ class Firebase {
 			.get()
 			.catch((e) => e);
 		if (locationsSnapshot) {
-			const locations = [];
+			const entities = {};
+			const ids = [];
 			await locationsSnapshot.forEach((doc) => {
 				const location = doc.data();
-				locations.push({ ...location, docId: doc.id });
+				entities[doc.id] = location;
+				ids.push(doc.id);
 			});
-			return locations;
+			return { entities, ids };
 		}
 	};
 	getMasterFreeTerminals = async () => {
@@ -177,73 +187,89 @@ class Firebase {
 			const terminals = [];
 			await terminalsSnapshot.forEach((doc) => {
 				const terminal = doc.data();
-				terminals.push({ ...terminal, docId: doc.id });
+				terminals.push({ ...terminal, id: doc.id });
 			});
 			return terminals;
 		}
 	};
-	getMasterTerminalsListener = (callBack) => {
-		return this.db
-			.collection(this.master + '/terminals')
-			.onSnapshot((querySnapshot) => {
-				const terminals = [];
-				querySnapshot.forEach((doc) => {
-					const { terminal, ...board } = doc.data();
-					terminals.push({
-						...board,
-						docId: doc.id,
+
+	getMasterTerminalsListener = (callback) => {
+		if (!this.terminalsUnsubscribe) {
+			this.terminalsUnsubscribe = this.db
+				.collection(this.master + '/terminals')
+				.onSnapshot((querySnapshot) => {
+					let entities = {};
+					let ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
 					});
+					callback({ entities, ids });
 				});
-				callBack(terminals);
-			});
+		} else {
+			this.terminalsUnsubscribe();
+			this.terminalsUnsubscribe = null;
+			return this.getMasterTerminalsListener(callback);
+		}
 	};
 	getMasterTicketsListener = (callBack) => {
-		return this.db
-			.collection(this.master + '/tickets')
-			.onSnapshot((querySnapshot) => {
-				const tickets = [];
-				querySnapshot.forEach((doc) => {
-					const ticket = doc.data();
-					tickets.push({
-						...ticket,
-						docId: doc.id,
+		if (!this.ticketsUnsubscribe) {
+			this.ticketsUnsubscribe = this.db
+				.collection(this.master + '/tickets')
+				.onSnapshot((querySnapshot) => {
+					const entities = {};
+					const ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
 					});
+					callBack({ entities, ids });
 				});
-				callBack(tickets);
-			});
+		} else {
+			this.ticketsUnsubscribe();
+			this.ticketsUnsubscribe = null;
+			return this.getMasterTicketsListener(callBack);
+		}
 	};
-	getMasterBoardsListener = (callBack) => {
-		return this.db
-			.collection(this.master + '/boards')
-			.onSnapshot((querySnapshot) => {
-				const boards = [];
-				querySnapshot.forEach((doc) => {
-					const { terminal, ...board } = doc.data();
-					boards.push({
-						...board,
-						docId: doc.id,
+
+	getMasterBoardsListener = (callback) => {
+		if (!this.boardsUnsubscribe) {
+			this.boardsUnsubscribe = this.db
+				.collection(this.master + '/boards')
+				.onSnapshot((querySnapshot) => {
+					let entities = {};
+					let ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
 					});
+					callback({ entities, ids });
 				});
-				callBack(boards);
-			});
+		} else {
+			this.boardsUnsubscribe();
+			this.boardsUnsubscribe = null;
+			this.getMasterBoardsListener(callback);
+		}
 	};
+
 	getMasterBoards = async () => {
 		const boardsSnapshot = await this.db
 			.collection(this.master + '/boards')
 			.get()
 			.catch((e) => e);
 		if (boardsSnapshot) {
-			const boards = [];
+			const boards = {};
+			const ids = [];
 			await boardsSnapshot.forEach((doc) => {
 				const { terminal, ...board } = doc.data();
-				boards.push({
-					...board,
-					docId: doc.id,
-				});
+				const id = doc.id;
+				boards[id] = board;
+				ids.push(id);
 			});
-			return boards;
+			return { entities: boards, ids };
 		}
 	};
+
 	getMasterFreeBoards = async () => {
 		const boardsSnapshot = await this.db
 			.collection(this.master + '/boards')
@@ -256,33 +282,36 @@ class Firebase {
 				const { terminal, ...board } = doc.data();
 				boards.push({
 					...board,
-					docId: doc.id,
+					id: doc.id,
 				});
 			});
 			return boards;
 		}
 	};
-	getBoard = async (docId) => {
+
+	getBoard = async (id) => {
 		const board = await this.db
-			.doc(`${this.master}/boards/${docId}`)
+			.doc(`${this.master}/boards/${id}`)
 			.get()
 			.catch((e) => e);
 		if (board) {
 			return {
 				...board.data(),
-				docId: board.id,
+				id: board.id,
 			};
 		}
 	};
-	updateBoard = async (docId, boardInfo) => {
+
+	updateBoard = async (id, boardInfo) => {
 		const board = await this.db
-			.doc(`${this.master}/boards/${docId}`)
+			.doc(`${this.master}/boards/${id}`)
 			.get()
 			.catch((e) => e);
 		if (board) {
 			return board.ref.update(boardInfo);
 		}
 	};
+
 	addBoard = async (boardInfo) => {
 		const boardRef = await this.db
 			.collection(`${this.master}/boards`)
@@ -296,26 +325,28 @@ class Firebase {
 			return boardRef.ref.set(boardInfo);
 		}
 	};
+
 	addTicket = async (ticketInfo) => {
 		const ticketRef = await this.db.collection(`${this.master}/tickets`).add({
 			...ticketInfo,
 			completed: false,
-			created: app.firestore.FieldValue.serverTimestamp(),
+			created: Date.now().toString(),
 		});
 		return ticketRef;
 	};
+
 	addTerminalToLocation = async (terminal, locationId) => {
-		await this.db.doc(`${this.master}/terminals/${terminal.docId}`).update({
-			locationId: locationId,
+		// The location id is pass to the terminal.
+		await this.db.doc(`${this.master}/terminals/${terminal}`).update({
+			locationId,
 		});
+		//The terminals serial number is passed into the relationship to the location
 		return this.db.doc(`${this.master}/locations/${locationId}`).update({
-			terminals: app.firestore.FieldValue.arrayUnion({
-				...terminal,
-				locationId,
-			}),
+			terminals: app.firestore.FieldValue.arrayUnion(terminal),
 		});
 	};
-	addTerminalToMaster = async (values, locationId, docId) => {
+
+	addTerminalToMaster = async (values, locationId) => {
 		const terminalDoc = await this.db
 			.collection(`${this.master}/terminals`)
 			.doc(values.serial)
@@ -328,7 +359,7 @@ class Firebase {
 					terminals: app.firestore.FieldValue.arrayUnion({
 						...values,
 						locationId,
-						docId: terminalDoc.id,
+						id: terminalDoc.id,
 					}),
 				});
 			}
@@ -338,35 +369,31 @@ class Firebase {
 	};
 	updateTicket = (id, data) => {
 		if (data?.complete) {
-			data.completedAt = app.firestore.FieldValue.serverTimestamp();
+			data.completedAt = Date.now().toString();
 		}
 		return this.db.doc(`${this.master}/tickets/${id}`).update(data);
 	};
 	removeTicket = (id) => {
 		return this.db.doc(`${this.master}/tickets/${id}`).delete();
 	};
-	updateTerminal = async (values, docId) => {
+	updateTerminal = async (values, id) => {
 		const terminalDoc = await this.db
 			.collection(`${this.master}/terminals`)
-			.doc(docId);
-		const currentData = await (await terminalDoc.get()).data();
-		if (currentData.boardId && !values.boardId) {
-			await this.updateBoard(currentData.boardId, { terminalId: null });
-		}
+			.doc(id);
+		// const currentData = await (await terminalDoc.get()).data();
+		// if (currentData.boardId && !values.boardId) {
+		// 	await this.updateBoard(currentData.boardId, { terminalId: null });
+		// }
 		return await terminalDoc.update(values);
 	};
-	removeTerminalFromLocation = async (terminal, location) => {
-		const locationDoc = await this.db.doc(
-			`${this.master}/locations/${location.docId}`
-		);
-		const terminals = location.terminals.filter(
-			(e) => e.docId !== terminal.docId
-		);
+	removeTerminalFromLocation = async (terminal, location, id) => {
+		const locationDoc = await this.db.doc(`${this.master}/locations/${id}`);
+		const terminals = location.terminals.filter((e) => e !== terminal.serial);
 		await locationDoc.update({
 			terminals,
 		});
 		return this.db
-			.doc(`${this.master}/terminals/${terminal.docId}`)
+			.doc(`${this.master}/terminals/${terminal.serial}`)
 			.update({ locationId: null })
 			.then(() => {
 				return terminals;
@@ -392,19 +419,23 @@ class Firebase {
 
 	// *** Locations logic
 	getMasterLocationsListener = (callback) => {
-		return this.db.collection(`${this.master}/locations`).onSnapshot(
-			(querySnapshot) => {
-				let locations = [];
-				querySnapshot.forEach((doc) => {
-					return locations.push({ ...doc.data(), docId: doc.id });
+		if (!this.locationsUnsubscribe) {
+			this.locationsUnsubscribe = this.db
+				.collection(`${this.master}/locations`)
+				.onSnapshot((querySnapshot) => {
+					let entities = {};
+					let ids = [];
+					querySnapshot.forEach((doc) => {
+						entities[doc.id] = doc.data();
+						ids.push(doc.id);
+					});
+					callback({ entities, ids });
 				});
-				locations = locations.sort((a, b) => (a['name'] > b['name'] ? 1 : -1));
-				callback(locations);
-			},
-			(error) => {
-				alert('Error: ' + error.message);
-			}
-		);
+		} else {
+			this.locationsUnsubscribe();
+			this.locationsUnsubscribe = null;
+			this.getMasterLocationsListener(callback);
+		}
 	};
 	getLocation = async (id) => {
 		const location = await this.db
@@ -413,7 +444,7 @@ class Firebase {
 			.get()
 			.catch((e) => alert('Error:' + e.message));
 		if (location) {
-			const locationData = { ...location.data(), docId: location.id };
+			const locationData = { ...location.data(), id: location.id };
 			this.currentLocation = locationData;
 			return locationData;
 		}

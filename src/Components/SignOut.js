@@ -1,17 +1,17 @@
 import React from 'react';
 import { withFirebase } from './Firebase';
 import { connect } from 'react-redux';
-const SignOutButton = ({ firebase, logOut }) => (
+import { LOGOUT } from '../constants/actions';
+const SignOutButton = ({ logOut }) => (
 	<button
 		type='button'
 		onClick={() => {
-			firebase.doSignOut();
 			logOut();
 		}}>
 		Sign Out
 	</button>
 );
-const mapDispatch = dispatch => ({
-	logOut: dispatch({ type: 'LOGOUT' })
+const mapDispatch = (dispatch) => ({
+	logOut: dispatch(LOGOUT()),
 });
-export default connect(null, mapDispatch)(withFirebase(SignOutButton));
+export default connect(null, mapDispatch)(SignOutButton);

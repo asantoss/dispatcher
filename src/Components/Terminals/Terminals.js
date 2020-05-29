@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
 	List,
 	ListItem,
@@ -9,62 +9,55 @@ import {
 	ListItemSecondaryAction,
 } from '@material-ui/core';
 import { CloseOutlined, EditOutlined } from '@material-ui/icons';
-import { useSelector, useDispatch } from 'react-redux';
-import { FirebaseContext } from '../../Firebase';
+import { useDispatch, useSelector } from 'react-redux';
 import * as ACTIONS from '../../constants/actions';
 import { Link } from 'react-router-dom';
 
-export default function Terminals({ terminals }) {
-	const {
-		locations: { currentLocation },
-	} = useSelector((state) => state);
+export default function Terminals({ location, id }) {
 	const dispatch = useDispatch();
-	const firebase = useContext(FirebaseContext);
+	const { terminals, boards } = useSelector((state) => state);
 	const handleRemove = (terminal) => {
-		firebase
-			.removeTerminalFromLocation(terminal, currentLocation)
-			.then((terminals) => {
-				alert('Success');
-				dispatch(
-					ACTIONS.SET_CURRENT_LOCATION({ ...currentLocation, terminals })
-				);
-			})
-			.catch((e) => alert('Error please try again \n ' + e.message));
+		dispatch(ACTIONS.REMOVE_TERMINAL({ id, terminal }));
 	};
-	return terminals?.length ? (
-		terminals.map((terminal, i) => (
-			<List key={i}>
-				<ListItem>
-					<ListItemAvatar>
-						<Avatar />
-					</ListItemAvatar>
-					<ListItemText
-						data-testid={'terminal' + i}
-						primary={terminal?.board?.game ?? 'No Game'}
-						secondary={
-							<>
-								<span>{terminal?.serial}</span>
-								<br />
-								<span>{terminal?.type}</span>
-								<br />
-								<span>{terminal?.billAcceptor}</span>
-							</>
-						}
-					/>
-					<ListItemSecondaryAction>
-						<IconButton onClick={() => handleRemove(terminal)}>
-							<CloseOutlined />
-						</IconButton>
-						<IconButton>
-							<Link to={`/terminals/${terminal?.docId}`}>
-								<EditOutlined />
-							</Link>
-						</IconButton>
-					</ListItemSecondaryAction>
-				</ListItem>
-			</List>
-		))
+
+	return location?.terminals?.length ? (
+		location.terminals.map((id, i) => {
+			const terminal = terminals.entities[id];
+			const board = boards.entities[terminal?.boardId];
+			return (
+				<List key={i}>
+					<ListItem>
+						<ListItemAvatar>
+							<Avatar />
+						</ListItemAvatar>
+						<ListItemText
+							data-testid={'terminal' + i}
+							primary={board?.game ?? 'No Game'}
+							secondary={
+								<>
+									<span>{terminal?.serial}</span>
+									<br />
+									<span>{terminal?.type}</span>
+									<br />
+									<span>{terminal?.billAcceptor}</span>
+								</>
+							}
+						/>
+						<ListItemSecondaryAction>
+							<IconButton onClick={() => handleRemove(terminal)}>
+								<CloseOutlined />
+							</IconButton>
+							<IconButton>
+								<Link to={`/terminals/${id}`}>
+									<EditOutlined />
+								</Link>
+							</IconButton>
+						</ListItemSecondaryAction>
+					</ListItem>
+				</List>
+			);
+		})
 	) : (
-		<p>No Terminals Set</p>
+		<p>No terminals found.</p>
 	);
 }
